@@ -23,7 +23,7 @@ pages:
   script:
   - cd _latex
   - latexmk
-  - mv *.pdf ../public/download/
+  - mv test.pdf ../public/download/FEM.pdf
   artifacts:
     paths:
     - public
