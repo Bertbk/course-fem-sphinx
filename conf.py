@@ -16,9 +16,6 @@
 
 import sphinx_rtd_theme
 
-extensions = [
-    "sphinx_rtd_theme",
-]
 
 # -- Project information -----------------------------------------------------
 
@@ -32,7 +29,10 @@ author = 'Bebert'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+
 extensions = [
+    "sphinx_rtd_theme",
+    "sphinxcontrib.proof",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -77,6 +77,21 @@ html_theme_options = {
 
 
 
+proof_theorem_types = {
+   "algorithm": "Algorithm",
+   "conjecture": "Conjecture",
+   "corollary": "Corollary",
+   "definition": "Definition",
+   "example": "Example",
+   "lemma": "Lemma",
+   "observation": "Observation",
+   "proof": "Proof",
+   "property": "Property",
+   "theorem": "Theorem",
+   "remark":"Remarque",
+}
+
+
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -95,7 +110,12 @@ latex_elements['extrapackages'] = '\usepackage{mystyle}\n\usepackage{mathrsfs}'
 mathjax_config = {                  
     "TeX": {                        
         "Macros": {
+            'GammaN': '{\\Gamma_N}',
+            'GammaD': '{\\Gamma_D}',
+            'Rb': '{\\mathbb{R}}',
+            'nn': '{\\mathbf{n}}',
+            'dn': '{\\partial_{\\nn}}',
+            'Cscr': '{\\mathscr{C}}',
             }
         }   
     }
-
