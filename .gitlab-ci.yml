@@ -4,6 +4,7 @@ test:
   stage: test
   script:
   - pip install -U sphinx
+  - pip install -U sphinx-rtd-theme
   - sphinx-build -b html . public
   only:
   - branches
@@ -14,6 +15,7 @@ pages:
   stage: deploy
   script:
   - pip install -U sphinx
+  - pip install -U sphinx-rtd-theme
   - sphinx-build -b html . public
   artifacts:
     paths:
