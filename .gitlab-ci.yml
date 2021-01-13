@@ -23,7 +23,7 @@ pages:
   script:
   - cd _latex
   - latexmk
-  - mv *.pdf ../public/doc
+  - mv *.pdf ../public/doc/
   artifacts:
     paths:
     - public
