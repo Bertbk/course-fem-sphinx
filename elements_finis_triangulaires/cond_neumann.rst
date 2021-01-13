@@ -26,6 +26,8 @@ Commençons par la formulation variationnelle dans l'espace des fonctions :math:
 
 Continuons notre cours ...
 
+Petit test pour vérifier que tout fonctionne sous gitlab !
+
 .. raw:: html 
 
    <script src="https://d3js.org/d3.v5.min.js"></script>
