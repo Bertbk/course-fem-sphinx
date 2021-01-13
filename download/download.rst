@@ -3,4 +3,7 @@
 Download
 ========
 
-:download:`PDF </doc/test.pdf>`.
+
+.. raw:: html 
+
+  <a href="test.pdf">PDF</a>
