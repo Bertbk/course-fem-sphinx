@@ -1,22 +1,28 @@
-image: python:3.7-alpine
+stages:
+  - build_sphinx
+  - deploy
 
-test:
-  stage: test
+build_sphinx:
+  image: python:3.7-alpine
+  stage: build_sphinx
   script:
   - pip install -U sphinx
   - pip install -U sphinx-rtd-theme
   - sphinx-build -b html . public
+  - sphinx-build -b latex . _latex
+  artifacts:
+    paths:
+    - public
   only:
-  - branches
-  except:
   - master
 
 pages:
+  image: aergus/latex
   stage: deploy
   script:
-  - pip install -U sphinx
-  - pip install -U sphinx-rtd-theme
-  - sphinx-build -b html . public
+  - cd _latex
+  - latexmk
+  - mv *.pdf ../public/doc
   artifacts:
     paths:
     - public
