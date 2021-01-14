@@ -19,7 +19,7 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
-project = 'test'
+project = 'Maillage et Éléments Finis'
 copyright = '2020, Bebert'
 author = 'Bebert'
 
@@ -89,6 +89,7 @@ proof_theorem_types = {
    "property": "Property",
    "theorem": "Theorem",
    "remark":"Remarque",
+   "proposition":"Proposition",
 }
 
 
@@ -116,6 +117,7 @@ mathjax_config = {
             'nn': '{\\mathbf{n}}',
             'dn': '{\\partial_{\\nn}}',
             'Cscr': '{\\mathscr{C}}',
+            'Ccal': '{\\mathcal{C}}',
             }
         }   
     }

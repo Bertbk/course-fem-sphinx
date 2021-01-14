@@ -12,7 +12,8 @@ Welcome to test's documentation!
    :caption: Contents:
 
    introduction/coucou
-   elements_finis_triangulaires/cond_neumann
+   elements-finis-triangulaires/index
+   
    download/download
 
 Indices and tables

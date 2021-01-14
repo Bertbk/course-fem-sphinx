@@ -1,17 +1,4 @@
 
-****************************
-Éléments Finis Triangulaires
-****************************
-
-.. epigraph::
-
-  And the word was death /
-  And the word was without light /
-  The new beatitude /
-  Good luck, you're on your own!
-
-  -- A Perfect Circle - *The Doomed*
-
 
 Problème modèle
 ===============
@@ -36,5 +23,5 @@ Dans ce cours, nous considérons un ouvert polygonal :math:`\Omega` de :math:`\R
 
 .. proof:remark::
 
-  En général, on préfère travailler dans un premier temps avec des ouverts \emph{réguliers}, de classe au moins $\Ccal^1$. Un tel ouvert présente l'avantage de pouvoir clairement définir le vecteur unitaire normale :math:`\nn` sortant à :math:`\Omega` cependant, après maillage, on se retrouve avec \ldots un polygone ! Alors plutôt que de travailler dans un domaine régulier pour après le casser en (petits) morceaux, nous préférons ici mettre l'accent sur les algorithmes et la mise en oeuvre de la méthode que les spécificités mathématiques.
+  En général, on préfère travailler dans un premier temps avec des ouverts \emph{réguliers}, de classe au moins :math:`\Ccal^1`. Un tel ouvert présente l'avantage de pouvoir clairement définir le vecteur unitaire normale :math:`\nn` sortant à :math:`\Omega` cependant, après maillage, on se retrouve avec \ldots un polygone ! Alors plutôt que de travailler dans un domaine régulier pour après le casser en (petits) morceaux, nous préférons ici mettre l'accent sur les algorithmes et la mise en oeuvre de la méthode que les spécificités mathématiques.
 
