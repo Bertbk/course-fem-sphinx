@@ -59,7 +59,7 @@ Fonction linéaire sur un triangle
 
 **Cas du triangle (2D).** Revenons maintenant dans un triangle :math:`\tri{}` non plat et notons :math:`\Pb^1` l'espace des polynômes réels de degré :math:`1` sur :math:`\Rb^2`, qui est de dimension :math:`3`. L'espace :math:`\Pb^1(\tri{})` des fonctions linéaires (ou des polynômes de degré :math:`1`) sur :math:`\tri{}` est lui aussi de dimension 3 :
 
-.. math:: \Pb^1(\tri{}) = \enstq{p}{\exists!a,b,c \text{ tels que } \forall (x,y)\in \tri{}, p(x,y) = a + bx + cy}  
+.. math:: \Pb^1(\tri{}) = \enstq{p|_{\tri{}}}{\exists!a,b,c \text{ tels que } \forall (x,y)\in \tri{}, p(x,y) = a + bx + cy}  
 
 Une fonction :math:`p` de :math:`\Pb^1(\tri{})` est définie de manière unique par ses 3 coefficients :math:`a,b,c`. Inversement, ces trois coefficients sont calculables dès lors que l'on connait la valeur de :math:`p` sur trois points non alignés, comme les 3 sommets du triangle, comme le montre le lemme suivant. Une fonction :math:`p\in\Pb^1(\tri)` est donc définie de manière unique soit par la connaissance des coefficients, soit par la connaissance de sa valeur sur les trois sommets du triangle.
 
@@ -125,7 +125,7 @@ Fonctions linéaires par morceaux (= par triangles)
 
 Nous pouvons maintenant introduire l'espace fonctionnel :math:`\Pb^1-` Lagrange (souvent abrégé :math:`\Pb^1`). Cet espace, noté :math:`\Vh` contient les fonctions **continues** sur :math:`\overline{\Omega}` et **linéaires sur chaque triangle** :
 
-.. math::  \Vh := \left\{\vh\in\Cscr^0(\overline{\Omega}) ; \forall \tri\in\Th, \vh|_{\tri} \in\Pb^1(\tri)\right\}.
+.. math::  \Vh := \enstq{\vh\in\Cscr^0(\overline{\Omega})}{\forall \tri\in\Th, \vh|_{\tri} \in\Pb^1(\tri)}.
 
 Caractérisons maintenant les fonctions de cet espace. Le premier résultat montre que deux fonctions de :math:`\Vh` sont égales si et seulement si elles coïncident sur tous les sommets de la triangulation :math:`\Th`.
 

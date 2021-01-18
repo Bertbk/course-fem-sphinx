@@ -15,7 +15,6 @@
 
 
 .. toctree::
-  :numbered:
   :maxdepth: 1
 
   probleme-modele

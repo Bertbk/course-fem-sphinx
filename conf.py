@@ -20,8 +20,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Maillage et Éléments Finis'
-copyright = '2020, Bebert'
-author = 'Bebert'
+copyright = '2020, Bertrand Thierry'
+author = 'Bertrand Thierry'
 
 
 # -- General configuration ---------------------------------------------------
@@ -88,7 +88,7 @@ latex_elements = {}
 latex_elements['preamble'] = '\usepackage{amsmath}\n\usepackage{amssymb}\n'
 latex_elements['babel'] = '\\usepackage{babel}'
 latex_additional_files = ['mystyle.sty']
-latex_elements['extrapackages'] = '\usepackage{mystyle}\n\usepackage{mathrsfs}'
+latex_elements['extrapackages'] = '\usepackage{mathrsfs}\n\usepackage{mystyle}'
 
 # copy to mathjax
 mathjax_config = {                  
@@ -127,6 +127,7 @@ mathjax_config = {
             'mphi': '{\\varphi}',
             'mphih': '{\\widehat{\\varphi}}',
             'psih': '{\\widehat{\\psi}}',
+            'gh': '{\\widehat{g}}',
             'deltaij': '{\\delta_{ij}}',
             'tri': '{K}',
             'trih': '{\\widehat{K}}',
@@ -152,6 +153,7 @@ mathjax_config = {
             'Deh':'{\\widehat{D}^e}', 
             'Me':['{M^e_{#1}}', 1], 
             'De':['{D^e_{#1}}', 1], 
+            'enstq':['{\\left\\{#1 \\mathrel{}\\middle|\\mathrel{}#2\\right\\}}',2]
             }
         }   
     }

@@ -62,7 +62,7 @@ Pour calculer la quantité élémentaire \eqref{eq:matelem}, plaçons nous tout 
 .. 
   %TODO:  {{< figure src="../triangle_ref.svg" title="Triangle de référence :math:`\trih` et son repère paramétrique :math:`(\xi,\eta)`." numbered="true" >}}
   
-Plutôt que d'indicer par :math:`p`, nous notons :math:`\mphih[i] \in \Pb^1(\trih)` les trois fonctions de forme associées aux sommets :math:`\verticeh_i`, pour :math:`i=0,1,2`, définies par :math:`\mphih[i](\verticeh_j) = \delta_{ij}`. Ces fonctions :math:`\mphih[i]` étant des polynômes de degré un, nous pouvons même les calculer analytiquement :
+Plutôt que d'indicer par :math:`p`, nous notons :math:`\mphih_i \in \Pb^1(\trih)` les trois fonctions de forme associées aux sommets :math:`\verticeh_i`, pour :math:`i=0,1,2`, définies par :math:`\mphih_i(\verticeh_j) = \delta_{ij}`. Ces fonctions :math:`\mphih_i` étant des polynômes de degré un, nous pouvons même les calculer analytiquement :
 
 .. math:: 
 
@@ -80,7 +80,7 @@ Plutôt que d'indicer par :math:`p`, nous notons :math:`\mphih[i] \in \Pb^1(\tri
 
   .. math:: 
   
-    \Meh_{i,j} = \int_{\trih} \mphih[j](\xi)\overline{\mphih[j](\eta)} \diff(\xi,\eta),
+    \Meh_{i,j} = \int_{\trih} \mphih_j(\xi)\overline{\mphih_j(\eta)} \diff(\xi,\eta),
 
   est donnée par
   .. math::  
@@ -94,7 +94,7 @@ Plutôt que d'indicer par :math:`p`, nous notons :math:`\mphih[i] \in \Pb^1(\tri
   
 .. proof:proof::
 
-  Prenons tout d'abord le cas :math:`i=j=1`, soit :math:`\mphih[i] = \mphih[j] = \mphih[2](\xi,\eta) = \xi`. Dans ce cas :
+  Prenons tout d'abord le cas :math:`i=j=1`, soit :math:`\mphih_i = \mphih_j = \mphih[2](\xi,\eta) = \xi`. Dans ce cas :
 
   .. math:: 
   
@@ -119,13 +119,13 @@ Triangle quelconque
 .. 
   % TODO: {{< figure src="../ref.svg" title="Passage du triangle de référence :math:`\trih` vers un triangle :math:`\tri_p` par la transformation :math:`\trihToTri{p}`." numbered="true" >}}
 
-Nous avons :math:`\mphi_j^p(x,y) = \mphi_j^p(\trihToTri{p}(\xi,\eta))` avec :math:`\mphi_j^p\circ\trihToTri{p}\in\Pb^1(\trih)` et :math:`\mphi_j^p\circ\trihToTri{p}(\verticeh_i) = \delta_{ij}`. Par unicité, nous avons :math:`\mphi_j^p\circ\trihToTri{p} = \mphih[j]`.
+Nous avons :math:`\mphi_j^p(x,y) = \mphi_j^p(\trihToTri{p}(\xi,\eta))` avec :math:`\mphi_j^p\circ\trihToTri{p}\in\Pb^1(\trih)` et :math:`\mphi_j^p\circ\trihToTri{p}(\verticeh_i) = \delta_{ij}`. Par unicité, nous avons :math:`\mphi_j^p\circ\trihToTri{p} = \mphih_j`.
 
 En notant :math:`\JK{p}` la matrice Jacobienne de :math:`\trihToTri{p}`, alors la quantité :math:`\Me{p}(i,j)` peut alors s'écrire, par changement de variables :
 .. math:: 
 
     \Me{p}(i,j) = \dsp\int_{\tri_p}\mphi_j^p(x,y)\overline{\mphi_i^p(x,y)} \diff(x,y)
-      =\dsp \abs{\det(\JK{p})}\underbrace{\int_{\trih}\mphih[j](\xi,\eta)\mphih[i](\xi,\eta)\diff(\xi,\eta)}_{\text{Déjà calculé !}}
+      =\dsp \abs{\det(\JK{p})}\underbrace{\int_{\trih}\mphih_j(\xi,\eta)\mphih_i(\xi,\eta)\diff(\xi,\eta)}_{\text{Déjà calculé !}}
 
 Ainsi, pour calculer la matrice élémentaire d'un triangle :math:`\tri_p` quelconque, nous n'avons besoin que du déterminant de la Jacobienne : :math:`\det(\JK{p})`.
 
@@ -141,7 +141,7 @@ La transformation aura alors pour expression :
     & (\xi,\eta) & \mapsto & \trihToTri{p}(\xi,\eta) = (x,y) = \psih_{0}(\xi,\eta) \vertice_{0}^{p} + \psih_{1}(\xi,\eta) \vertice_{1}^{p} + \psih_{2}(\xi,\eta) \vertice_{2}^{p}.
   \end{array}
 
-En d'autres termes, les fonctions d'interpolation géométrique :math:`\psih_i` sont ici identiques aux fonctions de forme :math:`\mphih[i]` :
+En d'autres termes, les fonctions d'interpolation géométrique :math:`\psih_i` sont ici identiques aux fonctions de forme :math:`\mphih_i` :
 
 .. math:: 
   \left\{
@@ -183,7 +183,7 @@ et son déterminant vaut
 ce qui implique que le déterminant est non nul puisque le triangle n'est pas dégénéré : la transformation :math:`\trihToTri{p}` est bien inversible.
 
 .. proof:remark::
-  Quand :math:`\psih_i = \mphih[i]`, nous parlons d'éléments finis \alert{isoparamétriques}. Il convient de retenir que ce choix n'est pas obligatoire et les fonctions :math:`\psih_i` et :math:`\mphih[i]` sont \alert{indépendantes}. En particulier, pour obtenir des éléments courbes, les fonctions :math:`\psih_i` pourraient être quadratiques par exemple.
+  Quand :math:`\psih_i = \mphih_i`, nous parlons d'éléments finis \alert{isoparamétriques}. Il convient de retenir que ce choix n'est pas obligatoire et les fonctions :math:`\psih_i` et :math:`\mphih_i` sont \alert{indépendantes}. En particulier, pour obtenir des éléments courbes, les fonctions :math:`\psih_i` pourraient être quadratiques par exemple.
 
 .. 
   %TODO: {{< figure class="app-jacobi" title="<i class='fas fa-play-circle'></i> \alert{Time To Play!}<br>\alert{Déplacez les sommets du triangle} pour modifier la valeur du \alert{Jacobien}. Quand il est négatif cela signifie que le triangle est **\"retourné\"** par rapport au triangle de référence." numbered="true" >}}
@@ -217,7 +217,7 @@ Triangle de référence
 .. proof:lemma::
   Dans le triangle de référence :math:`\trih`, la matrice de rigidité élémentaire :math:`\hat{K}= (\hat{D}_{i,j})_{0\leq i,j\leq 2}` de coefficient
 
-  .. math:: \hat{D}_{i,j} = \int_{\trih}\nabla \mphih[j](\xi,\eta)\cdot \nabla\mphih[i](\xi,\eta)\diff(\xi,\eta),
+  .. math:: \hat{D}_{i,j} = \int_{\trih}\nabla \mphih_j(\xi,\eta)\cdot \nabla\mphih_i(\xi,\eta)\diff(\xi,\eta),
 
   a pour expression
   .. math:: 
@@ -232,7 +232,7 @@ Triangle de référence
     \right)
 
 .. proof:proof::
-  Les gradients des fonctions de forme :math:`\mphih[j]` sont donnés par :
+  Les gradients des fonctions de forme :math:`\mphih_j` sont donnés par :
 
   .. math:: 
 
@@ -286,7 +286,7 @@ Triangle de référence
 Triangle quelconque
 +++++++++++++++++++
 
-Pour calculer les dérivées partielles selon :math:`x` et :math:`y` de :math:`\mphih[j]`, nous utilisons la dérivée de fonction composée :
+Pour calculer les dérivées partielles selon :math:`x` et :math:`y` de :math:`\mphih_j`, nous utilisons la dérivée de fonction composée :
 
 .. math:: 
 
@@ -299,20 +299,20 @@ Pour calculer les dérivées partielles selon :math:`x` et :math:`y` de :math:`\
       \dsp \frac{\partial \xi}{\partial y} & \dsp \frac{\partial \eta}{\partial y}
   \end{pmatrix}
   \begin{pmatrix}
-      \dsp \frac{\partial \mphih[j]}{\partial \xi}\\[0.2cm]
-      \dsp \frac{\partial \mphih[j]}{\partial \eta}
+      \dsp \frac{\partial \mphih_j}{\partial \xi}\\[0.2cm]
+      \dsp \frac{\partial \mphih_j}{\partial \eta}
   \end{pmatrix}
 
 En notant :math:`\BK{p}` la matrice de passage, nous avons
 
-.. math:: \nabla_{x,y}\mphi_j^p(x,y) = \BK{p}\nabla_{\xi,\eta}\mphih[j](\xi,\eta).
+.. math:: \nabla_{x,y}\mphi_j^p(x,y) = \BK{p}\nabla_{\xi,\eta}\mphih_j(\xi,\eta).
 
 L'opération "inverse" nous donne :
 
 .. math:: 
   \begin{pmatrix}
-      \dsp \frac{\partial \mphih[j]}{\partial \xi}\\[0.2cm]
-      \dsp \frac{\partial \mphih[j]}{\partial \eta}
+      \dsp \frac{\partial \mphih_j}{\partial \xi}\\[0.2cm]
+      \dsp \frac{\partial \mphih_j}{\partial \eta}
     \end{pmatrix}
     =
   \begin{pmatrix}
@@ -324,7 +324,7 @@ L'opération "inverse" nous donne :
     \dsp \frac{\partial \mphi_j^p}{\partial y}
   \end{pmatrix}
   \iff
-  \nabla_{\xi,\eta}\mphih[j](\xi,\eta) = (\JK{p})^T\nabla_{x,y}\mphi_j^p(x,y).
+  \nabla_{\xi,\eta}\mphih_j(\xi,\eta) = (\JK{p})^T\nabla_{x,y}\mphi_j^p(x,y).
 
 Nous en déduisons que :math:`\BK{p} = (\JK{p}^T)^{-1}`, en particulier, dans le cas d'une transformation linéaire de triangle, nous obtenons :
 
@@ -343,7 +343,7 @@ Au final, comme :math:`X\cdot Y = X^TY`, nous obtenons
 .. math:: 
   :label:eq-intRigidite
   \int_{\tri_p} (\nabla\mphi_j^p)^T\nabla\mphi_i^p \diff(x,y)
-    = \abs{\det(\JK{p})}\int_{\trih} (\nabla\mphih[j])^T  (\BK{p}^T \overline{\BK{p}})\overline{\nabla\mphih[i]} \diff (\xi,\eta).
+    = \abs{\det(\JK{p})}\int_{\trih} (\nabla\mphih_j)^T  (\BK{p}^T \overline{\BK{p}})\overline{\nabla\mphih_i} \diff (\xi,\eta).
 
 La matrice :math:`\BK{p}` étant réelle, nous pouvons supprimer la conjugaison portant sur :math:`\BK{p}`.
 
@@ -354,14 +354,14 @@ La matrice :math:`\BK{p}` étant réelle, nous pouvons supprimer la conjugaison 
 
     \begin{aligned}
     \De{p}(i,j) &= \int_{\tri_p}\nabla \mphi_j^p(x, y)\cdot \overline{\nabla\mphi_i^p(x,y)}\diff(x,y),\\
-      &= \abs{\tri_p}(\nabla\mphih[j])^T  (\BK{p}^T \overline{\BK{p}})\overline{\nabla\mphih[i]}.
+      &= \abs{\tri_p}(\nabla\mphih_j)^T  (\BK{p}^T \overline{\BK{p}})\overline{\nabla\mphih_i}.
     \end{aligned}
 
 .. proof:proof::
 
-  Pour les éléments finis :math:`\Pb^1`, les gradients :math:`\nabla\mphih[j]` sont constants et peuvent être sortis de l'intégrale. De plus, comme :math:`\abs{\det(\JK{p})} = 2\abs{\tri_p}` et :math:`\abs{\trih}= \frac{1}{2}`, nous avons
+  Pour les éléments finis :math:`\Pb^1`, les gradients :math:`\nabla\mphih_j` sont constants et peuvent être sortis de l'intégrale. De plus, comme :math:`\abs{\det(\JK{p})} = 2\abs{\tri_p}` et :math:`\abs{\trih}= \frac{1}{2}`, nous avons
 
-  .. math::  \int_{\tri_p} \nabla\mphi_j^p\cdot\nabla\mphi_i^p \diff(x,y) =\abs{\tri_p}(\nabla\mphih[j])^T  (\BK{p}^T \overline{\BK{p}})\overline{\nabla\mphih[i]}.
+  .. math::  \int_{\tri_p} \nabla\mphi_j^p\cdot\nabla\mphi_i^p \diff(x,y) =\abs{\tri_p}(\nabla\mphih_j)^T  (\BK{p}^T \overline{\BK{p}})\overline{\nabla\mphih_i}.
 
 Second membre (ou RHS ou Membre de droite)
 ------------------------------------------
@@ -375,7 +375,7 @@ Sauf pour certaines fonctions :math:`f` particulières, nous ne pourrons certain
 .. math:: 
   \begin{aligned}
   \dsp \int_{\tri_p}f(\xx)\mphi_i^p(\xx)\diff \xx &=
-  \dsp \abs{\det(\JK{p})}\int_{\trih}f(\xx(\xi,\eta))\overline{\mphih[i](\xi,\eta)}\diff (\xi,\eta) \\
+  \dsp \abs{\det(\JK{p})}\int_{\trih}f(\xx(\xi,\eta))\overline{\mphih_i(\xi,\eta)}\diff (\xi,\eta) \\
   & \dsp \simeq \abs{\det(\JK{p})}\sum_{m=0}^{M-1}\omega_m f(\xx(\xi_m,\eta_m))\overline{\mphih(\xi_m,\eta_m)}.
   \end{aligned}
 

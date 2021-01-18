@@ -6,13 +6,13 @@ Homogène
 
 Nous introduisons alors un espace de Sobolev qui prend en compte la condition de Dirichlet.
 
-.. math:: \Hoz = \left\{u\in\Ho ; \gamma_{\partial\Omega} u = 0\right\},
+.. math:: \Hoz = \enstq{u\in\Ho}{u|_{\partial\Omega} = 0},
 
 
 Si :math:`V_h` est l'espace des éléments finis :math:`\Pb^1` sur :math:`\Omega`, alors une discrétisation naturelle de :math:`\Hoz` est l'espace :math:`\Vhz` défini par
 
 
-.. math:: \Vhz = \left\{u\in V_h ; u|_{\Gamma_D} = 0\right\}
+.. math:: \Vhz = \enstq{u\in V_h}{ u|_{\Gamma_D} = 0}
 
 Mais nous pouvons aussi raisonner sur le système linéaire directement. Nous séparons les degrés de liberté en deux sous-ensembles :
 
@@ -130,7 +130,7 @@ Nous considérons maintenant le cas d'une condition de Dirichlet non homogène, 
 
 Nous pouvons introduire l'espace suivant
 
-.. math:: \Hog = \left\{u\in \Ho ; u|_{\GammaD} = \gD\right\},
+.. math:: \Hog = \enstq{u\in \Ho}{ u|_{\GammaD} = \gD},
 
 mais ce **n'est pas un espace vectoriel** ! Pour remédier à ce problème, nous nous ramenons au cas d'une condition de Dirichlet homogène en introduisant un *relèvement* :math:`u_g` de :math:`g` : une fonction de :math:`\Ho` telle que :math:`\gamma_{\Gamma_D}u_g = g`. Nous ne nous préoccuperons pas de savoir si une telle fonction existe et supposons que tel est le cas [#]_. Le problème devient alors de chercher :math:`\ut = u-u_g` satisfaisant :
 
@@ -139,7 +139,7 @@ mais ce **n'est pas un espace vectoriel** ! Pour remédier à ce problème, nous
   \left\{
     \begin{array}{r c l l}
       -\Delta \ut & = & f +\Delta u_g & (\Omega)\\
-      \ut & =  & 0 & (\Gamma_D))\\
+      \ut & =  & 0 & (\Gamma_D)\\
       \dn \ut & =  & h & (\Gamma_N)
     \end{array}
   \right.
@@ -170,6 +170,7 @@ Cette fonction n'est pas un relèvement de :math:`g` puisqu'elle ne coïncide av
 En pratique, la matrice est alors décomposée ainsi :
 
 .. math:: 
+
   AU = b \iff 
   \left(
     \begin{array}{c c}

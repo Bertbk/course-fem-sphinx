@@ -10,7 +10,6 @@ Mise en Oeuvre
 
 
 .. toctree::
-  :numbered:
   :maxdepth: 1
 
   principe
