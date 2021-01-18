@@ -53,14 +53,14 @@ Pourquoi diable remplacer :math:`\Ho` par :math:`\Vh` ? La réponse juste après
 Système linéaire
 ----------------
 
-L'espace :math:`\Vh` est de dimension finie et dispose d'une base : les fonctions de forme :math:`(\mphi[I])_{I=0,\ldots,\Ns-1}`. Autrement dit, la formulation faible discrétisée est équivalente à
+L'espace :math:`\Vh` est de dimension finie et dispose d'une base : les fonctions de forme :math:`(\mphi_I)_{I=0,\ldots,\Ns-1}`. Autrement dit, la formulation faible discrétisée est équivalente à
 
 .. math:
 
   \left\{
   \begin{array}{l}
     \text{Trouver } \uh \in\Vh \text{ tel que }\\
-    \dsp \forall I=0,\ldots,\Ns-1 , \quad a(\uh,\mphi[I]) =\ell(\mphi[I]).
+    \dsp \forall I=0,\ldots,\Ns-1 , \quad a(\uh,\mphi_I) =\ell(\mphi_I).
   \end{array}
   \right.
 
@@ -68,16 +68,16 @@ D'un autre côté, nous pouvons aussi écrire :math:`\uh` dans la base des fonct
 
 .. math:
 
-  \uh = \sum_{J=0}^{\Ns-1} u_J \mphi[J],
+  \uh = \sum_{J=0}^{\Ns-1} u_J \mphi_J,
 
-avec :math:`u_J = \uh(\vertice[J])` et la formulation faible se réécrit alors 
+avec :math:`u_J = \uh(\vertice_J)` et la formulation faible se réécrit alors 
 
 .. math:
 
   \left\{
   \begin{array}{l}
     \text{Trouver } (u_J)_{J=0,\ldots,\Ns-1} \text{ tel que }\\
-    \dsp \forall I=0,\ldots,\Ns-1 , \quad a\left(\sum_{J=0}^{\Ns-1} u_J \mphi[J],\mphi[I]\right) =\ell(\mphi[I]).
+    \dsp \forall I=0,\ldots,\Ns-1 , \quad a\left(\sum_{J=0}^{\Ns-1} u_J \mphi_J,\mphi_I\right) =\ell(\mphi_I).
   \end{array}
   \right.
 
@@ -85,7 +85,7 @@ Comme :math:`a(\cdot,\cdot)` est bilinéaire\footnote{Vous pouvez le vérifier a
 
 .. math:
 
-  a\left(\sum_{J=0}^{\Ns-1} u_J \mphi[J],\mphi[I]\right) = \sum_{J=0}^{\Ns-1}  u_Ja\left( \mphi[J],\mphi[I]\right).
+  a\left(\sum_{J=0}^{\Ns-1} u_J \mphi_J,\mphi_I\right) = \sum_{J=0}^{\Ns-1}  u_Ja\left( \mphi_J,\mphi_I\right).
 
 Notons maintenant :math:`\Uh = [u_0,\ldots,u_{\Ns-1}]^T` les coefficients recherchés, alors ce problème peut se réécrire tout simplement sous la forme d'un système linéaire :
 
@@ -99,9 +99,9 @@ où nous avons
 .. math:
 
   \begin{aligned}
-    \Ahh &= (\Ahh[I][J])_{ 0\leq I,J\leq \Ns-1} = (a(\mphi[J], \mphi[I]))_{ 0\leq I,J\leq \Ns-1}\\
+    \Ahh &= (\Ahh[I][J])_{ 0\leq I,J\leq \Ns-1} = (a(\mphi_J, \mphi_I))_{ 0\leq I,J\leq \Ns-1}\\
     \Uh &=(\Uh[I])_{0\leq I \leq \Ns-1}\\
-    \Bh &=(\Bh[I])_{ 0\leq I\leq \Ns-1} = (\ell(\mphi[I]))_{0\leq I\leq \Ns-1}
+    \Bh &=(\Bh[I])_{ 0\leq I\leq \Ns-1} = (\ell(\mphi_I))_{0\leq I\leq \Ns-1}
   \end{aligned}
 
 Ce système linéaire est de dimension :math:`\Ns`, le nombre de sommets du maillage. Dans la suite et pour simplifier, nous nous affranchirons de l'indice :math:`h` sur les termes du système linéaire \eqref{eq:systemFEM}.

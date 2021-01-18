@@ -41,7 +41,7 @@ Une telle triangulation sera noté :math:`\Th = \{K_p, i=0, \ldots, \Nt-1\}`, l'
 
 .. math:: h := \max_{\tri{}\in\Th}(\diam(\tri{})) = \max_{i=0,\ldots,\Nt-1}(\diam(K_p)).
 
-Le diamètre d'un triangle est la distance maximale entre deux points du triangle. Nous notons de plus :math:`\Sh` et :math:`\Ah` les ensembles respectivement des sommets et des arêtes de :math:`\Th`. Pour un triangle :math:`\tri{}` arbitraire, nous noterons :math:`[\vertice[0],\vertice[1],\vertice[2]]` ses sommets ordonnés, et le triangle :math:`K_p` aura pour sommet :math:`[\vertice[0][i],\vertice[1][i],\vertice[2][i]]`.
+Le diamètre d'un triangle est la distance maximale entre deux points du triangle. Nous notons de plus :math:`\verticeh` et :math:`\Ah` les ensembles respectivement des sommets et des arêtes de :math:`\Th`. Pour un triangle :math:`\tri{}` arbitraire, nous noterons :math:`[\vertice[0],\vertice[1],\vertice[2]]` ses sommets ordonnés, et le triangle :math:`K_p` aura pour sommet :math:`[\vertice[0][i],\vertice[1][i],\vertice[2][i]]`.
 
 Il existe aujourd'hui des mailleurs automatiques open-source, un des plus connu et que nous utiliserons est `GMSH
 <https://gmsh.info>`_ (`un tutoriel <https://bthierry.pages.math.cnrs.fr/tutorial/gmsh>`_ est fourni par moi même). Le maillage automatique reste un métier à part entière tant la complexité est importante notamment en 3D et avec des géométries complexes, non forcément polygonales. D'autres parts, de nombreuses questions sont encore ouvertes aujourd'hui dans ce domaine comme la construction automatique d'un maillage composé de quadrangles. Nous n'entrerons pas dans les détails dans ce sujet, nous serons de simple "utilisateurs et utilisatrices". 
@@ -61,16 +61,16 @@ Fonction linéaire sur un triangle
 
 .. math:: \Pb^1(\tri{}) = \enstq{p}{\exists!a,b,c \text{ tels que } \forall (x,y)\in \tri{}, p(x,y) = a + bx + cy}  
 
-Une fonction :math:`p` de :math:`\Pb^1(\tri{})` est définie de manière unique par ses 3 coefficients :math:`a,b,c`. Inversement, ces trois coefficients sont calculables dès lors que l'on connait la valeur de :math:`p` sur trois points non alignés, comme les 3 sommets du triangle, comme le montre le lemme suivant. Une fonction :math:`p\in\FE[\tri{}]` est donc définie de manière unique soit par la connaissance des coefficients, soit par la connaissance de sa valeur sur les trois sommets du triangle.
+Une fonction :math:`p` de :math:`\Pb^1(\tri{})` est définie de manière unique par ses 3 coefficients :math:`a,b,c`. Inversement, ces trois coefficients sont calculables dès lors que l'on connait la valeur de :math:`p` sur trois points non alignés, comme les 3 sommets du triangle, comme le montre le lemme suivant. Une fonction :math:`p\in\Pb^1(\tri)` est donc définie de manière unique soit par la connaissance des coefficients, soit par la connaissance de sa valeur sur les trois sommets du triangle.
 
 .. prop-unisolvance:
 .. proof:proposition::
 
-  Soit :math:`\tri` un triangle non dégénéré de :math:`\Rb^2` de sommets :math:`\vertice[1],\vertice[2],\vertice[3]`. Alors, pour tout jeu de données :math:`\alpha_1,\alpha_2,\alpha_3 \in \Rb`, il existe un unique polynôme de :math:`p\in\FE[\Rb^2]` tels que :math:`p(\vertice[i])=\alpha_i`.
+  Soit :math:`\tri` un triangle non dégénéré de :math:`\Rb^2` de sommets :math:`\vertice[1],\vertice[2],\vertice[3]`. Alors, pour tout jeu de données :math:`\alpha_1,\alpha_2,\alpha_3 \in \Rb`, il existe un unique polynôme de :math:`p\in\Pb^1(\Rb^2)` tels que :math:`p(\vertice_I)=\alpha_i`.
 
 .. proof:proof:: 
 
-  En notant :math:`\vertice[i] = (x_i,y_i)` et :math:`p(x,y) = ax + by + c`  avec :math:`a,b,c\in\Rb`, alors le problème revient à résoudre le système linéaire
+  En notant :math:`\vertice_I = (x_i,y_i)` et :math:`p(x,y) = ax + by + c`  avec :math:`a,b,c\in\Rb`, alors le problème revient à résoudre le système linéaire
 
   .. math:: \left\{
     \begin{array}{r c l}
@@ -117,39 +117,39 @@ Une fonction :math:`p` de :math:`\Pb^1(\tri{})` est définie de manière unique 
 
 .. proof:remark::
 
-  Soit une fonction :math:`v \in \FE[\tri]`, linéaire sur le triangle :math:`\tri`. Sa restriction :math:`v|_{\sigma}` à une arête :math:`\sigma` de :math:`\tri` est elle même une fonction linéaire sur :math:`\sigma`. Elle est donc complètement caractérisée par sa valeur aux sommets de l'arête, qui sont aussi des sommets de :math:`\tri`. 
+  Soit une fonction :math:`v \in \Pb^1(\tri)`, linéaire sur le triangle :math:`\tri`. Sa restriction :math:`v|_{\sigma}` à une arête :math:`\sigma` de :math:`\tri` est elle même une fonction linéaire sur :math:`\sigma`. Elle est donc complètement caractérisée par sa valeur aux sommets de l'arête, qui sont aussi des sommets de :math:`\tri`. 
 
 
 Fonctions linéaires par morceaux (= par triangles)
 --------------------------------------------------
 
-Nous pouvons maintenant introduire l'espace fonctionnel :math:`\FE-` Lagrange (souvent abrégé :math:`\Pb^1`). Cet espace, noté :math:`\Vh` contient les fonctions **continues** sur :math:`\overline{\Omega}` et **linéaires sur chaque triangle** :
+Nous pouvons maintenant introduire l'espace fonctionnel :math:`\Pb^1-` Lagrange (souvent abrégé :math:`\Pb^1`). Cet espace, noté :math:`\Vh` contient les fonctions **continues** sur :math:`\overline{\Omega}` et **linéaires sur chaque triangle** :
 
-.. math::  \Vh := \left\{\vh\in\Cscr^0(\overline{\Omega}) ; \forall \tri\in\Th, \vh|_{\tri} \in\FE[\tri{}]\right\}.
+.. math::  \Vh := \left\{\vh\in\Cscr^0(\overline{\Omega}) ; \forall \tri\in\Th, \vh|_{\tri} \in\Pb^1(\tri)\right\}.
 
 Caractérisons maintenant les fonctions de cet espace. Le premier résultat montre que deux fonctions de :math:`\Vh` sont égales si et seulement si elles coïncident sur tous les sommets de la triangulation :math:`\Th`.
 
 .. lemma-unicitetriangle:
 .. proof:lemma::
 
-  Si :math:`\uh,\vh \in \Vh` vérifient :math:`\uh(\ssb) = \vh(\ssb)` pour tout sommet :math:`\ssb` de :math:`\Th`, alors :math:`\uh=\vh` sur :math:`\Omega`.
+  Si :math:`\uh,\vh \in \Vh` vérifient :math:`\uh(\vertice) = \vh(\vertice)` pour tout sommet :math:`\vertice` de :math:`\Th`, alors :math:`\uh=\vh` sur :math:`\Omega`.
 
 .. proof:proof::
 
-  En se plaçant sur le triangle :math:`\tri = (\vertice[1],\vertice[2],\vertice[3])` de :math:`\Th`, nous avons :math:`\uh(\vertice[i]) = \vh(\vertice[i])` pour :math:`i=1,2,3`. La proposition \ref{prop:unisolvance} implique que :math:`\uh|_{\tri}=\vh|_{\tri}`. Le triangle :math:`\tri` étant arbitraire, cette relation vaut sur tous les éléments de la triangulation. Le même raisonnement peut être effectué sur chaque arête pour obtenir que :math:`\uh-\vh` est nulle sur :math:`\Omega` tout entier.
+  En se plaçant sur le triangle :math:`\tri = (\vertice[1],\vertice[2],\vertice[3])` de :math:`\Th`, nous avons :math:`\uh(\vertice_I) = \vh(\vertice_I)` pour :math:`i=1,2,3`. La proposition \ref{prop:unisolvance} implique que :math:`\uh|_{\tri}=\vh|_{\tri}`. Le triangle :math:`\tri` étant arbitraire, cette relation vaut sur tous les éléments de la triangulation. Le même raisonnement peut être effectué sur chaque arête pour obtenir que :math:`\uh-\vh` est nulle sur :math:`\Omega` tout entier.
 
 
 .. proof:proposition::
 
-  Pour tout jeu de données réelles :math:`(\alpha_i)_{i=0,\ldots,\Ns-1}`, il existe une unique fonction :math:`\vh\in\Vh` vérifiant :math:`\vh(\vertice[i])=\alpha_i` pour tout :math:`i=0,\ldots,\Ns-1`.
+  Pour tout jeu de données réelles :math:`(\alpha_i)_{i=0,\ldots,\Ns-1}`, il existe une unique fonction :math:`\vh\in\Vh` vérifiant :math:`\vh(\vertice_I)=\alpha_i` pour tout :math:`i=0,\ldots,\Ns-1`.
 
 .. proof:proof::
 
-  L'unicité est démontrée par le lemme \ref{lemma:unicitetriangle} précédent, il manque donc l'existence. Quitte à renuméroter, prenons un triangle :math:`\tri=(\vertice[0],\vertice[1],\vertice[2])` de :math:`\Th` et le jeu de valeurs associé :math:`(\alpha_0,\alpha_1,\alpha_2) \in \Rb`. La proposition \ref{prop:unisolvance} montre qu'il existe un (unique) polynôme :math:`p_{\tri}` de :math:`\FE[\tri]` tel que :math:`p_{\tri}(\vertice[i])=\alpha_i` pour :math:`i=0,1,2`. Nous pouvons répéter cette opération pour tous les triangles :math:`\tri` et nous introduisons :math:`\uh` tel que
+  L'unicité est démontrée par le lemme \ref{lemma:unicitetriangle} précédent, il manque donc l'existence. Quitte à renuméroter, prenons un triangle :math:`\tri=(\vertice[0],\vertice[1],\vertice[2])` de :math:`\Th` et le jeu de valeurs associé :math:`(\alpha_0,\alpha_1,\alpha_2) \in \Rb`. La proposition \ref{prop:unisolvance} montre qu'il existe un (unique) polynôme :math:`p_{\tri}` de :math:`\Pb^1(\tri)` tel que :math:`p_{\tri}(\vertice_I)=\alpha_i` pour :math:`i=0,1,2`. Nous pouvons répéter cette opération pour tous les triangles :math:`\tri` et nous introduisons :math:`\uh` tel que
 
   .. math:: \forall \tri\in\Th,\quad \uh |_{\tri} = p_{\tri}.
 
-  La fonction :math:`\vh` est affine sur chaque triangle, il nous faut montrer que :math:`\uh\in\Cscr^0(\overline{\Omega})` pour conclure sur son appartenance à :math:`\Vh`. Comme :math:`\vh` est continue en chaque sommet :math:`\ssb`, il reste à montrer la continuité sur les arêtes. 
+  La fonction :math:`\vh` est affine sur chaque triangle, il nous faut montrer que :math:`\uh\in\Cscr^0(\overline{\Omega})` pour conclure sur son appartenance à :math:`\Vh`. Comme :math:`\vh` est continue en chaque sommet :math:`\vertice`, il reste à montrer la continuité sur les arêtes. 
   
   Prenons 2 triangles :math:`K_p` et :math:`\tri[j]` de :math:`\Th` ayant une arête :math:`\Sigma` en commun. Quitte à renuméroter, notons :math:`\vertice[1] = (x_1,y_1)` et :math:`\vertice[2] = (x_2, y_2)` les deux sommets de l'arête :math:`\Sigma` et notons
   
@@ -173,10 +173,10 @@ Caractérisons maintenant les fonctions de cet espace. Le premier résultat mont
 Base de :math:`\Vh` : les fonctions de forme
 ---------------------------------------------
 
-Au vu de ce qui précède, deux fonctions de :math:`\Vh` sont identiques si et seulement si elles possèdent la même valeur sur chaque sommet de :math:`\Th`. En notant :math:`\Ns = \mathrm{card}(\Sh)`, introduisons l'ensemble des **fonctions de forme** :math:`(\mphi[j])_{0\leq j \leq \Ns-1}` de :math:`\Vh`, qui sont **nulles sur chaque sommet sauf un** :
+Au vu de ce qui précède, deux fonctions de :math:`\Vh` sont identiques si et seulement si elles possèdent la même valeur sur chaque sommet de :math:`\Th`. En notant :math:`\Ns = \mathrm{card}(\verticeh)`, introduisons l'ensemble des **fonctions de forme** :math:`(\mphi_J)_{0\leq j \leq \Ns-1}` de :math:`\Vh`, qui sont **nulles sur chaque sommet sauf un** :
 
 .. math:: \forall i,j =0,..., \Ns-1,\quad
-  \mphi[j](\vertice[i]) =
+  \mphi_J(\vertice_I) =
   \delta_{i,j}=
   \left\{
     \begin{array}{l l}
@@ -189,7 +189,7 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
 
 .. proof:proposition::
 
-  La famille :math:`(\mphi[j])_{0\leq j \leq \Ns-1}` est une base de :math:`\Vh`, qui est alors de dimension :math:`\Ns`, le nombre de sommets de la triangulation :math:`\Th`.
+  La famille :math:`(\mphi_J)_{0\leq j \leq \Ns-1}` est une base de :math:`\Vh`, qui est alors de dimension :math:`\Ns`, le nombre de sommets de la triangulation :math:`\Th`.
 
 .. proof:proof::
 
@@ -197,16 +197,16 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
   
   .. math::
     \begin{aligned}
-      \sum_{i=0}^{\Ns-1} \alpha_i \mphi[i] = 0 &\implies \forall j=0,\ldots, \Ns-1,\quad \sum_{i=0}^{\Ns-1} \alpha_i\mphi[i](\vertice[j]) = 0\\
+      \sum_{i=0}^{\Ns-1} \alpha_i \mphi_I = 0 &\implies \forall j=0,\ldots, \Ns-1,\quad \sum_{i=0}^{\Ns-1} \alpha_i\mphi_I(\vertice_j) = 0\\
       &\implies \forall j= 0,\ldots, \Ns-1,\quad \alpha_j \times 1 +  \sum_{i=0, i\neq j}^{\Ns-1}(\alpha_j\times 0) = 0\\
       & \implies \forall j= 0,\ldots, \Ns-1,\quad \alpha_j = 0
     \end{aligned}
 
-  La famille de fonctions :math:`(\mphi[i])_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice[1], \vertice[2],\vertice[3])` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice[i])\mphi[i]\right)\Big|_{\tri}` coïncide avec le polynôme :math:`\uh|_{\tri}` sur les sommets du triangle :math:`\tri`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
-  La famille de fonctions :math:`(\mphi[i])_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice[1], \vertice[2],\vertice[3])` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice[i])\mphi[i]\right)\Big|_{\tri}` coïncide avec le polynôme :math:`\uh|_{\tri}` sur les sommets du triangle :math:`\tri`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
-  .. math:: \uh|_{\tri}= \left(\sum_{i=0}^2\uh(\vertice[i])\mphi[i]\right)\Bigg|_{\tri}.
+  La famille de fonctions :math:`(\mphi_I)_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice[1], \vertice[2],\vertice[3])` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Big|_{\tri}` coïncide avec le polynôme :math:`\uh|_{\tri}` sur les sommets du triangle :math:`\tri`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
+  La famille de fonctions :math:`(\mphi_I)_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice[1], \vertice[2],\vertice[3])` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Big|_{\tri}` coïncide avec le polynôme :math:`\uh|_{\tri}` sur les sommets du triangle :math:`\tri`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
+  .. math:: \uh|_{\tri}= \left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Bigg|_{\tri}.
 
-  Cette relation étant valable sur un triangle arbitraire, elle est vraie sur :math:`\Omega`. La famille de fonctions :math:`(\mphi[i])_i` est donc une base de :math:`\Vh`.
+  Cette relation étant valable sur un triangle arbitraire, elle est vraie sur :math:`\Omega`. La famille de fonctions :math:`(\mphi_I)_i` est donc une base de :math:`\Vh`.
 
 .. proof:proposition::Admis pour le moment
   L'espace :math:`\Vh` est inclus dans :math:`\Ho`.
@@ -214,24 +214,24 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
 
 .. proof:lemma::
 
-  Le support d'une fonction de forme :math:`\mphi[j]` est l'union des triangles ayant pour sommet :math:`\vertice[j]` :
-  .. math:: \mathrm{supp}(\mphi[j]) = \enstq{T\in \Sh}{\vertice[j] \text{ est un sommet de } \tri}.
-Autrement dit, en dehors de ces triangles, la fonction $\mphi[j]$ est nulle.
+  Le support d'une fonction de forme :math:`\mphi_J` est l'union des triangles ayant pour sommet :math:`\vertice_j` :
+  .. math:: \mathrm{supp}(\mphi_J) = \enstq{T\in \verticeh}{\vertice_j \text{ est un sommet de } \tri}.
+Autrement dit, en dehors de ces triangles, la fonction $\mphi_J$ est nulle.
 
 .. proof:proof::
 
-  Prenons une fonction de forme :math:`\mphi[j]` associée au sommet :math:`\vertice[j]`, et un triangle :math:`\tri` dont aucun sommet n'est :math:`\vertice[j]`. Alors dans ce cas, :math:`\mphi[j]` est nulle sur les trois sommets de :math:`\tri`, et est donc nulle sur le triangle tout entier.
+  Prenons une fonction de forme :math:`\mphi_J` associée au sommet :math:`\vertice_j`, et un triangle :math:`\tri` dont aucun sommet n'est :math:`\vertice_j`. Alors dans ce cas, :math:`\mphi_J` est nulle sur les trois sommets de :math:`\tri`, et est donc nulle sur le triangle tout entier.
 
 
 Au final, pour une fonction :math:`\uh` de :math:`\Vh`, retenons que :
 
 - :math:`\uh` est (par définition) continue et linéaire sur chaque triangle
 - La dimension de :math:`\Vh` est égale au nombre de sommets :math:`\Ns` du maillage. Plus le maillage est fin, plus la dimension est grande.
-- La famille :math:`(\mphi[I])_I` des fonctions de forme est une base de :math:`\Vh`. Autrement dit, il existe :math:`\Ns` uniques coefficients :math:`(u_I)_I`, tels que
-  .. math::  \uh = \sum_{I=0}^{\Ns-1} u_I\mphi[I]
+- La famille :math:`(\mphi_I)_I` des fonctions de forme est une base de :math:`\Vh`. Autrement dit, il existe :math:`\Ns` uniques coefficients :math:`(u_I)_I`, tels que
+  .. math::  \uh = \sum_{I=0}^{\Ns-1} u_I\mphi_I
  - Une fonction :math:`\uh` de :math:`\Vh` est caractérisée par sa valeur aux :math:`\Ns` sommets
- - Les coefficients sont en fait la valeur de :math:`\uh` aux sommets : :math:`u_I = \uh(\vertice[I])` :
-  .. math:: \sum_{I = 0}^{\Ns-1} \uh(\vertice[I])\mphi[I](\vertice[J]) = \uh(\vertice[J])\mphi[J](\vertice[J]) = \uh(\vertice[J]).
-- Le support d'une fonction de forme :math:`\mphi[I]` est l'union des triangles ayant pour sommets :math:`\vertice[I]`. Il est donc très petit par rapport à :math:`\Omega`.
+ - Les coefficients sont en fait la valeur de :math:`\uh` aux sommets : :math:`u_I = \uh(\vertice_I)` :
+  .. math:: \sum_{I = 0}^{\Ns-1} \uh(\vertice_I)\mphi_I(\vertice_J) = \uh(\vertice_J)\mphi_J(\vertice_J) = \uh(\vertice_J).
+- Le support d'une fonction de forme :math:`\mphi_I` est l'union des triangles ayant pour sommets :math:`\vertice_I`. Il est donc très petit par rapport à :math:`\Omega`.
 
 .. [#] Au lycée on disait "entre deux points ne passe qu'une et une seule droite".

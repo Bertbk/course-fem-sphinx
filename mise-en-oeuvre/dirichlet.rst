@@ -130,7 +130,7 @@ Nous considérons maintenant le cas d'une condition de Dirichlet non homogène, 
 
 Nous pouvons introduire l'espace suivant
 
-.. math:: \Hog = \enstq{u\in \Ho}{u|_{\Gamma_D} = g},
+.. math:: \Hog = \left\{u\in \Ho ; u|_{\GammaD} = \gD\right\},
 
 mais ce **n'est pas un espace vectoriel** ! Pour remédier à ce problème, nous nous ramenons au cas d'une condition de Dirichlet homogène en introduisant un *relèvement* :math:`u_g` de :math:`g` : une fonction de :math:`\Ho` telle que :math:`\gamma_{\Gamma_D}u_g = g`. Nous ne nous préoccuperons pas de savoir si une telle fonction existe et supposons que tel est le cas [#]_. Le problème devient alors de chercher :math:`\ut = u-u_g` satisfaisant :
 
@@ -150,17 +150,17 @@ mais ce **n'est pas un espace vectoriel** ! Pour remédier à ce problème, nous
   Le relèvement n'est pas unique, puisque si :math:`u_0\in\Hoz` alors :math:`u_g + u_0` est aussi un relèvement acceptable.
 
 
-Relèvement en P1
-++++++++++++++++
+Relèvement en :math:`\Pb^1`
++++++++++++++++++++++++++++
 
-En éléments finis :math:`\Pun`, un relèvement naturel est la fonction :math:`u_{h, g}` de :math:`\Vh` telle que
+En éléments finis :math:`\Pb^1`, un relèvement naturel est la fonction :math:`u_{h, g}` de :math:`\Vh` telle que
 
 .. math:: 
 
-  u_{h,g}(\ssb_j) =
+  u_{h,g}(\vertice_j) =
     \left\{
     \begin{array}{l l}
-      g(\ssb_j) & \text{ si }\ssb_j\in\Gamma_D,\\
+      g(\vertice_j) & \text{ si }\vertice_j\in\Gamma_D,\\
       0 & \text{ sinon.}
     \end{array}
   \right.
