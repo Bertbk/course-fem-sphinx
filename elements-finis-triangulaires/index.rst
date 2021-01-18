@@ -12,5 +12,12 @@
 
   -- A Perfect Circle - *The Doomed*
 
-.. include:: probleme-modele.rst
-.. include:: espace-p1.rst
+
+
+.. toctree::
+  :numbered:
+  :maxdepth: 1
+
+  probleme-modele
+  espace-p1
+

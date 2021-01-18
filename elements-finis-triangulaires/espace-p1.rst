@@ -18,7 +18,7 @@ Nous découpons maintenant le domaine en triangles pour obtenir un maillage tria
     \label{fig:meshconforme}
   \end{figure}
 
-- L'union des triangles doit couvrir :math:`\Omega` sans le dépasser : :math:`\Omega = \bigcup_{i=0}^{\Nt} \tri[i]`.
+- L'union des triangles doit couvrir :math:`\Omega` sans le dépasser : :math:`\Omega = \bigcup_{i=0}^{\Nt} K_p`.
 - L'intersection de deux triangles est soit vide, soit une arête commune complète à chacun des deux triangles, soit un sommet de chacun des deux triangles.
 - Une arête d'un triangle est soit une arête (complète) d'un autre triangle, soit une partie de :math:`\Gamma`, auquel cas ce segment est complètement inclus soit dans :math:`\GammaD` soit dans :math:`\GammaN` (il n'y a pas d'arête appartenant à la fois à :math:`\GammaD` et à :math:`\GammaN`).
 
@@ -37,11 +37,11 @@ Nous découpons maintenant le domaine en triangles pour obtenir un maillage tria
   \end{figure}
   La deuxième contrainte impose notamment que deux triangles ne peuvent pas se chevaucher. La figure \ref{fig:meshconforme} montre un exemple de maillage conforme et les figures \ref{fig:meshnonconforme_arete} et \ref{fig:meshnonconforme_overlap} des situations non conformes. La troisième condition implique qu'à l'intersection entre :math:`\GammaD` et :math:`\GammaN`, il existe un sommet qui appartient à plusieurs triangles (si :math:`\GammaD` et :math:`\GammaN` se touchent).
 
-Une telle triangulation sera noté :math:`\Th = \{\tri[i], i=0, \ldots, \Nt-1\}`, l'indice :math:`h` faisant référence à la **finesse de maillage**, que l'on définit par le grand diamètre des triangles :
+Une telle triangulation sera noté :math:`\Th = \{K_p, i=0, \ldots, \Nt-1\}`, l'indice :math:`h` faisant référence à la **finesse de maillage**, que l'on définit par le grand diamètre des triangles :
 
-.. math:: h := \max_{\tri{}\in\Th}(\diam(\tri{})) = \max_{i=0,\ldots,\Nt-1}(\diam(\tri[i])).
+.. math:: h := \max_{\tri{}\in\Th}(\diam(\tri{})) = \max_{i=0,\ldots,\Nt-1}(\diam(K_p)).
 
-Le diamètre d'un triangle est la distance maximale entre deux points du triangle. Nous notons de plus :math:`\Sh` et :math:`\Ah` les ensembles respectivement des sommets et des arêtes de :math:`\Th`. Pour un triangle :math:`\tri{}` arbitraire, nous noterons :math:`[\vertice[0],\vertice[1],\vertice[2]]` ses sommets ordonnés, et le triangle :math:`\tri[i]` aura pour sommet :math:`[\vertice[0][i],\vertice[1][i],\vertice[2][i]]`.
+Le diamètre d'un triangle est la distance maximale entre deux points du triangle. Nous notons de plus :math:`\Sh` et :math:`\Ah` les ensembles respectivement des sommets et des arêtes de :math:`\Th`. Pour un triangle :math:`\tri{}` arbitraire, nous noterons :math:`[\vertice[0],\vertice[1],\vertice[2]]` ses sommets ordonnés, et le triangle :math:`K_p` aura pour sommet :math:`[\vertice[0][i],\vertice[1][i],\vertice[2][i]]`.
 
 Il existe aujourd'hui des mailleurs automatiques open-source, un des plus connu et que nous utiliserons est `GMSH
 <https://gmsh.info>`_ (`un tutoriel <https://bthierry.pages.math.cnrs.fr/tutorial/gmsh>`_ est fourni par moi même). Le maillage automatique reste un métier à part entière tant la complexité est importante notamment en 3D et avec des géométries complexes, non forcément polygonales. D'autres parts, de nombreuses questions sont encore ouvertes aujourd'hui dans ce domaine comme la construction automatique d'un maillage composé de quadrangles. Nous n'entrerons pas dans les détails dans ce sujet, nous serons de simple "utilisateurs et utilisatrices". 
@@ -136,7 +136,7 @@ Caractérisons maintenant les fonctions de cet espace. Le premier résultat mont
 
 .. proof:proof::
 
-  En se plaçant sur le triangle :math:`\tri = (\vertice[1],\vertice[2],\vertice[3])` de :math:`\Th`, nous avons :math:`\uh(\vertice[i]) = \vh(\vertice[i])` pour :math:`i=1,2,3`. La proposition \ref{prop:unisolvance} implique que :math:`\uh\restrict_{\tri}=\vh\restrict_{\tri}`. Le triangle :math:`\tri` étant arbitraire, cette relation vaut sur tous les éléments de la triangulation. Le même raisonnement peut être effectué sur chaque arête pour obtenir que :math:`\uh-\vh` est nulle sur :math:`\Omega` tout entier.
+  En se plaçant sur le triangle :math:`\tri = (\vertice[1],\vertice[2],\vertice[3])` de :math:`\Th`, nous avons :math:`\uh(\vertice[i]) = \vh(\vertice[i])` pour :math:`i=1,2,3`. La proposition \ref{prop:unisolvance} implique que :math:`\uh|_{\tri}=\vh|_{\tri}`. Le triangle :math:`\tri` étant arbitraire, cette relation vaut sur tous les éléments de la triangulation. Le même raisonnement peut être effectué sur chaque arête pour obtenir que :math:`\uh-\vh` est nulle sur :math:`\Omega` tout entier.
 
 
 .. proof:proposition::
@@ -147,27 +147,27 @@ Caractérisons maintenant les fonctions de cet espace. Le premier résultat mont
 
   L'unicité est démontrée par le lemme \ref{lemma:unicitetriangle} précédent, il manque donc l'existence. Quitte à renuméroter, prenons un triangle :math:`\tri=(\vertice[0],\vertice[1],\vertice[2])` de :math:`\Th` et le jeu de valeurs associé :math:`(\alpha_0,\alpha_1,\alpha_2) \in \Rb`. La proposition \ref{prop:unisolvance} montre qu'il existe un (unique) polynôme :math:`p_{\tri}` de :math:`\FE[\tri]` tel que :math:`p_{\tri}(\vertice[i])=\alpha_i` pour :math:`i=0,1,2`. Nous pouvons répéter cette opération pour tous les triangles :math:`\tri` et nous introduisons :math:`\uh` tel que
 
-  .. math:: \forall \tri\in\Th,\quad \uh \restrict_{\tri} = p_{\tri}.
+  .. math:: \forall \tri\in\Th,\quad \uh |_{\tri} = p_{\tri}.
 
   La fonction :math:`\vh` est affine sur chaque triangle, il nous faut montrer que :math:`\uh\in\Cscr^0(\overline{\Omega})` pour conclure sur son appartenance à :math:`\Vh`. Comme :math:`\vh` est continue en chaque sommet :math:`\ssb`, il reste à montrer la continuité sur les arêtes. 
   
-  Prenons 2 triangles :math:`\tri[i]` et :math:`\tri[j]` de :math:`\Th` ayant une arête :math:`\Sigma` en commun. Quitte à renuméroter, notons :math:`\vertice[1] = (x_1,y_1)` et :math:`\vertice[2] = (x_2, y_2)` les deux sommets de l'arête :math:`\Sigma` et notons
+  Prenons 2 triangles :math:`K_p` et :math:`\tri[j]` de :math:`\Th` ayant une arête :math:`\Sigma` en commun. Quitte à renuméroter, notons :math:`\vertice[1] = (x_1,y_1)` et :math:`\vertice[2] = (x_2, y_2)` les deux sommets de l'arête :math:`\Sigma` et notons
   
   .. math:: \sigma(t) = \vertice[1] + t(\vertice[2]-\vertice[1]) =
     \left( x_1 + t(x_2-x_1),  y_1 + t(y_2-y_1)\right)
   
-  une paramétrisation de :math:`\Sigma`. Si :math:`p_{\tri[i]}(x,y) = ax+by+c`, nous avons alors, pour tout :math:`t\in[0,1]` :
+  une paramétrisation de :math:`\Sigma`. Si :math:`p_{K_p}(x,y) = ax+by+c`, nous avons alors, pour tout :math:`t\in[0,1]` :
 
   .. math:: \begin{aligned}
-      p_{\tri[i]}(\sigma(t)) &= a (x_1 + t(x_2-x_1)) + b (y_1 + t(y_2-y_1)) + c\\
+      p_{K_p}(\sigma(t)) &= a (x_1 + t(x_2-x_1)) + b (y_1 + t(y_2-y_1)) + c\\
       &= a (x_1 + t(x_2-x_1)) + b (y_1 + t(y_2-y_1)) + c + t(c-c)\\
       &= [a x_1+by_1 +c] + t([a x_2+by_2 +c] +[ a_T x_1+by_1 +c])\\
-      &=  p_{\tri[i]}(\vertice[1]) +t(p_{\tri[i]}(\vertice[2]) - p_{\tri[i]}(\vertice[1]))\\
+      &=  p_{K_p}(\vertice[1]) +t(p_{K_p}(\vertice[2]) - p_{K_p}(\vertice[1]))\\
       &=  p_{\tri[j]}(\vertice[1]) +t(p_{\tri[j]}(\vertice[2]) - p_{\tri[j]}(\vertice[1]))\\
       &=  p_{\tri[j]}(\sigma(t)).
     \end{aligned}
 
-  Autrement dit, les deux polynômes :math:`p_{\tri[i]}` et :math:`p_{\tri[j]}` sont égaux sur l'arête :math:`\Sigma` et :math:`\vh` est bien continue sur toutes les arêtes de :math:`\Th` en plus de l'être sur tous les triangles et tous les sommets : :math:`\vh` est donc bien **continue** sur tout :math:`\overline{\Omega}`.
+  Autrement dit, les deux polynômes :math:`p_{K_p}` et :math:`p_{\tri[j]}` sont égaux sur l'arête :math:`\Sigma` et :math:`\vh` est bien continue sur toutes les arêtes de :math:`\Th` en plus de l'être sur tous les triangles et tous les sommets : :math:`\vh` est donc bien **continue** sur tout :math:`\overline{\Omega}`.
 
 
 Base de :math:`\Vh` : les fonctions de forme
@@ -202,9 +202,9 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
       & \implies \forall j= 0,\ldots, \Ns-1,\quad \alpha_j = 0
     \end{aligned}
 
-  La famille de fonctions :math:`(\mphi[i])_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice[1], \vertice[2],\vertice[3])` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice[i])\mphi[i]\right)\Big|_{\tri}` coïncide avec le polynôme :math:`\uh\restrict_{\tri}` sur les sommets du triangle :math:`\tri`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
-  La famille de fonctions :math:`(\mphi[i])_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice[1], \vertice[2],\vertice[3])` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice[i])\mphi[i]\right)\Big|_{\tri}` coïncide avec le polynôme :math:`\uh\restrict_{\tri}` sur les sommets du triangle :math:`\tri`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
-  .. math:: \uh\restrict_{\tri}= \left(\sum_{i=0}^2\uh(\vertice[i])\mphi[i]\right)\Bigg|_{\tri}.
+  La famille de fonctions :math:`(\mphi[i])_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice[1], \vertice[2],\vertice[3])` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice[i])\mphi[i]\right)\Big|_{\tri}` coïncide avec le polynôme :math:`\uh|_{\tri}` sur les sommets du triangle :math:`\tri`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
+  La famille de fonctions :math:`(\mphi[i])_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice[1], \vertice[2],\vertice[3])` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice[i])\mphi[i]\right)\Big|_{\tri}` coïncide avec le polynôme :math:`\uh|_{\tri}` sur les sommets du triangle :math:`\tri`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
+  .. math:: \uh|_{\tri}= \left(\sum_{i=0}^2\uh(\vertice[i])\mphi[i]\right)\Bigg|_{\tri}.
 
   Cette relation étant valable sur un triangle arbitraire, elle est vraie sur :math:`\Omega`. La famille de fonctions :math:`(\mphi[i])_i` est donc une base de :math:`\Vh`.
 

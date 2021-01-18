@@ -8,7 +8,14 @@ Mise en Oeuvre
 
   -- G. Orwell - *1984*
 
-.. include:: principe.rst
-.. include:: assemblage.rst
-.. include:: contributions-elementaires.rst
+
+.. toctree::
+  :numbered:
+  :maxdepth: 1
+
+  principe
+  assemblage
+  contributions-elementaires
+  neumann-heterogene
+  dirichlet
 

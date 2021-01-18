@@ -14,7 +14,7 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-import sphinx_rtd_theme
+# import sphinx_rtd_theme
 
 
 # -- Project information -----------------------------------------------------
@@ -31,7 +31,6 @@ author = 'Bebert'
 # ones.
 
 extensions = [
-    "sphinx_rtd_theme",
     "sphinxcontrib.proof",
 ]
 
@@ -57,23 +56,7 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 
-html_theme = "sphinx_rtd_theme"
-html_theme_options = {
-#    'analytics_id': '',  #  Provided by Google in your dashboard
-#    'analytics_anonymize_ip': False,
-    'logo_only': False,
-    'display_version': True,
-    'prev_next_buttons_location': 'bottom',
-    'style_external_links': False,
-    'vcs_pageview_mode': '',
-    'style_nav_header_background': 'white',
-    # Toc options
-    'collapse_navigation': True,
-    'sticky_navigation': True,
-    'navigation_depth': 4,
-    'includehidden': True,
-    'titles_only': False
-}
+html_theme = "furo"
 
 
 
@@ -111,13 +94,65 @@ latex_elements['extrapackages'] = '\usepackage{mystyle}\n\usepackage{mathrsfs}'
 mathjax_config = {                  
     "TeX": {                        
         "Macros": {
+            'dsp' : '{\\displaystyle}',
             'GammaN': '{\\Gamma_N}',
             'GammaD': '{\\Gamma_D}',
+            'GammaF':'\Gamma_F',
+            'Lo':'{L^2(\\Omega)}',
+            'Ho':'{H^1(\\Omega)}',
+            'Hoz':'{H^1_{0}(\\Omega)}',
+            'HoD':'{H^1_{\\GammaD}(\\Omega)}',
+            'Vh': '{V_h}',
+            'Vhz': '{V_{h,0}}',
+            'VhD': '{V_{h,\GammaD}}',
+            'ut': '{u_t}',
+            'uh': '{u_h}',
+            'vh': '{v_h}',
+            'gD': '{g_D}',
+            'gN': '{g_N}',
+            'Ahh': '{A}',
+            'Bh': '{B}',
+            'Uh': '{U}',
             'Rb': '{\\mathbb{R}}',
             'nn': '{\\mathbf{n}}',
             'dn': '{\\partial_{\\nn}}',
+            'ee': '{\\mathbf{e}}',
+            'xx': '{\\mathbf{x}}',
+            'yy': '{\\mathbf{y}}',
+            'zz': '{\\mathbf{z}}',
+            'diff': '{\\mathrm{d}}',
             'Cscr': '{\\mathscr{C}}',
             'Ccal': '{\\mathcal{C}}',
+            'mphi': '{\\varphi}',
+            'mphih': '{\\widehat{\\varphi}}',
+            'psih': '{\\widehat{\\psi}}',
+            'deltaij': '{\\delta_{ij}}',
+            'tri': '{K}',
+            'trih': '{\\widehat{K}}',
+            'vertice': '{\\mathbf{s}}',
+            'verticeK': ['{\\vertice^{#1}}', 1],
+            'verticeh': '{\\widehat{\\vertice}}',
+            'xK': ['{x^{#2}_{#1}}', 2],
+            'yK': ['{y^{#2}_{#1}}', 2],
+            'grandO': ['{O\\left(#1\\right)}', 1],
+            'Ns':'{N_s}',
+            'Nt':'{N_t}',
+            'Pb':'{\mathbb{P}}',
+            'Sh':'{\mathscr{S}_h}',
+            'Th':'{\mathscr{T}_h}',
+            'Ah':'{\mathscr{A}_h}',
+            'supp': '{\\text{supp}}',
+            'diam': '{\\text{diam}}',
+            'abs': ['{\\left|#1\\right|}',1],
+            'norm': ['{\\left\\|#1\\right\\|}',1],
+            'locToGlob':'{\\texttt{L2G}}',
+            'trihToTri':['{T_{#1}}',1],
+            'JK':['{J_{#1}}',1],
+            'BK':['{B_{#1}}',1],
+            'Meh':'{\\widehat{M}^e}', 
+            'Deh':'{\\widehat{D}^e}', 
+            'Me':['{M^e_{#1}}', 1], 
+            'De':['{D^e_{#1}}', 1], 
             }
         }   
     }

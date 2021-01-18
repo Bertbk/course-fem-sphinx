@@ -9,13 +9,11 @@ Welcome to test's documentation!
 
 .. toctree::
    :numbered:
-   :maxdepth: 2
    :caption: Contents:
+   :hidden:
 
-   introduction/coucou
    elements-finis-triangulaires/index
-   mise-en-oeuvre/index
-   
+   mise-en-oeuvre/index   
    download/download
 
 Indices and tables

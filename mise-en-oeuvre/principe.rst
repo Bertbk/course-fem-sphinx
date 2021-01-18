@@ -50,7 +50,8 @@ Le principe de la méthode est d'approcher l'espace :math:`\Ho` par :math:`\Vh`.
 
 Pourquoi diable remplacer :math:`\Ho` par :math:`\Vh` ? La réponse juste après !
 
-\subsection{Système linéaire}
+Système linéaire
+----------------
 
 L'espace :math:`\Vh` est de dimension finie et dispose d'une base : les fonctions de forme :math:`(\mphi[I])_{I=0,\ldots,\Ns-1}`. Autrement dit, la formulation faible discrétisée est équivalente à
 
