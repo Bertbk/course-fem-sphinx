@@ -1,5 +1,5 @@
 
-Espace P1-Lagrange
+Espace :math:`\Pb^1`-Lagrange
 ===================
 
 La méthode des éléments finis est basée sur la méthode de Galerkin, ou d'approximation interne. L'idée est d'approcher l'espace fonctionnel :math:`\Ho` par un espace de dimension finie.
