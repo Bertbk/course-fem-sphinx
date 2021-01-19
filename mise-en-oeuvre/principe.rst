@@ -6,7 +6,7 @@ Discrétisation de la formulation variationnelle
 
 Pour le moment, nous supposerons :math:`\GammaD = \emptyset` et :math:`\gN = 0`. Autrement dit, la formulation faible s'écrit
 
-.. math:
+.. math::
 
   \left\{
   \begin{array}{l}
@@ -17,7 +17,7 @@ Pour le moment, nous supposerons :math:`\GammaD = \emptyset` et :math:`\gN = 0`.
 
 Nous la réécrivons sous la forme compacte suivante :
 
-.. math:
+.. math::
 
   \left\{
   \begin{array}{l}
@@ -28,7 +28,7 @@ Nous la réécrivons sous la forme compacte suivante :
 
 où les formes bilinéaires :math:`a(\cdot,\cdot)` et linéaires :math:`\ell(\cdot)` sont définies par :
 
-.. math:
+.. math::
 
   \begin{array}{r  c l}
     a \colon \Ho\times\Ho& \longrightarrow & \Rb\\
@@ -39,7 +39,7 @@ où les formes bilinéaires :math:`a(\cdot,\cdot)` et linéaires :math:`\ell(\cd
 
 Le principe de la méthode est d'approcher l'espace :math:`\Ho` par :math:`\Vh`. Cette méthode est appelé *Méthode de Galerkin* ou *Approximation interne*. Pour cela, modifions, dans la formulation faible, :math:`\Ho` par :math:`\Vh`:
 
-.. math:
+.. math::
 
   \left\{
   \begin{array}{l}
@@ -55,7 +55,7 @@ Système linéaire
 
 L'espace :math:`\Vh` est de dimension finie et dispose d'une base : les fonctions de forme :math:`(\mphi_I)_{I=0,\ldots,\Ns-1}`. Autrement dit, la formulation faible discrétisée est équivalente à
 
-.. math:
+.. math::
 
   \left\{
   \begin{array}{l}
@@ -66,13 +66,13 @@ L'espace :math:`\Vh` est de dimension finie et dispose d'une base : les fonction
 
 D'un autre côté, nous pouvons aussi écrire :math:`\uh` dans la base des fonctions de forme :
 
-.. math:
+.. math::
 
   \uh = \sum_{J=0}^{\Ns-1} u_J \mphi_J,
 
 avec :math:`u_J = \uh(\vertice_J)` et la formulation faible se réécrit alors 
 
-.. math:
+.. math::
 
   \left\{
   \begin{array}{l}
@@ -83,20 +83,18 @@ avec :math:`u_J = \uh(\vertice_J)` et la formulation faible se réécrit alors
 
 Comme :math:`a(\cdot,\cdot)` est bilinéaire\footnote{Vous pouvez le vérifier aisément}, nous avons
 
-.. math:
+.. math::
 
   a\left(\sum_{J=0}^{\Ns-1} u_J \mphi_J,\mphi_I\right) = \sum_{J=0}^{\Ns-1}  u_Ja\left( \mphi_J,\mphi_I\right).
 
 Notons maintenant :math:`\Uh = [u_0,\ldots,u_{\Ns-1}]^T` les coefficients recherchés, alors ce problème peut se réécrire tout simplement sous la forme d'un système linéaire :
 
-.. math:
-
-  \Ahh\Uh = \Bh,
-  :label:eq-systemFEM
+.. math:: \Ahh\Uh = \Bh,
+  :label: eq-systemFEM
 
 où nous avons
 
-.. math:
+.. math::
 
   \begin{aligned}
     \Ahh &= (\Ahh[I][J])_{ 0\leq I,J\leq \Ns-1} = (a(\mphi_J, \mphi_I))_{ 0\leq I,J\leq \Ns-1}\\
@@ -104,4 +102,4 @@ où nous avons
     \Bh &=(\Bh[I])_{ 0\leq I\leq \Ns-1} = (\ell(\mphi_I))_{0\leq I\leq \Ns-1}
   \end{aligned}
 
-Ce système linéaire est de dimension :math:`\Ns`, le nombre de sommets du maillage. Dans la suite et pour simplifier, nous nous affranchirons de l'indice :math:`h` sur les termes du système linéaire \eqref{eq:systemFEM}.
+Ce système linéaire est de dimension :math:`\Ns`, le nombre de sommets du maillage. Dans la suite et pour simplifier, nous nous affranchirons de l'indice :math:`h` sur les termes du système linéaire :eq:`eq-systemFEM`.

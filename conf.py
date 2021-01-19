@@ -82,6 +82,16 @@ proof_theorem_types = {
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+
+html_css_files = [
+    'css/proof.css',
+]
+
+html_js_files = [
+    'js/proof.js',
+]
+
+
 # Additional stuff for the LaTeX preamble.
 latex_engine = 'lualatex'
 latex_elements = {}
@@ -141,8 +151,9 @@ mathjax_config = {
             'Sh':'{\mathscr{S}_h}',
             'Th':'{\mathscr{T}_h}',
             'Ah':'{\mathscr{A}_h}',
-            'supp': '{\\text{supp}}',
-            'diam': '{\\text{diam}}',
+            'card':'{\\textrm{card}}',
+            'supp': '{\\textrm{supp}}',
+            'diam': '{\\textrm{diam}}',
             'abs': ['{\\left|#1\\right|}',1],
             'norm': ['{\\left\\|#1\\right\\|}',1],
             'locToGlob':'{\\texttt{L2G}}',

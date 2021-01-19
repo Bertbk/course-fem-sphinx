@@ -11,26 +11,22 @@ Rajoutons maintenant la condition de Neumann hétérogène à notre problème (\
       \dn u & = & g & (\GammaN).
     \end{array}
     \right.
-  :label:eq-dnNonH
+
 
 Après multiplication par des fonctions test et intégration par partie, nous obtenons la formulation variationnelle
 
-.. math::
-
-  \int_{\Omega}\nabla u(x) \cdot \nabla v(x) \diff x +
-  \int_{\Omega}  u(x) v(x) \diff x
-  -\int_{\partial\Omega} \dn u(x)v(x) \diff s(x) =
-  \int_{\Omega} f(x)v(x) \diff x.
+.. math:: \int_{\Omega}\nabla u(x) \cdot \nabla v(x) \diff x + \int_{\Omega}  u(x) v(x) \diff x  -\int_{\partial\Omega} \dn u(x)v(x) \diff s(x) =  \int_{\Omega} f(x)v(x) \diff x.
 
 En utilisant la condition :math:`\dn u = \gN` sur :math:`\GammaN`, nous obtenons la formulation variationnelle suivante :
 
-.. math::
+.. math:: 
+  :label: fv-dnNonH
 
   \left\{\begin{array}{l}
     \text{Trouver }u\in\Ho\text{ tel que}\\
     \forall v \in\Ho,\quad a(u,v) = \ell(v),
   \end{array}\right.
-  :label:fv-dnNonH
+
 
 avec
 
@@ -42,7 +38,7 @@ avec
     \ell(v) &:= \dsp\int_{\partial\Omega} g(x)v(x) \diff s(x)  + \int_{\Omega} f(x)v(x) \diff x.
   \end{aligned}
 
-Nous discrétisons la formulation faible \eqref{fv:dnNonH} en remplaçant formellement :math:`\Ho` par :math:`\Vh` pour obtenir
+Nous discrétisons la formulation faible :eq:`fv-dnNonH` en remplaçant formellement :math:`\Ho` par :math:`\Vh` pour obtenir
 
 .. math::
 
@@ -51,7 +47,7 @@ Nous discrétisons la formulation faible \eqref{fv:dnNonH} en remplaçant formel
     \forall \vh \in\Ho,\quad a(\uh,\vh) = \ell(\vh),
   \end{array}\right.
 
-Nous appliquons la méthode vue précédemment pour obtenir un système linéaire équivalent à \eqref{TODO:} :
+Nous appliquons la méthode vue précédemment pour obtenir un système linéaire équivalent à :eq:`TODO:` :
 
 .. math::  \Ahh\Uh = \Bh.
 

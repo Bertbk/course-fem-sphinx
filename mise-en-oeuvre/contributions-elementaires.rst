@@ -57,7 +57,7 @@ Triangle de référence
 +++++++++++++++++++++
 
   
-Pour calculer la quantité élémentaire \eqref{eq:matelem}, plaçons nous tout d'abord dans un triangle "simple" :math:`\trih`, appelé \alert{triangle de référence}. Celui-ci est souvent choisi comme étant le triangle rectangle de sommets :math:`\verticeh[0]=(0,0)`, :math:`\verticeh[1]=(1,0)` et :math:`\verticeh[2]=(0,1)`, ordonnés dans le sens trigonométrique. Pour différencier ce triangle d'un triangle du maillage, nous lui adjoignons un repère :math:`(\xi,\eta)`   dit **repère paramétrique**.
+Pour calculer la quantité élémentaire :eq:`eq:matelem`, plaçons nous tout d'abord dans un triangle "simple" :math:`\trih`, appelé \alert{triangle de référence}. Celui-ci est souvent choisi comme étant le triangle rectangle de sommets :math:`\verticeh[0]=(0,0)`, :math:`\verticeh[1]=(1,0)` et :math:`\verticeh[2]=(0,1)`, ordonnés dans le sens trigonométrique. Pour différencier ce triangle d'un triangle du maillage, nous lui adjoignons un repère :math:`(\xi,\eta)`   dit **repère paramétrique**.
   
 .. 
   %TODO:  {{< figure src="../triangle_ref.svg" title="Triangle de référence :math:`\trih` et son repère paramétrique :math:`(\xi,\eta)`." numbered="true" >}}
@@ -183,6 +183,7 @@ et son déterminant vaut
 ce qui implique que le déterminant est non nul puisque le triangle n'est pas dégénéré : la transformation :math:`\trihToTri{p}` est bien inversible.
 
 .. proof:remark::
+
   Quand :math:`\psih_i = \mphih_i`, nous parlons d'éléments finis \alert{isoparamétriques}. Il convient de retenir que ce choix n'est pas obligatoire et les fonctions :math:`\psih_i` et :math:`\mphih_i` sont \alert{indépendantes}. En particulier, pour obtenir des éléments courbes, les fonctions :math:`\psih_i` pourraient être quadratiques par exemple.
 
 .. 
@@ -191,9 +192,10 @@ ce qui implique que le déterminant est non nul puisque le triangle n'est pas d�
 **Expression finale de la matrice élémentaire.**
 
 .. proof:lemma::
+
   La matrice de masse élémentaire :math:`\Me{p} = (\Me{p}(i,j))_{0\leq i,j\leq 2}` du triangle :math:`\tri_p` a pour expression
-  .. math:: 
-    \Me{p} =   \frac{\abs{\tri_p}}{12}
+
+  .. math:: \Me{p} =   \frac{\abs{\tri_p}}{12}
     \left(
       \begin{array}{c c c}
         2 & 1 & 1\\
@@ -201,7 +203,7 @@ ce qui implique que le déterminant est non nul puisque le triangle n'est pas d�
         1 & 1 & 2
       \end{array}
       \right).
-    \]
+    
 
 Matrice de rigidité élémentaire
 -------------------------------
