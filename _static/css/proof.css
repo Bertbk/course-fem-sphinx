@@ -59,7 +59,7 @@ div.proof.proof-type-proposition div.proof-title {
   border: 1px solid #C36900;
   }
 div.proof.proof-type-proposition div.proof-content {
-  background-color: #fff5f7;
+  background-color: #fffdfb;
   border: 1px solid #C36900;
 }
 
@@ -77,7 +77,7 @@ div.proof.proof-type-lemma div.proof-title {
   border: 1px solid #c2008a;
   }
 div.proof.proof-type-lemma div.proof-content {
-  background-color: #efd0e6;
+  background-color: #f0e7ed;
   border: 1px solid #c2008a;
 }
 
