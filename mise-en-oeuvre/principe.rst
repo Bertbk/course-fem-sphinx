@@ -6,12 +6,10 @@ Discrétisation de la formulation variationnelle
 
 Pour le moment, nous supposerons :math:`\GammaD = \emptyset` et :math:`\gN = 0`. Autrement dit, la formulation faible s'écrit
 
-.. math::
-
-  \left\{
+.. math::  \left\{
   \begin{array}{l}
     \text{Trouver } u \in\Ho \text{ tel que }\\
-    \dsp \int_{\Omega}\nabla u \cdot\nabla v+ c\int_{\Omega}uv = \int_{\Omega}fv  \underbrace{+  \int_{\GammaN} \gN v}_{=0}, \quad \forall v \in \Ho
+    \displaystyle \int_{\Omega}\nabla u \cdot\nabla v+ c\int_{\Omega}uv = \int_{\Omega}fv  \underbrace{+  \int_{\GammaN} \gN v}_{=0}, \quad \forall v \in \Ho
   \end{array}
   \right.
 
