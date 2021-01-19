@@ -33,9 +33,9 @@ avec
 .. math::
 
   \begin{aligned}
-    a(u,v) &:= \dsp\int_{\Omega}\nabla u(x) \cdot \nabla v(x) \diff x +
+    a(u,v) &:= \displaystyle\int_{\Omega}\nabla u(x) \cdot \nabla v(x) \diff x +
     \int_{\Omega}  u(x) v(x) \diff x\\
-    \ell(v) &:= \dsp\int_{\partial\Omega} g(x)v(x) \diff s(x)  + \int_{\Omega} f(x)v(x) \diff x.
+    \ell(v) &:= \displaystyle\int_{\partial\Omega} g(x)v(x) \diff s(x)  + \int_{\Omega} f(x)v(x) \diff x.
   \end{aligned}
 
 Nous discrétisons la formulation faible :eq:`fv-dnNonH` en remplaçant formellement :math:`\Ho` par :math:`\Vh` pour obtenir
@@ -70,11 +70,11 @@ Voici quelques formules de quadrature sur un segment :math:`[\vertice_{0}^{p}, \
 +------------------------------------+--------------------+------------------------------------------------------------------------------------------------------------------+
 | Nom                                | Degré de Précision |  Formule                                                                                                         |
 +====================================+====================+==================================================================================================================+
-| Point du milieu                    |  1                 | :math:`\dsp g(\vertice_{01}^{p})`                                                                                |
+| Point du milieu                    |  1                 | :math:`\displaystyle g(\vertice_{01}^{p})`                                                                                |
 +------------------------------------+--------------------+------------------------------------------------------------------------------------------------------------------+
-|Trapèze                             |1                   | :math:`\dsp\frac{\abs{\sigma}}{2}\left(g(\vertice_{0}^{p}) + g(\vertice_{1}^{p})\right)`                         |
+|Trapèze                             |1                   | :math:`\displaystyle\frac{\abs{\sigma}}{2}\left(g(\vertice_{0}^{p}) + g(\vertice_{1}^{p})\right)`                         |
 +------------------------------------+--------------------+------------------------------------------------------------------------------------------------------------------+
-|1/3 Simpson                         | 2                  | :math:`\dsp\frac{\abs{\sigma}}{6}\left(g(\vertice_{0}^{p}) + 4g(\vertice_{01}^{p}) + g(\vertice_{1}^{p})\right)` |
+|1/3 Simpson                         | 2                  | :math:`\displaystyle\frac{\abs{\sigma}}{6}\left(g(\vertice_{0}^{p}) + 4g(\vertice_{01}^{p}) + g(\vertice_{1}^{p})\right)` |
 +------------------------------------+--------------------+------------------------------------------------------------------------------------------------------------------+
 
 

@@ -50,14 +50,14 @@ Chaque contribution élémentaire :math:`\Me{p}(i,j)` est ensuite ajoutée à :m
   
 .. proof:remark::
 
-  Les coefficients :math:`\Me{p}(i,j)`, pour :math:`i,j=1,2,3` peuvent être regroupés pour former la \alert{matrice de masse élémentaire} :math:`\Me{p}` de taille :math:`3\times 3` et du triangle :math:`\tri_p`.
+  Les coefficients :math:`\Me{p}(i,j)`, pour :math:`i,j=1,2,3` peuvent être regroupés pour former la **matrice de masse élémentaire** :math:`\Me{p}` de taille :math:`3\times 3` et du triangle :math:`\tri_p`.
   
 
 Triangle de référence
 +++++++++++++++++++++
 
   
-Pour calculer la quantité élémentaire :eq:`eq:matelem`, plaçons nous tout d'abord dans un triangle "simple" :math:`\trih`, appelé \alert{triangle de référence}. Celui-ci est souvent choisi comme étant le triangle rectangle de sommets :math:`\verticeh_{0}=(0,0)`, :math:`\verticeh_{1}=(1,0)` et :math:`\verticeh_{2}=(0,1)`, ordonnés dans le sens trigonométrique. Pour différencier ce triangle d'un triangle du maillage, nous lui adjoignons un repère :math:`(\xi,\eta)`   dit **repère paramétrique**.
+Pour calculer la quantité élémentaire :eq:`eq:matelem`, plaçons nous tout d'abord dans un triangle "simple" :math:`\trih`, appelé **triangle de référence**. Celui-ci est souvent choisi comme étant le triangle rectangle de sommets :math:`\verticeh_{0}=(0,0)`, :math:`\verticeh_{1}=(1,0)` et :math:`\verticeh_{2}=(0,1)`, ordonnés dans le sens trigonométrique. Pour différencier ce triangle d'un triangle du maillage, nous lui adjoignons un repère :math:`(\xi,\eta)`   dit **repère paramétrique**.
   
 .. 
   %TODO:  {{< figure src="../triangle_ref.svg" title="Triangle de référence :math:`\trih` et son repère paramétrique :math:`(\xi,\eta)`." numbered="true" >}}
@@ -114,7 +114,7 @@ Plutôt que d'indicer par :math:`p`, nous notons :math:`\mphih_i \in \Pb^1(\trih
 Triangle quelconque
 +++++++++++++++++++
 
-**Changement de coordonnées.** Soit un triangle :math:`\tri_p` du maillage et supposons que nous disposions d'une transformation bijective et linéaire :math:`\trihToTri{p}` permetteant de transformer le triangle de référence :math:`\trih` en :math:`\tri_p` avec en plus :math:`\trihToTri{p}(\verticeh_i) = \vertice_i^p`. Cette fonction :math:`\trihToTri{p}` transforme les  \alert{coordonnées paramétriques} :math:`(\xi,\eta)` en \alert{coordonnées physiques} :math:`(x,y)` avec :math:`(x,y)=\trihToTri{p}(\xi,\eta)\in\tri_p`, et conserve "l'ordre des sommets".
+**Changement de coordonnées.** Soit un triangle :math:`\tri_p` du maillage et supposons que nous disposions d'une transformation bijective et linéaire :math:`\trihToTri{p}` permetteant de transformer le triangle de référence :math:`\trih` en :math:`\tri_p` avec en plus :math:`\trihToTri{p}(\verticeh_i) = \vertice_i^p`. Cette fonction :math:`\trihToTri{p}` transforme les  **coordonnées paramétriques** :math:`(\xi,\eta)` en **coordonnées physiques** :math:`(x,y)` avec :math:`(x,y)=\trihToTri{p}(\xi,\eta)\in\tri_p`, et conserve "l'ordre des sommets".
 
 .. 
   % TODO: {{< figure src="../ref.svg" title="Passage du triangle de référence :math:`\trih` vers un triangle :math:`\tri_p` par la transformation :math:`\trihToTri{p}`." numbered="true" >}}
@@ -128,7 +128,7 @@ En notant :math:`\JK{p}` la matrice Jacobienne de :math:`\trihToTri{p}`, alors l
 
 Ainsi, pour calculer la matrice élémentaire d'un triangle :math:`\tri_p` quelconque, nous n'avons besoin que du déterminant de la Jacobienne : :math:`\det(\JK{p})`.
 
-**Expression et Jacobienne de la transformation.** La transformation que nous cherchons, :math:`\trihToTri{p}`, est linéaire et "conserve" les sommets et leur ordre. Pour obtenir son expression, nous construisons des fonctions \alert{d'interpolation géométrique}, :math:`(\psih_i)_{0\leq i \leq 2}`, linéaires sur :math:`\trih` et telles que :
+**Expression et Jacobienne de la transformation.** La transformation que nous cherchons, :math:`\trihToTri{p}`, est linéaire et "conserve" les sommets et leur ordre. Pour obtenir son expression, nous construisons des fonctions **d'interpolation géométrique**, :math:`(\psih_i)_{0\leq i \leq 2}`, linéaires sur :math:`\trih` et telles que :
 
 .. math:: \forall i,j=0,1,2, \quad \psih_i(\verticeh_j) = \deltaij.
 
@@ -183,10 +183,10 @@ ce qui implique que le déterminant est non nul puisque le triangle n'est pas d�
 
 .. proof:remark::
 
-  Quand :math:`\psih_i = \mphih_i`, nous parlons d'éléments finis \alert{isoparamétriques}. Il convient de retenir que ce choix n'est pas obligatoire et les fonctions :math:`\psih_i` et :math:`\mphih_i` sont \alert{indépendantes}. En particulier, pour obtenir des éléments courbes, les fonctions :math:`\psih_i` pourraient être quadratiques par exemple.
+  Quand :math:`\psih_i = \mphih_i`, nous parlons d'éléments finis **isoparamétriques**. Il convient de retenir que ce choix n'est pas obligatoire et les fonctions :math:`\psih_i` et :math:`\mphih_i` sont **indépendantes**. En particulier, pour obtenir des éléments courbes, les fonctions :math:`\psih_i` pourraient être quadratiques par exemple.
 
 .. 
-  %TODO: {{< figure class="app-jacobi" title="<i class='fas fa-play-circle'></i> \alert{Time To Play!}<br>\alert{Déplacez les sommets du triangle} pour modifier la valeur du \alert{Jacobien}. Quand il est négatif cela signifie que le triangle est **\"retourné\"** par rapport au triangle de référence." numbered="true" >}}
+  %TODO: {{< figure class="app-jacobi" title="<i class='fas fa-play-circle'></i> \alert{Time To Play!}<br>**Déplacez les sommets du triangle** pour modifier la valeur du **Jacobien**. Quand il est négatif cela signifie que le triangle est **\"retourné\"** par rapport au triangle de référence." numbered="true" >}}
 
 **Expression finale de la matrice élémentaire.**
 
@@ -381,7 +381,7 @@ Sauf pour certaines fonctions :math:`f` particulières, nous ne pourrons certain
   & \displaystyle \simeq \abs{\det(\JK{p})}\sum_{m=0}^{M-1}\omega_m f(\xx(\xi_m,\eta_m))\overline{\mphih(\xi_m,\eta_m)}.
   \end{aligned}
 
-Les points :math:`(\xi_m,\eta_m)` sont appelés \alert{points de quadrature} (parfois \alert{points de Gauss}, même si la règle de quadrature utilisée n'est pas de Gauss) et les quantités :math:`\omega_m\in\Rb` les \alert{poids} associés. Notons que le point :math:`\xx_m = \xx(\xi_m,\eta_m)` s'obtient par l'expression vue précédemment :
+Les points :math:`(\xi_m,\eta_m)` sont appelés **points de quadrature** (parfois **points de Gauss**, même si la règle de quadrature utilisée n'est pas de Gauss) et les quantités :math:`\omega_m\in\Rb` les **poids** associés. Notons que le point :math:`\xx_m = \xx(\xi_m,\eta_m)` s'obtient par l'expression vue précédemment :
 
 .. math:: \xx_m = \sum_{i=0}^2\vertice_i^p\psih_i(\xi_m,\eta_m).
 
