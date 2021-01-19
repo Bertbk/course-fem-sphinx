@@ -60,7 +60,7 @@ Les coefficients de la matrice :math:`\Ahh` et du vecteur :math:`\Bh` sont donn�
     \Bh &=(\Bh[I])_I, &\Bh[I] &= \ell(\mphi_I) = \int_{\Omega}f\mphi_I \underbrace{+ \int_{\GammaN}\gN\mphi_I}_{\text{Nouveau !}}
   \end{aligned}
 
-Au final, seule le membre de droite est modifié par rapport au paragraphe \ref{}, avec l'ajout de la condition de Neumann sur :math:`\GammaN`. Autrement dit, la matrice :math:`\Ahh` est identique et il nous suffit de savoir calculer :math:`\int_{\GammaN}\gN\mphi_I` pour obtenir le second membre : pour cela, nous utilisons une règle de quadrature sur des segments. La technique est la même que pour le calcul de :math:`\int_{\Omega}f\mphi_I`. Décomposons :math:`\GammaN` en :math:`N_{\GammaN}` segments (qui sont aussi des arêtes de triangles !), nous pouvons alors décomposer :math:`\Bh` comme une somme de contributions élémentaires sur les triangles et les segments. 
+Au final, seule le membre de droite est modifié par rapport à la section précédente est l'ajout de la condition de Neumann sur :math:`\GammaN`. Autrement dit, la matrice :math:`\Ahh` est identique et il nous suffit de savoir calculer :math:`\int_{\GammaN}\gN\mphi_I` pour obtenir le second membre : pour cela, nous utilisons une règle de quadrature sur des segments. La technique est la même que pour le calcul de :math:`\int_{\Omega}f\mphi_I`. Décomposons :math:`\GammaN` en :math:`N_{\GammaN}` segments (qui sont aussi des arêtes de triangles !), nous pouvons alors décomposer :math:`\Bh` comme une somme de contributions élémentaires sur les triangles et les segments. 
 
 .. math::  \Bh = \sum_{p=0}^{\Nt-1} \sum_{i=0}^2 \int_{\tri_p}f\mphi_i^p + \sum_{q=0}^{N_{\GammaN}}
 

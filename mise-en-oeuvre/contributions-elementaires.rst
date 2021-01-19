@@ -57,7 +57,7 @@ Triangle de référence
 +++++++++++++++++++++
 
   
-Pour calculer la quantité élémentaire :eq:`eq:matelem`, plaçons nous tout d'abord dans un triangle "simple" :math:`\trih`, appelé \alert{triangle de référence}. Celui-ci est souvent choisi comme étant le triangle rectangle de sommets :math:`\verticeh[0]=(0,0)`, :math:`\verticeh[1]=(1,0)` et :math:`\verticeh[2]=(0,1)`, ordonnés dans le sens trigonométrique. Pour différencier ce triangle d'un triangle du maillage, nous lui adjoignons un repère :math:`(\xi,\eta)`   dit **repère paramétrique**.
+Pour calculer la quantité élémentaire :eq:`eq:matelem`, plaçons nous tout d'abord dans un triangle "simple" :math:`\trih`, appelé \alert{triangle de référence}. Celui-ci est souvent choisi comme étant le triangle rectangle de sommets :math:`\verticeh_{0}=(0,0)`, :math:`\verticeh_{1}=(1,0)` et :math:`\verticeh_{2}=(0,1)`, ordonnés dans le sens trigonométrique. Pour différencier ce triangle d'un triangle du maillage, nous lui adjoignons un repère :math:`(\xi,\eta)`   dit **repère paramétrique**.
   
 .. 
   %TODO:  {{< figure src="../triangle_ref.svg" title="Triangle de référence :math:`\trih` et son repère paramétrique :math:`(\xi,\eta)`." numbered="true" >}}
@@ -83,8 +83,8 @@ Plutôt que d'indicer par :math:`p`, nous notons :math:`\mphih_i \in \Pb^1(\trih
     \Meh_{i,j} = \int_{\trih} \mphih_j(\xi)\overline{\mphih_j(\eta)} \diff(\xi,\eta),
 
   est donnée par
-  .. math::  
-    \Meh = \frac{1}{24}\left(
+
+  .. math::  \Meh = \frac{1}{24}\left(
       \begin{array}{c c c}
         2 & 1 & 1\\
         1 & 2 & 1\\
@@ -122,10 +122,9 @@ Triangle quelconque
 Nous avons :math:`\mphi_j^p(x,y) = \mphi_j^p(\trihToTri{p}(\xi,\eta))` avec :math:`\mphi_j^p\circ\trihToTri{p}\in\Pb^1(\trih)` et :math:`\mphi_j^p\circ\trihToTri{p}(\verticeh_i) = \delta_{ij}`. Par unicité, nous avons :math:`\mphi_j^p\circ\trihToTri{p} = \mphih_j`.
 
 En notant :math:`\JK{p}` la matrice Jacobienne de :math:`\trihToTri{p}`, alors la quantité :math:`\Me{p}(i,j)` peut alors s'écrire, par changement de variables :
-.. math:: 
 
-    \Me{p}(i,j) = \dsp\int_{\tri_p}\mphi_j^p(x,y)\overline{\mphi_i^p(x,y)} \diff(x,y)
-      =\dsp \abs{\det(\JK{p})}\underbrace{\int_{\trih}\mphih_j(\xi,\eta)\mphih_i(\xi,\eta)\diff(\xi,\eta)}_{\text{Déjà calculé !}}
+.. math::  \Me{p}(i,j) = \displaystyle\int_{\tri_p}\mphi_j^p(x,y)\overline{\mphi_i^p(x,y)} \diff(x,y)
+      =\displaystyle \abs{\det(\JK{p})}\underbrace{\int_{\trih}\mphih_j(\xi,\eta)\mphih_i(\xi,\eta)\diff(\xi,\eta)}_{\text{Déjà calculé !}}
 
 Ainsi, pour calculer la matrice élémentaire d'un triangle :math:`\tri_p` quelconque, nous n'avons besoin que du déterminant de la Jacobienne : :math:`\det(\JK{p})`.
 
@@ -160,8 +159,8 @@ La matrice Jacobienne de la transformation est alors donnée par
   \JK{p} = 
   \left(
     \begin{array}{c c}
-      \dsp\frac{\partial x}{\partial \xi} &\dsp \frac{\partial x}{\partial \eta} \\
-      \dsp\frac{\partial y}{\partial \xi} &\dsp \frac{\partial y}{\partial \eta}
+      \displaystyle\frac{\partial x}{\partial \xi} &\displaystyle \frac{\partial x}{\partial \eta} \\
+      \displaystyle\frac{\partial y}{\partial \xi} &\displaystyle \frac{\partial y}{\partial \eta}
     \end{array}
   \right) =
   \left(
@@ -217,14 +216,14 @@ Triangle de référence
 +++++++++++++++++++++
 
 .. proof:lemma::
+
   Dans le triangle de référence :math:`\trih`, la matrice de rigidité élémentaire :math:`\hat{K}= (\hat{D}_{i,j})_{0\leq i,j\leq 2}` de coefficient
 
   .. math:: \hat{D}_{i,j} = \int_{\trih}\nabla \mphih_j(\xi,\eta)\cdot \nabla\mphih_i(\xi,\eta)\diff(\xi,\eta),
 
   a pour expression
-  .. math:: 
-    
-    \hat{D} =  \frac{1}{2}
+
+  .. math::   \hat{D} =  \frac{1}{2}
     \left(
       \begin{array}{l l c}
         2 & -1 & -1 \\
@@ -234,6 +233,7 @@ Triangle de référence
     \right)
 
 .. proof:proof::
+
   Les gradients des fonctions de forme :math:`\mphih_j` sont donnés par :
 
   .. math:: 
@@ -293,16 +293,16 @@ Pour calculer les dérivées partielles selon :math:`x` et :math:`y` de :math:`\
 .. math:: 
 
   \begin{pmatrix}
-      \dsp \frac{\partial \mphi_j^p}{\partial x}\\[0.2cm]
-      \dsp \frac{\partial \mphi_j^p}{\partial y}
+      \displaystyle \frac{\partial \mphi_j^p}{\partial x}\\[0.2cm]
+      \displaystyle \frac{\partial \mphi_j^p}{\partial y}
     \end{pmatrix} = 
   \begin{pmatrix}
-      \dsp \frac{\partial \xi}{\partial x} & \dsp \frac{\partial \eta}{\partial x}\\[0.2cm]
-      \dsp \frac{\partial \xi}{\partial y} & \dsp \frac{\partial \eta}{\partial y}
+      \displaystyle \frac{\partial \xi}{\partial x} & \displaystyle \frac{\partial \eta}{\partial x}\\[0.2cm]
+      \displaystyle \frac{\partial \xi}{\partial y} & \displaystyle \frac{\partial \eta}{\partial y}
   \end{pmatrix}
   \begin{pmatrix}
-      \dsp \frac{\partial \mphih_j}{\partial \xi}\\[0.2cm]
-      \dsp \frac{\partial \mphih_j}{\partial \eta}
+      \displaystyle \frac{\partial \mphih_j}{\partial \xi}\\[0.2cm]
+      \displaystyle \frac{\partial \mphih_j}{\partial \eta}
   \end{pmatrix}
 
 En notant :math:`\BK{p}` la matrice de passage, nous avons
@@ -313,17 +313,17 @@ L'opération "inverse" nous donne :
 
 .. math:: 
   \begin{pmatrix}
-      \dsp \frac{\partial \mphih_j}{\partial \xi}\\[0.2cm]
-      \dsp \frac{\partial \mphih_j}{\partial \eta}
+      \displaystyle \frac{\partial \mphih_j}{\partial \xi}\\[0.2cm]
+      \displaystyle \frac{\partial \mphih_j}{\partial \eta}
     \end{pmatrix}
     =
   \begin{pmatrix}
-    \dsp \frac{\partial x}{\partial \xi} & \dsp \frac{\partial y}{\partial \xi}\\[0.2cm]
-    \dsp \frac{\partial y}{\partial \eta} & \dsp \frac{\partial y}{\partial \eta}
+    \displaystyle \frac{\partial x}{\partial \xi} & \displaystyle \frac{\partial y}{\partial \xi}\\[0.2cm]
+    \displaystyle \frac{\partial y}{\partial \eta} & \displaystyle \frac{\partial y}{\partial \eta}
   \end{pmatrix}
   \begin{pmatrix}
-    \dsp \frac{\partial \mphi_j^p}{\partial x}\\[0.2cm]
-    \dsp \frac{\partial \mphi_j^p}{\partial y}
+    \displaystyle \frac{\partial \mphi_j^p}{\partial x}\\[0.2cm]
+    \displaystyle \frac{\partial \mphi_j^p}{\partial y}
   \end{pmatrix}
   \iff
   \nabla_{\xi,\eta}\mphih_j(\xi,\eta) = (\JK{p})^T\nabla_{x,y}\mphi_j^p(x,y).
@@ -342,14 +342,15 @@ Nous en déduisons que :math:`\BK{p} = (\JK{p}^T)^{-1}`, en particulier, dans le
 
 Au final, comme :math:`X\cdot Y = X^TY`, nous obtenons
 
-.. math:: 
-  :label:eq-intRigidite
-  \int_{\tri_p} (\nabla\mphi_j^p)^T\nabla\mphi_i^p \diff(x,y)
+.. math:: \int_{\tri_p} (\nabla\mphi_j^p)^T\nabla\mphi_i^p \diff(x,y)
     = \abs{\det(\JK{p})}\int_{\trih} (\nabla\mphih_j)^T  (\BK{p}^T \overline{\BK{p}})\overline{\nabla\mphih_i} \diff (\xi,\eta).
+  :label: eq-intRigidite
+
 
 La matrice :math:`\BK{p}` étant réelle, nous pouvons supprimer la conjugaison portant sur :math:`\BK{p}`.
 
 .. proof:lemma::
+
   Les coefficients a matrice de rigidité élémentaire :math:`\De{p} = (\De{p}(i,j))_{0\leq i,j\leq 2}` sont obtenus pas la relation suivante
 
   .. math:: 
@@ -374,11 +375,10 @@ Second membre (ou RHS ou Membre de droite)
 
 Sauf pour certaines fonctions :math:`f` particulières, nous ne pourrons certainement pas calculer explicitement ce terme, nous devons approcher cette intégrale à l'aide d'une formule de quadrature en passant à l'éléments de référence :
 
-.. math:: 
-  \begin{aligned}
-  \dsp \int_{\tri_p}f(\xx)\mphi_i^p(\xx)\diff \xx &=
-  \dsp \abs{\det(\JK{p})}\int_{\trih}f(\xx(\xi,\eta))\overline{\mphih_i(\xi,\eta)}\diff (\xi,\eta) \\
-  & \dsp \simeq \abs{\det(\JK{p})}\sum_{m=0}^{M-1}\omega_m f(\xx(\xi_m,\eta_m))\overline{\mphih(\xi_m,\eta_m)}.
+.. math:: \begin{aligned}
+  \displaystyle \int_{\tri_p}f(\xx)\mphi_i^p(\xx)\diff \xx &=
+  \displaystyle \abs{\det(\JK{p})}\int_{\trih}f(\xx(\xi,\eta))\overline{\mphih_i(\xi,\eta)}\diff (\xi,\eta) \\
+  & \displaystyle \simeq \abs{\det(\JK{p})}\sum_{m=0}^{M-1}\omega_m f(\xx(\xi_m,\eta_m))\overline{\mphih(\xi_m,\eta_m)}.
   \end{aligned}
 
 Les points :math:`(\xi_m,\eta_m)` sont appelés \alert{points de quadrature} (parfois \alert{points de Gauss}, même si la règle de quadrature utilisée n'est pas de Gauss) et les quantités :math:`\omega_m\in\Rb` les \alert{poids} associés. Notons que le point :math:`\xx_m = \xx(\xi_m,\eta_m)` s'obtient par l'expression vue précédemment :

@@ -20,7 +20,7 @@ Nous la réécrivons sous la forme compacte suivante :
   \left\{
   \begin{array}{l}
     \text{Trouver } u \in\Ho \text{ tel que }\\
-    \dsp \forall v \in \Ho, \quad a(u,v) =\ell(v)
+    \forall v \in \Ho, \quad a(u,v) =\ell(v)
   \end{array}
   \right.
 
@@ -30,9 +30,9 @@ où les formes bilinéaires :math:`a(\cdot,\cdot)` et linéaires :math:`\ell(\cd
 
   \begin{array}{r  c l}
     a \colon \Ho\times\Ho& \longrightarrow & \Rb\\
-      (u,v) &\longmapsto&\dsp a(u,v) = \int_{\Omega}\nabla u \cdot\nabla v+ c\int_{\Omega}uv\\[0.2cm]
+      (u,v) &\longmapsto&\displaystyle a(u,v) = \int_{\Omega}\nabla u \cdot\nabla v+ c\int_{\Omega}uv\\[0.2cm]
       \ell\colon\Ho&\longrightarrow&\Rb\\
-      v & \longmapsto & \dsp \ell(v) =\int_{\Omega}fv %+  \int_{\GammaN} \gN v
+      v & \longmapsto & \displaystyle \ell(v) =\int_{\Omega}fv %+  \int_{\GammaN} \gN v
   \end{array}  
 
 Le principe de la méthode est d'approcher l'espace :math:`\Ho` par :math:`\Vh`. Cette méthode est appelé *Méthode de Galerkin* ou *Approximation interne*. Pour cela, modifions, dans la formulation faible, :math:`\Ho` par :math:`\Vh`:
@@ -42,7 +42,7 @@ Le principe de la méthode est d'approcher l'espace :math:`\Ho` par :math:`\Vh`.
   \left\{
   \begin{array}{l}
     \text{Trouver } \uh \in\Vh \text{ tel que }\\
-    \dsp \forall \vh \in \Vh, \quad a(\uh,\vh) =\ell(\vh).
+    \displaystyle \forall \vh \in \Vh, \quad a(\uh,\vh) =\ell(\vh).
   \end{array}
   \right.
 
@@ -58,7 +58,7 @@ L'espace :math:`\Vh` est de dimension finie et dispose d'une base : les fonction
   \left\{
   \begin{array}{l}
     \text{Trouver } \uh \in\Vh \text{ tel que }\\
-    \dsp \forall I=0,\ldots,\Ns-1 , \quad a(\uh,\mphi_I) =\ell(\mphi_I).
+    \displaystyle \forall I=0,\ldots,\Ns-1 , \quad a(\uh,\mphi_I) =\ell(\mphi_I).
   \end{array}
   \right.
 
@@ -75,11 +75,11 @@ avec :math:`u_J = \uh(\vertice_J)` et la formulation faible se réécrit alors
   \left\{
   \begin{array}{l}
     \text{Trouver } (u_J)_{J=0,\ldots,\Ns-1} \text{ tel que }\\
-    \dsp \forall I=0,\ldots,\Ns-1 , \quad a\left(\sum_{J=0}^{\Ns-1} u_J \mphi_J,\mphi_I\right) =\ell(\mphi_I).
+    \displaystyle \forall I=0,\ldots,\Ns-1 , \quad a\left(\sum_{J=0}^{\Ns-1} u_J \mphi_J,\mphi_I\right) =\ell(\mphi_I).
   \end{array}
   \right.
 
-Comme :math:`a(\cdot,\cdot)` est bilinéaire\footnote{Vous pouvez le vérifier aisément}, nous avons
+Comme :math:`a(\cdot,\cdot)` est bilinéaire (cela se vérifie aisément), nous avons
 
 .. math::
 
@@ -94,10 +94,10 @@ où nous avons
 
 .. math::
 
-  \begin{aligned}
-    \Ahh &= (\Ahh[I][J])_{ 0\leq I,J\leq \Ns-1} = (a(\mphi_J, \mphi_I))_{ 0\leq I,J\leq \Ns-1}\\
-    \Uh &=(\Uh[I])_{0\leq I \leq \Ns-1}\\
-    \Bh &=(\Bh[I])_{ 0\leq I\leq \Ns-1} = (\ell(\mphi_I))_{0\leq I\leq \Ns-1}
-  \end{aligned}
+  \left\{\begin{aligned}
+    \Ahh &= (\Ahh_{I,J})_{ 0\leq I,J\leq \Ns-1} = (a(\mphi_J, \mphi_I))_{ 0\leq I,J\leq \Ns-1}\\
+    \Uh &=(\Uh_I)_{0\leq I \leq \Ns-1}\\
+    \Bh &=(\Bh_I)_{ 0\leq I\leq \Ns-1} = (\ell(\mphi_I))_{0\leq I\leq \Ns-1}
+  \end{aligned}\right.
 
 Ce système linéaire est de dimension :math:`\Ns`, le nombre de sommets du maillage. Dans la suite et pour simplifier, nous nous affranchirons de l'indice :math:`h` sur les termes du système linéaire :eq:`eq-systemFEM`.
