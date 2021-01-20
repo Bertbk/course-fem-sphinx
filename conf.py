@@ -99,7 +99,7 @@ html_js_files = [
 # Additional stuff for the LaTeX preamble.
 latex_engine = 'lualatex'
 latex_elements = {}
-latex_elements['preamble'] = '\usepackage{amsmath}\n\usepackage{amssymb}\n'
+latex_elements['preamble'] = '\usepackage{amsmath}\n\usepackage{amssymb}\n\usepackage{amsthm}\n'
 latex_elements['babel'] = '\\usepackage{babel}'
 latex_additional_files = ['mystyle.sty', 'img/normal/normal.tex']
 latex_elements['extrapackages'] = '\usepackage{tikz}\n\usetikzlibrary{arrows, calc, fit}\n\usepackage{standalone}\n\usepackage{mathrsfs}\n\usepackage{mystyle}'
@@ -122,6 +122,13 @@ mathjax_config = {
             'Vh': '{V_h}',
             'Vhz': '{V_{h,0}}',
             'VhD': '{V_{h,\GammaD}}',
+            'abs': ['{\\left|#1\\right|}',1],
+            'norm': ['{\\left\\|#1\\right\\|}',1],
+            'PS': ['{\\left(#1,#2\\right)}',2],
+            'PSL': ['{\\PS{#1}{#2}_{\Lo}}',2],
+            'PSH': ['{\\PS{#1}{#2}_{\Ho}}',2],
+            'normL': ['{\\norm{#1}_{\Lo}}',1],
+            'normH': ['{\\norm{#1}_{\Ho}}',1],
             'ut': '{u_t}',
             'uh': '{u_h}',
             'vh': '{v_h}',
@@ -158,8 +165,6 @@ mathjax_config = {
             'card':'{\\textrm{card}}',
             'supp': '{\\textrm{supp}}',
             'diam': '{\\textrm{diam}}',
-            'abs': ['{\\left|#1\\right|}',1],
-            'norm': ['{\\left\\|#1\\right\\|}',1],
             'locToGlob':'{\\texttt{L2G}}',
             'trihToTri':['{T_{#1}}',1],
             'JK':['{J_{#1}}',1],

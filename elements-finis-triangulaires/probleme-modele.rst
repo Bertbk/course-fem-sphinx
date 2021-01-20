@@ -23,5 +23,197 @@ Dans ce cours, nous considérons un ouvert polygonal :math:`\Omega` de :math:`\R
 
 .. proof:remark::
 
-  En général, on préfère travailler dans un premier temps avec des ouverts \emph{réguliers}, de classe au moins :math:`\Ccal^1`. Un tel ouvert présente l'avantage de pouvoir clairement définir le vecteur unitaire normale :math:`\nn` sortant à :math:`\Omega` cependant, après maillage, on se retrouve avec \ldots un polygone ! Alors plutôt que de travailler dans un domaine régulier pour après le casser en (petits) morceaux, nous préférons ici mettre l'accent sur les algorithmes et la mise en oeuvre de la méthode que les spécificités mathématiques.
+  En général, on préfère travailler dans un premier temps avec des ouverts *réguliers*, de classe au moins :math:`\Ccal^1`. Un tel ouvert présente l'avantage de pouvoir clairement définir le vecteur unitaire normale :math:`\nn` sortant à :math:`\Omega` cependant, après maillage, on se retrouve avec \ldots un polygone ! Alors plutôt que de travailler dans un domaine régulier pour après le casser en (petits) morceaux, nous préférons ici mettre l'accent sur les algorithmes et la mise en oeuvre de la méthode que les spécificités mathématiques.
 
+
+EDP (problème fort)
+-------------------
+
+Ce cours se concentre sur les équations aux dérivées partielles (EDP) elliptiques du second ordre, qui font appel à l'opérateur de Laplace [#]_ (ou *Laplacien*) :
+
+
+.. math::   \Delta := \sum_{i=1}^d\frac{\partial^2}{\partial x_i}
+
+Nous considérons le problème générique suivant, appelé aussi *problème de réaction-diffusion :
+
+.. math::
+  :label: eq-pbmodel
+
+  \left\{\begin{array}{r c l l}
+    -\Delta u + c u  & = & f & (\Omega),\\
+    u & = & \gD & (\GammaD),\\
+    \dn u & = & \gN & (\GammaN), 
+  \end{array}\right.
+
+où nous avons défini :
+
+- le terme :math:`\dn u` désigne la *dérivée normale* de :math:`u` sur le bord, c'est à dire la dérivée dans la direction :math:`\nn` : :math:`(\nabla u)\cdot\nn`, avec :math:`\nabla u = [\partial_{x_1}u,\ldots,\partial_{x_d}u]^T`. Vous aurez sans doute remarqué que, entre deux arêtes, le vecteur normale :math:`\nn` n'est pas défini et donc la dérivée normale non plus. Ce "problème" n'en est pas vraiment un et pour l'instant mettez cela de côté, nous y reviendrons !.
+- :math:`-\Delta u` : Terme de diffusion (notez le signe négatif)
+- :math:`c \geq 0` : Paramètre artificiel positif. Principalement, nous lui imposerons de valoir 1 ou 0, ce qui nous permet de supprimer (ou non) le terme en :math:`u`, appelé terme de *Réaction*
+- :math:`u=\gD` : \textbf{Condition de Dirichlet}
+- :math:`u=\gN` : \textbf{Condition de Neumann}
+- :math:`f` : une fonction donnée définie sur :math:`\Omega`. Elle joue le rôle de *terme source*, c'est à dire d'apport (positif ou négatif), par exemple de chaleur ou de force surfacique.
+
+..
+  \begin{figure}
+    \begin{subfigure}[b]{.5\linewidth}
+      \centering   \includestandalone{img/cond_dirichlet}
+      \caption{Condition de Dirichlet : la valeur est imposée.}
+      \label{fig:Dirichlet}
+    \end{subfigure} 
+    \begin{subfigure}[b]{.5\linewidth}
+      \centering \includestandalone{img/cond_neumann}
+      \caption{Condition de Neumann : le flux est imposé.}
+      \label{fig:Neumann}
+  \end{subfigure}     
+  \caption{Conditions de Neumann et de Dirichlet}
+  \end{figure}
+
+
+Pour le moment, nous ne nous intéressons pas à la régularité de la solution ni même à l'existence et l'unicité de celle-ci : nous supposons que le problème :eq:`eq-pbmodel`est bien posé. Une fois la méthode des éléments finis apréhendée, nous nous intéresserons à ces questions. Cela va à l'encontre de l'habitude en mathématiques où l'on démontre le caractère bien posé avant de s'y attaquer. Faites moi confiance et tout s'éclairera !
+
+Théorème de Green
+-----------------
+
+Pour une géométrie arbitraire, nous ne savons pas, en général, obtenir *la solution forte* (ou classique) du problème :eq:`eq-pbmodel`. La méthode des éléments finis se base sur l'approximation numérique de *la solution au sens faible* du problème  \eqref{eq:pbmodel}. Nous verrons qu'une solution *faible* est, en fait et en général, *forte*. Commençons par réécrire le problème d'origine sous sa formulation faible ou formulation variationnelle.
+
+.. 
+  %\begin{figure}
+  %  \begin{center}
+  %  \includegraphics[width=0.8\textwidth]{people/George_Green.jpg}
+  %  \end{center}
+  %	\caption{George Green (1793 - 1841). Mathématicien britannique (quasi) auto-didacte.\\ 
+  %	\url{https://fr.wikipedia.org/wiki/George_Green}}
+  %	\label{fig:GGreen}
+  %\end{figure}
+
+Un théorème central dans l'analyse des EDP et qui permet d'obtenir ces formulations faibles est celui de Green [#]_
+
+.. math:: \forall u,v,\qquad  \int_{\Omega} (\Delta u) v  = - \int_{\Omega} \nabla u \cdot\nabla v + \int_{\Gamma} (\dn u) v.
+
+
+Ce résultat est valable en dimension 3 pour des domaines polygonaux (ouf). Le produit :math:`\nabla u \cdot\nabla v` est le produit scalaire euclidien standard. La quantité :math:`v` est ici laissé non définie, c'est normal : supposez que c'est une fonction de même régularité que :math:`u`.
+
+.. proof:remark::
+
+  Ce résultat est en quelque sorte une extension multi-dimensionnel de l'intégration par partie sur un segment 1D :math:`\Omega = [a,b]`. En effet, en dimension 1, l'opérateur :math:`\Delta` devient la dérivée seconde. La normale sortante au segment devient un scalair valant :math:`\pm 1` (:math:`-1` à gauche et :math:`1` à droite) et la dérivée normale devient :math:`\dn u = \pm u'` :
+  
+  .. math::  \int_{a}^b u'' v  = - \int_{a}^b u' v' +  u'(b)v(b) - u'(a)v(a) = - \int_{a}^b u' v'  + \dn u(b)v(b)+ \dn u(a)v(a).
+
+Problème faible
+---------------
+
+Le point de départ de notre analyse est la réécriture sous forme faible du problème \eqref{eq:pbmodel}. Pour cela, la méthode consiste à multiplier l'EDP par une fonction :math:`v`, intéger le tout sur :math:`\Omega` puis à appliquer le Théorème de Green (ne vous posez pas trop de questions pour le moment, dites vous juste : hey pourquoi pas \shrug ! Après tout, 2020 a déjà apporté son lot d'étrangetés !) :
+
+.. math::
+
+  \begin{aligned}
+    \Delta u +cu=f \implies & -\int_{\Omega} \Delta u v + c\int_{\Omega}uv = \int_{\Omega}fv\\
+    \implies &\int_{\Omega}\nabla u \cdot\nabla v+ c\int_{\Omega}uv = \int_{\Omega}fv + \int_{\Gamma} (\dn u) v
+  \end{aligned}
+
+Comme toujours en mathématiques (et dans la vraie vie), commençons par faire ce que nous savons faire. Autrement dit, utilisons nos (maigres) connaissances sur :math:`u` : les \alert{conditions aux bords}. Pour cela séparons l'intégrale sur :math:`\Gamma` en deux:
+
+.. math::  \int_{\Omega}\nabla u \cdot\nabla v+ c\int_{\Omega}uv = \int_{\Omega}fv + \int_{\GammaD} (\dn u) v + \int_{\GammaN} (\dn u) v
+
+Sur :math:`\GammaN`, nous savons que :math:`\dn  = \gN` tandis que sur :math:`\GammaD` nous ne savons rien de :math:`\dn u` mais nous savons que :math:`u=\gD` (Attention, :math:`u=\gD` n'implique pas :math:`\dn u = \dn \gD` !). Autrement dit, nous connaissons déjà la valeur de :math:`u` sur :math:`\GammaD`, ce n'est pas la peine de la calculer. Supprimons donc ce terme gênant en imposant à :math:`v`, qui est arbitraire, d'être nul sur :math:`\GammaD` : 
+
+.. math::  v=0 \qquad \text{sur }\GammaD.
+
+Nous obtenons alors :
+
+.. math::
+  :label: eq-faible
+
+  \Delta u +cu=f \implies \int_{\Omega}\nabla u \cdot\nabla v+ c\int_{\Omega}uv = \int_{\Omega}fv +  \int_{\GammaN} \gN v, \quad\forall v \text{ tel que } v|_{\GammaD}=0.
+
+
+Ainsi, et toujours sans regarder la régularité de :math:`u` (ni de :math:`v`), nous avons que : si :math:`u` est solution de l'EDP :eq:`eq-pbmodel`alors :math:`u` est aussi solution de la formulation faible :
+
+.. math::
+  
+  \left\{
+    \begin{array}{l}
+      \text{Trouver } u \text{ tel que }\\
+      u = \gD \quad \text{sur }\GammaD\\
+      \dsp \int_{\Omega}\nabla u \cdot\nabla v+ c\int_{\Omega}uv = \int_{\Omega}fv +  \int_{\GammaN} \gN v, \quad \forall v \text{ tel que }v|_{\GammaD} = 0.
+    \end{array}
+  \right.
+
+
+À gauche du signe :math:`=` se trouve l'inconnue :math:`u` et à droite les données (:math:`f` et :math:`\gN`), c'est une convention et plus tard cette équation s'écrira sous la forme d'un système linéaire :math:`AU =B` où le vecteur :math:`B` correspondra au membre de droite de :eq:`eq-faible`et la matrice :math:`A` à la partie de gauche.
+
+Nous pouvons maintenant définir plus proprement la quantité :math:`v`. Appelée *fonction test* elle n'a d'autre rôle que de "tester" la solution. L'idée de la formulation faible est de chercher une solution qui vérifie l'EDP, non pas point à point (au sens fort, donc) mais "en moyenne", via l'intégrale. En mécanique, :math:`v` est appelé "travaux virtuels" (avec la méthode éponyme qui est, en fait, la formulation faible) : cette quantité est arbitraire et n'est utile que pour écrire le problème faible \eqref{eq:faible}.
+
+Les conditions de Dirichlet et de Neumann sont imposées différemment : la condition de Neumann apparait naturellement dans la formulation faible, en remplaçant simplement :math:`\dn u` par sa valeur, c'est pourquoi on parle de *condition naturelle*. À l'inverse, la condition de Dirichlet est dite *condition essentielle* et est imposée à la solution ou plutôt, à l'espace fonctionnel contenant la solution.
+
+Espace Fonctionnel
+------------------
+
+Délimitons maintenant et avec plus de précisions les espaces fonctionnels auxquels :math:`u` et :math:`v` appartiennent. Comme nous cherchons :math:`u` sous la forme d'une solution faible, nous n'avons pas besoin d'imposer à :math:`u` d'être continu, ni même de posséder une valeur en chaque point de l'espace. C'est pour cela que nous travaillerons avec des fonctions de carré intégrable et l'espace :math:`\Lo` :
+
+.. math::  \Lo = \enstq{f\colon \Omega\to\Rb}{\int_{\Omega}\abs{f}^2 < \infty},
+
+avec son produit scalaire usuel et sa norme qui en dérive
+
+.. math::  \PSL{u}{v} =\int_{\Omega}uv \qquad \normL{u}^2=\int_{\Omega}\abs{u}^2.
+  
+Cet espace n'est pas suffisant car nous avons besoin de dériver :math:`u` et :math:`v` dans la formulation faible. Nous introduisons alors l'espace de Sobolev [#]_
+
+.. math::  \Ho = \enstq{f\in\Lo}{\partial_{x_i}f \in\Lo, \forall i=1,\ldots,d},
+
+et lui associons son produit scalaire et sa norme dérivée
+
+.. math::
+
+  \begin{aligned}
+    \PSH{u}{v} &= \int_{\Omega} uv  + \int_{\Omega}\nabla u\cdot\nabla v &\normH{u}^2 &= \int_{\Omega}\abs{u}^2 + \int_{\Omega} \norm{\nabla u}^2 \\ 
+              &= \PSL{u}{v}  + \PS{\nabla u}{\nabla v}_{(\Lo)^d}  & &=\normL{u}^2 + \norm{\nabla u}_{(\Lo)^d}^2
+  \end{aligned}
+
+
+
+.. proof:remark::
+  
+  Les espaces de Sobolev sont aussi appelés espace d'énergie : les quantités qui le composent sont *d'énergie finie* et ont plus de liberté que les fonctions continues, elles peuvent par exemple (et sous conditions) être singulière en certains points, comme l'énergie.}
+
+
+.. proof:remark::
+
+  Si vous n'avez encore jamais rencontré ces espace de Sobolev, comme :math:`\Ho`, il doivent vous sembler contradictoires avec tout ce que vous avez appris jusque là, notamment par la présence de la dérivée :math:`\partial_{x_i}f \in\Lo`. Une fonction de :math:`\Lo` n'est déjà pas forcément continue ni même définie en tout point, alors comment peut-elle être dérivable ?  Prendre la restriction d'une fonction :math:`\Ho` sur :math:`\GammaD`, une partie du bord, n'a pas non plus de sens *à ce niveau de lecture du cours*. En effet, nous savons qu'un élément de :math:`\Lo` est en fait une classe de fonction et en prendre sa valeur sur un point une une ligne n'a pas de sens a priori.
+
+  Mathématiquement, la dérivée qui apparait ici n'est pas la dérivée *au sens classique* mais *au sens faible*, que nous définirons plus tard. Cependant, si les dérivées au sens classique et au sens faible existe, alors elles sont identiques. De plus et en pratique, toutes les fonctions que nous verrons seront (très) régulières c'est pourquoi, pour le moment, vous pouvez faire "comme si" ce sont des dérivées classiques et accepter que les espace :math:`\Lo` et :math:`\Ho` "ressemblent" aux espaces :math:`\Cscr^0(\overline{\Omega})` et :math:`\Cscr^1(\overline{\Omega})`.
+
+  Nous détaillerons tout cela plus loin, cependant, en attendant, vous pouvez vraiment faire *comme si* vous aviez compris et *comme si* nous travaillions dans :math:`\Cscr^1(\overline{\Omega})` plutôt que dans :math:`\Ho`.
+
+
+Formulation Variationnelle dans les Sobolev
+-------------------------------------------
+
+Nous écrivons maintenant la formulation faible dans les bons espaces :
+
+.. math:: 
+
+  \left\{
+  \begin{array}{l}
+    \text{Trouver } u \in\Ho \text{ tel que }\\
+    u = \gD \quad \text{ sur } \GammaD\\
+    \dsp \int_{\Omega}\nabla u \cdot\nabla v+ c\int_{\Omega}uv = \int_{\Omega}fv +  \int_{\GammaN} \gN v, \quad \forall v \in \Ho \text{ tel que } v|_{\GammaD}=0.
+  \end{array}
+  \right.
+
+
+Nous remarquons que dans cette formulation faible, :math:`v` et :math:`u` satisfont tous deux une conditions de Dirichlet mais différentes : hétérogène pour :math:`u` et homogène pour :math:`v`, mais tous deux appartiennent à :math:`\Ho`. Les données doivent, de leur côté, appartenir aux espaces suivants :
+
+.. math::
+
+  f \in \Lo, \qquad
+  \gN \in L^2(\GammaN),\qquad
+  \gD \in H^{1/2}(\GammaD).
+
+L'espace :math:`L^2(\GammaN)` est l'espace des fonctions de carré intégrable sur :math:`\GammaN` (intégrale 1D). Le dernier espace est assez particulier. Il s'agit de l'espace des restrictions sur :math:`\GammaD` des fonctions de :math:`\Ho`. Autrement dit, si :math:`g_0\in H^{1/2}(\GammaD)`, alors il existe :math:`v_0\in\Ho` telle que :math:`v_0|_{\GammaD} = g_0`.
+
+
+.. [#] Pierre-Simon Laplace (1749 -- 1827).
+.. [#] George Green (1793 -- 1841). Mathématicien britannique (quasi) auto-didacte.
+.. [#] Du nom de son découvreur, Sergei Sobolev (1908 -- 1989), mathématicien Russe.
