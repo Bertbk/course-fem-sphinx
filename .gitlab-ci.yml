@@ -24,7 +24,7 @@ pages:
   script:
   - cd _latex
   - make
-  - mv *.pdf ../public/download/FEM.pdf
+  - mv maillageetlmentsfinis.pdf ../public/download/FEM.pdf
   artifacts:
     paths:
     - public
