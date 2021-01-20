@@ -44,7 +44,7 @@ Nous nous focalisons sur la matrice de masse, le principe est similaire pour la 
 Pour construire la matrice :math:`M`, nous avons vu qu'il était préférable de parcourir les triangles plutôt que les sommets, autrement dit, plutôt que de calculer :math:`M_{I,J}` directement, mieux vaut calculer, pour tout triangle :math:`p`, la **contribution élémentaire** :math:`\Me{p}(i,j)` pour :math:`i,j = 1,2,3`, définie par :
 
 .. math:: \Me{p}(i,j)= \int_{\tri_p} \mphi_j^p(\xx)\ \mphi_i^p(\xx)\diff\xx.
-  :label:eq-matelem
+  :label: eq-matelem
 
 Chaque contribution élémentaire :math:`\Me{p}(i,j)` est ensuite ajoutée à :math:`M_{I,J}`, avec :math:`I=\locToGlob(p,i)` et :math:`J=\locToGlob[p][j]`. 
   
@@ -80,7 +80,7 @@ Plutôt que d'indicer par :math:`p`, nous notons :math:`\mphih_i \in \Pb^1(\trih
 
   .. math:: 
   
-    \Meh_{i,j} = \int_{\trih} \mphih_j(\xi)\overline{\mphih_j(\eta)} \diff(\xi,\eta),
+    \Meh_{i,j} = \int_{\trih} \mphih_j(\xi)\mphih_j(\eta) \diff(\xi,\eta),
 
   est donnée par
 
@@ -94,7 +94,7 @@ Plutôt que d'indicer par :math:`p`, nous notons :math:`\mphih_i \in \Pb^1(\trih
   
 .. proof:proof::
 
-  Prenons tout d'abord le cas :math:`i=j=1`, soit :math:`\mphih_i = \mphih_j = \mphih[2](\xi,\eta) = \xi`. Dans ce cas :
+  Prenons tout d'abord le cas :math:`i=j=1`, soit :math:`\mphih_i(\xi,\eta) = \mphih_j(\xi,\eta) = \xi`. Dans ce cas :
 
   .. math:: 
   
@@ -103,11 +103,8 @@ Plutôt que d'indicer par :math:`p`, nous notons :math:`\mphih_i \in \Pb^1(\trih
   
   Les calculs sont similaires pour :math:`i=0` et :math:`i=2`. Prenons maintenant :math:`i\neq j`, par exemple :math:`i=2` et :math:`j=1` :
 
-  .. math::
-  
-    \int_{\trih} \xi\eta \diff (\xi,\eta) = \int_0^1\left(\int_0^{1-\xi} \eta \diff\eta\right)\xi\diff\xi
-    =  \frac{1}{2}\int_0^1(1-\xi)^2\xi\diff\xi  
-    =  \frac{1}{2}\left[ \frac{1}{2} - \frac{2}{3} +\frac{1}{4}\right] =\frac{1}{24}.
+  .. math::  \int_{\trih} \xi\eta \diff (\xi,\eta) = \int_0^1\left(\int_0^{1-\xi} \eta \diff\eta\right)\xi\diff\xi =  \frac{1}{2}\int_0^1(1-\xi)^2\xi\diff\xi    =  \frac{1}{2}\left[ \frac{1}{2} - \frac{2}{3} +\frac{1}{4}\right] =\frac{1}{24}.
+
   Les calculs sont similaires pour les autres combinaisons.
 
 
@@ -123,7 +120,7 @@ Nous avons :math:`\mphi_j^p(x,y) = \mphi_j^p(\trihToTri{p}(\xi,\eta))` avec :mat
 
 En notant :math:`\JK{p}` la matrice Jacobienne de :math:`\trihToTri{p}`, alors la quantité :math:`\Me{p}(i,j)` peut alors s'écrire, par changement de variables :
 
-.. math::  \Me{p}(i,j) = \displaystyle\int_{\tri_p}\mphi_j^p(x,y)\overline{\mphi_i^p(x,y)} \diff(x,y)
+.. math::  \Me{p}(i,j) = \displaystyle\int_{\tri_p}\mphi_j^p(x,y)\mphi_i^p(x,y) \diff(x,y)
       =\displaystyle \abs{\det(\JK{p})}\underbrace{\int_{\trih}\mphih_j(\xi,\eta)\mphih_i(\xi,\eta)\diff(\xi,\eta)}_{\text{Déjà calculé !}}
 
 Ainsi, pour calculer la matrice élémentaire d'un triangle :math:`\tri_p` quelconque, nous n'avons besoin que du déterminant de la Jacobienne : :math:`\det(\JK{p})`.
@@ -185,8 +182,12 @@ ce qui implique que le déterminant est non nul puisque le triangle n'est pas d�
 
   Quand :math:`\psih_i = \mphih_i`, nous parlons d'éléments finis **isoparamétriques**. Il convient de retenir que ce choix n'est pas obligatoire et les fonctions :math:`\psih_i` et :math:`\mphih_i` sont **indépendantes**. En particulier, pour obtenir des éléments courbes, les fonctions :math:`\psih_i` pourraient être quadratiques par exemple.
 
-.. 
-  %TODO: {{< figure class="app-jacobi" title="<i class='fas fa-play-circle'></i> \alert{Time To Play!}<br>**Déplacez les sommets du triangle** pour modifier la valeur du **Jacobien**. Quand il est négatif cela signifie que le triangle est **\"retourné\"** par rapport au triangle de référence." numbered="true" >}}
+.. only:: html
+
+  .. container:: app-jacobian
+
+    **Déplacez les sommets du triangle** pour modifier la valeur du **Jacobien**. Quand il est négatif cela signifie que le triangle est **"retourné"** par rapport au triangle de référence
+
 
 **Expression finale de la matrice élémentaire.**
 
@@ -209,7 +210,7 @@ Matrice de rigidité élémentaire
 
 Nous appliquons la même procédure pour la matrice de rigidité :math:`D`, autrement dit, nous calculons les matrices de rigidité élémentaire :math:`\De{p}` définies par
 
-.. math:: \De{p}(i,j) = \int_{\tri_p}\nabla \mphi_j^p(x,y)\cdot \overline{\nabla\mphi_i^p(x,y)}\diff(x,y).
+.. math:: \De{p}(i,j) = \int_{\tri_p}\nabla \mphi_j^p(x,y)\cdot \nabla\mphi_i^p(x,y)\diff(x,y).
 
 
 Triangle de référence
@@ -343,7 +344,7 @@ Nous en déduisons que :math:`\BK{p} = (\JK{p}^T)^{-1}`, en particulier, dans le
 Au final, comme :math:`X\cdot Y = X^TY`, nous obtenons
 
 .. math:: \int_{\tri_p} (\nabla\mphi_j^p)^T\nabla\mphi_i^p \diff(x,y)
-    = \abs{\det(\JK{p})}\int_{\trih} (\nabla\mphih_j)^T  (\BK{p}^T \overline{\BK{p}})\overline{\nabla\mphih_i} \diff (\xi,\eta).
+    = \abs{\det(\JK{p})}\int_{\trih} (\nabla\mphih_j)^T  (\BK{p}^T \BK{p})\nabla\mphih_i \diff (\xi,\eta).
   :label: eq-intRigidite
 
 
@@ -356,15 +357,15 @@ La matrice :math:`\BK{p}` étant réelle, nous pouvons supprimer la conjugaison 
   .. math:: 
 
     \begin{aligned}
-    \De{p}(i,j) &= \int_{\tri_p}\nabla \mphi_j^p(x, y)\cdot \overline{\nabla\mphi_i^p(x,y)}\diff(x,y),\\
-      &= \abs{\tri_p}(\nabla\mphih_j)^T  (\BK{p}^T \overline{\BK{p}})\overline{\nabla\mphih_i}.
+    \De{p}(i,j) &= \int_{\tri_p}\nabla \mphi_j^p(x, y)\cdot\nabla\mphi_i^p(x,y)\diff(x,y),\\
+      &= \abs{\tri_p}(\nabla\mphih_j)^T  (\BK{p}^T \BK{p})\nabla\mphih_i.
     \end{aligned}
 
 .. proof:proof::
 
   Pour les éléments finis :math:`\Pb^1`, les gradients :math:`\nabla\mphih_j` sont constants et peuvent être sortis de l'intégrale. De plus, comme :math:`\abs{\det(\JK{p})} = 2\abs{\tri_p}` et :math:`\abs{\trih}= \frac{1}{2}`, nous avons
 
-  .. math::  \int_{\tri_p} \nabla\mphi_j^p\cdot\nabla\mphi_i^p \diff(x,y) =\abs{\tri_p}(\nabla\mphih_j)^T  (\BK{p}^T \overline{\BK{p}})\overline{\nabla\mphih_i}.
+  .. math::  \int_{\tri_p} \nabla\mphi_j^p\cdot\nabla\mphi_i^p \diff(x,y) =\abs{\tri_p}(\nabla\mphih_j)^T  (\BK{p}^T \BK{p})\nabla\mphih_i.
 
 Second membre (ou RHS ou Membre de droite)
 ------------------------------------------
@@ -377,8 +378,8 @@ Sauf pour certaines fonctions :math:`f` particulières, nous ne pourrons certain
 
 .. math:: \begin{aligned}
   \displaystyle \int_{\tri_p}f(\xx)\mphi_i^p(\xx)\diff \xx &=
-  \displaystyle \abs{\det(\JK{p})}\int_{\trih}f(\xx(\xi,\eta))\overline{\mphih_i(\xi,\eta)}\diff (\xi,\eta) \\
-  & \displaystyle \simeq \abs{\det(\JK{p})}\sum_{m=0}^{M-1}\omega_m f(\xx(\xi_m,\eta_m))\overline{\mphih(\xi_m,\eta_m)}.
+  \displaystyle \abs{\det(\JK{p})}\int_{\trih}f(\xx(\xi,\eta))\mphih_i(\xi,\eta)\diff (\xi,\eta) \\
+  & \displaystyle \simeq \abs{\det(\JK{p})}\sum_{m=0}^{M-1}\omega_m f(\xx(\xi_m,\eta_m))\mphih(\xi_m,\eta_m).
   \end{aligned}
 
 Les points :math:`(\xi_m,\eta_m)` sont appelés **points de quadrature** (parfois **points de Gauss**, même si la règle de quadrature utilisée n'est pas de Gauss) et les quantités :math:`\omega_m\in\Rb` les **poids** associés. Notons que le point :math:`\xx_m = \xx(\xi_m,\eta_m)` s'obtient par l'expression vue précédemment :
@@ -404,3 +405,10 @@ Nous présentons ici deux règles de quadrature pour l'intégrale :math:`\int_{\
 .. proof:remark::
 
   Les formules de quadrature ont évidemment un impact sur la qualité de l'approximation, toutefois, elles jouent un rôle relativement mineur par rapport aux autres approximations (et l'on peut choisir plus de points d'intégration !).
+
+
+
+.. raw:: html 
+
+   <script src="https://d3js.org/d3.v5.min.js"></script>
+   <script src="../_static/jacobian/main.js"></script>

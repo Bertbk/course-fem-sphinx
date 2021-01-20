@@ -128,8 +128,9 @@ Nous pouvons maintenant introduire l'espace fonctionnel :math:`\Pb^1-` Lagrange 
 
 Caractérisons maintenant les fonctions de cet espace. Le premier résultat montre que deux fonctions de :math:`\Vh` sont égales si et seulement si elles coïncident sur tous les sommets de la triangulation :math:`\Th`.
 
-.. lemma-unicitetriangle:
-.. proof:lemma::
+.. _lemma-unicitetriangle: 
+
+.. proof:lemma:: 
 
   Si :math:`\uh,\vh \in \Vh` vérifient :math:`\uh(\vertice) = \vh(\vertice)` pour tout sommet :math:`\vertice` de :math:`\Th`, alors :math:`\uh=\vh` sur :math:`\Omega`.
 
@@ -144,16 +145,15 @@ Caractérisons maintenant les fonctions de cet espace. Le premier résultat mont
 
 .. proof:proof::
 
-  L'unicité est démontrée par le lemme \ref{lemma:unicitetriangle} précédent, il manque donc l'existence. Quitte à renuméroter, prenons un triangle :math:`\tri=(\vertice_{0},\vertice_{1},\vertice_{2})` de :math:`\Th` et le jeu de valeurs associé :math:`(\alpha_0,\alpha_1,\alpha_2) \in \Rb`. La proposition \ref{prop:unisolvance} montre qu'il existe un (unique) polynôme :math:`p_{\tri}` de :math:`\Pb^1(\tri)` tel que :math:`p_{\tri}(\vertice_I)=\alpha_i` pour :math:`i=0,1,2`. Nous pouvons répéter cette opération pour tous les triangles :math:`\tri` et nous introduisons :math:`\uh` tel que
+  L'unicité est démontrée par le :numref:`lemme {number} <lemma-unicitetriangle>`, il manque donc l'existence. Quitte à renuméroter, prenons un triangle :math:`\tri=(\vertice_{0},\vertice_{1},\vertice_{2})` de :math:`\Th` et le jeu de valeurs associé :math:`(\alpha_0,\alpha_1,\alpha_2) \in \Rb`. La proposition \ref{prop:unisolvance} montre qu'il existe un (unique) polynôme :math:`p_{\tri}` de :math:`\Pb^1(\tri)` tel que :math:`p_{\tri}(\vertice_I)=\alpha_i` pour :math:`i=0,1,2`. Nous pouvons répéter cette opération pour tous les triangles :math:`\tri` et nous introduisons :math:`\uh` tel que
 
   .. math:: \forall \tri\in\Th,\quad \uh |_{\tri} = p_{\tri}.
 
   La fonction :math:`\vh` est affine sur chaque triangle, il nous faut montrer que :math:`\uh\in\Cscr^0(\overline{\Omega})` pour conclure sur son appartenance à :math:`\Vh`. Comme :math:`\vh` est continue en chaque sommet :math:`\vertice`, il reste à montrer la continuité sur les arêtes. 
   
-  Prenons 2 triangles :math:`K_p` et :math:`\tri[j]` de :math:`\Th` ayant une arête :math:`\Sigma` en commun. Quitte à renuméroter, notons :math:`\vertice_{1} = (x_1,y_1)` et :math:`\vertice_{2} = (x_2, y_2)` les deux sommets de l'arête :math:`\Sigma` et notons
+  Prenons 2 triangles :math:`K_p` et :math:`\tri{q}` de :math:`\Th` ayant une arête :math:`\Sigma` en commun. Quitte à renuméroter, notons :math:`\vertice_{1} = (x_1,y_1)` et :math:`\vertice_{2} = (x_2, y_2)` les deux sommets de l'arête :math:`\Sigma` et notons
   
-  .. math:: \sigma(t) = \vertice_{1} + t(\vertice_{2}-\vertice_{1}) =
-    \left( x_1 + t(x_2-x_1),  y_1 + t(y_2-y_1)\right)
+  .. math:: \sigma(t) = \vertice_{1} + t(\vertice_{2}-\vertice_{1}) = \left( x_1 + t(x_2-x_1),  y_1 + t(y_2-y_1)\right)
   
   une paramétrisation de :math:`\Sigma`. Si :math:`p_{K_p}(x,y) = ax+by+c`, nous avons alors, pour tout :math:`t\in[0,1]` :
 
@@ -174,7 +174,9 @@ Base de :math:`\Vh` : les fonctions de forme
 
 Au vu de ce qui précède, deux fonctions de :math:`\Vh` sont identiques si et seulement si elles possèdent la même valeur sur chaque sommet de :math:`\Th`. En notant :math:`\Ns = \card(\Sh)`, introduisons l'ensemble des **fonctions de forme** :math:`(\mphi_J)_{0\leq j \leq \Ns-1}` de :math:`\Vh`, qui sont **nulles sur chaque sommet sauf un** :
 
-.. math:: \forall i,j =0,..., \Ns-1,\quad
+.. math:: 
+
+  \forall i,j =0,..., \Ns-1,\quad
   \mphi_J(\vertice_I) =
   \delta_{i,j}=
   \left\{
@@ -184,7 +186,11 @@ Au vu de ce qui précède, deux fonctions de :math:`\Vh` sont identiques si et s
     \end{array}
   \right.
 
-Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensionnelles (elles ressemblent d'ailleurs encore plus à un "chapeau" !).
+Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensionnelles (elles ressemblent d'ailleurs encore plus à un "chapeau" !). Une illustration des fonctions de forme est proposée TODO:
+
+.. only:: html
+
+  Une :ref:`application pour visualiser les fonctions de forme<app-basis-function>` est proposée plus bas.
 
 .. proof:proposition::
 
@@ -195,6 +201,7 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
   Montrons que la famille des fonctions de forme est une base de :math:`\Vh`. Commençon par le caractère libre de cette famille en prenant :math:`\Ns` données :math:`(\alpha_i)_{0\leq i\leq \Ns-1}`,
   
   .. math::
+
     \begin{aligned}
       \sum_{i=0}^{\Ns-1} \alpha_i \mphi_I = 0 &\implies \forall j=0,\ldots, \Ns-1,\quad \sum_{i=0}^{\Ns-1} \alpha_i\mphi_I(\vertice_j) = 0\\
       &\implies \forall j= 0,\ldots, \Ns-1,\quad \alpha_j \times 1 +  \sum_{i=0, i\neq j}^{\Ns-1}(\alpha_j\times 0) = 0\\
@@ -204,13 +211,12 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
   La famille de fonctions :math:`(\mphi_I)_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice_{1}, \vertice_{2},\vertice_{3})` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Big|_{\tri}` coïncide avec le polynôme :math:`\uh|_{\tri}` sur les sommets du triangle :math:`\tri`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
   La famille de fonctions :math:`(\mphi_I)_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice_{1}, \vertice_{2},\vertice_{3})` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Big|_{\tri}` coïncide avec le polynôme :math:`\uh|_{\tri}` sur les sommets du triangle :math:`\tri`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
 
-    .. math:: 
-      
-      \uh|_{\tri}= \left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Bigg|_{\tri}.
+    .. math:: \uh|_{\tri}= \left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Bigg|_{\tri}.
 
   Cette relation étant valable sur un triangle arbitraire, elle est vraie sur :math:`\Omega`. La famille de fonctions :math:`(\mphi_I)_I` est donc une base de :math:`\Vh`.
 
-.. proof:proposition::Admis pour le moment
+.. proof:proposition:: Admis pour le moment
+
   L'espace :math:`\Vh` est inclus dans :math:`\Ho`.
 
 
@@ -218,9 +224,7 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
 
   Le support d'une fonction de forme :math:`\mphi_I` est l'union des triangles ayant pour sommet :math:`\vertice_I` :
   
-  .. math:: 
-  
-    \mathrm{supp}(\mphi_I) = \enstq{T\in \verticeh}{\vertice_I \text{ est un sommet de } \tri}.
+  .. math:: \mathrm{supp}(\mphi_I) = \enstq{T\in \verticeh}{\vertice_I \text{ est un sommet de } \tri}.
 
   Autrement dit, en dehors de ces triangles, la fonction $\mphi_I$ est nulle.
 
@@ -229,22 +233,31 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
   Prenons une fonction de forme :math:`\mphi_I` associée au sommet :math:`\vertice_I`, et un triangle :math:`\tri` dont aucun sommet n'est :math:`\vertice_I`. Alors dans ce cas, :math:`\mphi_I` est nulle sur les trois sommets de :math:`\tri`, et est donc nulle sur le triangle tout entier.
 
 
+.. only:: html
+
+  .. _app-basis-function:
+
+  .. container:: app-basis-function
+
+    Application : Cliquez sur un sommet pour faire apparaitre **la fonction de forme P1 associée**. Les triangles où la fonction n’est pas nulle forment **le support de la fonction de forme**. 
+
+
 Au final, pour une fonction :math:`\uh` de :math:`\Vh`, retenons que :
 
 - :math:`\uh` est (par définition) continue et linéaire sur chaque triangle
 - La dimension de :math:`\Vh` est égale au nombre de sommets :math:`\Ns` du maillage. Plus le maillage est fin, plus la dimension est grande.
 - La famille :math:`(\mphi_I)_I` des fonctions de forme est une base de :math:`\Vh`. Autrement dit, il existe :math:`\Ns` uniques coefficients :math:`(u_I)_I`, tels que
 
-  .. math::  
-  
-    \uh = \sum_{I=0}^{\Ns-1} u_I\mphi_I
+  .. math:: \uh = \sum_{I=0}^{\Ns-1} u_I\mphi_I
 
 - Une fonction :math:`\uh` de :math:`\Vh` est caractérisée par sa valeur aux :math:`\Ns` sommets
 - Les coefficients sont en fait la valeur de :math:`\uh` aux sommets : :math:`u_I = \uh(\vertice_I)` :
   
-  .. math::
-    \sum_{I = 0}^{\Ns-1} \uh(\vertice_I)\mphi_I(\vertice_J) = \uh(\vertice_J)\mphi_J(\vertice_J) = \uh(\vertice_J).
+  .. math:: \sum_{I = 0}^{\Ns-1} \uh(\vertice_I)\mphi_I(\vertice_J) = \uh(\vertice_J)\mphi_J(\vertice_J) = \uh(\vertice_J).
 
 - Le support d'une fonction de forme :math:`\mphi_I` est l'union des triangles ayant pour sommets :math:`\vertice_I`. Il est donc très petit par rapport à :math:`\Omega`.
 
+
+
 .. [#] Au lycée on disait "entre deux points ne passe qu'une et une seule droite".
+

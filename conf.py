@@ -49,6 +49,7 @@ language = 'fr'
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+numfig = True
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -57,8 +58,6 @@ exclude_patterns = []
 #
 
 html_theme = "furo"
-
-
 
 proof_theorem_types = {
    "algorithm": "Algorithm",
@@ -89,6 +88,11 @@ html_css_files = [
 
 html_js_files = [
     'js/proof.js',
+    'https://d3js.org/d3.v5.min.js',
+    'https://d3js.org/d3-scale-chromatic.v1.min.js',
+    'js/basis-function/main.js',
+    'js/jacobian/main.js',
+    'js/loc2glob/main.js',
 ]
 
 
@@ -97,8 +101,8 @@ latex_engine = 'lualatex'
 latex_elements = {}
 latex_elements['preamble'] = '\usepackage{amsmath}\n\usepackage{amssymb}\n'
 latex_elements['babel'] = '\\usepackage{babel}'
-latex_additional_files = ['mystyle.sty']
-latex_elements['extrapackages'] = '\usepackage{mathrsfs}\n\usepackage{mystyle}'
+latex_additional_files = ['mystyle.sty', 'img/normal/normal.tex']
+latex_elements['extrapackages'] = '\usepackage{tikz}\n\usetikzlibrary{arrows, calc, fit}\n\usepackage{standalone}\n\usepackage{mathrsfs}\n\usepackage{mystyle}'
 
 # copy to mathjax
 mathjax_config = {                  

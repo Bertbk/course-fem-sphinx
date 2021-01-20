@@ -92,14 +92,16 @@ Ainsi, pour un triangle  :math:`\tri_p`, ses sommets sont numérotés :math:`[\v
 
 .. math:: \mphi_i^p = \mphi_{\locToGlob(p,i)}|_{\tri_p}.
 
-.. 
-  \begin{figure}
-    \def\svgwidth{0.9\textwidth}
-    \centering\import{img/}{loc2glob.pdf_tex}  
-    \caption{Numérotation locale et globale}
-  \end{figure}
 
-Utilisons ces nouvelles notations dans l'équation :eq:`eq-assemble_tmp`, en ramenant la somme sur les sommets à uniquement les sommets du triangle considéré :
+.. only:: latex
+
+  .. figure:: /_static/img/loc2glob.png
+    :width: 50 %
+    :label: app-loc2glob
+  
+    Numérotation locale et globale
+
+Une illustration de cette numérotation est présentée sur :numref:`la Figure {numref} <app-loc2glob>`. Utilisons ces nouvelles notations dans l'équation :eq:`eq-assemble_tmp`, en ramenant la somme sur les sommets à uniquement les sommets du triangle considéré :
 
 .. math:: A = \sum_{p=0}^{\Nt-1}\sum_{i=0}^{2}\sum_{j=0}^{2}a_{p}(\mphi_j^p,\mphi_i^p) \ee_{\locToGlob(p,i)}^T\ee_{\locToGlob(p,j)}
 
@@ -135,6 +137,11 @@ L'algorithme d'assemblage est alors complet ! Une version pseudo-code est prése
   
   Cet algorithme n'est pas encore utilisable, nous devons calculer la valeur de :math:`a_p(\mphi_j^p,\mphi_i^p)` et :math:`\ell_p(\mphi_i^p)`. De plus, il manque encore les conditions de Dirichlet.
 
+.. only:: html
+
+  .. _app-loc2glob:
+
+  .. container:: app-local-to-global
 
 
-
+    **Cliquez sur un triangle** pour faire apparaitre la **numérotation locale** des sommets du triangle. Recliquez dessus pour revenir en **numérotation globale**
