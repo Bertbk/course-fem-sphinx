@@ -7,7 +7,8 @@ build_sphinx:
   stage: build_sphinx
   script:
   - pip install -U sphinx
-  - pip install -U sphinx-rtd-theme
+  - pip install -U furo
+  - pip install -U sphinxcontrib-proof
   - sphinx-build -b html . public
   - sphinx-build -b latex . _latex
   artifacts:
@@ -22,7 +23,7 @@ pages:
   stage: deploy
   script:
   - cd _latex
-  - latexmk
+  - make
   - mv *.pdf ../public/download/FEM.pdf
   artifacts:
     paths:
