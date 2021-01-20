@@ -1,0 +1,510 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.29)  20 JAN 2021 09:55
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**normal.tex
+(./normal.tex
+LaTeX2e <2020-10-01> patch level 2
+L3 programming layer <2020-10-27> xparse <2020-03-03>
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/standalone/standalone.
+cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 77.
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks15
+\XKV@tempa@toks=\toks16
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/xkeyval/keyval.tex))
+\XKV@depth=\count175
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+\sa@internal=\count176
+\c@sapage=\count177
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/standalone/standalone.
+cfg
+File: standalone.cfg 2018/03/26 v1.3a Default configuration file for 'standalon
+e' class
+) (/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+)
+\c@part=\count178
+\c@section=\count179
+\c@subsection=\count180
+\c@subsubsection=\count181
+\c@paragraph=\count182
+\c@subparagraph=\count183
+\c@figure=\count184
+\c@table=\count185
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+\sa@box=\box47
+runsystem(pdflatex  -shell-escape  -jobname 'normal' '\expandafter\def\csname s
+a@internal@run\endcsname{1}\input{normal}')...disabled (restricted).
+
+\sa@read=\read2
+runsystem(pdf2svg normal.pdf normal.svg)...disabled (restricted).
+
+
+
+Class standalone Warning: Conversion failed! Please ensure that shell escape
+(standalone)              is enabled (e.g. use '-shell-escape').
+
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/pgf/frontendlayer/tikz
+.sty
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/pgf/utilities/pgfrcs.s
+ty
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfuti
+l-common.tex
+\pgfutil@everybye=\toks17
+\pgfutil@tempdima=\dimen139
+\pgfutil@tempdimb=\dimen140
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfuti
+l-common-lists.tex))
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfuti
+l-latex.def
+\pgfutil@abb=\box48
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfrcs
+.code.tex
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/pgf.revision.tex
+)
+Package: pgfrcs 2020/10/01 v3.1.6a (3.1.6a)
+))
+Package: pgf 2020/10/01 v3.1.6a (3.1.6a)
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/pgf/basiclayer/pgfcore
+.sty
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.
+cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/graphics-def/pdftex.de
+f
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen141
+\Gin@req@width=\dimen142
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/pgf/systemlayer/pgfsys
+.sty
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfs
+ys.code.tex
+Package: pgfsys 2020/10/01 v3.1.6a (3.1.6a)
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfkey
+s.code.tex
+\pgfkeys@pathtoks=\toks18
+\pgfkeys@temptoks=\toks19
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfkey
+sfiltered.code.tex
+\pgfkeys@tmptoks=\toks20
+))
+\pgf@x=\dimen143
+\pgf@y=\dimen144
+\pgf@xa=\dimen145
+\pgf@ya=\dimen146
+\pgf@xb=\dimen147
+\pgf@yb=\dimen148
+\pgf@xc=\dimen149
+\pgf@yc=\dimen150
+\pgf@xd=\dimen151
+\pgf@yd=\dimen152
+\w@pgf@writea=\write3
+\r@pgf@reada=\read3
+\c@pgf@counta=\count186
+\c@pgf@countb=\count187
+\c@pgf@countc=\count188
+\c@pgf@countd=\count189
+\t@pgf@toka=\toks21
+\t@pgf@tokb=\toks22
+\t@pgf@tokc=\toks23
+\pgf@sys@id@count=\count190
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgf.
+cfg
+File: pgf.cfg 2020/10/01 v3.1.6a (3.1.6a)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfs
+ys-pdftex.def
+File: pgfsys-pdftex.def 2020/10/01 v3.1.6a (3.1.6a)
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfs
+ys-common-pdf.def
+File: pgfsys-common-pdf.def 2020/10/01 v3.1.6a (3.1.6a)
+)))
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfs
+yssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+\pgfsyssoftpath@smallbuffer@items=\count191
+\pgfsyssoftpath@bigbuffer@items=\count192
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfs
+ysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+))
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+re.code.tex
+Package: pgfcore 2020/10/01 v3.1.6a (3.1.6a)
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmath.cod
+e.tex
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathcalc
+.code.tex
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathutil
+.code.tex)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathpars
+er.code.tex
+\pgfmath@dimen=\dimen153
+\pgfmath@count=\count193
+\pgfmath@box=\box49
+\pgfmath@toks=\toks24
+\pgfmath@stack@operand=\toks25
+\pgfmath@stack@operation=\toks26
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunc
+tions.code.tex
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunc
+tions.basic.code.tex)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunc
+tions.trigonometric.code.tex)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunc
+tions.random.code.tex)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunc
+tions.comparison.code.tex)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunc
+tions.base.code.tex)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunc
+tions.round.code.tex)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunc
+tions.misc.code.tex)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunc
+tions.integerarithmetics.code.tex)))
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfloa
+t.code.tex
+\c@pgfmathroundto@lastzeros=\count194
+))
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfint.code
+.tex)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+repoints.code.tex
+File: pgfcorepoints.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+\pgf@picminx=\dimen154
+\pgf@picmaxx=\dimen155
+\pgf@picminy=\dimen156
+\pgf@picmaxy=\dimen157
+\pgf@pathminx=\dimen158
+\pgf@pathmaxx=\dimen159
+\pgf@pathminy=\dimen160
+\pgf@pathmaxy=\dimen161
+\pgf@xx=\dimen162
+\pgf@xy=\dimen163
+\pgf@yx=\dimen164
+\pgf@yy=\dimen165
+\pgf@zx=\dimen166
+\pgf@zy=\dimen167
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+repathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+\pgf@path@lastx=\dimen168
+\pgf@path@lasty=\dimen169
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+repathusage.code.tex
+File: pgfcorepathusage.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+\pgf@shorten@end@additional=\dimen170
+\pgf@shorten@start@additional=\dimen171
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+rescopes.code.tex
+File: pgfcorescopes.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+\pgfpic=\box50
+\pgf@hbox=\box51
+\pgf@layerbox@main=\box52
+\pgf@picture@serial@count=\count195
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+regraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+\pgflinewidth=\dimen172
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+retransformations.code.tex
+File: pgfcoretransformations.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+\pgf@pt@x=\dimen173
+\pgf@pt@y=\dimen174
+\pgf@pt@temp=\dimen175
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+requick.code.tex
+File: pgfcorequick.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+reobjects.code.tex
+File: pgfcoreobjects.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+repathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+rearrows.code.tex
+File: pgfcorearrows.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+\pgfarrowsep=\dimen176
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+reshade.code.tex
+File: pgfcoreshade.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+\pgf@max=\dimen177
+\pgf@sys@shading@range@num=\count196
+\pgf@shadingcount=\count197
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+reimage.code.tex
+File: pgfcoreimage.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+reexternal.code.tex
+File: pgfcoreexternal.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+\pgfexternal@startupbox=\box53
+))
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+relayers.code.tex
+File: pgfcorelayers.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+retransparency.code.tex
+File: pgfcoretransparency.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+repatterns.code.tex
+File: pgfcorepatterns.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfco
+rerdf.code.tex
+File: pgfcorerdf.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+)))
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/modules/pgfmodul
+eshapes.code.tex
+File: pgfmoduleshapes.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+\pgfnodeparttextbox=\box54
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/modules/pgfmodul
+eplot.code.tex
+File: pgfmoduleplot.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/pgf/compatibility/pgfc
+omp-version-0-65.sty
+Package: pgfcomp-version-0-65 2020/10/01 v3.1.6a (3.1.6a)
+\pgf@nodesepstart=\dimen178
+\pgf@nodesepend=\dimen179
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/pgf/compatibility/pgfc
+omp-version-1-18.sty
+Package: pgfcomp-version-1-18 2020/10/01 v3.1.6a (3.1.6a)
+))
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/pgf/utilities/pgffor.s
+ty
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/pgf/utilities/pgfkeys.
+sty
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfkey
+s.code.tex))
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmath.cod
+e.tex))
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgffor
+.code.tex
+Package: pgffor 2020/10/01 v3.1.6a (3.1.6a)
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmath.cod
+e.tex)
+\pgffor@iter=\dimen180
+\pgffor@skip=\dimen181
+\pgffor@stack=\toks27
+\pgffor@toks=\toks28
+))
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/ti
+kz/tikz.code.tex
+Package: tikz 2020/10/01 v3.1.6a (3.1.6a)
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/pgflib
+raryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+\pgf@plot@mark@count=\count198
+\pgfplotmarksize=\dimen182
+)
+\tikz@lastx=\dimen183
+\tikz@lasty=\dimen184
+\tikz@lastxsaved=\dimen185
+\tikz@lastysaved=\dimen186
+\tikz@lastmovetox=\dimen187
+\tikz@lastmovetoy=\dimen188
+\tikzleveldistance=\dimen189
+\tikzsiblingdistance=\dimen190
+\tikz@figbox=\box55
+\tikz@figbox@bg=\box56
+\tikz@tempbox=\box57
+\tikz@tempbox@bg=\box58
+\tikztreelevel=\count199
+\tikznumberofchildren=\count266
+\tikznumberofcurrentchild=\count267
+\tikz@fig@count=\count268
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/modules/pgfmodul
+ematrix.code.tex
+File: pgfmodulematrix.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+\pgfmatrixcurrentrow=\count269
+\pgfmatrixcurrentcolumn=\count270
+\pgf@matrix@numberofcolumns=\count271
+)
+\tikz@expandcount=\count272
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/ti
+kz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+)))
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/ti
+kz/libraries/tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/pgflib
+raryarrows.code.tex
+File: pgflibraryarrows.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+\arrowsize=\dimen191
+))
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/ti
+kz/libraries/tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/ti
+kz/libraries/tikzlibraryfit.code.tex
+File: tikzlibraryfit.code.tex 2020/10/01 v3.1.6a (3.1.6a)
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pd
+ftex.def
+File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
+\l__kernel_color_stack_int=\count273
+\l__pdf_internal_box=\box59
+) (./normal.aux)
+\openout1 = `normal.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.m
+kii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count274
+\scratchdimen=\dimen192
+\scratchbox=\box60
+\nofMPsegments=\count275
+\nofMParguments=\count276
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count277
+\MPscratchDim=\dimen193
+\MPnumerator=\count278
+\makeMPintoPDFobject=\count279
+\everyMPtoPDFconversion=\toks30
+)
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-
+base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/home/bertrand/.local/texlive/2020/texmf-dist/tex/latex/latexconfig/epstopdf-s
+ys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 35.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 35.
+ [1
+
+{/home/bertrand/.local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.ma
+p}] (./normal.aux) ) 
+Here is how much of TeX's memory you used:
+ 12866 strings out of 479497
+ 272862 string characters out of 5866972
+ 507440 words of memory out of 5000000
+ 29657 multiletter control sequences out of 15000+600000
+ 535088 words of font info for 29 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 108i,7n,111p,410b,640s stack positions out of 5000i,500n,10000p,200000b,80000s
+</home/bertrand/.local/texlive/2020/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi7.pfb></home/bertrand/.local/texlive/2020/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on normal.pdf (1 page, 16588 bytes).
+PDF statistics:
+ 19 PDF objects out of 1000 (max. 8388607)
+ 13 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+
