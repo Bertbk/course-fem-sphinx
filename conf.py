@@ -94,7 +94,7 @@ html_js_files = [
     'js/jacobian/main.js',
     'js/loc2glob/main.js',
 ]
-
+proof_latex_notheorem = ["proof"]
 
 # Additional stuff for the LaTeX preamble.
 latex_engine = 'lualatex'
