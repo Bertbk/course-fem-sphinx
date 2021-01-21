@@ -33,7 +33,7 @@ Quitte à renuméroter, le vecteur :math:`U` de degrés de liberté se réécrit
 et le système linéaire :math:`AU = b`  devient :
 
 .. math:: 
-  AU = b \iff \left(
+  AU = B \iff \left(
   \begin{array}{c c}
     A_{I,I}  & A_{I, D}\\
     A_{D, I} & A_{D,D}
@@ -45,8 +45,8 @@ et le système linéaire :math:`AU = b`  devient :
     \end{array}
   \right) =  \left(
     \begin{array}{c}
-      b_I\\
-      b_D
+      B_I\\
+      B_D
     \end{array}
   \right)
 
@@ -69,12 +69,12 @@ Les degrés de liberté :math:`u_D` sont en réalité fixés à 0 du fait de la 
   \right)  = 
   \left(
     \begin{array}{c}
-      b_I\\
+      B_I\\
       0
     \end{array}
   \right)
 
-Informatiquement, nous devons donc rendre les lignes et colonnes associées aux degrés de liberté de Dirichlet, nulles, sauf sur la diagonale avec la valeur 1. Cette opération est souvent effectuée après l'assemblage de la matrice.
+Informatiquement, nous devons donc rendre les lignes et colonnes associées aux degrés de liberté de Dirichlet, nulles, sauf sur la diagonale avec la valeur 1. Cette opération peut être effectuée après l'assemblage de la matrice ou lors de l'algorithme directement.
 
 .. proof:remark::
 
@@ -86,7 +86,7 @@ Informatiquement, nous devons donc rendre les lignes et colonnes associées aux 
   Dans le cas de condition de Dirichlet homogène, ce système ce simplifie :
 
   .. math:: 
-    AU = b \iff 
+    AU = B \iff 
     \left(
       \begin{array}{c c}
         A_{I,I}  & 0\\
@@ -101,12 +101,12 @@ Informatiquement, nous devons donc rendre les lignes et colonnes associées aux 
     \right)  = 
     \left(
       \begin{array}{c}
-        b_I\\
+        B_I\\
         0
       \end{array}
     \right),
 
-  ou encore, plus simplement : :math:`A_{I,I} u_I = b_I`.
+  ou encore, plus simplement : :math:`A_{I,I} U_I = B_I`.
 
 
 Condition hétérogène
@@ -128,11 +128,11 @@ Nous considérons maintenant le cas d'une condition de Dirichlet non homogène, 
   \right.
 
 
-Nous pouvons introduire l'espace suivant
+Nous pouvons introduire l'ensemble suivant
 
 .. math:: \Hog = \enstq{u\in \Ho}{ u|_{\GammaD} = \gD},
 
-mais ce **n'est pas un espace vectoriel** ! Pour remédier à ce problème, nous nous ramenons au cas d'une condition de Dirichlet homogène en introduisant un *relèvement* :math:`u_g` de :math:`g` : une fonction de :math:`\Ho` telle que :math:`\gamma_{\Gamma_D}u_g = g`. Nous ne nous préoccuperons pas de savoir si une telle fonction existe et supposons que tel est le cas [#]_. Le problème devient alors de chercher :math:`\ut = u-u_g` satisfaisant :
+mais ce **n'est pas un espace vectoriel** ! Pour remédier à ce problème, nous nous ramenons au cas d'une condition de Dirichlet homogène en introduisant un *relèvement* :math:`u_g` de :math:`g` : une fonction de :math:`\Ho` telle que :math:`u_g|_{\GammaD} = g`. Nous ne nous préoccuperons pas de savoir si une telle fonction existe et supposons que tel est le cas [#]_. Le problème devient alors de chercher :math:`\ut = u-u_g` satisfaisant :
 
 .. math:: 
   
@@ -165,7 +165,7 @@ En éléments finis :math:`\Pb^1`, un relèvement naturel est la fonction :math:
     \end{array}
   \right.
 
-Cette fonction n'est pas un relèvement de :math:`g` puisqu'elle ne coïncide avec :math:`g` que sur les sommets, mais pas nécessairement entre les sommets. Toutefois, au niveau discret, elle remplit ce rôle : c'est **un relèvement de l'interpolée** :math:`g_h = \Pi_h g` de :math:`g` sur l'espace éléments finis (la différence est subtile mais importante).
+Cette fonction n'est pas un relèvement de :math:`g` puisqu'elle ne coïncide avec :math:`g` que sur les sommets, mais pas nécessairement entre les sommets. Toutefois, au niveau discret, elle remplit ce rôle : c'est **un relèvement de l'interpolée** :math:`g_h = \Pi_h g` de :math:`g` sur l'espace éléments finis (la différence est subtile mais importante), où :math:`\Pi_h : \Ho \to \Vh` est un opérateur d'interpolation.
 
 En pratique, la matrice est alors décomposée ainsi :
 
@@ -185,7 +185,7 @@ En pratique, la matrice est alors décomposée ainsi :
     \end{array}
   \right) = \left(
     \begin{array}{c}
-      b_I\\
+      B_I\\
       g_h
     \end{array}
   \right).
@@ -208,7 +208,7 @@ La matrice obtenue est non symétrique, ce qui peut poser des problèmes (par ex
     \end{array}
   \right)  =   \left(
     \begin{array}{c}
-      b_I - A_{I,D} g_h\\
+      B_I - A_{I,D} g_h\\
       g_h
     \end{array}
   \right).
