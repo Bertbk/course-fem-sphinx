@@ -23,7 +23,9 @@ Chaque intégrale sur :math:`\Omega` peut être décomposée comme une somme sur
     \Bh_{I} &= \sum_{p=0}^{\Nt-1}\int_{\tri_p}f(x)\mphi_I(x)\diff x.
   \end{aligned}
 
-Pour deux sommets :math:`\vertice_I` et :math:`\vertice_J` n'appartenant pas un même triangle, alors :math:`\supp(\mphi_I)\cap\supp(\mphi_J) =\emptyset` et donc le coefficient :math:`A_{I,J}` est nul ! En moyenne de manière empirique, un nœud (ou sommet) est connecté au maximum à 6 à 8 autres nœuds (en 2D). Une conséquence directe est que **la matrice** :math:`A` **est creuse**, c'est-à-dire qu'un nombre important de ses coefficients sont nuls. Une stratégie de stockage creux est donc à utiliser, ce que nous verrons plus loin. Une manière pratique est d'utiliser le format `COO <https://en.wikipedia.org/wiki/Sparse_matrix#Coordinate_list_(COO)>`_ pour l'assemblage puis le format `CSR <https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format))>`_ pour l'algèbre linéaire et la résolution du système.
+Soit deux sommets :math:`\vertice_I` et :math:`\vertice_J` n'appartenant pas un même triangle, alors :math:`\supp(\mphi_I)\cap\supp(\mphi_J) =\emptyset`. Autrement dit, :math:`mphi_I\mphi_J` est toujours nul et donc le coefficient :math:`A_{I,J}` est nul ! Vue autrement, si deux sommets :math:`\vertice_I` et :math:`\vertice_J` ne sont pas connectés par une arête, alors :math:`A_{I,J=0}`.
+
+Les coefficients de :math:`A` sont donc majoritairement nuls car deux sommets pris au hasard (dans le million d'un maillage) ne sont pas connectés. En moyenne de manière empirique, un nœud (ou sommet) est connecté au maximum à 6 à 8 autres nœuds (en 2D). Une conséquence directe est que **la matrice** :math:`A` **est creuse**, c'est-à-dire qu'un nombre important de ses coefficients sont nuls. Une stratégie de stockage creux est donc à utiliser, ce que nous verrons plus loin. Une manière pratique est d'utiliser le format `COO <https://en.wikipedia.org/wiki/Sparse_matrix#Coordinate_list_(COO)>`_ pour l'assemblage puis le format `CSR <https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format))>`_ pour l'algèbre linéaire et la résolution du système.
 
 
 
@@ -82,26 +84,36 @@ où :math:`\ee_I` est le vecteur de la base canonique de :math:`\Rb^{\Ns}`.  Nou
      &=  \sum_{p=0}^{\Nt-1}\sum_{I=0}^{\Ns-1}\sum_{J=0}^{\Ns-1}a_{p}(\mphi_J,\mphi_I) \ee_I^T\ee_J\\
   \end{aligned}
 
-Nous remarquons maintenant que :math:`a_{p}(\mphi_J,\mphi_I)` est nul dès lors que :math:`\vertice_I` ou :math:`\vertice_J` ne sont pas des sommets de :math:`\tri_p`. Finalement, la somme sur tous les sommets du maillage se réduit alors une somme sur les 3 sommets du triangle :math:`\tri_p` considéré. 
+Nous remarquons maintenant que :math:`a_{p}(\mphi_J,\mphi_I)` est nul dès lors que :math:`\vertice_I` ou :math:`\vertice_J` ne sont pas des sommets de :math:`\tri_p` (car :math:`\mphi_I\mphi_J = 0` sur :math:`\tri_p`). Finalement, la somme sur tous les sommets du maillage se réduit à une somme sur les 3 sommets du triangle :math:`\tri_p` considéré. 
 
-Nous comprenons que nous devons maintenant travailler localement dans chaque triangle. Pour cela, nous avons besoin d'introduire une **numérotation locale** de chaque sommet une fonction :math:`\locToGlob` permettant de basculer du local vers le global une fonction telle que, pour :math:`p=0,\ldots,\Nt-1` et :math:`i=0,1,2` : 
+Nous comprenons que nous devons maintenant travailler **localement** dans chaque triangle. Pour cela, nous avons besoin d'introduire une **numérotation locale** de chaque sommet une fonction :math:`\locToGlob` (*Local To Global*)permettant de basculer du local vers le global une fonction telle que, pour :math:`p=0,\ldots,\Nt-1` et :math:`i=0,1,2` : 
 
 .. math:: \locToGlob(p,i) = I \iff \vertice_i^p = \vertice_I
 
-Ainsi, pour un triangle  :math:`\tri_p`, ses sommets sont numérotés :math:`[\vertice_{0}^{p},\vertice_{1}^{p},\vertice_{2}^{p}]` en numérotation locale ou :math:`[\vertice_{\locToGlob(p,0)},\vertice_{\locToGlob(p,1)},\vertice_{\locToGlob(p,2)}]` en numérotation globale, comme le montre la figure \ref{fig:locglob}. Nous distinguerons la numérotation globale par des lettres capitales (:math:`I`, :math:`J`) et la numérotation locale par des minuscules (:math:`i`, :math:`j`). Nous introduisons aussi les fonctions de forme locales :
+Ainsi, pour un triangle  :math:`\tri_p`, ses sommets sont numérotés :math:`[\vertice_{0}^{p},\vertice_{1}^{p},\vertice_{2}^{p}]` en numérotation locale ou :math:`[\vertice_{\locToGlob(p,0)},\vertice_{\locToGlob(p,1)},\vertice_{\locToGlob(p,2)}]` en numérotation globale, comme le montre la figure :numref:`{number} <fig-loc2glob>`. Nous distinguerons la numérotation globale par des lettres capitales (:math:`I`, :math:`J`) et la numérotation locale par des minuscules (:math:`i`, :math:`j`). Nous introduisons aussi les fonctions de forme locales :
 
 .. math:: \mphi_i^p = \mphi_{\locToGlob(p,i)}|_{\tri_p}.
 
+.. only:: html
 
-.. only:: latex
+  :ref:`Une application interactive est également proposée <app-loc2glob>`.
 
-  .. figure:: /_static/img/loc2glob.png
-    :width: 50 %
-    :label: app-loc2glob
-  
-    Numérotation locale et globale
 
-Une illustration de cette numérotation est présentée sur :numref:`la Figure {numref} <app-loc2glob>`. Utilisons ces nouvelles notations dans l'équation :eq:`eq-assemble_tmp`, en ramenant la somme sur les sommets à uniquement les sommets du triangle considéré :
+.. figure:: /_static/img/loc2glob.png
+  :width: 50 %
+  :label: fig-loc2glob
+
+  Numérotation locale et globale
+
+
+.. only:: html
+
+  .. container:: app-local-to-global
+
+
+    **Application interactive : Cliquez sur un triangle** pour faire apparaitre la **numérotation locale** des sommets du triangle. Recliquez dessus pour revenir en **numérotation globale**
+
+Utilisons ces nouvelles notations dans l'équation :eq:`eq-assemble_tmp`, en ramenant la somme sur les sommets à uniquement les sommets du triangle considéré :
 
 .. math:: A = \sum_{p=0}^{\Nt-1}\sum_{i=0}^{2}\sum_{j=0}^{2}a_{p}(\mphi_j^p,\mphi_i^p) \ee_{\locToGlob(p,i)}^T\ee_{\locToGlob(p,j)}
 
@@ -136,12 +148,3 @@ L'algorithme d'assemblage est alors complet ! Une version pseudo-code est prése
 .. proof:remark::
   
   Cet algorithme n'est pas encore utilisable, nous devons calculer la valeur de :math:`a_p(\mphi_j^p,\mphi_i^p)` et :math:`\ell_p(\mphi_i^p)`. De plus, il manque encore les conditions de Dirichlet.
-
-.. only:: html
-
-  .. _app-loc2glob:
-
-  .. container:: app-local-to-global
-
-
-    **Cliquez sur un triangle** pour faire apparaitre la **numérotation locale** des sommets du triangle. Recliquez dessus pour revenir en **numérotation globale**
