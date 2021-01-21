@@ -35,9 +35,10 @@ où les formes bilinéaires :math:`a(\cdot,\cdot)` et linéaires :math:`\ell(\cd
       v & \longmapsto & \displaystyle \ell(v) =\int_{\Omega}fv %+  \int_{\GammaN} \gN v
   \end{array}  
 
-Le principe de la méthode est d'approcher l'espace :math:`\Ho` par :math:`\Vh`. Cette méthode est appelé *Méthode de Galerkin* ou *Approximation interne*. Pour cela, modifions, dans la formulation faible, :math:`\Ho` par :math:`\Vh`:
+Le principe de la méthode est d'approcher l'espace :math:`\Ho` par :math:`\Vh`. Cette méthode est appelé **Méthode de Galerkin** ou **Approximation interne**. Pour cela, modifions, dans la formulation faible, :math:`\Ho` par :math:`\Vh`:
 
 .. math::
+  :label: eq-fvsimple
 
   \left\{
   \begin{array}{l}
@@ -46,12 +47,12 @@ Le principe de la méthode est d'approcher l'espace :math:`\Ho` par :math:`\Vh`.
   \end{array}
   \right.
 
-Pourquoi diable remplacer :math:`\Ho` par :math:`\Vh` ? La réponse juste après !
+Si :math:`\Vh\in\Ho` est "proche" de :math:`\Ho` alors on est en droit d'espérer que :math:`\uh` soit proche de :math:`u`. C'est le cas comme nous le montrons plus tard. En attendant, supposons que ça soit une bonne idée et regardons ce que cela nous apporte.
 
 Système linéaire
 ----------------
 
-L'espace :math:`\Vh` est de dimension finie et dispose d'une base : les fonctions de forme :math:`(\mphi_I)_{I=0,\ldots,\Ns-1}`. Autrement dit, la formulation faible discrétisée est équivalente à
+L'espace :math:`\Vh` est de dimension finie et dispose d'une **base finie** : les fonctions de forme :math:`(\mphi_I)_{I=0,\ldots,\Ns-1}`. Autrement dit, comme :math:`a(\cdot,\cdot)` est bilinéaire et :math:`\ell(\cdot)` est linéaire (cela se vérifie aisément), la formulation faible discrétisée :eq:`eq-fvsimple` est équivalente à
 
 .. math::
 
@@ -62,13 +63,13 @@ L'espace :math:`\Vh` est de dimension finie et dispose d'une base : les fonction
   \end{array}
   \right.
 
-D'un autre côté, nous pouvons aussi écrire :math:`\uh` dans la base des fonctions de forme :
+Nous pouvons aussi décomposer :math:`\uh` dans la base des fonctions de forme :
 
 .. math::
 
   \uh = \sum_{J=0}^{\Ns-1} u_J \mphi_J,
 
-avec :math:`u_J = \uh(\vertice_J)` et la formulation faible se réécrit alors 
+avec :math:`u_J = \uh(\vertice_J)`. La formulation faible se réécrit alors 
 
 .. math::
 
@@ -79,13 +80,13 @@ avec :math:`u_J = \uh(\vertice_J)` et la formulation faible se réécrit alors
   \end{array}
   \right.
 
-Comme :math:`a(\cdot,\cdot)` est bilinéaire (cela se vérifie aisément), nous avons
+Comme :math:`a(\cdot,\cdot)` est bilinéaire, nous avons
 
 .. math::
 
   a\left(\sum_{J=0}^{\Ns-1} u_J \mphi_J,\mphi_I\right) = \sum_{J=0}^{\Ns-1}  u_Ja\left( \mphi_J,\mphi_I\right).
 
-Notons maintenant :math:`\Uh = [u_0,\ldots,u_{\Ns-1}]^T` les coefficients recherchés, alors ce problème peut se réécrire tout simplement sous la forme d'un système linéaire :
+Stockons maintenant les coefficients recherchés dans le vecteur :math:`\Uh = [u_0,\ldots,u_{\Ns-1}]^T`. Ce problème peut alors se réécrire tout simplement sous la forme d'un système linéaire :
 
 .. math:: \Ahh\Uh = \Bh,
   :label: eq-systemFEM
@@ -100,4 +101,8 @@ où nous avons
     \Bh &=(\Bh_I)_{ 0\leq I\leq \Ns-1} = (\ell(\mphi_I))_{0\leq I\leq \Ns-1}
   \end{aligned}\right.
 
-Ce système linéaire est de dimension :math:`\Ns`, le nombre de sommets du maillage. Dans la suite et pour simplifier, nous nous affranchirons de l'indice :math:`h` sur les termes du système linéaire :eq:`eq-systemFEM`.
+Ce système linéaire :eq:`eq-systemFEM` est de dimension :math:`\Ns`, le nombre de sommets du maillage.
+
+.. proof:remark::
+
+  Il en faut pas oublier que la matrice :math:`\Ahh` et le vecteur :math:`\Bh` dépendent du maillage considéré ! Il en va évidemment de même pour le vecteur d'iconnues :math:`\Uh`.
