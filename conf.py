@@ -59,6 +59,8 @@ numfig = True
 
 html_theme = "furo"
 
+html_title = "Maillage et Éléments Finis"
+
 proof_theorem_types = {
    "algorithm": "Algorithm",
    "conjecture": "Conjecture",
