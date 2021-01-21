@@ -5,9 +5,9 @@ Calcul des Matrices Élémentaires
 Matrices de Masse et de Rigidité
 ---------------------------------
 
-La matrice :math:`\Ahh` peut être décomposée en deux matrices : la masse et la rigidité :
+La matrice :math:`A` peut être décomposée en deux matrices : la masse et la rigidité :
 
-.. math:: \Ahh = D + c M,
+.. math:: A = D + c M,
 
 - :math:`M` : la matrice de masse (ou de volume), de coefficient
 
@@ -15,7 +15,9 @@ La matrice :math:`\Ahh` peut être décomposée en deux matrices : la masse et l
 
 - :math:`D` : la matrice de rigidité, de coefficient
 
-  .. math:: D(I,J)=  \int_{\omega}\nabla\mphi_J\nabla\mphi_I.
+  .. math:: D_{I,J}=  \int_{\omega}\nabla\mphi_J\nabla\mphi_I.
+
+.. proof:remark::
 
   Dans la littérature, cette matrice est souvent notée :math:`K`, mais nous l'appelons :math:`D` pour éviter toute confusion avec les triangles, nommés :math:`K` également.
 
@@ -23,54 +25,51 @@ La matrice :math:`\Ahh` peut être décomposée en deux matrices : la masse et l
 
   La matrice de masse :math:`M` représente l'opérateur Identité dans la base des fonctions de forme (qui n'est pas orthogonale ni normée !). Pour s'en convaincre, il faut regarder "l'équation" :math:`u=f` (ou :math:`Id. u = f`) et appliquer la méthode des éléments finis pour obenir la "formulation faible"
 
-  .. math::  \forall \vh, \quad \int_{\Omega} \uh\vh = \int_{\Omega}f\vh,
+  .. math::  \forall \vh, \quad \int_{\Omega} U\vh = \int_{\Omega}f\vh,
 
-  qui aboutit au système linéaire suivant : :math:`M\Uh = \Bh`. L'opérateur Identité, appliqué à :math:`u`, est bien discrétisé en :math:`M`.
+  qui aboutit au système linéaire suivant : :math:`MU = B`. L'opérateur Identité, appliqué à :math:`u`, est bien discrétisé en :math:`M`.
 
-Les **contributions élémentaires**, c'est à dire les quantités :math:`a_p(\mphi_j^p,\mphi_i^p)` et :math:`\ell_{p}(\mphi_i^p)` peuvent elles aussi être décomposées en deux parties. Pour rappel, les sommets d'un triangle :math:`\tri_p` seront notés :math:`[\vertice_{0}^{p}, \vertice_{1}^{p},\vertice_{2}^{p}]` et ordonnés dans le sens trigonométrique. Nous noterons :math:`\vertice_i^p=(x_i^p, y_i^p)` et :math:`\mphi_j^p` une fonction de forme du triangle :math:`\tri_p` sans la supposer linéaire. Nous notons :math:`\Me{p}` et :math:`\De{p}` les matrices de masse et de rigidité élémentaire du triangle :math:`\tri_p`, de coefficient respectif :math:`\Me{p}(i,j)` et :math:`\De{p}(i,j)` donné par
+Les **contributions élémentaires**, c'est à dire les quantités :math:`a_p(\mphi_j^p,\mphi_i^p)` et :math:`\ell_{p}(\mphi_i^p)`, peuvent elles aussi être décomposées en deux parties. Pour rappel, les sommets d'un triangle :math:`\tri_p` seront notés :math:`[\vertice_{0}^{p}, \vertice_{1}^{p},\vertice_{2}^{p}]` et ordonnés dans le sens trigonométrique. Nous noterons :math:`\vertice_i^p=(x_i^p, y_i^p)` un sommet de :math:`\tri_p` et :math:`\mphi_i^p` la fonction de forme locale associée. Nous notons :math:`\Me{p}` et :math:`\De{p}` les matrices de masse et de rigidité élémentaire du triangle :math:`\tri_p`, de coefficient respectif :math:`(\Me{p})_{i,j}` et :math:`(\De{p})_{i,j}` donnés par
 
 .. math:: 
 
   \begin{aligned}
-    \Me{p}(i,j) &= \int_{\tri_p}\mphi_j^p\mphi_i^p\\
-    \De{p}(i,j) &=\int_{\tri_p}\nabla\mphi_j^p\nabla\mphi_i^p.
+    (\Me{p})_{i,j} &= \int_{\tri_p}\mphi_j^p\mphi_i^p\\
+    (\De{p})_{i,j} &=\int_{\tri_p}\nabla\mphi_j^p\cdot\nabla\mphi_i^p.
   \end{aligned}
 
 Matrice de masse élémentaire
 ----------------------------
 
-Nous nous focalisons sur la matrice de masse, le principe est similaire pour la matrice :math:`K` et est détaillé juste après.
+Nous nous focalisons sur la matrice de masse, le principe est similaire pour la matrice :math:`D` et est détaillé juste après.
 
-Pour construire la matrice :math:`M`, nous avons vu qu'il était préférable de parcourir les triangles plutôt que les sommets, autrement dit, plutôt que de calculer :math:`M_{I,J}` directement, mieux vaut calculer, pour tout triangle :math:`p`, la **contribution élémentaire** :math:`\Me{p}(i,j)` pour :math:`i,j = 1,2,3`, définie par :
+Pour construire la matrice :math:`M`, nous avons vu qu'il était préférable de parcourir les triangles plutôt que les sommets, autrement dit, plutôt que de calculer :math:`M_{I,J}` directement, mieux vaut calculer, pour tout triangle :math:`p`, la **contribution élémentaire** :math:`(\Me{p})_{i,j}` pour :math:`i,j = 1,2,3`, définie par :
 
-.. math:: \Me{p}(i,j)= \int_{\tri_p} \mphi_j^p(\xx)\ \mphi_i^p(\xx)\diff\xx.
+.. math:: (\Me{p})_{i,j}= \int_{\tri_p} \mphi_j^p(\xx)\ \mphi_i^p(\xx)\diff\xx.
   :label: eq-matelem
 
-Chaque contribution élémentaire :math:`\Me{p}(i,j)` est ensuite ajoutée à :math:`M_{I,J}`, avec :math:`I=\locToGlob(p,i)` et :math:`J=\locToGlob[p][j]`. 
+Chaque contribution élémentaire :math:`(\Me{p})_{i,j}` est ensuite ajoutée à :math:`M_{I,J}`, avec :math:`I=\locToGlob(p,i)` et :math:`J=\locToGlob(p,j)`. 
   
-.. proof:remark::
 
-  Les coefficients :math:`\Me{p}(i,j)`, pour :math:`i,j=1,2,3` peuvent être regroupés pour former la **matrice de masse élémentaire** :math:`\Me{p}` de taille :math:`3\times 3` et du triangle :math:`\tri_p`.
-  
 
 Triangle de référence
 +++++++++++++++++++++
 
   
-Pour calculer la quantité élémentaire :eq:`eq:matelem`, plaçons nous tout d'abord dans un triangle "simple" :math:`\trih`, appelé **triangle de référence**. Celui-ci est souvent choisi comme étant le triangle rectangle de sommets :math:`\verticeh_{0}=(0,0)`, :math:`\verticeh_{1}=(1,0)` et :math:`\verticeh_{2}=(0,1)`, ordonnés dans le sens trigonométrique. Pour différencier ce triangle d'un triangle du maillage, nous lui adjoignons un repère :math:`(\xi,\eta)`   dit **repère paramétrique**.
+Pour calculer la quantité élémentaire :eq:`eq-matelem`, plaçons nous tout d'abord dans un triangle "simple" :math:`\trih`, appelé **triangle de référence**. Celui-ci est souvent choisi comme étant le triangle rectangle de sommets :math:`\verticeh_{0}=(0,0)`, :math:`\verticeh_{1}=(1,0)` et :math:`\verticeh_{2}=(0,1)`, ordonnés dans le sens trigonométrique. Pour différencier ce triangle d'un triangle du maillage, nous lui adjoignons un repère :math:`(\xi,\eta)`   dit **repère paramétrique**.
   
 .. 
   %TODO:  {{< figure src="../triangle_ref.svg" title="Triangle de référence :math:`\trih` et son repère paramétrique :math:`(\xi,\eta)`." numbered="true" >}}
   
-Plutôt que d'indicer par :math:`p`, nous notons :math:`\mphih_i \in \Pb^1(\trih)` les trois fonctions de forme associées aux sommets :math:`\verticeh_i`, pour :math:`i=0,1,2`, définies par :math:`\mphih_i(\verticeh_j) = \delta_{ij}`. Ces fonctions :math:`\mphih_i` étant des polynômes de degré un, nous pouvons même les calculer analytiquement :
+Nous notons :math:`\mphih_i \in \Pb^1(\trih)` les trois fonctions de forme associées aux sommets :math:`\verticeh_i`, pour :math:`i=0,1,2`, définies par :math:`\mphih_i(\verticeh_j) = \delta_{ij}`. Ces fonctions :math:`\mphih_i` étant des polynômes de degré un, nous pouvons les calculer analytiquement :
 
 .. math:: 
 
   \left\{
     \begin{array}{l}
-      \mphih[0](\xi,\eta) = 1-\xi-\eta\\
-      \mphih[1](\xi,\eta) = \xi\\
-      \mphih[2](\xi,\eta) = \eta\\
+      \mphih_0(\xi,\eta) = 1-\xi-\eta\\
+      \mphih_1(\xi,\eta) = \xi\\
+      \mphih_2(\xi,\eta) = \eta\\
     \end{array}
   \right.
 
@@ -80,7 +79,7 @@ Plutôt que d'indicer par :math:`p`, nous notons :math:`\mphih_i \in \Pb^1(\trih
 
   .. math:: 
   
-    \Meh_{i,j} = \int_{\trih} \mphih_j(\xi)\mphih_j(\eta) \diff(\xi,\eta),
+    \Meh_{i,j} = \int_{\trih} \mphih_j\mphih_j \diff(\xi,\eta),
 
   est donnée par
 
@@ -111,16 +110,16 @@ Plutôt que d'indicer par :math:`p`, nous notons :math:`\mphih_i \in \Pb^1(\trih
 Triangle quelconque
 +++++++++++++++++++
 
-**Changement de coordonnées.** Soit un triangle :math:`\tri_p` du maillage et supposons que nous disposions d'une transformation bijective et linéaire :math:`\trihToTri{p}` permetteant de transformer le triangle de référence :math:`\trih` en :math:`\tri_p` avec en plus :math:`\trihToTri{p}(\verticeh_i) = \vertice_i^p`. Cette fonction :math:`\trihToTri{p}` transforme les  **coordonnées paramétriques** :math:`(\xi,\eta)` en **coordonnées physiques** :math:`(x,y)` avec :math:`(x,y)=\trihToTri{p}(\xi,\eta)\in\tri_p`, et conserve "l'ordre des sommets".
+**Changement de coordonnées.** Soit un triangle :math:`\tri_p` du maillage et supposons que nous disposions d'une transformation bijective et linéaire :math:`\trihToTri{p}` permetteant de transformer le triangle de référence :math:`\trih` en :math:`\tri_p` avec en plus :math:`\trihToTri{p}(\verticeh_i) = \vertice_i^p` (conservation de l'ordre des sommets). Cette fonction :math:`\trihToTri{p}` transforme les  **coordonnées paramétriques** :math:`(\xi,\eta)` en **coordonnées physiques** :math:`(x,y)` avec :math:`(x,y)=\trihToTri{p}(\xi,\eta)\in\tri_p`, et conserve "l'ordre des sommets".
 
 .. 
   % TODO: {{< figure src="../ref.svg" title="Passage du triangle de référence :math:`\trih` vers un triangle :math:`\tri_p` par la transformation :math:`\trihToTri{p}`." numbered="true" >}}
 
-Nous avons :math:`\mphi_j^p(x,y) = \mphi_j^p(\trihToTri{p}(\xi,\eta))` avec :math:`\mphi_j^p\circ\trihToTri{p}\in\Pb^1(\trih)` et :math:`\mphi_j^p\circ\trihToTri{p}(\verticeh_i) = \delta_{ij}`. Par unicité, nous avons :math:`\mphi_j^p\circ\trihToTri{p} = \mphih_j`.
+Nous avons :math:`\mphi_j^p(x,y) = \mphi_j^p(\trihToTri{p}(\xi,\eta))` avec :math:`\mphi_j^p\circ\trihToTri{p}\in\Pb^1(\trih)` et :math:`\mphi_j^p\circ\trihToTri{p}(\verticeh_i) = \delta_{ij}`, soit exactement les mêmes propriétés que les :math:`\mphih_i`. Par unicité, nous avons :math:`\mphi_j^p\circ\trihToTri{p} = \mphih_j`.
 
-En notant :math:`\JK{p}` la matrice Jacobienne de :math:`\trihToTri{p}`, alors la quantité :math:`\Me{p}(i,j)` peut alors s'écrire, par changement de variables :
+En notant :math:`\JK{p}` la matrice Jacobienne de :math:`\trihToTri{p}`, alors la quantité :math:`(\Me{p})_{i,j}` peut alors s'écrire, par changement de variables :
 
-.. math::  \Me{p}(i,j) = \displaystyle\int_{\tri_p}\mphi_j^p(x,y)\mphi_i^p(x,y) \diff(x,y)
+.. math::  (\Me{p})_{i,j} = \displaystyle\int_{\tri_p}\mphi_j^p(x,y)\mphi_i^p(x,y) \diff(x,y)
       =\displaystyle \abs{\det(\JK{p})}\underbrace{\int_{\trih}\mphih_j(\xi,\eta)\mphih_i(\xi,\eta)\diff(\xi,\eta)}_{\text{Déjà calculé !}}
 
 Ainsi, pour calculer la matrice élémentaire d'un triangle :math:`\tri_p` quelconque, nous n'avons besoin que du déterminant de la Jacobienne : :math:`\det(\JK{p})`.
@@ -193,7 +192,7 @@ ce qui implique que le déterminant est non nul puisque le triangle n'est pas d�
 
 .. proof:lemma::
 
-  La matrice de masse élémentaire :math:`\Me{p} = (\Me{p}(i,j))_{0\leq i,j\leq 2}` du triangle :math:`\tri_p` a pour expression
+  La matrice de masse élémentaire :math:`\Me{p} = ((\Me{p})_{i,j})_{0\leq i,j\leq 2}` du triangle :math:`\tri_p` a pour expression
 
   .. math:: \Me{p} =   \frac{\abs{\tri_p}}{12}
     \left(
@@ -210,7 +209,7 @@ Matrice de rigidité élémentaire
 
 Nous appliquons la même procédure pour la matrice de rigidité :math:`D`, autrement dit, nous calculons les matrices de rigidité élémentaire :math:`\De{p}` définies par
 
-.. math:: \De{p}(i,j) = \int_{\tri_p}\nabla \mphi_j^p(x,y)\cdot \nabla\mphi_i^p(x,y)\diff(x,y).
+.. math:: (\De{p})_{i,j} = \int_{\tri_p}\nabla \mphi_j^p(x,y)\cdot \nabla\mphi_i^p(x,y)\diff(x,y).
 
 
 Triangle de référence
@@ -239,20 +238,20 @@ Triangle de référence
 
   .. math:: 
 
-    \nabla_{\xi,\eta}\mphih[0] =
+    \nabla_{\xi,\eta}\mphih_0 =
     \begin{pmatrix}
         -1\\
         -1
       \end{pmatrix}
     ,
     \quad
-    \nabla_{\xi,\eta}\mphih[1] =
+    \nabla_{\xi,\eta}\mphih_1 =
       \begin{pmatrix}
         1\\
         0
       \end{pmatrix},
     \quad
-    \nabla_{\xi,\eta}\mphih[2] =
+    \nabla_{\xi,\eta}\mphih_2 =
       \begin{pmatrix}
         0\\
         1
@@ -263,24 +262,24 @@ Triangle de référence
   .. math:: 
 
     \begin{aligned}
-    \hat{D}_{1,1} &=
-      \int_{\trih}\nabla\mphih_1\cdot\nabla\mphih_1 \diff (\xi,\eta) =
+    \hat{D}_{0,0} &=
+      \int_{\trih}\nabla\mphih_0\cdot\nabla\mphih_0 \diff (\xi,\eta) =
       \int_{\trih} (-1,-1)\begin{pmatrix}-1\\ -1\end{pmatrix}\diff (\xi,\eta) =
       2 \int_{\trih} \diff(\xi,\eta) &&= 1\\
-    \hat{D}_{2,2} &=
-      \int_{\trih}\nabla\mphih_2\cdot\nabla\mphih_2 \diff (\xi,\eta) =
+    \hat{D}_{1,1} &=
+      \int_{\trih}\nabla\mphih_1\cdot\nabla\mphih_1 \diff (\xi,\eta) =
       \int_{\trih} (1,0)\begin{pmatrix}1\\ 0\end{pmatrix} \diff (\xi,\eta) =
         \int_{\trih} \diff(\xi,\eta) &&= \frac{1}{2} =\hat{D}_{3,3}\\
-    \hat{D}_{1,2} &=
-      \int_{\trih}\nabla\mphih_1\cdot\nabla\mphih_2 \diff (\xi,\eta) =
+    \hat{D}_{0,1} &=
+      \int_{\trih}\nabla\mphih_0\cdot\nabla\mphih_1 \diff (\xi,\eta) =
       \int_{\trih} (-1,-1)\begin{pmatrix}1\\ 0\end{pmatrix} \diff (\xi,\eta) =
         -\int_{\trih} \diff(\xi,\eta) &&= -\frac{1}{2}\\
-    \hat{D}_{1,3} &=
-      \int_{\trih}\nabla\mphih_1\cdot\nabla\mphih_3 \diff (\xi,\eta) =
+    \hat{D}_{0,2} &=
+      \int_{\trih}\nabla\mphih_0\cdot\nabla\mphih_2 \diff (\xi,\eta) =
       \int_{\trih} (-1,-1)\begin{pmatrix}0\\ 1\end{pmatrix} \diff (\xi,\eta) =
         -\int_{\trih} \diff(\xi,\eta)&& = -\frac{1}{2}\\
-    \hat{D}_{2,3} &=
-      \int_{\trih}\nabla\mphih_2\cdot\nabla\mphih_3 \diff (\xi,\eta) =
+    \hat{D}_{1,2} &=
+      \int_{\trih}\nabla\mphih_1\cdot\nabla\mphih_2 \diff (\xi,\eta) =
       \int_{\trih} (1,0)\begin{pmatrix}0\\ 1\end{pmatrix} \diff (\xi,\eta) &&=
       0.
     \end{aligned}
@@ -336,8 +335,8 @@ Nous en déduisons que :math:`\BK{p} = (\JK{p}^T)^{-1}`, en particulier, dans le
   \frac{1}{\det(\JK{p})}
     \left(
     \begin{array}{c c}
-      y_{3}^{p}-y_{1}^{p} & y_{1}^{p}-y_{2}^{p}\\
-      x_{1}^{p}-x_{3}^{p} & x_{2}^{p}-x_{1}^{p}
+      y_{2}^{p}-y_{0}^{p} & y_{0}^{p}-y_{1}^{p}\\
+      x_{0}^{p}-x_{2}^{p} & x_{1}^{p}-x_{0}^{p}
     \end{array}
   \right).
 
@@ -347,17 +346,16 @@ Au final, comme :math:`X\cdot Y = X^TY`, nous obtenons
     = \abs{\det(\JK{p})}\int_{\trih} (\nabla\mphih_j)^T  (\BK{p}^T \BK{p})\nabla\mphih_i \diff (\xi,\eta).
   :label: eq-intRigidite
 
-
-La matrice :math:`\BK{p}` étant réelle, nous pouvons supprimer la conjugaison portant sur :math:`\BK{p}`.
+En éléments finis :math:`\Pb^1`, les fonctions de forme sont linéaires et leur gradient est donc constant. Nous pouvons alors sortir les termes :math:`\nabla\mphih_i` et :math:`\nabla\mphih_j` de l'intégral pour obtenir le lemme suivant.
 
 .. proof:lemma::
 
-  Les coefficients a matrice de rigidité élémentaire :math:`\De{p} = (\De{p}(i,j))_{0\leq i,j\leq 2}` sont obtenus pas la relation suivante
+  Les coefficients a matrice de rigidité élémentaire :math:`\De{p} = ((\De{p})_{i,j})_{0\leq i,j\leq 2}` sont obtenus pas la relation suivante
 
   .. math:: 
 
     \begin{aligned}
-    \De{p}(i,j) &= \int_{\tri_p}\nabla \mphi_j^p(x, y)\cdot\nabla\mphi_i^p(x,y)\diff(x,y),\\
+    (\De{p})_{i,j} &= \int_{\tri_p}\nabla \mphi_j^p(x, y)\cdot\nabla\mphi_i^p(x,y)\diff(x,y),\\
       &= \abs{\tri_p}(\nabla\mphih_j)^T  (\BK{p}^T \BK{p})\nabla\mphih_i.
     \end{aligned}
 
@@ -365,7 +363,7 @@ La matrice :math:`\BK{p}` étant réelle, nous pouvons supprimer la conjugaison 
 
   Pour les éléments finis :math:`\Pb^1`, les gradients :math:`\nabla\mphih_j` sont constants et peuvent être sortis de l'intégrale. De plus, comme :math:`\abs{\det(\JK{p})} = 2\abs{\tri_p}` et :math:`\abs{\trih}= \frac{1}{2}`, nous avons
 
-  .. math::  \int_{\tri_p} \nabla\mphi_j^p\cdot\nabla\mphi_i^p \diff(x,y) =\abs{\tri_p}(\nabla\mphih_j)^T  (\BK{p}^T \BK{p})\nabla\mphih_i.
+  .. math::  \int_{\tri_p} \nabla\mphi_j^p\cdot\nabla\mphi_i^p \diff\xx=\abs{\tri_p}(\nabla\mphih_j)^T  (\BK{p}^T \BK{p})\nabla\mphih_i.
 
 Second membre (ou RHS ou Membre de droite)
 ------------------------------------------
@@ -382,9 +380,9 @@ Sauf pour certaines fonctions :math:`f` particulières, nous ne pourrons certain
   & \displaystyle \simeq \abs{\det(\JK{p})}\sum_{m=0}^{M-1}\omega_m f(\xx(\xi_m,\eta_m))\mphih(\xi_m,\eta_m).
   \end{aligned}
 
-Les points :math:`(\xi_m,\eta_m)` sont appelés **points de quadrature** (parfois **points de Gauss**, même si la règle de quadrature utilisée n'est pas de Gauss) et les quantités :math:`\omega_m\in\Rb` les **poids** associés. Notons que le point :math:`\xx_m = \xx(\xi_m,\eta_m)` s'obtient par l'expression vue précédemment :
+Les points :math:`(\xi_m,\eta_m)` sont appelés **points de quadrature** (parfois **points de Gauss**, même si la règle de quadrature utilisée n'est pas de Gauss) et les quantités :math:`\omega_m\in\Rb` les **poids** associés. Notons que le point :math:`\xx(\xi_m,\eta_m)` s'obtient par l'expression vue précédemment :
 
-.. math:: \xx_m = \sum_{i=0}^2\vertice_i^p\psih_i(\xi_m,\eta_m).
+.. math:: \xx(\xi_m,\eta_m) = \sum_{i=0}^2\vertice_i^p\psih_i(\xi_m,\eta_m).
 
 Nous présentons ici deux règles de quadrature pour l'intégrale :math:`\int_{\trih}\gh(\xx)\diff\xx` sur :math:`\trih` d'une fonction :math:`g` quelconque. La première règle est exacte pour des polynômes de degré 1, la deuxième pour des polynômes de degré 2 (règles de Hammer) :
 
