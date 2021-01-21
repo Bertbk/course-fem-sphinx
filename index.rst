@@ -15,7 +15,7 @@ Maillage et Éléments Finis
    elements-finis-triangulaires/index
    mise-en-oeuvre/index   
    download/index
-
+   Dépôt GitHub <https://github.com/Bertbk/course-fem-sphinx>
 .. 
    Indices and tables
    ==================
