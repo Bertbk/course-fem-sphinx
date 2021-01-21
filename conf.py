@@ -152,7 +152,7 @@ mathjax_config = {
             'psih': '{\\widehat{\\psi}}',
             'gh': '{\\widehat{g}}',
             'deltaij': '{\\delta_{ij}}',
-            'tri': ['{K_{#1}}',1],
+            'tri': '{K}',
             'trih': '{\\widehat{K}}',
             'vertice': '{\\mathbf{s}}',
             'verticeK': ['{\\vertice^{#1}}', 1],

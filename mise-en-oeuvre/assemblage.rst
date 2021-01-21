@@ -2,28 +2,28 @@ Assemblage des Matrices
 =======================
 
 
-Nous devons maintenant calculer effectivement les coefficients :math:`\Ahh_{I,J}` de la matrice :math:`A` et :math:`\Bh_{I}` du vecteur :math:`B`. Nous nous intéressons pour l'instant uniquement à la matrice :math:`A`.
+Nous devons maintenant calculer effectivement les coefficients :math:`A_{I,J}` de la matrice :math:`A` et :math:`\Bh_{I}` du vecteur :math:`B`. Nous nous intéressons pour l'instant uniquement à la matrice :math:`A`.
 
 
 Algorithme "brut-force"
 --------------------------
 
-Prenons deux indices de sommets :math:`I` et :math:`J` et rappelons la valeur du coefficient :math:`\Ahh_{I,J}` :
+Prenons deux indices de sommets :math:`I` et :math:`J` et rappelons la valeur du coefficient :math:`A_{I,J}` :
 
 .. math::
 
-  \Ahh_{I,J} = a(\mphi_J, \mphi_I) = \int_{\Omega}\nabla \mphi_J \cdot\nabla \mphi_I+ c\int_{\Omega}\mphi_J\mphi_I
+  A_{I,J} = a(\mphi_J, \mphi_I) = \int_{\Omega}\nabla \mphi_J \cdot\nabla \mphi_I+ c\int_{\Omega}\mphi_J\mphi_I
 
 Chaque intégrale sur :math:`\Omega` peut être décomposée comme une somme sur les triangles :math:`\tri_p` :
 
 .. math::
 
   \begin{aligned}
-    \Ahh_{I,J} &= \sum_{p=0}^{\Nt-1} \int_{\tri_p}\nabla \mphi_J \cdot\nabla \mphi_I+ c\sum_{p=0}^{\Nt-1} \int_{\tri_p}\mphi_J\mphi_I\\
+    A_{I,J} &= \sum_{p=0}^{\Nt-1} \int_{\tri_p}\nabla \mphi_J \cdot\nabla \mphi_I+ c\sum_{p=0}^{\Nt-1} \int_{\tri_p}\mphi_J\mphi_I\\
     \Bh_{I} &= \sum_{p=0}^{\Nt-1}\int_{\tri_p}f(x)\mphi_I(x)\diff x.
   \end{aligned}
 
-Pour deux sommets :math:`\vertice_I` et :math:`\vertice_J` n'appartenant pas un même triangle, alors :math:`\supp(\mphi_I)\cap\supp(\mphi_J) =\emptyset` et donc le coefficient :math:`\Ahh_{I,J}` est nul ! En moyenne de manière empirique, un nœud (ou sommet) est connecté au maximum à 6 à 8 autres nœuds (en 2D). Une conséquence directe est que **la matrice** :math:`\Ahh` **est creuse**, c'est-à-dire qu'un nombre important de ses coefficients sont nuls. Une stratégie de stockage creux est donc à utiliser, ce que nous verrons plus loin. Une manière pratique est d'utiliser le format `COO <https://en.wikipedia.org/wiki/Sparse_matrix#Coordinate_list_(COO)>`_ pour l'assemblage puis le format `CSR <https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format))>`_ pour l'algèbre linéaire et la résolution du système.
+Pour deux sommets :math:`\vertice_I` et :math:`\vertice_J` n'appartenant pas un même triangle, alors :math:`\supp(\mphi_I)\cap\supp(\mphi_J) =\emptyset` et donc le coefficient :math:`A_{I,J}` est nul ! En moyenne de manière empirique, un nœud (ou sommet) est connecté au maximum à 6 à 8 autres nœuds (en 2D). Une conséquence directe est que **la matrice** :math:`A` **est creuse**, c'est-à-dire qu'un nombre important de ses coefficients sont nuls. Une stratégie de stockage creux est donc à utiliser, ce que nous verrons plus loin. Une manière pratique est d'utiliser le format `COO <https://en.wikipedia.org/wiki/Sparse_matrix#Coordinate_list_(COO)>`_ pour l'assemblage puis le format `CSR <https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format))>`_ pour l'algèbre linéaire et la résolution du système.
 
 
 
@@ -53,11 +53,11 @@ Il est à noter que la boucle sur les triangles pourraient être simplifiée en 
 Algorithme d'assemblage
 -----------------------
 
-Une autre manière de procéder, que l'on appelle **assemblage**, se base sur une boucle sur les triangles plutôt que sur les sommets. Le principe est de parcourir les triangles et de calculer des **contributions élémentaires**, qui vont s'ajouter petit à petit dans la matrice :math:`\Ahh`. Reprenons l'expression du coefficient :math:`\Ahh_{I,J}`:
+Une autre manière de procéder, que l'on appelle **assemblage**, se base sur une boucle sur les triangles plutôt que sur les sommets. Le principe est de parcourir les triangles et de calculer des **contributions élémentaires**, qui vont s'ajouter petit à petit dans la matrice :math:`A`. Reprenons l'expression du coefficient :math:`A_{I,J}`:
 
 .. math::
 
-  \Ahh_{I,J} = \sum_{p=0}^{\Nt-1} \underbrace{\int_{\tri_p}\nabla \mphi_J \cdot\nabla \mphi_I}_{\text{Contrib. élémentaire}}+ c\sum_{p=0}^{\Nt-1} \underbrace{\int_{\tri_p}\mphi_J\mphi_I}_{\text{Contrib. élémentaire}}
+  A_{I,J} = \sum_{p=0}^{\Nt-1} \underbrace{\int_{\tri_p}\nabla \mphi_J \cdot\nabla \mphi_I}_{\text{Contrib. élémentaire}}+ c\sum_{p=0}^{\Nt-1} \underbrace{\int_{\tri_p}\mphi_J\mphi_I}_{\text{Contrib. élémentaire}}
 
 Introduisons :math:`a_p(\cdot,\cdot)` la famille de forme bilinéaire suivante, pour :math:`p=0,\ldots,\Nt-1` : 
 
@@ -65,11 +65,11 @@ Introduisons :math:`a_p(\cdot,\cdot)` la famille de forme bilinéaire suivante, 
 
   a_p(\mphi_J,\mphi_I) = \int_{\tri_p}\nabla \mphi_J(\xx) \cdot\nabla \mphi_I(\xx)\diff \xx +c\int_{\tri_p}\mphi_J(\xx)\mphi_I(\xx)\diff \xx
 
-Ensuite, nous réécrivons la matrice :math:`\Ahh` sous la forme suivante
+Ensuite, nous réécrivons la matrice :math:`A` sous la forme suivante
 
 .. math::
 
-  \Ahh = \sum_{I=0}^{\Ns-1}\sum_{j=0}^{\Ns-1}a(\mphi_J,\mphi_I) \ee_I^T\ee_J,
+  A = \sum_{I=0}^{\Ns-1}\sum_{j=0}^{\Ns-1}a(\mphi_J,\mphi_I) \ee_I^T\ee_J,
 
 où :math:`\ee_I` est le vecteur de la base canonique de :math:`\Rb^{\Ns}`.  Nous avons alors
 

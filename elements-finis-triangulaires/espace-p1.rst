@@ -9,7 +9,7 @@ Maillage triangulaire (ou triangulation)
 Nous découpons maintenant le domaine en triangles pour obtenir un maillage triangulaire (ou triangulation) conforme de :math:`\Omega`. Un maillage est conforme s'il suit les quelques règles simples suivantes :
 
 
-- L'union des :math:`\Nt` triangles doit couvrir :math:`\Omega` sans le dépasser : :math:`\Omega = \bigcup_{p=0}^{\Nt-1} \tri{p}`.
+- L'union des :math:`\Nt` triangles doit couvrir :math:`\Omega` sans le dépasser : :math:`\Omega = \bigcup_{p=0}^{\Nt-1} \tri_p`.
 - L'intersection de deux triangles est soit vide, soit une arête commune complète à chacun des deux triangles, soit un sommet de chacun des deux triangles.
 - Une arête d'un triangle est soit une arête (complète) d'un autre triangle, soit une partie de :math:`\Gamma`, auquel cas ce segment est complètement inclus soit dans :math:`\GammaD` soit dans :math:`\GammaN` (il n'y a pas d'arête appartenant à la fois à :math:`\GammaD` et à :math:`\GammaN`).
 
@@ -37,9 +37,9 @@ Nous découpons maintenant le domaine en triangles pour obtenir un maillage tria
 
 Une telle triangulation sera noté :math:`\Th = \{K_p, p=0, \ldots, \Nt-1\}`, l'indice :math:`h` faisant référence à la **finesse de maillage**, que l'on définit par le grand diamètre des triangles :
 
-.. math:: h := \max_{\tri{}\in\Th}(\diam(\tri{})) = \max_{p=0,\ldots,\Nt-1}(\diam(\tri{p})).
+.. math:: h := \max_{\tri\in\Th}(\diam(\tri)) = \max_{p=0,\ldots,\Nt-1}(\diam(\tri_p)).
 
-Le diamètre d'un triangle est la distance maximale entre deux points du triangle. Nous notons de plus :math:`\Sh` et :math:`\Ah` les ensembles respectivement des sommets et des arêtes de :math:`\Th`. Pour un triangle arbitraire :math:`\tri{}`, nous noterons :math:`[\vertice_{0},\vertice_{1},\vertice_{2}]` ses sommets ordonnés. De même, pour un triangle :math:`\tri{p}` du maillage, ses sommets ordonnées seront notés :math:`[\vertice_{0}^{p},\vertice_{1}^{p},\vertice_{2}^{p}]`.
+Le diamètre d'un triangle est la distance maximale entre deux points du triangle. Nous notons de plus :math:`\Sh` et :math:`\Ah` les ensembles respectivement des sommets et des arêtes de :math:`\Th`. Pour un triangle arbitraire :math:`\tri`, nous noterons :math:`[\vertice_{0},\vertice_{1},\vertice_{2}]` ses sommets ordonnés. De même, pour un triangle :math:`\tri_p` du maillage, ses sommets ordonnées seront notés :math:`[\vertice_{0}^{p},\vertice_{1}^{p},\vertice_{2}^{p}]`.
 
 .. proof:remark::
 
@@ -56,21 +56,21 @@ Fonction linéaire sur un triangle
 
 **Cas du segment (1D).** Regardons tout d'abord le cas :math:`1D` d'un segment :math:`[\alpha,\beta]` et d'une fonction :math:`p` linéaire sur ce segment : :math:`p(x) = ax + b`. Les coefficients :math:`a` et :math:`b` caractérisent la fonction :math:`p` et sont, de plus, définis de manière unique dès lors que l'on connait la valeur de :math:`p` en :math:`\alpha` et en :math:`\beta` (2 équations à 2 inconnues, linéairement indépendantes). Cette propriété reste naturellement vraie pour un segment :math:`[\vec{\alpha},\vec{\beta}]` "plongé" en dimension 2. Un point :math:`\xx` de ce segment est décrit par ses coordonées curvilignes : :math:`\xx(s) = (1-s) \vec{\alpha} + s\vec{\beta}`, pour :math:`s\in [0,1]`, et un polynôme :math:`p` de degré 1 sur :math:`[\vec{\alpha}, \vec{\beta}]` s'écrit alors :math:`p(\xx(s)) = (1-s) p(\vec{\alpha}) + s p(\vec{\beta})` pour :math:`s\in [0,1]`. On voit clairement qu'un polynôme de degré 1 sur un segment est défini de manière unique par ses valeurs aux extrémités [#]_.
 
-**Cas du triangle (2D).** Revenons maintenant dans un triangle :math:`\tri{}` non plat et notons :math:`\Pb^1` l'espace des polynômes réels de degré 1 sur :math:`\Rb^2`, de dimension 3 :
+**Cas du triangle (2D).** Revenons maintenant dans un triangle :math:`\tri` non plat et notons :math:`\Pb^1` l'espace des polynômes réels de degré 1 sur :math:`\Rb^2`, de dimension 3 :
 
 .. math:: \Pb^1(\Rb) = \enstq{p\colon \Rb^2\to\Rb}{\exists!a,b,c \in\Rb \text{ tels que } \forall (x,y)\in \Rb^2, p(x,y) = a + bx + cy}
 
-L'espace :math:`\Pb^1(\tri{})` des fonctions linéaires (ou des polynômes de degré 1) sur :math:`\tri{}` est lui aussi de dimension 3 (car :math:`\tri{}` n'est pas plat) :
+L'espace :math:`\Pb^1(\tri)` des fonctions linéaires (ou des polynômes de degré 1) sur :math:`\tri` est lui aussi de dimension 3 (car :math:`\tri` n'est pas plat) :
 
-.. math:: \Pb^1(\tri{}) = \enstq{p\colon K\to\Rb}{\exists!a,b,c \in\Rb \text{ tels que } \forall (x,y)\in \tri{}, p(x,y) = a + bx + cy}  
+.. math:: \Pb^1(\tri) = \enstq{p\colon K\to\Rb}{\exists!a,b,c \in\Rb \text{ tels que } \forall (x,y)\in \tri, p(x,y) = a + bx + cy}  
 
-Une fonction :math:`p` de :math:`\Pb^1(\tri{})` est définie de manière unique par ses 3 coefficients :math:`a,b,c`. Inversement, ces trois coefficients sont calculables dès lors que l'on connait la valeur de :math:`p` sur trois points non alignés, comme les 3 sommets du triangle (voir la proposition suivant). Une fonction :math:`p\in\Pb^1(\tri{})` est donc définie de manière unique soit par la connaissance de ses trois coefficients, soit par la connaissance de sa valeur sur les trois sommets du triangle.
+Une fonction :math:`p` de :math:`\Pb^1(\tri)` est définie de manière unique par ses 3 coefficients :math:`a,b,c`. Inversement, ces trois coefficients sont calculables dès lors que l'on connait la valeur de :math:`p` sur trois points non alignés, comme les 3 sommets du triangle (voir la proposition suivant). Une fonction :math:`p\in\Pb^1(\tri)` est donc définie de manière unique soit par la connaissance de ses trois coefficients, soit par la connaissance de sa valeur sur les trois sommets du triangle.
 
 .. _prop-unisolvance:
 
 .. proof:proposition::
 
-  Soit :math:`\tri{}` un triangle non dégénéré de :math:`\Rb^2` de sommets :math:`\vertice_{0},\vertice_{1},\vertice_{2}`. Alors, pour tout jeu de données :math:`\alpha_0,\alpha_1,\alpha_2 \in \Rb`, il existe un unique polynôme de :math:`p\in\Pb^1(\tri{})` tels que :math:`p(\vertice_i)=\alpha_i` pour :math:`i=0,1,2`.
+  Soit :math:`\tri` un triangle non dégénéré de :math:`\Rb^2` de sommets :math:`\vertice_{0},\vertice_{1},\vertice_{2}`. Alors, pour tout jeu de données :math:`\alpha_0,\alpha_1,\alpha_2 \in \Rb`, il existe un unique polynôme de :math:`p\in\Pb^1(\tri)` tels que :math:`p(\vertice_i)=\alpha_i` pour :math:`i=0,1,2`.
 
 .. proof:proof:: 
 
@@ -106,7 +106,7 @@ Une fonction :math:`p` de :math:`\Pb^1(\tri{})` est définie de manière unique 
       \end{array}
     \right)
 
-  Le déterminant d'un tel système n'est autre que deux fois l'aire du triangle :math:`\tri{}` qui n'est pas dégénéré :
+  Le déterminant d'un tel système n'est autre que deux fois l'aire du triangle :math:`\tri` qui n'est pas dégénéré :
   
   .. math:: \Delta = 
     \left|
@@ -115,13 +115,13 @@ Une fonction :math:`p` de :math:`\Pb^1(\tri{})` est définie de manière unique 
         x_1 & y_1 & 1\\
         x_2 & y_2 & 1\\
       \end{array}
-    \right| = 2\mathrm{Aire}(\tri{}) \neq 0
+    \right| = 2\mathrm{Aire}(\tri) \neq 0
   
   Le système est donc bien inversible et admet une unique solution :math:`(a,b,c)`.
 
 .. proof:remark::
 
-  Soit une fonction :math:`v \in \Pb^1(\tri{})`, linéaire sur le triangle :math:`\tri{}`. Sa restriction :math:`v|_{\sigma}` à une arête :math:`\sigma` de :math:`\tri{}` est elle même une fonction linéaire sur :math:`\sigma`. Elle est donc complètement caractérisée par sa valeur aux sommets de l'arête, qui sont aussi des sommets de :math:`\tri{}`.
+  Soit une fonction :math:`v \in \Pb^1(\tri)`, linéaire sur le triangle :math:`\tri`. Sa restriction :math:`v|_{\sigma}` à une arête :math:`\sigma` de :math:`\tri` est elle même une fonction linéaire sur :math:`\sigma`. Elle est donc complètement caractérisée par sa valeur aux sommets de l'arête, qui sont aussi des sommets de :math:`\tri`.
 
 
 Fonctions linéaires par éléments (= par triangles)
@@ -129,7 +129,7 @@ Fonctions linéaires par éléments (= par triangles)
 
 Nous pouvons maintenant introduire l'espace fonctionnel :math:`\Pb^1-` Lagrange, souvent abrégé :math:`\Pb^1` et noté dans ce cours :math:`\Vh`, contient les fonctions **continues** sur :math:`\overline{\Omega}` (le fermé de :math:`\Omega`) et **linéaires sur chaque triangle** :
 
-.. math::  \Vh := \enstq{\vh\in\Cscr^0(\overline{\Omega})}{\forall \tri{}\in\Th, \vh|_{\tri{}} \in\Pb^1(\tri{})}.
+.. math::  \Vh := \enstq{\vh\in\Cscr^0(\overline{\Omega})}{\forall \tri\in\Th, \vh|_{\tri} \in\Pb^1(\tri)}.
 
 Caractérisons maintenant les fonctions de cet espace. Le premier résultat montre que deux fonctions de :math:`\Vh` sont égales si et seulement si elles coïncident sur tous les sommets de la triangulation :math:`\Th`.
 
@@ -141,7 +141,7 @@ Caractérisons maintenant les fonctions de cet espace. Le premier résultat mont
 
 .. proof:proof::
 
-  En se plaçant sur le triangle :math:`\tri{} = (\vertice_{0},\vertice_{1},\vertice_{2})` de :math:`\Th`, nous avons :math:`\uh(\vertice_i) = \vh(\vertice_i)` pour :math:`i=0,1,2`. La proposition :numref:`{number} <prop-unisolvance>` implique que :math:`\uh|_{\tri{}}=\vh|_{\tri{}}`. Le triangle :math:`\tri{}` étant arbitraire, cette relation vaut sur tous les éléments de la triangulation. Le même raisonnement peut être effectué sur chaque arête pour obtenir que :math:`\uh-\vh` est nulle sur :math:`\Omega` tout entier.
+  En se plaçant sur le triangle :math:`\tri = (\vertice_{0},\vertice_{1},\vertice_{2})` de :math:`\Th`, nous avons :math:`\uh(\vertice_i) = \vh(\vertice_i)` pour :math:`i=0,1,2`. La proposition :numref:`{number} <prop-unisolvance>` implique que :math:`\uh|_{\tri}=\vh|_{\tri}`. Le triangle :math:`\tri` étant arbitraire, cette relation vaut sur tous les éléments de la triangulation. Le même raisonnement peut être effectué sur chaque arête pour obtenir que :math:`\uh-\vh` est nulle sur :math:`\Omega` tout entier.
 
 
 .. proof:proposition::
@@ -150,28 +150,28 @@ Caractérisons maintenant les fonctions de cet espace. Le premier résultat mont
 
 .. proof:proof::
 
-  L'unicité est démontrée par le :numref:`lemme {number} <lemma-unicitetriangle>`, il manque donc l'existence. Prenons un triangle :math:`\tri{p}=(\vertice_{0}^p,\vertice_{1}^p,\vertice_{2}^p)` de :math:`\Th` et le jeu de valeurs associé :math:`(\alpha_0^p,\alpha_1^p,\alpha_2^p) \in \Rb`. La proposition :numref:`{number} <prop-unisolvance>` montre qu'il existe un unique polynôme :math:`p_{\tri{p}}` de :math:`\Pb^1(\tri{p})` tel que :math:`p_{\tri{p}}(\vertice_i^p)=\alpha_i^p` pour :math:`i=0,1,2`. Nous pouvons répéter cette opération pour tous les triangles :math:`\tri{p}` et nous introduisons :math:`\uh` tel que
+  L'unicité est démontrée par le :numref:`lemme {number} <lemma-unicitetriangle>`, il manque donc l'existence. Prenons un triangle :math:`\tri_p=(\vertice_{0}^p,\vertice_{1}^p,\vertice_{2}^p)` de :math:`\Th` et le jeu de valeurs associé :math:`(\alpha_0^p,\alpha_1^p,\alpha_2^p) \in \Rb`. La proposition :numref:`{number} <prop-unisolvance>` montre qu'il existe un unique polynôme :math:`p_{\tri_p}` de :math:`\Pb^1(\tri_p)` tel que :math:`p_{\tri_p}(\vertice_i^p)=\alpha_i^p` pour :math:`i=0,1,2`. Nous pouvons répéter cette opération pour tous les triangles :math:`\tri_p` et nous introduisons :math:`\uh` tel que
 
-  .. math:: \forall p=0,\ldots,\Nt-1,\quad \uh |_{\tri{p}} = p_{\tri{p}}.
+  .. math:: \forall p=0,\ldots,\Nt-1,\quad \uh |_{\tri_p} = p_{\tri_p}.
 
   La fonction :math:`\vh` est affine sur chaque triangle, il nous faut montrer que :math:`\uh\in\Cscr^0(\overline{\Omega})` pour conclure sur son appartenance à :math:`\Vh`. Comme :math:`\vh` est continue en chaque sommet :math:`\vertice`, il reste à montrer la continuité sur les arêtes. 
   
-  Prenons 2 triangles :math:`\tri{p}` et :math:`\tri{q}` de :math:`\Th` ayant une arête :math:`\Sigma` en commun. Quitte à renuméroter, notons :math:`\vertice_{0} = (x_0,y_0)` et :math:`\vertice_{1} = (x_1, y_1)` les deux sommets de l'arête :math:`\Sigma` et notons
+  Prenons 2 triangles :math:`\tri_p` et :math:`\tri{q}` de :math:`\Th` ayant une arête :math:`\Sigma` en commun. Quitte à renuméroter, notons :math:`\vertice_{0} = (x_0,y_0)` et :math:`\vertice_{1} = (x_1, y_1)` les deux sommets de l'arête :math:`\Sigma` et notons
   
   .. math:: \sigma(t) = \vertice_{0} + t(\vertice_{1}-\vertice_{0}) = \left( x_0 + t(x_1-x_0),  y_0 + t(y_1-y_0)\right)
   
-  une paramétrisation de :math:`\Sigma`. Si :math:`p_{\tri{p}}(x,y) = ax+by+c`, nous avons alors, pour tout :math:`t\in[0,1]` :
+  une paramétrisation de :math:`\Sigma`. Si :math:`p_{\tri_p}(x,y) = ax+by+c`, nous avons alors, pour tout :math:`t\in[0,1]` :
 
   .. math:: \begin{aligned}
-      p_{\tri{p}}(\sigma(t)) &= a (x_0 + t(x_1-x_0)) + b (y_0 + t(y_1-y_0)) + c\\
+      p_{\tri_p}(\sigma(t)) &= a (x_0 + t(x_1-x_0)) + b (y_0 + t(y_1-y_0)) + c\\
       &= a (x_0 + t(x_1-x_0)) + b (y_0 + t(y_1-y_0)) + c + t(c-c)\\
       &= [a x_0+by_0 +c] + t([a x_1+by_1 +c] +[ a x_0+by_0 +c])\\
-      &=  p_{\tri{p}}(\vertice_{0}) +t(p_{\tri{p}}(\vertice_{1}) - p_{K_p}(\vertice_{0}))\\
+      &=  p_{\tri_p}(\vertice_{0}) +t(p_{\tri_p}(\vertice_{1}) - p_{K_p}(\vertice_{0}))\\
       &=  p_{\tri{q}}(\vertice_{0}) +t(p_{\tri{q}}(\vertice_{1}) - p_{\tri{q}}(\vertice_{0}))\\
       &=  p_{\tri{q}}(\sigma(t)).
     \end{aligned}
 
-  Autrement dit, les deux polynômes :math:`p_{\tri{p}}` et :math:`p_{\tri{q}}` sont égaux sur l'arête :math:`\Sigma`. La fonction :math:`\vh` est donc continue sur toutes les arêtes de :math:`\Th` en plus de l'être sur tous les triangles et tous les sommets : :math:`\vh` est donc bien **continue** sur tout :math:`\overline{\Omega}`.
+  Autrement dit, les deux polynômes :math:`p_{\tri_p}` et :math:`p_{\tri{q}}` sont égaux sur l'arête :math:`\Sigma`. La fonction :math:`\vh` est donc continue sur toutes les arêtes de :math:`\Th` en plus de l'être sur tous les triangles et tous les sommets : :math:`\vh` est donc bien **continue** sur tout :math:`\overline{\Omega}`.
 
 
 Base de :math:`\Vh` : les fonctions de forme
@@ -213,10 +213,10 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
       & \implies \forall j= 0,\ldots, \Ns-1,\quad \alpha_j = 0
     \end{aligned}
 
-  La famille de fonctions :math:`(\mphi_I)_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice_{1}, \vertice_{2},\vertice_{3})` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Big|_{\tri{}}` coïncide avec le polynôme :math:`\uh|_{\tri{}}` sur les sommets du triangle :math:`\tri{}`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
-  La famille de fonctions :math:`(\mphi_I)_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice_{1}, \vertice_{2},\vertice_{3})` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Big|_{\tri{}}` coïncide avec le polynôme :math:`\uh|_{\tri{}}` sur les sommets du triangle :math:`\tri{}`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
+  La famille de fonctions :math:`(\mphi_I)_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice_{1}, \vertice_{2},\vertice_{3})` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Big|_{\tri}` coïncide avec le polynôme :math:`\uh|_{\tri}` sur les sommets du triangle :math:`\tri`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
+  La famille de fonctions :math:`(\mphi_I)_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice_{1}, \vertice_{2},\vertice_{3})` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Big|_{\tri}` coïncide avec le polynôme :math:`\uh|_{\tri}` sur les sommets du triangle :math:`\tri`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
 
-    .. math:: \uh|_{\tri{}}= \left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Bigg|_{\tri{}}.
+    .. math:: \uh|_{\tri}= \left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Bigg|_{\tri}.
 
   Cette relation étant valable sur un triangle arbitraire, elle est vraie sur :math:`\Omega`. La famille de fonctions :math:`(\mphi_I)_I` est donc une base de :math:`\Vh`.
 
@@ -229,13 +229,13 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
 
   Le support d'une fonction de forme :math:`\mphi_I` est l'union des triangles ayant pour sommet :math:`\vertice_I` :
   
-  .. math:: \supp(\mphi_I) = \enstq{\tri{}\in \Th}{\vertice_I \text{ est un sommet de } \tri{}}.
+  .. math:: \supp(\mphi_I) = \enstq{\tri\in \Th}{\vertice_I \text{ est un sommet de } \tri}.
 
   Autrement dit, en dehors de ces triangles, la fonction :math:`\mphi_I` est nulle.
 
 .. proof:proof::
 
-  Prenons une fonction de forme :math:`\mphi_I` associée au sommet :math:`\vertice_I`, et un triangle :math:`\tri{}` tel que :math:`\vertice_I` n'est pas un sommet de :math:`\tri{}`. Dans ce cas, :math:`\mphi_I` est nulle sur les trois sommets de :math:`\tri{}`, et est donc nulle sur le triangle tout entier.
+  Prenons une fonction de forme :math:`\mphi_I` associée au sommet :math:`\vertice_I`, et un triangle :math:`\tri` tel que :math:`\vertice_I` n'est pas un sommet de :math:`\tri`. Dans ce cas, :math:`\mphi_I` est nulle sur les trois sommets de :math:`\tri`, et est donc nulle sur le triangle tout entier.
 
 .. only:: html
 
