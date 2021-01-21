@@ -34,7 +34,7 @@ Ce cours se concentre sur les équations aux dérivées partielles (EDP) ellipti
 
 .. math::   \Delta := \sum_{i=1}^d\frac{\partial^2}{\partial x_i}
 
-Nous considérons le problème générique suivant, appelé aussi *problème de réaction-diffusion :
+Nous considérons le problème générique suivant, appelé aussi problème de réaction-diffusion :
 
 .. math::
   :label: eq-pbmodel
@@ -50,8 +50,8 @@ où nous avons défini :
 - le terme :math:`\dn u` désigne la *dérivée normale* de :math:`u` sur le bord, c'est à dire la dérivée dans la direction :math:`\nn` : :math:`(\nabla u)\cdot\nn`, avec :math:`\nabla u = [\partial_{x_1}u,\ldots,\partial_{x_d}u]^T`. Vous aurez sans doute remarqué que, entre deux arêtes, le vecteur normale :math:`\nn` n'est pas défini et donc la dérivée normale non plus. Ce "problème" n'en est pas vraiment un et pour l'instant mettez cela de côté, nous y reviendrons !.
 - :math:`-\Delta u` : Terme de diffusion (notez le signe négatif)
 - :math:`c \geq 0` : Paramètre artificiel positif. Principalement, nous lui imposerons de valoir 1 ou 0, ce qui nous permet de supprimer (ou non) le terme en :math:`u`, appelé terme de *Réaction*
-- :math:`u=\gD` : \textbf{Condition de Dirichlet}
-- :math:`u=\gN` : \textbf{Condition de Neumann}
+- :math:`u=\gD` : **Condition de Dirichlet**
+- :math:`u=\gN` : **Condition de Neumann**
 - :math:`f` : une fonction donnée définie sur :math:`\Omega`. Elle joue le rôle de *terme source*, c'est à dire d'apport (positif ou négatif), par exemple de chaleur ou de force surfacique.
 
 ..
@@ -70,12 +70,12 @@ où nous avons défini :
   \end{figure}
 
 
-Pour le moment, nous ne nous intéressons pas à la régularité de la solution ni même à l'existence et l'unicité de celle-ci : nous supposons que le problème :eq:`eq-pbmodel`est bien posé. Une fois la méthode des éléments finis apréhendée, nous nous intéresserons à ces questions. Cela va à l'encontre de l'habitude en mathématiques où l'on démontre le caractère bien posé avant de s'y attaquer. Faites moi confiance et tout s'éclairera !
+Pour le moment, nous ne nous intéressons pas à la régularité de la solution ni même à l'existence et l'unicité de celle-ci : nous supposons que le problème :eq:`eq-pbmodel` est bien posé. Une fois la méthode des éléments finis apréhendée, nous nous intéresserons à ces questions. Cela va à l'encontre de l'habitude en mathématiques où l'on démontre le caractère bien posé avant de s'y attaquer. Faites moi confiance et tout s'éclairera !
 
 Théorème de Green
 -----------------
 
-Pour une géométrie arbitraire, nous ne savons pas, en général, obtenir *la solution forte* (ou classique) du problème :eq:`eq-pbmodel`. La méthode des éléments finis se base sur l'approximation numérique de *la solution au sens faible* du problème  \eqref{eq:pbmodel}. Nous verrons qu'une solution *faible* est, en fait et en général, *forte*. Commençons par réécrire le problème d'origine sous sa formulation faible ou formulation variationnelle.
+Pour une géométrie arbitraire, nous ne savons pas, en général, obtenir *la solution forte* (ou classique) du problème :eq:`eq-pbmodel`. La méthode des éléments finis se base sur l'approximation numérique de *la solution au sens faible* du problème  :eq:`eq-pbmodel`. Nous verrons qu'une solution *faible* est, en fait et en général, *forte*. Commençons par réécrire le problème d'origine sous sa formulation faible ou formulation variationnelle.
 
 .. 
   %\begin{figure}
@@ -96,14 +96,14 @@ Ce résultat est valable en dimension 3 pour des domaines polygonaux (ouf). Le p
 
 .. proof:remark::
 
-  Ce résultat est en quelque sorte une extension multi-dimensionnel de l'intégration par partie sur un segment 1D :math:`\Omega = [a,b]`. En effet, en dimension 1, l'opérateur :math:`\Delta` devient la dérivée seconde. La normale sortante au segment devient un scalair valant :math:`\pm 1` (:math:`-1` à gauche et :math:`1` à droite) et la dérivée normale devient :math:`\dn u = \pm u'` :
+  Ce résultat est en quelque sorte une extension multi-dimensionnel de l'intégration par partie sur un segment  :math:`\Omega = [a,b]`. En effet, en dimension 1, l'opérateur :math:`\Delta` devient la dérivée seconde. La normale sortante au segment devient un scalair valant :math:`\pm 1` (:math:`-1` à gauche et :math:`1` à droite) et la dérivée normale devient :math:`\dn u = \pm u'` :
   
   .. math::  \int_{a}^b u'' v  = - \int_{a}^b u' v' +  u'(b)v(b) - u'(a)v(a) = - \int_{a}^b u' v'  + \dn u(b)v(b)+ \dn u(a)v(a).
 
 Problème faible
 ---------------
 
-Le point de départ de notre analyse est la réécriture sous forme faible du problème \eqref{eq:pbmodel}. Pour cela, la méthode consiste à multiplier l'EDP par une fonction :math:`v`, intéger le tout sur :math:`\Omega` puis à appliquer le Théorème de Green (ne vous posez pas trop de questions pour le moment, dites vous juste : hey pourquoi pas \shrug ! Après tout, 2020 a déjà apporté son lot d'étrangetés !) :
+Le point de départ de notre analyse est la réécriture sous forme faible du problème :eq:`eq-pbmodel`. Pour cela, la méthode consiste à multiplier l'EDP par une fonction :math:`v`, intéger le tout sur :math:`\Omega` puis à appliquer le Théorème de Green (ne vous posez pas trop de questions pour le moment, dites vous juste : hey pourquoi pas \shrug ! Après tout, 2020 a déjà apporté son lot d'étrangetés !) :
 
 .. math::
 
@@ -143,7 +143,7 @@ Ainsi, et toujours sans regarder la régularité de :math:`u` (ni de :math:`v`),
 
 À gauche du signe :math:`=` se trouve l'inconnue :math:`u` et à droite les données (:math:`f` et :math:`\gN`), c'est une convention et plus tard cette équation s'écrira sous la forme d'un système linéaire :math:`AU =B` où le vecteur :math:`B` correspondra au membre de droite de :eq:`eq-faible`et la matrice :math:`A` à la partie de gauche.
 
-Nous pouvons maintenant définir plus proprement la quantité :math:`v`. Appelée *fonction test* elle n'a d'autre rôle que de "tester" la solution. L'idée de la formulation faible est de chercher une solution qui vérifie l'EDP, non pas point à point (au sens fort, donc) mais "en moyenne", via l'intégrale. En mécanique, :math:`v` est appelé "travaux virtuels" (avec la méthode éponyme qui est, en fait, la formulation faible) : cette quantité est arbitraire et n'est utile que pour écrire le problème faible \eqref{eq:faible}.
+Nous pouvons maintenant définir plus proprement la quantité :math:`v`. Appelée *fonction test* elle n'a d'autre rôle que de "tester" la solution. L'idée de la formulation faible est de chercher une solution qui vérifie l'EDP, non pas point à point (au sens fort, donc) mais "en moyenne", via l'intégrale. En mécanique, :math:`v` est appelé "travaux virtuels" (avec la méthode éponyme qui est, en fait, la formulation faible) : cette quantité est arbitraire et n'est utile que pour écrire le problème faible :eq:`eq-faible`.
 
 Les conditions de Dirichlet et de Neumann sont imposées différemment : la condition de Neumann apparait naturellement dans la formulation faible, en remplaçant simplement :math:`\dn u` par sa valeur, c'est pourquoi on parle de *condition naturelle*. À l'inverse, la condition de Dirichlet est dite *condition essentielle* et est imposée à la solution ou plutôt, à l'espace fonctionnel contenant la solution.
 
@@ -175,7 +175,7 @@ et lui associons son produit scalaire et sa norme dérivée
 
 .. proof:remark::
   
-  Les espaces de Sobolev sont aussi appelés espace d'énergie : les quantités qui le composent sont *d'énergie finie* et ont plus de liberté que les fonctions continues, elles peuvent par exemple (et sous conditions) être singulière en certains points, comme l'énergie.}
+  Les espaces de Sobolev sont aussi appelés espace d'énergie : les quantités qui le composent sont *d'énergie finie* et ont plus de liberté que les fonctions continues, elles peuvent par exemple (et sous conditions) être singulière en certains points, comme l'énergie.
 
 
 .. proof:remark::
