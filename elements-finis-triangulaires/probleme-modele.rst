@@ -15,7 +15,7 @@ Domaine Physique
 
   Exemple de domaine de calcul avec sa normal unitaire sortante
 
-Dans ce cours, nous considérons un ouvert polygonal :math:`\Omega` de :math:`\Rb^d`, :math:`d=2,3`. Sur chaque segment du bord :math:`\Gamma := \partial\Omega` du domaine, on définit le vecteur unitaire normale :math:`\nn` sortant à :math:`\Omega`. Nous noterons que ce vecteur n'existe pas aux intersections entre les segments. Le domaine :math:`\Omega` est supposé ne pas comporter de fissure ni de point de rebroussement. Son bord est divisé en deux parties distinctes: :math:`\GammaD` et :math:`\GammaN`, potentiellement non connexe mais d'intersection vide: :math:`\Gamma = \overline{\GammaD}\cup\overline{\GammaN}` et :math:`\GammaD\cap\GammaN=\emptyset`. Selon la partie du bord, une condition sera imposée à la solution :
+Dans ce cours, nous considérons un ouvert polygonal :math:`\Omega` de :math:`\Rb^2`. Nous restons en dimension 2 pour plus de facilité mais l'extension à la dimension 3 est relativement directe et tous les résultats énoncés sont aussi valable en dimension 3. Sur chaque segment du bord :math:`\Gamma := \partial\Omega` du domaine, on définit le vecteur unitaire normale :math:`\nn` sortant à :math:`\Omega`. Nous noterons que ce vecteur n'existe pas aux intersections entre les segments. Le domaine :math:`\Omega` est supposé ne pas comporter de fissure ni de point de rebroussement. Son bord est divisé en deux parties distinctes: :math:`\GammaD` et :math:`\GammaN`, potentiellement non connexe mais d'intersection vide: :math:`\Gamma = \overline{\GammaD}\cup\overline{\GammaN}` et :math:`\GammaD\cap\GammaN=\emptyset`. Selon la partie du bord, une condition sera imposée à la solution :
 
 
 * Sur :math:`\GammaD` : *condition de Dirichlet*, c'est à dire que la valeur de la solution y est imposée (\eg :math:`u = 0`). En mécanique on dirait que le déplacement est imposée.
@@ -26,12 +26,16 @@ Dans ce cours, nous considérons un ouvert polygonal :math:`\Omega` de :math:`\R
   En général, on préfère travailler avec des ouverts *réguliers*, de classe au moins :math:`\Ccal^1`. Un tel ouvert présente l'avantage de pouvoir clairement définir le vecteur unitaire normale :math:`\nn` sortante à :math:`\Omega`. Cependant, après maillage, on se retrouve avec... un polygone ! Alors plutôt que de travailler dans un domaine régulier pour après le casser en (petits) morceaux, nous préférons ici commencer directement avec un polygone et mettre l'accent sur les algorithmes et la mise en oeuvre de la méthode que les spécificités mathématiques.
 
 
+.. proof:remark::
+
+  Un point :math:`\xx \in \Rb^2` est parfois noté  :math:`\xx = (x,y)` ou :math:`\xx = (x_0,x_1)` selon les besoins. Nous commencerons les indiçages par 0 pour suivre les langages informatiques les plus utilisés.
+
 EDP (problème fort)
 -------------------
 
 Ce cours se concentre sur les équations aux dérivées partielles (EDP) elliptiques du second ordre, qui font appel à l'opérateur de Laplace [#]_ (ou *Laplacien*) :
 
-.. math::   \Delta := \sum_{i=1}^d\frac{\partial^2}{\partial x_i}
+.. math::   \Delta := \frac{\partial^2}{\partial x} + \frac{\partial^2}{\partial y} = \frac{\partial^2}{\partial x_1} + \frac{\partial^2}{\partial x_2}.
 
 Nous considérons le problème générique suivant, appelé aussi problème de réaction-diffusion :
 
@@ -46,7 +50,7 @@ Nous considérons le problème générique suivant, appelé aussi problème de r
 
 où nous avons défini :
 
-- le terme :math:`\dn u` désigne la *dérivée normale* de :math:`u` sur le bord, c'est à dire la dérivée de :math:`u` dans la direction :math:`\nn` : :math:`\dn u = (\nabla u)\cdot\nn`, avec :math:`\nabla u = [\partial_{x_1}u,\ldots,\partial_{x_d}u]^T` son vecteur gradient. Vous aurez sans doute remarqué que, entre deux arêtes, le vecteur normal :math:`\nn` n'est pas défini et donc la dérivée normale non plus. Ce "problème" n'en est pas vraiment un et pour l'instant mettez cela de côté, nous y reviendrons !
+- le terme :math:`\dn u` désigne la *dérivée normale* de :math:`u` sur le bord, c'est à dire la dérivée de :math:`u` dans la direction :math:`\nn` : :math:`\dn u = (\nabla u)\cdot\nn`, avec :math:`\nabla u = [\partial_{x_1}u, \partial_{x_2}u]^T` son vecteur gradient. Vous aurez sans doute remarqué que, entre deux arêtes, le vecteur normal :math:`\nn` n'est pas défini et donc la dérivée normale non plus. Ce "problème" n'en est pas vraiment un et pour l'instant mettez cela de côté, nous y reviendrons !
 - :math:`(-\Delta u)` : Terme de diffusion (notez le signe négatif)
 - :math:`c \geq 0` : Paramètre artificiel positif. Principalement, nous lui imposerons de valoir 1 ou 0, ce qui nous permettra de supprimer (ou non) le terme en :math:`u`, appelé terme de *Réaction*
 - :math:`u=\gD` : **Condition de Dirichlet**
@@ -79,10 +83,13 @@ Pour une géométrie arbitraire, nous ne savons pas, en général, obtenir **la 
 
 Un théorème central dans l'analyse des EDP et qui permet d'obtenir ces formulations faibles est celui de Green [#]_
 
+.. math:: \forall u,v,\qquad  \int_{\Omega} (\Delta u)(\xx) v(\xx)\diff\xx   = - \int_{\Omega} \nabla u(\xx)  \cdot\nabla v(\xx)\diff\xx  + \int_{\Gamma} (\dn u)(\xx)  v(\xx)  \diff s(\xx).
+
+
+Ce résultat est également valable en dimension 3 pour des domaines polygonaux (ouf). Le produit :math:`\nabla u \cdot\nabla v` est le produit scalaire euclidien standard. La quantité :math:`v` est ici laissé non définie, c'est normal : supposez que c'est une fonction de même régularité que :math:`u`. Pour compacter les équations, nous n'indiquerons plus les quantités d'intégrations :
+
 .. math:: \forall u,v,\qquad  \int_{\Omega} (\Delta u) v  = - \int_{\Omega} \nabla u \cdot\nabla v + \int_{\Gamma} (\dn u) v.
 
-
-Ce résultat est également valable en dimension 3 pour des domaines polygonaux (ouf). Le produit :math:`\nabla u \cdot\nabla v` est le produit scalaire euclidien standard. La quantité :math:`v` est ici laissé non définie, c'est normal : supposez que c'est une fonction de même régularité que :math:`u`. 
 
 .. proof:remark::
 
