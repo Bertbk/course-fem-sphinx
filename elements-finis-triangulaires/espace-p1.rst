@@ -214,7 +214,6 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
     \end{aligned}
 
   La famille de fonctions :math:`(\mphi_I)_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice_{1}, \vertice_{2},\vertice_{3})` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Big|_{\tri}` coïncide avec le polynôme :math:`\uh|_{\tri}` sur les sommets du triangle :math:`\tri`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
-  La famille de fonctions :math:`(\mphi_I)_{0\leq i \leq \Ns-1}` est libre. Pour montrer qu'elle est génératrice, prenons une fonction :math:`\uh\in \Vh` et plaçons nous sur le triangle :math:`\tri = (\vertice_{1}, \vertice_{2},\vertice_{3})` (quitte à renuméroter). Le polynôme :math:`\left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Big|_{\tri}` coïncide avec le polynôme :math:`\uh|_{\tri}` sur les sommets du triangle :math:`\tri`. Les deux étant de degré 1, nous avons alors l'égalité de ces polynômes sur tout le triangle :
 
     .. math:: \uh|_{\tri}= \left(\sum_{i=0}^2\uh(\vertice_I)\mphi_I\right)\Bigg|_{\tri}.
 
