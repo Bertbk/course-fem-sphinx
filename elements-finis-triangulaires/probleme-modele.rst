@@ -221,11 +221,10 @@ L'espace :math:`L^2(\GammaN)` est l'espace des fonctions de carré intégrable s
 .. only:: html
 
   Même si nous n'avons pas encore parcouru toutes les conditions aux limites possibles, l'application web ci-dessous, développée par `Mina Pêcheux <http://minapecheux.com/wp/>`_, permet de comprendre l’influence des conditions aux limites et des autres paramètres sur la "forme" de la formulation faible :
-
+  
   .. raw:: html
 
-    <div class="iframe-container" style=" overflow: hidden;padding-top: 100%;position: relative;"><iframe src='_static/app/weak-formulation/v2/index.html' frameborder="0" scrolling="no" style="border: 0;height: 100%;left: 0;position: absolute;top: 0;width: 100%;"></iframe></div>
-  
+    <div class="iframe-container" style=" overflow: hidden;padding-top: 100%;position: relative;"><iframe src='../_static/pecheux/weak-formulation/v2/index.html' frameborder="0" scrolling="no" style="border: 0;height: 100%;left: 0;position: absolute;top: 0;width: 100%;"></iframe></div>
 
 .. [#] Pierre-Simon Laplace (1749 -- 1827).
 .. [#] George Green (1793 -- 1841). Mathématicien britannique (quasi) auto-didacte.
