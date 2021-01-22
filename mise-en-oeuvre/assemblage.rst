@@ -98,10 +98,13 @@ Ainsi, pour un triangle  :math:`\tri_p`, ses sommets sont numérotés :math:`[\v
 
   :ref:`Une application interactive est également proposée <app-loc2glob>`.
 
+.. _fig-loc2glob:
 
-.. figure:: /_static/img/loc2glob.png
-  :width: 50 %
-  :label: fig-loc2glob
+.. figure:: /img/loc2glob/loc2glob.*
+  :figwidth: 100%
+  :width: 100%
+  :alt: Numérotation locale et globale
+  :align: center
 
   Numérotation locale et globale
 

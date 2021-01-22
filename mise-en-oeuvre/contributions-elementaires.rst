@@ -57,9 +57,16 @@ Triangle de référence
 
   
 Pour calculer la quantité élémentaire :eq:`eq-matelem`, plaçons nous tout d'abord dans un triangle "simple" :math:`\trih`, appelé **triangle de référence**. Celui-ci est souvent choisi comme étant le triangle rectangle de sommets :math:`\verticeh_{0}=(0,0)`, :math:`\verticeh_{1}=(1,0)` et :math:`\verticeh_{2}=(0,1)`, ordonnés dans le sens trigonométrique. Pour différencier ce triangle d'un triangle du maillage, nous lui adjoignons un repère :math:`(\xi,\eta)`   dit **repère paramétrique**.
+
+.. _fig-triangle-reference
   
-.. 
-  %TODO:  {{< figure src="../triangle_ref.svg" title="Triangle de référence :math:`\trih` et son repère paramétrique :math:`(\xi,\eta)`." numbered="true" >}}
+.. figure:: /img/reference-triangle/reference-triangle.* 
+  :figwidth: 100%
+  :width: 50%
+  :alt: Triangle de référence
+  :align: center
+
+  Triangle de référence :math:`\trih` et son repère paramétrique :math:`(\xi,\eta)`.
   
 Nous notons :math:`\mphih_i \in \Pb^1(\trih)` les trois fonctions de forme associées aux sommets :math:`\verticeh_i`, pour :math:`i=0,1,2`, définies par :math:`\mphih_i(\verticeh_j) = \delta_{ij}`. Ces fonctions :math:`\mphih_i` étant des polynômes de degré un, nous pouvons les calculer analytiquement :
 
@@ -112,8 +119,15 @@ Triangle quelconque
 
 **Changement de coordonnées.** Soit un triangle :math:`\tri_p` du maillage et supposons que nous disposions d'une transformation bijective et linéaire :math:`\trihToTri{p}` permetteant de transformer le triangle de référence :math:`\trih` en :math:`\tri_p` avec en plus :math:`\trihToTri{p}(\verticeh_i) = \vertice_i^p` (conservation de l'ordre des sommets). Cette fonction :math:`\trihToTri{p}` transforme les  **coordonnées paramétriques** :math:`(\xi,\eta)` en **coordonnées physiques** :math:`(x,y)` avec :math:`(x,y)=\trihToTri{p}(\xi,\eta)\in\tri_p`, et conserve "l'ordre des sommets".
 
-.. 
-  % TODO: {{< figure src="../ref.svg" title="Passage du triangle de référence :math:`\trih` vers un triangle :math:`\tri_p` par la transformation :math:`\trihToTri{p}`." numbered="true" >}}
+.. _fig-transformation
+  
+.. figure:: /img/transformation/transformation.* 
+  :figwidth: 100%
+  :width: 75%
+  :alt: Transformation entre le triangle de référence et un triangle quelconque
+  :align: center
+
+  Transformation entre le triangle de référence :math:`\trih` et un triangle quelconque :math:`\tri_p`.
 
 Nous avons :math:`\mphi_j^p(x,y) = \mphi_j^p(\trihToTri{p}(\xi,\eta))` avec :math:`\mphi_j^p\circ\trihToTri{p}\in\Pb^1(\trih)` et :math:`\mphi_j^p\circ\trihToTri{p}(\verticeh_i) = \delta_{ij}`, soit exactement les mêmes propriétés que les :math:`\mphih_i`. Par unicité, nous avons :math:`\mphi_j^p\circ\trihToTri{p} = \mphih_j`.
 

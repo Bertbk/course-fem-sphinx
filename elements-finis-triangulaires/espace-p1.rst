@@ -6,34 +6,22 @@ La méthode des éléments finis est basée sur la méthode de Galerkin, ou d'ap
 Maillage triangulaire (ou triangulation)
 ----------------------------------------
 
-Nous découpons maintenant le domaine en triangles pour obtenir un maillage triangulaire (ou triangulation) conforme de :math:`\Omega`. Un maillage est conforme s'il suit les quelques règles simples suivantes :
+Nous découpons maintenant le domaine en triangles pour obtenir un maillage triangulaire (ou triangulation) conforme de :math:`\Omega`. Un maillage est conforme s'il suit les quelques règles simples suivantes. Une illustration est proposée sur la figure :numref:`{number} <fig-example-mesh>`.
 
 
 - L'union des :math:`\Nt` triangles doit couvrir :math:`\Omega` sans le dépasser : :math:`\Omega = \bigcup_{p=0}^{\Nt-1} \tri_p`.
 - L'intersection de deux triangles est soit vide, soit une arête commune complète à chacun des deux triangles, soit un sommet de chacun des deux triangles.
 - Une arête d'un triangle est soit une arête (complète) d'un autre triangle, soit une partie de :math:`\Gamma`, auquel cas ce segment est complètement inclus soit dans :math:`\GammaD` soit dans :math:`\GammaN` (il n'y a pas d'arête appartenant à la fois à :math:`\GammaD` et à :math:`\GammaN`).
 
+.. _fig-example-mesh:
 
-..  TODO: \begin{figure}
-    \centering\includestandalone{img/maillage_conforme_ok}
-    \caption{Exemple de maillage conforme.}
-    \label{fig:meshconforme}
-  \end{figure}
+.. figure:: /img/conform/conform.*
+  :figwidth: 100%
+  :width: 100%
+  :alt: Maillages conformes ou non
+  :align: center
 
-.. \begin{figure}
-    \begin{subfigure}{0.48\textwidth}
-      \centering\includestandalone{img/maillage_conforme_arete}
-      \caption{L'intersection n'est pas une arête complète.}
-      \label{fig:meshnonconforme_arete}      
-    \end{subfigure}
-    \begin{subfigure}{0.48\textwidth}
-      \centering\includestandalone{img/maillage_conforme_overlap}
-      \caption{Chevauchement des triangles.}
-      \label{fig:meshnonconforme_overlap}  
-    \end{subfigure}
-    \caption{Exemples de maillages non conforme}
-  \end{figure}
-  La deuxième contrainte impose notamment que deux triangles ne peuvent pas se chevaucher. La figure \ref{fig:meshconforme} montre un exemple de maillage conforme et les figures \ref{fig:meshnonconforme_arete} et \ref{fig:meshnonconforme_overlap} des situations non conformes. La troisième condition implique qu'à l'intersection entre :math:`\GammaD` et :math:`\GammaN`, il existe un sommet qui appartient à plusieurs triangles (si :math:`\GammaD` et :math:`\GammaN` se touchent).
+  Différents maillages, conforme ou non.
 
 Une telle triangulation sera noté :math:`\Th = \{K_p, p=0, \ldots, \Nt-1\}`, l'indice :math:`h` faisant référence à la **finesse de maillage**, que l'on définit par le grand diamètre des triangles :
 
@@ -45,11 +33,40 @@ Le diamètre d'un triangle est la distance maximale entre deux points du triangl
 
   Il existe aujourd'hui des mailleurs automatiques open-source, un des plus connu et que nous utiliserons est `GMSH <https://gmsh.info>`_ (`un tutoriel <https://bthierry.pages.math.cnrs.fr/tutorial/gmsh>`_ est fourni par moi même). Le maillage automatique reste un métier à part entière tant la complexité est importante notamment en 3D et avec des géométries complexes, non forcément polygonales. D'autres parts, de nombreuses questions sont encore ouvertes aujourd'hui dans ce domaine comme la construction automatique d'un maillage composé de quadrangles. Nous n'entrerons pas dans les détails dans ce sujet, nous serons de simple "utilisateurs et utilisatrices". 
 
-..  TODO:\begin{figure}
-    \centering\includestandalone{img/orientation}
-    \caption{Deux orientations possibles pour un triangle. Dans les maillages considérés, tous les triangles ont la   même orientation.}
-    \label{fig:orienation}
-  \end{figure}
+.. _fig-orienation:
+
+.. figure:: /img/orientation/orientation.*
+  :figwidth: 100%
+  :width: 100%
+  :alt: Orientation des triangles
+  :align: center
+
+  Deux orientations possibles pour un triangle. Dans les maillages considérés, tous les triangles ont la   même orientation.
+
+
+.. only:: html
+
+  Voici deux exemples de maillage obtenus avec GMSH, et visualisés avec Paraview :
+
+  - Sous-marin
+
+    - `Script GMSH <https://github.com/Bertbk/geogmsh/blob/master/submarine.geo>`_
+    - `Plein écran <../_static/mesh/submarine.html>`_
+
+  .. raw:: html
+
+    <object type="text/html" data="../_static/mesh/submarine.html" width="100%" height="auto"></object>
+
+  - Théière
+
+    - `Script GMSH <https://github.com/Bertbk/geogmsh/blob/master/teapot.geo>`_
+    - `Plein écran <../_static/mesh/teapot.html>`_
+
+  .. raw:: html
+
+    <object type="text/html" data="../_static/mesh/teapot.html" width="100%" height="auto"></object>
+
+
 
 Fonction linéaire sur un triangle
 ---------------------------------
@@ -191,7 +208,7 @@ Au vue de ce qui précède, deux fonctions de :math:`\Vh` sont identiques si et 
     \end{array}
   \right.
 
-Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensionnelles (elles ressemblent d'ailleurs encore plus à un "chapeau" !). Une illustration des fonctions de forme est proposée sur la figure TODO:.
+Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensionnelles (elles ressemblent d'ailleurs encore plus à un "chapeau" !). 
 
 .. only:: html
 
@@ -235,6 +252,19 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
 .. proof:proof::
 
   Prenons une fonction de forme :math:`\mphi_I` associée au sommet :math:`\vertice_I`, et un triangle :math:`\tri` tel que :math:`\vertice_I` n'est pas un sommet de :math:`\tri`. Dans ce cas, :math:`\mphi_I` est nulle sur les trois sommets de :math:`\tri`, et est donc nulle sur le triangle tout entier.
+
+Une illustration du support des fonctions de forme est donnée sur la Figure :numref:`{number} <fig-support>`.
+
+.. _fig-support:
+
+.. figure:: /img/support/support.png
+  :figwidth: 100%
+  :width: 100%
+  :alt: Exemple de support de fonction de forme
+  :align: center
+  
+  Support des fonctions de forme pour le maillage d’un carré.
+
 
 .. only:: html
 

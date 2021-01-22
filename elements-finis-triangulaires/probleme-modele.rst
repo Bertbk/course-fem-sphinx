@@ -218,6 +218,15 @@ Nous remarquons que dans cette formulation faible, :math:`v` et :math:`u` satisf
 L'espace :math:`L^2(\GammaN)` est l'espace des fonctions de carré intégrable sur :math:`\GammaN` (intégrale 1D). Le dernier espace est assez particulier. Il s'agit de l'espace des restrictions sur :math:`\GammaD` des fonctions de :math:`\Ho`. Autrement dit, si :math:`g_0\in H^{1/2}(\GammaD)`, alors il existe :math:`v_0\in\Ho` telle que :math:`v_0|_{\GammaD} = g_0`.
 
 
+.. only:: html
+
+  Même si nous n'avons pas encore parcouru toutes les conditions aux limites possibles, l'application web ci-dessous, développée par `Mina Pêcheux <http://minapecheux.com/wp/>`_, permet de comprendre l’influence des conditions aux limites et des autres paramètres sur la "forme" de la formulation faible :
+
+  .. raw:: html
+
+    <div class="iframe-container" style=" overflow: hidden;padding-top: 100%;position: relative;"><iframe src='_static/app/weak-formulation/v2/index.html' frameborder="0" scrolling="no" style="border: 0;height: 100%;left: 0;position: absolute;top: 0;width: 100%;"></iframe></div>
+  
+
 .. [#] Pierre-Simon Laplace (1749 -- 1827).
 .. [#] George Green (1793 -- 1841). Mathématicien britannique (quasi) auto-didacte.
 .. [#] Du nom de son découvreur, Sergei Sobolev (1908 -- 1989), mathématicien Russe.
