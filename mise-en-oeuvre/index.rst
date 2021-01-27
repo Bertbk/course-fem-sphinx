@@ -17,4 +17,5 @@ Mise en Oeuvre
   contributions-elementaires
   neumann-heterogene
   dirichlet
+  matrice-creuse
 
