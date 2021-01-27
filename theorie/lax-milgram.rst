@@ -1,9 +1,9 @@
 
-
 Théorème de Lax-Milgram
-------------------------
+=======================
 
-TODO: ajouter une formulation faible
+Énoncé
+------
 
 Nous pouvons maintenant énoncer le théorème de Lax-Milgram (**à connaître par cœur**).
 
@@ -107,3 +107,5 @@ Nous pouvons maintenant énoncer le théorème de Lax-Milgram (**à connaître p
 
   À quoi sert ce théorème ? Sous réserve de 4 hypothèses, nous aurons la garantie que la formulation faible obtenue précédemment admet une solution (ce qui est bien) et que cette solution est unique (encore mieux !). Il est donc d'une importance capitale.
 
+Application au problème modèle
+------------------------------
