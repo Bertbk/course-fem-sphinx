@@ -215,8 +215,6 @@ Principe
 La souplesse du format COO permet de construire la matrice en ajoutant les triplets des coefficients (i,j,val) au fur et à mesure. Ensuite, une fois tous les triplets sauvegardés, ils sont triés (ou *assemblés*) et les doublons fusionnés. Il ne reste alors plus qu'à extraire les tableaux :code:`row`, :code:`col` et :code:`val` du tableau de triplets et à compresser le vecteur :code:`row` pour obtenir une matrice CSR.
 
 
-.. TODO: {{< figure src="../coo_to_csr.svg" title="Construction de matrices COO à l'aide de Triplet et convertisseur en CSR" numbered="true" >}}
-
 
 Utilisation
 ++++++++++++
