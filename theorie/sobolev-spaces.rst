@@ -16,15 +16,27 @@ l'espace :math:`\Lo` est un espace de Hilbert, de norme induite :
 
 Il est important de remarquer qu'une fonction de :math:`\Lo` est définie **presque partout**. Autrement dit, deux fonctions :math:`f` et :math:`g` de :math:`\Lo` peuvent être *égales* tout en ayant des valeurs différentes sur un sous-ensemble :math:`\omega` de :math:`\Omega`, de mesure nulle. Une fonction mesurable est en réalité une *classe de fonctions*.
 
-Rappelons que l'espace :math:`\Cscr^{\infty}_c(\Omega)` des fonctions :math:`\Cscr^{\infty}` sur :math:`\Omega` à support compact dans :math:`\Omega` est dense dans :math:`\Lo`. Ces fonctions (et toutes leurs dérivées) s'annulent sur le bord de :math:`\Omega`. 
+Introduisons l'espace :math:`\Cscr^{\infty}_c(\Omega)` des fonctions :math:`\Cscr^{\infty}` sur :math:`\Omega` à support compact dans :math:`\Omega` :
 
-.. proof:theorem:: Densité dans L2
+.. math:: \Cscr^{\infty}_c(\Omega) := \enstq{f\in \Cscr^{\infty}(\Omega)}{\supp(f) \text{ est compact dans } \Omega}.
+
+.. proof:remark::
+
+  - Ces fonctions (et toutes leurs dérivées) s'annulent nécesairement sur le bord de :math:`\Omega` (qui est ouvert)
+  - Dans notre cas, :math:`\Omega\in\Rb^2` (ou même :math:`\Rb^3`), ce qui impliqué qu'un compact de :math:`\Omega` est donc un fermé borné
+    - Un exemple d'une telle fonction est la fonction "blob" comme illustré par `l'article Wikipédia <https://fr.wikipedia.org/wiki/Fonction_C%E2%88%9E_%C3%A0_support_compact>`_
+
+Nous rappelons/admettons le théorème de densité suivant.
+
+.. _thm-densite:
+
+.. proof:theorem:: Densité dans :math:`\Lo`
 
   L'ensemble :math:`\Cscr^{\infty}_c(\Omega)` est dense dans :math:`\Lo`.
 
-Autrement dit, pour tout élément :math:`f` de :math:`\Lo`, il existe une suite :math:`(f_n)_n` de fonctions de :math:`\Cscr^{\infty}_c` qui converge vers :math:`f` pour la norme de :math:`\Lo`. Cette proposition est extrêmement importante : pour démontrer des propriétés de :math:`\Lo`, nous utiliserons des propriétés de :math:`\Cscr^{\infty}_c` et passerons à la limite dans :math:`\Lo`, comme par exemple pour le Corollaire suivant
+Autrement dit, pour tout élément :math:`f` de :math:`\Lo`, il existe une suite :math:`(f_n)_n` de fonctions de :math:`\Cscr^{\infty}_c(\Omega)` qui converge vers :math:`f` pour la norme de :math:`\Lo`. Ce théorème est extrêmement important : pour démontrer des propriétés de :math:`\Lo`, nous utiliserons des propriétés de :math:`\Cscr^{\infty}_c(\Omega)` et passerons à la limite dans :math:`\Lo`.
 
-.. _corollary-f-zero
+.. _corollary-f-zero:
 
 .. proof:corollary::
 
@@ -36,7 +48,7 @@ Autrement dit, pour tout élément :math:`f` de :math:`\Lo`, il existe une suite
 
 .. proof:proof::
 
-  Soit :math:`(f_n)_n` une suite de :math:`\Cscr^{\infty}_c(\Omega)` qui converge vers :math:`f` (Proposition de Densité dans :math:`L^2`). Nous avons alors
+  D'après le théorème :numref:`{number} <thm-densite>`, il existe une suite :math:`(f_n)_n` de :math:`\Cscr^{\infty}_c(\Omega)` qui converge vers :math:`f`. Nous avons alors
   
   .. math:: 0 = \lim_{n\to \infty}\int_{\Omega} f(\xx)f_n(\xx) \diff\xx= \int_{\Omega}\abs{f(\xx)}^2\diff\xx = \normL{f}^2,
 
@@ -70,7 +82,7 @@ Le lien entre *dérivée faible* et *dérivée forte* (ou *classique*) est maint
 
 .. proof:proposition::
 
-  Soit :math:`u\in\Cscr^1(\Omega)` tel que son gradient, au sens classique, :math:`\nabla u` soit dans :math:`\Cscr^0(\overline{\Omega})`, alors :math:`u` admet un gradient au sens faible :math:`\widetilde{\nabla} u` et l'on a :math:`\nabla u = \widetilde{\nabla} u`.
+  Soit :math:`u\in\Cscr^1(\overline{\Omega})` tel que son gradient, au sens classique, :math:`\nabla u` soit dans :math:`\Cscr^0(\overline{\Omega})`, alors :math:`u` admet un gradient au sens faible :math:`\widetilde{\nabla} u` et l'on a :math:`\nabla u = \widetilde{\nabla} u`.
 
 
 .. proof:proof::
@@ -119,12 +131,19 @@ et de la norme induite, pour :math:`u\in\Ho` :
   
   Pour :math:`u` de :math:`\Ho`, nous avons clairement
 
-  .. math::  \normH{u}^2 = \normL{u}^2 + \sum_{i=1}^d\normL{\partial_{i} u}^2,
+  .. math::  
+  
+    \begin{aligned}
+      \normH{u}^2 & = \normL{u}^2 + \sum_{i=1}^d\normL{\partial_{i} u}^2\\
+        &= \normL{u}^2 + \normLd{\nabla u}^2,
+    \end{aligned}
 
   et donc les inégalités suivantes :
 
   1. :math:`\normH{u}^2 \geq \normL{u}^2`
-  2. :math:`\normH{u}^2 \geq \sum_{i=1}^d\normL{\partial_i u}^2 \geq \normL{\partial_i u}^2, \qquad \forall i=1,2,\ldots, d`
+  2. :math:`\normH{u}^2  \geq \normLd{\nabla u}^2 = \sum_{i=1}^d\normL{\partial_i u}^2`
+  3. :math:`\normH{u}^2   \geq \normL{\partial_i u}^2 \qquad \forall i=1,2,\ldots, d`
+
 
 
 
