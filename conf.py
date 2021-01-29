@@ -85,6 +85,7 @@ html_static_path = ['_static']
 
 
 html_css_files = [
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css',
     'css/proof.css',
 ]
 

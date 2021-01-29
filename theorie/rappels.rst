@@ -3,7 +3,7 @@ Espaces de Hilbert : rappels
 
 .. proof:definition::
 
-  Soit :math:`V` un :math:`\Rb-`espace vectoriel, alors l'application :math:`\PS{\cdot}{\cdot}\colon V\times V \to \Rb` est un produit scalaire si et seulement si elle vérifie, pour tout :math:`\xx,\yy,\zz\in V` et tout scalaire :math:`\alpha\in\Rb`:
+  Soit :math:`V` un :math:`\Rb-` espace vectoriel, alors l'application :math:`\PS{\cdot}{\cdot}\colon V\times V \to \Rb` est un produit scalaire si et seulement si elle vérifie, pour tout :math:`\xx,\yy,\zz\in V` et tout scalaire :math:`\alpha\in\Rb`:
 
   1. :math:`\PS{\xx}{\yy} = \PS{\yy}{\xx}`
   2. :math:`\PS{\xx + \yy}{\zz} = \PS{\xx}{\zz} + \PS{\yy}{\zz}`
@@ -15,7 +15,7 @@ Espaces de Hilbert : rappels
 
 .. proof:definition:: 
 
-  Un :math:`\Rb-`espace vectoriel :math:`V` est dit pré-Hilbertien si il est muni d'un produit scalaire.
+  Un :math:`\Rb-` espace vectoriel :math:`V` est dit pré-Hilbertien si il est muni d'un produit scalaire.
 
 
 

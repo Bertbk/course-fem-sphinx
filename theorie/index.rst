@@ -15,4 +15,6 @@ Théorie : un avant-goût
 
   rappels
   lax-milgram
+  sobolev-spaces
+  exemple
 

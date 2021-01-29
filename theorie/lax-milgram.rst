@@ -30,11 +30,11 @@ Nous pouvons maintenant énoncer le théorème de Lax-Milgram (**à connaître p
   2. :math:`a(\cdot,\cdot)` est une forme sesquilinéaire  sur :math:`V\times V`. 
   3. :math:`a(\cdot,\cdot)` est continue : 
 
-    .. math::   \exists M>0 / \forall (u,v) \in V\times V, \quad a(u,v) \leq M\norm{u}\norm{v}.
+    .. math::   \exists M>0 / \forall (u,v) \in V\times V, \quad \abs{a(u,v)} \leq M\norm{u}\norm{v}.
 
   4. :math:`a(\cdot,\cdot)` est coercive (ou elliptique) :
 
-    .. math::  \exists \alpha > 0 / \forall u \in V, \quad \Re\left(a(u,u)\right) \geq \alpha\norm{u}^2.
+    .. math::  \exists \alpha > 0 / \forall u \in V, \quad a(u,u) \geq \alpha\norm{u}^2.
 
   Alors la formulation faible :eq:`eq-fvlax` admet une unique solution. De plus cette solution dépend continûment de la forme linéaire :math:`\ell` :
 
@@ -72,9 +72,7 @@ Nous pouvons maintenant énoncer le théorème de Lax-Milgram (**à connaître p
     \right.
 
 
-  La question est : :math:`A` est-elle bijective ?
-
-  Utilisons la coercivité de l'application :math:`a(\cdot,\cdot)` :
+  La question est : :math:`A` est-elle bijective ?   Utilisons la coercivité de l'application :math:`a(\cdot,\cdot)` :
 
 
   .. math:: \alpha\|w\|^2 \leq \Re\left(a(w,w)\right)  = \Re\left((A(w), w)\right)\leq \abs{((A(w), w)} \leq \|A(w)\|\|w\|,
@@ -90,7 +88,7 @@ Nous pouvons maintenant énoncer le théorème de Lax-Milgram (**à connaître p
 
   Quand :math:`n` et :math:`p` tendent vers l'infini, alors :math:`\|w_n - w_p\| \to 0`. La suite :math:`(w_n)_n` est donc une suite de Cauchy dans :math:`V`, qui est complet (Hilbert), elle est donc convergente et converge vers un élément :math:`w` de :math:`V`. Par continuité de :math:`A`, la suite :math:`(A(w_n))_n` converge vers :math:`A(w)`, élément de :math:`\Image(A)`. Ce qui implique que :math:`\Image(A)` est fermé. Prenons maintenant :math:`v\in \Image(A)^{\perp}`, par la coercivité de :math:`a(\cdot,\cdot)`, nous avons
 
-  .. math:: \alpha\\|v\\|^2 \leq \abs{\Re\left(a(v,v)\right)} \leq \abs{a(v,v)} = \abs{\PS{A(v)}{v}} = 0.
+  .. math:: \alpha\abs{v}^2 \leq \abs{a(v,v)} \leq \abs{a(v,v)} = \abs{\PS{A(v)}{v}} = 0.
 
   Autrement dit, :math:`v=0` et donc :math:`\Image(A)^\perp = \{0\}` et nous avons
 
@@ -107,5 +105,5 @@ Nous pouvons maintenant énoncer le théorème de Lax-Milgram (**à connaître p
 
   À quoi sert ce théorème ? Sous réserve de 4 hypothèses, nous aurons la garantie que la formulation faible obtenue précédemment admet une solution (ce qui est bien) et que cette solution est unique (encore mieux !). Il est donc d'une importance capitale.
 
-Application au problème modèle
-------------------------------
+
+Avant de pouvoir appliquer ce théorème proprement dit, nous devons connaître un peu mieux les espaces de Sobolev : Hilbert ? Norme ? Tant de questions.
