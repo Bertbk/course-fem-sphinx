@@ -25,6 +25,11 @@ div.proof-type-proof > div.proof-title {
   cursor:pointer;
 }
 
+
+div.proof > div.proof-title:before {
+    content: "\00a0";
+}
+
 div.proof-type-proof > div.proof-title:after {
  content: " ▲";
 }
@@ -37,12 +42,12 @@ div.proof-type-proof > div.proof-title.open:after {
 /*=================*/
 
 div.proof.proof-type-definition div.proof-title {
-  background-color: red;
-  border: 1px solid #86989b;
+  background-color: darkblue;
+  border: 1px solid darkblue;
   }
 div.proof.proof-type-definition div.proof-content {
-  background-color: #F5F7F9;
-  border: 1px solid #9fb1b4;
+  background-color: #f5f5ff;
+  border: 1px solid darkblue;
 }
 
 div.proof.proof-type-theorem div.proof-title {
@@ -50,7 +55,7 @@ div.proof.proof-type-theorem div.proof-title {
   border: 1px solid #cd0930;
   }
 div.proof.proof-type-theorem div.proof-content {
-  background-color: #F5F7F9;
+  background-color: #fff0f3;
   border: 1px solid #cd0930;
 }
 
@@ -59,7 +64,7 @@ div.proof.proof-type-proposition div.proof-title {
   border: 1px solid #C36900;
   }
 div.proof.proof-type-proposition div.proof-content {
-  background-color: #fffdfb;
+  background-color: #fcf4e8;
   border: 1px solid #C36900;
 }
 
@@ -89,7 +94,9 @@ div.proof.proof-type-remark div.proof-content {
   background-color: #f6fbfe;
   border: 1px solid  #209cee;
 }
-/*.proof.proof-type-remark > .proof-title:before {
-  content: " \2139 ";
- }
- */
+.proof.proof-type-remark > .proof-title:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900; 
+  content: "\00a0\f05a";
+}
+
