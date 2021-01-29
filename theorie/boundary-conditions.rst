@@ -175,6 +175,7 @@ et fort heureusement c'est le cas, grâce à l'inégalité de Poincaré, donné 
   L'inégalité de Poincaré est aussi valable si la condition de Dirichlet n'est posée que sur une partie du bord, c'est à dire si :math:`\GammaD \subset\partial\Omega` et :math:`\GammaD\neq\partial\Omega`.
 
 Au final, toutes les conditions du théorème de Lax-Milgram sont vérifiées et le problème :eq:`fv-DiriNonH` admet une unique solution.
+
 Dirichlet hétérogène
 --------------------
 
