@@ -18,4 +18,5 @@ Théorie : un avant-goût
   sobolev-spaces
   exemple
   boundary-conditions
+  galerkin
 

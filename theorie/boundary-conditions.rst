@@ -179,3 +179,4 @@ Au final, toutes les conditions du théorème de Lax-Milgram sont vérifiées et
 Dirichlet hétérogène
 --------------------
 
+Nous avons déjà vu comment traiter une telle condition !
