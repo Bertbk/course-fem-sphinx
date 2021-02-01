@@ -2,9 +2,6 @@
 Théorème de Lax-Milgram
 =======================
 
-Énoncé
-------
-
 Nous pouvons maintenant énoncer le théorème de Lax-Milgram (**à connaître par cœur**).
 
 .. proof:theorem:: de Lax-Milgram
@@ -23,11 +20,11 @@ Nous pouvons maintenant énoncer le théorème de Lax-Milgram (**à connaître p
  
   Sous réserve des quatre hypothèses suivantes :
 
-  1. :math:`\ell` est une forme anti-linéaire continue sur :math:`V` :
+  1. :math:`\ell` est une forme linéaire continue sur :math:`V` :
   
     .. math::  \exists C>0 / \forall v \in V, \quad |\ell(v)| \leq C\norm{v}.
 
-  2. :math:`a(\cdot,\cdot)` est une forme sesquilinéaire  sur :math:`V\times V`. 
+  2. :math:`a(\cdot,\cdot)` est une forme biquilinéaire  sur :math:`V\times V`. 
   3. :math:`a(\cdot,\cdot)` est continue : 
 
     .. math::   \exists M>0 / \forall (u,v) \in V\times V, \quad \abs{a(u,v)} \leq M\norm{u}\norm{v}.
@@ -75,7 +72,7 @@ Nous pouvons maintenant énoncer le théorème de Lax-Milgram (**à connaître p
   La question est : :math:`A` est-elle bijective ?   Utilisons la coercivité de l'application :math:`a(\cdot,\cdot)` :
 
 
-  .. math:: \alpha\|w\|^2 \leq \Re\left(a(w,w)\right)  = \Re\left((A(w), w)\right)\leq \abs{((A(w), w)} \leq \|A(w)\|\|w\|,
+  .. math:: \alpha\|w\|^2 \leq \abs{((A(w), w)} \leq \|A(w)\|\|w\|,
 
   ce qui implique que
 
