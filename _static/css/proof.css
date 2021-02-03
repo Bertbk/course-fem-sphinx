@@ -100,3 +100,16 @@ div.proof.proof-type-remark div.proof-content {
   content: "\00a0\f05a";
 }
 
+div.proof.proof-type-exercise div.proof-title {
+  background-color: #fc7b03;
+  border: 1px solid  #fc7b03;
+  }
+div.proof.proof-type-exercise div.proof-content {
+  background-color: #fff7f0;
+  border: 1px solid  #fc7b03;
+}
+.proof.proof-type-exercise > .proof-title:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900; 
+  content: "\00a0\f19d";
+}
