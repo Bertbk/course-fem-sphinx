@@ -42,7 +42,8 @@ Cette fonction calcule [les coefficients de la matrice élémentaire](http://bth
   Pour un élément donné, son type (:code:`Segment` ou :code:`Triangle`) est donné par son paramètre :code:`name`. 
 
 
-## Matrice de masse globale
+Matrice de masse globale
+------------------------
 
 Nous proposons de construire une fonction qui calcule toutes les contributions élémentaires de la matrice de masse d'un domaine de tag :code:`Physical` et de dimension :code:`dim` issue d'un maillage :code:`msh`. Les coefficients partiels seront ajoutés sous forme de :code:`Triplet` dans une liste envoyée en argument. Nous séparons pour le moment les calculs de la matrice de masse de ceux de la matrice de rigidité :
 
