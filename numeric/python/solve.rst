@@ -1,5 +1,5 @@
-Résolution
-==========
+Résolution et Analyse
+=====================
 
 Problème de référence
 ---------------------
@@ -7,6 +7,7 @@ Problème de référence
 Résumons ici l'utilisation de notre programme éléments finis sur le problème suivant :
 
 .. math::
+  :label: eq-problErr
 
   \left\{
   \begin{array}{r c l l}
@@ -87,4 +88,14 @@ Dans notre programme, cela reviendra à écrire quelque chose comme
   plt.tricontourf(x, y, connectivity, Uref, 12)
   plt.colorbar()
   plt.show()
+
+Convergence
+-----------
+
+
+.. proof:exercise::
+
+  1. **Pour diférents pas de maillage**, calculez l'erreur en norme :math:`L^2` entre la solution exacte et la solution approchée pour le problème :eq:`eq-problErr`. 
+  2. **Affichez** la courbe de l'erreur en fonction de :math:`h` en échelle log-log. 
+  3. **Calculez** la pente de la courbe et déduisez-en la vitesse de convergence par rapport au pas de maillage (:math:`h`). Sauvegardez par ailleurs une copie de la courbe en format données (JSON ou autre) ou image (:code:`PNG` par exemple, pas de :code:`JPG` nous ne sommes pas des sauvages !). 
 
