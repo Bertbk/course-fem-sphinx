@@ -97,6 +97,7 @@ html_js_files = [
     'js/basis-function/main.js',
     'js/jacobian/main.js',
     'js/loc2glob/main.js',
+    'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js',
 ]
 proof_latex_notheorem = ["proof"]
 

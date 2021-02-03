@@ -36,7 +36,10 @@ Il peut être assez malin de construire une classe :code:`Mesh` qui représente 
 Le maillage étant construit avec GMSH, il s'agit maintenant de convertir les données issues de GMSH dans notre structure. Nous supposons ici que le maillage est déjà chargé en mémoire, soit parce qu'il vient d'être construit par GMSH (via :code:`gmsh.model.mesh`) soit parce qu'il a été lu sur disque (via :code:`gmsh.merge("fichier.msh")`). Nous proposons que le constructeur de :code:`Mesh` soit vide (ne construit rien) et que l'instance de :code:`Mesh` soit construite à l'aide d'une méthode :code:`GmshToMesh(string filename)`, qui lit les données GMSH et construit les :code:`Point`, :code:`Segment` et :code:`Triangle` et les ajoute dans les listes correspondent à :code:`Mesh`. L'argument :code:`filename` peut être optionnel si le maillage est déjà construit.
 
 
-..  {{< diagram >}}
+
+.. raw:: html
+
+  <div class="mermaid" style="text-align:center;">
   classDiagram
       class Mesh{
             +Point[ ] points
@@ -79,7 +82,7 @@ Le maillage étant construit avec GMSH, il s'agit maintenant de convertir les do
         Point <.. Mesh
         Segment >.. Mesh
         Triangle <.. Mesh
-  {{< /diagram>}}
+  </div>
 
 .. proof:remark::
 

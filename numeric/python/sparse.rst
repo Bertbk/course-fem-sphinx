@@ -86,6 +86,17 @@ Une matrice COO se construit alors ainsi
 Triplets
 ++++++++
 
+.. raw:: html
+
+  <div class="mermaid" style="text-align:center;">
+    classDiagram
+          class Triplets{
+            +(float[ ], (int[ ], int[ ])) data
+              __init__(self)
+              append(self, i, j, val)
+          }
+  </div>
+
 Nous proposons de construire notre future matrice par concaténation de triplets de type (I, J, valeur). une classe :code:`Triplets` qui encapsule cette structure de données. Nous lui adjoignons une méthode :code:`append` permettant d'ajouter un triplet au bout des autres :
 
 .. code-block:: python
@@ -129,14 +140,6 @@ La classe ressemble alors à cela:
   \end{pmatrix}
 
 
-.. {{< diagram>}}
-  classDiagram
-        class Triplets{
-          +(float[ ], (int[ ], int[ ])) data
-            __init__(self)
-            append(self, i, j, val)
-        }
-  {{< /diagram>}}
 
 Format CSR
 ----------
