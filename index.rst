@@ -8,5 +8,6 @@ Maillage et Éléments Finis
 
    lecture/index
    numeric/index
+   projet/index
    download/index
    Dépôt GitHub <https://github.com/Bertbk/course-fem-sphinx>
