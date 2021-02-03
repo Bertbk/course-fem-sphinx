@@ -76,6 +76,9 @@ proof_theorem_types = {
    "proposition":"Proposition",
    "exercise":"Exercice",
 }
+proof_latex_notheorem = ["proof"]
+#proof_html_nonumbers = ["exercise"]
+
 
 
 
@@ -99,9 +102,6 @@ html_js_files = [
     'js/loc2glob/main.js',
     'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js',
 ]
-
-proof_latex_notheorem = ["proof", "exercise"]
-proof_html_nonumbers = ["exercise"]
 
 # Additional stuff for the LaTeX preamble.
 latex_engine = 'lualatex'
