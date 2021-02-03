@@ -74,6 +74,7 @@ proof_theorem_types = {
    "theorem": "Theorem",
    "remark":"Remarque",
    "proposition":"Proposition",
+   "exercise":"Exercice",
 }
 
 
@@ -106,6 +107,8 @@ latex_elements['preamble'] = '\usepackage{amsmath}\n\usepackage{amssymb}\n\usepa
 latex_elements['babel'] = '\\usepackage{babel}'
 latex_additional_files = ['mystyle.sty', 'img/normal/normal.tex']
 latex_elements['extrapackages'] = '\usepackage{tikz}\n\usetikzlibrary{arrows, calc, fit}\n\usepackage{standalone}\n\usepackage{mathrsfs}\n\usepackage{mystyle}'
+latex_toplevel_sectioning = "part"
+
 
 # copy to mathjax
 mathjax_config = {                  
