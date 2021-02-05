@@ -42,7 +42,7 @@ Autrement dit, pour tout élément :math:`f` de :math:`\Lo`, il existe une suite
 
   Soit :math:`f` une fonction de :math:`\Lo` telle que
   
-  .. math::   \forall v \in \Cscr^{\infty}_c(\Omega),\qquad \int_{\Omega} f(\xx)v(\xx) \diff\xx= 0,
+  .. math::   \forall \phi \in \Cscr^{\infty}_c(\Omega),\qquad \int_{\Omega} f(\xx)\phi(\xx) \diff\xx= \PSL{f}{\phi} = 0,
 
   alors :math:`f(\xx)=0` presque partout dans :math:`\Omega`.
 
@@ -64,7 +64,7 @@ Dérivée faible
 
   Une fonction de :math:`\Lo` est dérivable au sens faible par rapport à la direction :math:`x_i` si et seulement si il existe un élément :math:`g_i` de :math:`\Lo` tel que
   
-  .. math::   \forall v \in \Cscr^{\infty}_c(\Omega),\quad \int_{\Omega} f(\xx) \partial_{x_i} v(\xx)\diff\xx =- \int_{\Omega} g_i(\xx) v(\xx)\diff\xx.
+  .. math::   \forall \phi \in \Cscr^{\infty}_c(\Omega),\quad \int_{\Omega} f(\xx) \partial_{x_i} \phi(\xx)\diff\xx =- \int_{\Omega} g_i(\xx) \phi(\xx)\diff\xx.
 
   Nous notons alors :math:`g_i = \partial_{x_i}f =\partial_{_i}f`, qui est unique en vertu du Corollaire :numref:`{number} <corollary-f-zero>`.
 
@@ -77,6 +77,21 @@ Nous noterons maintenant :math:`\partial_{x_i} f \in \Lo` ou :math:`\partial_{i}
   
   .. math:: \nabla f = \left(\partial_{x_1}f, \partial_{x_2}f, \ldots, \partial_{x_d}f\right)^T.
   
+.. proof:proposition:: Unicité de la dérivée faible
+
+  Si la dérivée faible dans la direction :math:`x_i` d'une fonction :math:`u\in\Lo` existe alors elle est unique.
+
+.. proof:proof::
+
+  Soit :math:`u\in\Lo` et supposons que :math:`u` admette deux dérivées faibles dans la direction :math:`x_i` : :math:`f_i` et :math:`g_i`, toutes deux dans :math:`\Lo`. Nous avons alors, par définition, les deux relations suivantes :
+
+  .. math:: \forall \phi \in \Cscr^{\infty}_c(\Omega), -\int_{\Omega} u(\xx) \partial_{i} \phi(\xx) = \int_{\Omega} f_i(\xx) \phi(\xx)\diff\xx = \int_{\Omega} g_i(\xx) \phi(\xx)\diff\xx.
+
+  Autrement dit, nous avons 
+
+  .. math:: \forall \phi \in \Cscr^{\infty}_c(\Omega), \qquad \int_{\Omega} (f_i - g_i)(\xx) \phi(\xx)\diff\xx = 0,
+
+  et le Corollaire :numref:`{number} <corollary-f-zero>` implique que :math:`f_i=g_i`.
 
 Le lien entre *dérivée faible* et *dérivée forte* (ou *classique*) est maintenant présenté :
 
@@ -89,17 +104,14 @@ Le lien entre *dérivée faible* et *dérivée forte* (ou *classique*) est maint
 
   Il suffit de montrer ce résultat pour une direction uniquement, c'est-à-dire montrer que :math:`\widetilde{\partial_{i}}u = \partial_{i} u`, si :math:`\widetilde{\partial_{i}}` est la dérivée partielle au sens faible. Par intégration par partie, nous avons :
 
-  .. math:: \forall v \in \Cscr^{\infty}_c(\Omega), \qquad \int_{\Omega} \partial_{i} u(\xx) v(\xx) \diff\xx= -\int_{\Omega} u(\xx) \partial_{i} v(\xx)\diff\xx,
+  .. math:: \forall \phi \in \Cscr^{\infty}_c(\Omega), \qquad \int_{\Omega} \partial_{i} u(\xx) \phi(\xx) \diff\xx= -\int_{\Omega} u(\xx) \partial_{i} \phi(\xx)\diff\xx + \int_{\partial\Omega} u(\xx) \phi(\xx) n_i(\xx) \diff s(\xx),
 
-  et par définition, nous avons :
+  où :math:`n_i` est la :math:`i^{\text{ème}}` composante du vecteur normale :math:`\nn`. Comme :math:`\phi` est à support compact dans :math:`\Omega`, nous savons que :math:`\phi` s'annule sur le bord de :math:`\Omega`. Il vient donc
+
+  .. math:: \forall \phi \in \Cscr^{\infty}_c(\Omega), \qquad \int_{\Omega} \partial_{i} u(\xx) \phi(\xx) \diff\xx= -\int_{\Omega} u(\xx) \partial_{i} \phi(\xx)\diff\xx,
+
+  Autrement dit :math:`u` admet une dérivée faible. Celle-ci étant unique, nous avons bien :math:`\partial_{i} u = \widetilde{\partial}_{i} u`.
   
-  .. math:: \forall v \in \Cscr^{\infty}_c(\Omega), \qquad -\int_{\Omega} u(\xx) \partial_{i} v(\xx) = \int_{\Omega} \widetilde{\partial_{i}}u(\xx) v(\xx)\diff\xx. 
-
-  Nous avons donc
-
-  .. math:: \forall v \in \Cscr^{\infty}_c(\Omega), \qquad \int_{\Omega} (\partial_{i} u - \widetilde{\partial_{i}} u)(\xx) v(\xx)\diff\xx = 0,
-
-  et nous concluons grâce au Corollaire :numref:`{number} <corollary-f-zero>`.
 
 
 .. proof:remark::
@@ -140,9 +152,9 @@ et de la norme induite, pour :math:`u\in\Ho` :
 
   et donc les inégalités suivantes :
 
-  1. :math:`\normH{u}^2 \geq \normL{u}^2`
-  2. :math:`\normH{u}^2  \geq \normLd{\nabla u}^2 = \sum_{i=1}^d\normL{\partial_i u}^2`
-  3. :math:`\normH{u}^2   \geq \normL{\partial_i u}^2 \qquad \forall i=1,2,\ldots, d`
+  1. :math:`\normH{u} \geq \normL{u}`
+  2. :math:`\normH{u}  \geq \normLd{\nabla u} = \left(\sum_{i=1}^d\normL{\partial_i u}^2\right)^{1/2}`
+  3. :math:`\normH{u}   \geq \normL{\partial_i u} \qquad \forall i=1,2,\ldots, d`
 
 
 
@@ -173,11 +185,11 @@ Nous montrons maintenant que :math:`\Ho` muni de cette norme est complet.
 
   Ainsi, pour tout :math:`i`, la suite :math:`(\partial_i u_n)_n` est aussi de Cauchy dans :math:`\Lo` et converge donc vers un élément :math:`f_i\in \Lo`. Il nous faut donc montrer que :math:`u` est dérivable (au sens faible) et que :math:`f_i = \partial_i u`. Remarquons pour cela que, par définition,
 
-  .. math:: \forall \varphi \in \Cscr^{\infty}_c(\Omega),\qquad \int_{\Omega}\partial_i u_n (\xx)\varphi(\xx) \diff\xx= -\int_{\Omega} u_n(\xx) \partial_i \varphi(\xx)\diff\xx. 
+  .. math:: \forall \phi\in \Cscr^{\infty}_c(\Omega),\qquad \int_{\Omega}\partial_i u_n (\xx)\phi(\xx) \diff\xx= -\int_{\Omega} u_n(\xx) \partial_i \phi(\xx)\diff\xx. 
 
   En passant à la limite dans :math:`\Lo` dans cette expression, il vient que : 
 
-  .. math:: \forall \varphi \in \Cscr^{\infty}_c(\Omega),\qquad \int_{\Omega} f_i (\xx)\varphi(\xx) \diff\xx= -\int_{\Omega} u(\xx) \partial_i \varphi(\xx)\diff\xx. 
+  .. math:: \forall \phi\in \Cscr^{\infty}_c(\Omega),\qquad \int_{\Omega} f_i (\xx)\phi(\xx) \diff\xx= -\int_{\Omega} u(\xx) \partial_i \phi(\xx)\diff\xx. 
 
   Autrement dit, :math:`u` est dérivable par rapport à toutes ses variables et :math:`\partial_i u = f_i`, ce qui implique que :math:`u` est bien dans :math:`H^1(\Omega)`. Nous avons donc montré que la suite :math:`(u_n)_n` converge dans :math:`\Lo` vers un élément :math:`u` de :math:`\Ho`. Il nous reste à montrer que cette convergence est toujours valable pour la norme de :math:`\Ho`. Utilisons la remarque précédente pour décomposer la norme dans :math:`\Ho` :
 
@@ -194,7 +206,7 @@ Nous en déduisons le corollaire suivant:
 
 Nous avons également le résultat de densité suivant
 
-.. proof:proposition::
+.. proof:proposition:: Admis
   
   L'espace :math:`\Cscr^{\infty}_c(\Omega)` est dense dans :math:`H^1(\Omega)` pour la norme :math:`\normH{\cdot}`.
 
