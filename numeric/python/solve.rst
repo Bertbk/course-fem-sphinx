@@ -30,7 +30,7 @@ La formulation variationnelle est donnée par
 Pour simplifier nous prenons :math:`\Omega = ]0,1[\times]0,1[` le carré unitaire et :math:`f(x,y) = (1+2\pi^2)\sin(\pi x)\sin(\pi y)`
 de sorte que la solution exacte est connue et vaut
 
-.. math:: u(x, y) = f(x, y).
+.. math:: u(x, y) = g(x, y) = \sin(\pi x)\sin(\pi y).
 
 .. figure:: /img/numeric/uref.png
   :figwidth: 100%

@@ -94,9 +94,9 @@ Ainsi, pour un triangle  :math:`\tri_p`, ses sommets sont numérotés :math:`[\v
 
 .. math:: \mphi_i^p = \mphi_{\locToGlob(p,i)}|_{\tri_p}.
 
-.. only:: html
+.. raw:: html
 
-  :ref:`Une application interactive est également proposée <app-loc2glob>`.
+  <p>Une <a href="#app-local-to-global">application interactive est également proposée</a>.</p>
 
 .. _fig-loc2glob:
 
@@ -108,13 +108,11 @@ Ainsi, pour un triangle  :math:`\tri_p`, ses sommets sont numérotés :math:`[\v
 
   Numérotation locale et globale
 
+.. raw:: html
 
-.. only:: html
-
-  .. container:: app-local-to-global
-
-
-    **Application interactive : Cliquez sur un triangle** pour faire apparaitre la **numérotation locale** des sommets du triangle. Recliquez dessus pour revenir en **numérotation globale**
+  <div class="app-local-to-global" id="app-local-to-global" style="text-align:center;">
+    <p><strong>Application interactive : Cliquez sur un triangle</strong> pour faire apparaitre la <strong>numérotation locale</strong> des sommets du triangle. Recliquez dessus pour revenir en <strong>numérotation globale</strong></p> 
+  </div>
 
 Utilisons ces nouvelles notations dans l'équation :eq:`eq-assemble_tmp`, en ramenant la somme sur les sommets à uniquement les sommets du triangle considéré :
 
@@ -145,13 +143,11 @@ L'algorithme d'assemblage est alors complet ! Une version pseudo-code est prése
 .. proof:remark::
 
   Pour mieux comprendre la différence entre numérotation locale et globale, une application est disponible en ligne :
-  https://bthierry.pages.math.cnrs.fr/course/fem/implementation_maillage/
+  https://bthierry.pages.math.cnrs.fr/course-fem/lecture/mise-en-oeuvre/assemblage/#app-local-to-global. 
+  
+  Une autre `application web <../_static/pecheux/matrix-assembly/index.html>`_, développée cette fois-ci par `Mina Pêcheux <http://minapecheux.com>`_,  présente l'assemblage pas à pas d'une matrice. En cliquant sur un triangle, les contributions de ce dernier seront ajoutées dans la grande matrice de masse. La matrice de masse élémentaire associée au triangle est également affichée.
 
 
 .. proof:remark::
   
   Cet algorithme n'est pas encore utilisable, nous devons calculer la valeur de :math:`a_p(\mphi_j^p,\mphi_i^p)` et :math:`\ell_p(\mphi_i^p)`. De plus, il manque encore les conditions de Dirichlet.
-
-.. only:: html
-
-  Développée par `Mina Pêcheux <http://minapecheux.com>`_, cette `application web <../_static/pecheux/matrix-assembly/index.html>`_ présente l'assemblage pas à pas d'une matrice. En cliquant sur un triangle, les contributions de ce dernier seront ajoutées dans la grande matrice de masse. La matrice de masse élémentaire associée au triangle est également affichée.
