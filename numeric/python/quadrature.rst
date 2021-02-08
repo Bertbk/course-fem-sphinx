@@ -15,7 +15,7 @@ Certaines intégrales ne peuvent être calculées analytiquement et devront êtr
   & \approx \sum_{K_p} \abs{\det(J_p)} \sum_{i}\sum_m \omega_m f(\mathbf{x}(\xi_m, \eta_m)) \mphih_i(\xi_m, \eta_m)
   \end{aligned}
 
-Les poids :math:`\omega_m` et les points de quadrature :math:`(\xi_m, \eta_m)` dépendent de la précision recherchée. Rappelons aussi que :math:`\mathbf{x}(\xi_m, \eta_m)` s'obtient par les fonctions d'interpolation géométrique, qui dans le cas d'éléments finis isoparamétriques, sont les mêmes que les fonctions éléments finis :math:`\mathbb{P}^1`, c'est à dire que pour :math:`\mathbf{x}` appartenant à un élément de sommets :math:`(\mathbf{s}_i)_i` :
+Les poids :math:`\omega_m` et les points de quadrature :math:`(\xi_m, \eta_m)` dépendent de la précision recherchée :ref:`comme expliqué dans le cours <sec-quadrature>`. Rappelons aussi que :math:`\mathbf{x}(\xi_m, \eta_m)` s'obtient par les fonctions d'interpolation géométrique, qui dans le cas d'éléments finis isoparamétriques, sont les mêmes que les fonctions éléments finis :math:`\mathbb{P}^1`, c'est à dire que pour :math:`\mathbf{x}` appartenant à un élément de sommets :math:`(\mathbf{s}_i)_i` :
 
 .. math::  \mathbf{x}(\xi_m, \eta_m) = \sum_{i=1} \hat{\psi}_i(\xi_m, \eta_m)\mathbf{s}_i,
 
