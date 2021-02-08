@@ -25,14 +25,16 @@ L'avantage de ce format est la facilité d'implémentation et la possibilité d'
 
 Prenons la matrice exemple suivante avec :code:`nnz` =10 :
 
-.. math:: A= \begin{pmatrix}
+.. math:: 
+  :label: eq-matA
+
+  A= \begin{pmatrix}
     3 & 0 & 0 & 2 & 1 \\
     0 & 0 & 5 & 8 & 0 \\
     0 & 1 & 2 & 0 & 0 \\
     0 & 0 & 9 & 0 & 0 \\
     0 & 0 & 10& 4 & 0
   \end{pmatrix}.
-  :label: eq-matA
 
 
 Le stockage COO de cette matrice prendra alors la forme suivante :
@@ -136,7 +138,7 @@ Le format CSR est spécialisé dans les opérations d'algèbres linéaires et pa
 - Sa **taille est fixée à n+1** (n=nombre de lignes de la matrice)
 - :code:`row[i]` est maintenant **l'indice du premier élément non nul de la ligne** :code:`i` **dans les tableaux** :code:`col` **et** :code:`val`
 
-Par exemple, le stockage CSR de la matrice :eq:`eq:matA` est :
+Par exemple, le stockage CSR de la matrice :eq:`eq-matA` est :
 
 +--------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
 | Indice       | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   |

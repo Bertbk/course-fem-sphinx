@@ -41,13 +41,14 @@ avec
 Nous discrétisons la formulation faible :eq:`fv-dnNonH` en remplaçant formellement :math:`\Ho` par :math:`\Vh` pour obtenir
 
 .. math::
+  :label: eq-fvdnNonH
 
   \left\{\begin{array}{l}
     \text{Trouver }\uh\in\Vh\text{ tel que}\\
     \forall \vh \in\Ho,\quad a(\uh,\vh) = \ell(\vh),
   \end{array}\right.
 
-Nous appliquons la méthode vue précédemment pour obtenir un système linéaire équivalent à :eq:`TODO:` :
+Nous appliquons la méthode vue précédemment pour obtenir un système linéaire équivalent à :eq:`eq-fvdnNonH` :
 
 .. math::  A\Uh = B.
 

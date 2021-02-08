@@ -95,7 +95,7 @@ Le maillage étant construit avec GMSH, il s'agit maintenant de convertir les do
 
   L'algorithme ressemble surement à ceci :
   
-  .. code-block:: python
+  .. code-block:: bash
 
     // Création des points
     For every Nodes
