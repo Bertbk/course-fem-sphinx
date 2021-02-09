@@ -57,7 +57,7 @@ Le diamètre d'un triangle est la distance maximale entre deux points du triangl
 
   .. raw:: html
 
-    <object type="text/html" data="../_static/mesh/submarine.html" width="100%" height="auto"></object>
+    <object type="text/html" data="../../_static/mesh/submarine.html" width="100%" height="auto"></object>
 
   - Théière
 
@@ -66,7 +66,7 @@ Le diamètre d'un triangle est la distance maximale entre deux points du triangl
 
   .. raw:: html
 
-    <object type="text/html" data="../_static/mesh/teapot.html" width="100%" height="auto"></object>
+    <object type="text/html" data="../../_static/mesh/teapot.html" width="100%" height="auto"></object>
 
 
 
