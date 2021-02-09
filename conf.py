@@ -79,8 +79,7 @@ proof_theorem_types = {
 proof_latex_notheorem = ["proof"]
 #proof_html_nonumbers = ["exercise"]
 
-
-
+html_baseurl = "https://bthierry.pages.math.cnrs.fr/course-fem/"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
