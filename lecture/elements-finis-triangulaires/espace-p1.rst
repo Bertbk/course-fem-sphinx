@@ -53,7 +53,7 @@ Le diamètre d'un triangle est la distance maximale entre deux points du triangl
   - Sous-marin
 
     - `Script GMSH <https://github.com/Bertbk/geogmsh/blob/master/submarine.geo>`_
-    - `Plein écran <_static/mesh/submarine.html>`_
+    - `Plein écran <../../_static/mesh/submarine.html>`_
 
   .. raw:: html
 
@@ -62,7 +62,7 @@ Le diamètre d'un triangle est la distance maximale entre deux points du triangl
   - Théière
 
     - `Script GMSH <https://github.com/Bertbk/geogmsh/blob/master/teapot.geo>`_
-    - `Plein écran </_static/mesh/teapot.html>`_
+    - `Plein écran <../../_static/mesh/teapot.html>`_
 
   .. raw:: html
 
