@@ -4,9 +4,19 @@ Condition de Dirichlet
 Homogène
 --------
 
+
+.. math::
+
+  \left\{ 
+    \begin{array}{r c l l}
+      -\Delta u &=& f & (\Omega),\\
+      u & = & \gD & (\GammaD := \partial\Omega).
+    \end{array}
+    \right.
+
 Nous introduisons alors un espace de Sobolev qui prend en compte la condition de Dirichlet.
 
-.. math:: \Hoz = \enstq{u\in\Ho}{u|_{\partial\Omega} = 0},
+.. math:: \HoD = \enstq{u\in\Ho}{u|_{\GammaD} = 0},
 
 
 Si :math:`V_h` est l'espace des éléments finis :math:`\Pb^1` sur :math:`\Omega`, alors une discrétisation naturelle de :math:`\Hoz` est l'espace :math:`\Vhz` défini par
@@ -14,7 +24,14 @@ Si :math:`V_h` est l'espace des éléments finis :math:`\Pb^1` sur :math:`\Omega
 
 .. math:: \Vhz = \enstq{u\in V_h}{ u|_{\Gamma_D} = 0}
 
-Mais nous pouvons aussi raisonner sur le système linéaire directement. Nous séparons les degrés de liberté en deux sous-ensembles :
+.. proof:remark::
+
+  La notation :math:`\HoD` n'est pas standard. Quand la condition de Dirichlet est posée sur le bord tout entier :math:`\partial\Omega`, nous pouvons utiliser l'espace standard :math:`\Hoz` :
+
+  .. math:: \Hoz = \enstq{u\in\Ho}{u|_{\partial\Omega} = 0}.
+
+
+Nous pouvons aussi raisonner sur le système linéaire directement. Nous séparons les degrés de liberté en deux sous-ensembles :
 
 1. Ceux qui appartiennent à :math:`\Omega` ou à :math:`\Gamma_N` : nous les noterons avec un indice :math:`I` (pour Intérieur) : :math:`u_I`
 2. Ceux qui appartiennent à :math:`\Gamma_D`, ils seront notés avec un indice :math:`D` : :math:`u_D`
@@ -30,7 +47,7 @@ Quitte à renuméroter, le vecteur :math:`U` de degrés de liberté se réécrit
     \end{array}
   \right),
 
-et le système linéaire :math:`AU = b`  devient :
+et le système linéaire :math:`AU = B`  devient :
 
 .. math:: 
   AU = B \iff \left(
@@ -54,7 +71,7 @@ Les degrés de liberté :math:`u_D` sont en réalité fixés à 0 du fait de la 
 
 .. math:: 
 
-  AU = b \iff 
+  AU = B \iff 
   \left(
     \begin{array}{c c}
       A_{I,I}  &A_{I,D}\\
@@ -153,6 +170,8 @@ mais ce **n'est pas un espace vectoriel** ! Pour remédier à ce problème, nous
 Relèvement en :math:`\Pb^1`
 +++++++++++++++++++++++++++
 
+.. TODO: probleme de notation !
+
 En éléments finis :math:`\Pb^1`, un relèvement naturel est la fonction :math:`u_{h, g}` de :math:`\Vh` telle que
 
 .. math:: 
@@ -171,7 +190,7 @@ En pratique, la matrice est alors décomposée ainsi :
 
 .. math:: 
 
-  AU = b \iff 
+  AU = B \iff 
   \left(
     \begin{array}{c c}
       A_{I,I}  & A_{I, D}\\
@@ -194,7 +213,7 @@ La matrice obtenue est non symétrique, ce qui peut poser des problèmes (par ex
 
 .. math:: 
 
-  AU = b \iff 
+  AU = B \iff 
   \left(
     \begin{array}{c c}
       A_{I,I}  & 0\\

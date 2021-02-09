@@ -72,7 +72,7 @@ Nous pouvons maintenant énoncer le théorème de Lax-Milgram (**à connaître p
   La question est : :math:`A` est-elle bijective ?   Utilisons la coercivité de l'application :math:`a(\cdot,\cdot)` :
 
 
-  .. math:: \alpha\|w\|^2 \leq \abs{((A(w), w)} \leq \|A(w)\|\|w\|,
+  .. math:: \alpha\|w\|^2 \leq \abs{\PS{A(w)}{w}} \leq \|A(w)\|\|w\|,
 
   ce qui implique que
 
@@ -85,7 +85,7 @@ Nous pouvons maintenant énoncer le théorème de Lax-Milgram (**à connaître p
 
   Quand :math:`n` et :math:`p` tendent vers l'infini, alors :math:`\|w_n - w_p\| \to 0`. La suite :math:`(w_n)_n` est donc une suite de Cauchy dans :math:`V`, qui est complet (Hilbert), elle est donc convergente et converge vers un élément :math:`w` de :math:`V`. Par continuité de :math:`A`, la suite :math:`(A(w_n))_n` converge vers :math:`A(w)`, élément de :math:`\Image(A)`. Ce qui implique que :math:`\Image(A)` est fermé. Prenons maintenant :math:`v\in \Image(A)^{\perp}`, par la coercivité de :math:`a(\cdot,\cdot)`, nous avons
 
-  .. math:: \alpha\abs{v}^2 \leq \abs{a(v,v)} \leq \abs{a(v,v)} = \abs{\PS{A(v)}{v}} = 0.
+  .. math:: \alpha\abs{v}^2 \leq \abs{a(v,v)}  = \abs{\PS{A(v)}{v}} = 0.
 
   Autrement dit, :math:`v=0` et donc :math:`\Image(A)^\perp = \{0\}` et nous avons
 

@@ -50,7 +50,7 @@ Nous rappelons l'inégalité de Cauchy Schwarz:
 
 .. proof:definition:: 
 
-  Soit :math:`V` un espace de Hilbert. L'application :math:`f:V\times V \to \Rb` est une forme sesquilinéaire sur :math:`V` si et seulement si, pour tout :math:`\xx,\yy, \zz` de :math:`V` et :math:`\alpha` de :math:`\Rb`:
+  Soit :math:`V` un espace de Hilbert. L'application :math:`f:V\times V \to \Rb` est une forme bilinéaire sur :math:`V` si et seulement si, pour tout :math:`\xx,\yy, \zz` de :math:`V` et :math:`\alpha` de :math:`\Rb`:
 
   1. :math:`f(\xx, \yy + \alpha \zz) = f(\xx,\yy) + \alpha f(\xx,\zz)`
   2. :math:`f(\alpha \xx + \yy, \zz) = \alpha f(\xx,\zz) + f(\yy,\zz)`

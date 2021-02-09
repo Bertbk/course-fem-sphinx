@@ -47,7 +47,7 @@ Le principe de la méthode est d'approcher l'espace :math:`\Ho` par :math:`\Vh`.
   \end{array}
   \right.
 
-Si :math:`\Vh\in\Ho` est "proche" de :math:`\Ho` alors on est en droit d'espérer que :math:`\uh` soit proche de :math:`u`. C'est le cas comme nous le montrons plus tard. En attendant, supposons que ça soit une bonne idée et regardons ce que cela nous apporte.
+Si :math:`\vh\in\Ho` est "proche" de :math:`\Ho` alors on est en droit d'espérer que :math:`\uh` soit proche de :math:`u`. C'est le cas comme nous le montrons plus tard. En attendant, supposons que ça soit une bonne idée et regardons ce que cela nous apporte.
 
 Système linéaire
 ----------------
@@ -97,7 +97,7 @@ où nous avons
 
   \left\{\begin{aligned}
     \Ahh &= (\Ahh_{I,J})_{ 0\leq I,J\leq \Ns-1} = (a(\mphi_J, \mphi_I))_{ 0\leq I,J\leq \Ns-1}\\
-    \Uh &=(\Uh_I)_{0\leq I \leq \Ns-1}\\
+    \Uh &=(\Uh_I)_{0\leq I \leq \Ns-1} = (u_I)_{0\leq I \leq \Ns-1}= (u_h(\vertice_I))_{0\leq I \leq \Ns-1}\\
     \Bh &=(\Bh_I)_{ 0\leq I\leq \Ns-1} = (\ell(\mphi_I))_{0\leq I\leq \Ns-1}
   \end{aligned}\right.
 

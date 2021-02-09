@@ -23,7 +23,7 @@ Chaque intégrale sur :math:`\Omega` peut être décomposée comme une somme sur
     \Bh_{I} &= \sum_{p=0}^{\Nt-1}\int_{\tri_p}f(x)\mphi_I(x)\diff x.
   \end{aligned}
 
-Soit deux sommets :math:`\vertice_I` et :math:`\vertice_J` n'appartenant pas un même triangle, alors :math:`\supp(\mphi_I)\cap\supp(\mphi_J) =\emptyset`. Autrement dit, :math:`mphi_I\mphi_J` est toujours nul et donc le coefficient :math:`A_{I,J}` est nul ! Vue autrement, si deux sommets :math:`\vertice_I` et :math:`\vertice_J` ne sont pas connectés par une arête, alors :math:`A_{I,J=0}`.
+Soit deux sommets :math:`\vertice_I` et :math:`\vertice_J` n'appartenant pas un même triangle, alors :math:`\supp(\mphi_I)\cap\supp(\mphi_J) =\emptyset`. Autrement dit, :math:`\mphi_I\mphi_J` est toujours nul et donc le coefficient :math:`A_{I,J}` est nul ! Vue autrement, si deux sommets :math:`\vertice_I` et :math:`\vertice_J` ne sont pas connectés par une arête, alors :math:`A_{I,J=0}`.
 
 Les coefficients de :math:`A` sont donc majoritairement nuls car deux sommets pris au hasard (dans le million d'un maillage) ne sont pas connectés. En moyenne de manière empirique, un nœud (ou sommet) est connecté au maximum à 6 à 8 autres nœuds (en 2D). Une conséquence directe est que **la matrice** :math:`A` **est creuse**, c'est-à-dire qu'un nombre important de ses coefficients sont nuls. Une stratégie de stockage creux est donc à utiliser, ce que nous verrons plus loin. Une manière pratique est d'utiliser le format `COO <https://en.wikipedia.org/wiki/Sparse_matrix#Coordinate_list_(COO)>`_ pour l'assemblage puis le format `CSR <https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format))>`_ pour l'algèbre linéaire et la résolution du système.
 
@@ -130,9 +130,9 @@ L'algorithme d'assemblage est alors complet ! Une version pseudo-code est prése
   B = 0
   For p = 0:N_t-1
     For i = 0:2
-      I = locToGlob(p,i)
+      I = L2G(p,i)
       For j = 0:2
-        J = locToGlob(p,j)
+        J = L2G(p,j)
         A(I,J) += a_p(ϕ_j^p,ϕ_i^p)
       EndFor
       B(I) += l_p(ϕ_i^p)

@@ -8,14 +8,14 @@ Rajoutons maintenant la condition de Neumann hétérogène à notre problème (\
   \left\{ 
     \begin{array}{r c l l}
       -\Delta u + u &=& f & (\Omega),\\
-      \dn u & = & g & (\GammaN).
+      \dn u & = & \gN & (\GammaN := \partial\Omega).
     \end{array}
     \right.
 
 
 Après multiplication par des fonctions test et intégration par partie, nous obtenons la formulation variationnelle
 
-.. math:: \int_{\Omega}\nabla u \cdot \nabla v + \int_{\Omega}  u v  -\int_{\partial\Omega} (\dn u)v =  \int_{\Omega} f v.
+.. math:: \int_{\Omega}\nabla u \cdot \nabla v + \int_{\Omega}  u v  -\int_{\partial\Omega = \GammaN} (\dn u)v =  \int_{\Omega} f v.
 
 En utilisant la condition :math:`\dn u = \gN` sur :math:`\GammaN`, nous obtenons la formulation variationnelle suivante :
 
@@ -35,7 +35,7 @@ avec
   \begin{aligned}
     a(u,v) &:= \displaystyle\int_{\Omega}\nabla u \cdot \nabla v +
     \int_{\Omega}  u v \\
-    \ell(v) &:= \displaystyle\int_{\partial\Omega} g v    + \int_{\Omega} f v.
+    \ell(v) &:= \displaystyle\int_{\GammaN} \gN v    + \int_{\Omega} f v.
   \end{aligned}
 
 Nous discrétisons la formulation faible :eq:`fv-dnNonH` en remplaçant formellement :math:`\Ho` par :math:`\Vh` pour obtenir
@@ -57,7 +57,7 @@ Les coefficients de la matrice :math:`A` et du vecteur :math:`B` sont donnés pa
 .. math::
 
   \begin{aligned}
-    A&=(A_{I,J})_{I,J}, &A_{I,J} &= a(\mphi_J,\mphi_J) = \int_{\Omega}\nabla \mphi_J\cdot\nabla\mphi_I + c\int_{\Omega}\mphi_J\mphi_I\\
+    A&=(A_{I,J})_{I,J}, &A_{I,J} &= a(\mphi_J,\mphi_J) = \int_{\Omega}\nabla \mphi_J\cdot\nabla\mphi_I + \int_{\Omega}\mphi_J\mphi_I\\
     B &=(B_I)_I, &B_I &= \ell(\mphi_I) = \int_{\Omega}f\mphi_I \underbrace{+ \int_{\GammaN}\gN\mphi_I}_{\text{Nouveau !}}
   \end{aligned}
 
@@ -65,7 +65,7 @@ Au final, seule le membre de droite est modifié par rapport à la section préc
 
 .. math::  B = \sum_{p=0}^{\Nt-1} \sum_{i=0}^2 \int_{\tri_p}f\mphi_i^p + \sum_{q=0}^{N_{\GammaN}}\sum_{i=0}^2 \int_{\sigma_q} \gN{}^q\mphi_i.
 
-Voici quelques formules de quadrature sur un segment :math:`[{}^q\vertice_0, {}^q\vertice_1]` avec le degré de précision, c'est à dire que la formule est exacte si :math:`g` est un polynôme de degré égal ou inférieur. Nous notons :math:`\abs{\sigma} = \norm{{}^q\vertice_0 - {}^q\vertice_1}` la taille du segment et :math:`{}^q\vertice_{01} = \frac{{}^q\vertice_0 + {}^q\vertice_0}{2}` le milieu du segment:
+Voici quelques formules de quadrature sur un segment :math:`[{}^q\vertice_0, {}^q\vertice_1]` avec le degré de précision, c'est à dire que la formule est exacte si :math:`g` est un polynôme de degré égal ou inférieur. Nous notons :math:`\abs{\sigma} = \norm{{}^q\vertice_0 - {}^q\vertice_1}` la taille du segment et :math:`{}^q\vertice_{01} = \frac{{}^q\vertice_0 + {}^q\vertice_1}{2}` le milieu du segment:
 
 
 +------------------------------------+--------------------+---------------------------------------------------------------------------------------------------------------------------+

@@ -86,7 +86,7 @@ Nous notons :math:`\mphih_i \in \Pb^1(\trih)` les trois fonctions de forme assoc
 
   .. math:: 
   
-    \Meh_{i,j} = \int_{\trih} \mphih_j\mphih_j \diff(\xi,\eta),
+    \Meh_{i,j} = \int_{\trih} \mphih_j\mphih_i \diff(\xi,\eta),
 
   est donnée par
 
@@ -231,13 +231,13 @@ Triangle de référence
 
 .. proof:lemma::
 
-  Dans le triangle de référence :math:`\trih`, la matrice de rigidité élémentaire :math:`\hat{K}= (\hat{D}_{i,j})_{0\leq i,j\leq 2}` de coefficient
+  Dans le triangle de référence :math:`\trih`, la matrice de rigidité élémentaire :math:`\widehat{D}= (\widehat{D}_{i,j})_{0\leq i,j\leq 2}` de coefficient
 
-  .. math:: \hat{D}_{i,j} = \int_{\trih}\nabla \mphih_j(\xi,\eta)\cdot \nabla\mphih_i(\xi,\eta)\diff(\xi,\eta),
+  .. math:: \widehat{D}_{i,j} = \int_{\trih}\nabla \mphih_j(\xi,\eta)\cdot \nabla\mphih_i(\xi,\eta)\diff(\xi,\eta),
 
   a pour expression
 
-  .. math::   \hat{D} =  \frac{1}{2}
+  .. math::   \widehat{D} =  \frac{1}{2}
     \left(
       \begin{array}{l l c}
         2 & -1 & -1 \\
@@ -276,23 +276,23 @@ Triangle de référence
   .. math:: 
 
     \begin{aligned}
-    \hat{D}_{0,0} &=
+    \widehat{D}_{0,0} &=
       \int_{\trih}\nabla\mphih_0\cdot\nabla\mphih_0 \diff (\xi,\eta) =
       \int_{\trih} (-1,-1)\begin{pmatrix}-1\\ -1\end{pmatrix}\diff (\xi,\eta) =
       2 \int_{\trih} \diff(\xi,\eta) &&= 1\\
-    \hat{D}_{1,1} &=
+    \widehat{D}_{1,1} &=
       \int_{\trih}\nabla\mphih_1\cdot\nabla\mphih_1 \diff (\xi,\eta) =
       \int_{\trih} (1,0)\begin{pmatrix}1\\ 0\end{pmatrix} \diff (\xi,\eta) =
-        \int_{\trih} \diff(\xi,\eta) &&= \frac{1}{2} =\hat{D}_{3,3}\\
-    \hat{D}_{0,1} &=
+        \int_{\trih} \diff(\xi,\eta) &&= \frac{1}{2} =\widehat{D}_{3,3}\\
+    \widehat{D}_{0,1} &=
       \int_{\trih}\nabla\mphih_0\cdot\nabla\mphih_1 \diff (\xi,\eta) =
       \int_{\trih} (-1,-1)\begin{pmatrix}1\\ 0\end{pmatrix} \diff (\xi,\eta) =
         -\int_{\trih} \diff(\xi,\eta) &&= -\frac{1}{2}\\
-    \hat{D}_{0,2} &=
+    \widehat{D}_{0,2} &=
       \int_{\trih}\nabla\mphih_0\cdot\nabla\mphih_2 \diff (\xi,\eta) =
       \int_{\trih} (-1,-1)\begin{pmatrix}0\\ 1\end{pmatrix} \diff (\xi,\eta) =
         -\int_{\trih} \diff(\xi,\eta)&& = -\frac{1}{2}\\
-    \hat{D}_{1,2} &=
+    \widehat{D}_{1,2} &=
       \int_{\trih}\nabla\mphih_1\cdot\nabla\mphih_2 \diff (\xi,\eta) =
       \int_{\trih} (1,0)\begin{pmatrix}0\\ 1\end{pmatrix} \diff (\xi,\eta) &&=
       0.
@@ -333,7 +333,7 @@ L'opération "inverse" nous donne :
     =
   \begin{pmatrix}
     \displaystyle \frac{\partial x}{\partial \xi} & \displaystyle \frac{\partial y}{\partial \xi}\\[0.2cm]
-    \displaystyle \frac{\partial y}{\partial \eta} & \displaystyle \frac{\partial y}{\partial \eta}
+    \displaystyle \frac{\partial x}{\partial \eta} & \displaystyle \frac{\partial y}{\partial \eta}
   \end{pmatrix}
   \begin{pmatrix}
     \displaystyle \frac{\partial \mphi_j^p}{\partial x}\\[0.2cm]

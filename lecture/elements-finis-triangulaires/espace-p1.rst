@@ -44,6 +44,8 @@ Le diamètre d'un triangle est la distance maximale entre deux points du triangl
   Deux orientations possibles pour un triangle. Dans les maillages considérés, tous les triangles ont la   même orientation.
 
 
+.. TODO: lien plein écran kaputt
+
 .. only:: html
 
   Voici deux exemples de maillage obtenus avec GMSH, et visualisés avec Paraview :
@@ -173,7 +175,7 @@ Caractérisons maintenant les fonctions de cet espace. Le premier résultat mont
 
   La fonction :math:`\vh` est affine sur chaque triangle, il nous faut montrer que :math:`\uh\in\Cscr^0(\overline{\Omega})` pour conclure sur son appartenance à :math:`\Vh`. Comme :math:`\vh` est continue en chaque sommet :math:`\vertice`, il reste à montrer la continuité sur les arêtes. 
   
-  Prenons 2 triangles :math:`\tri_p` et :math:`\tri{q}` de :math:`\Th` ayant une arête :math:`\Sigma` en commun. Quitte à renuméroter, notons :math:`\vertice_{0} = (x_0,y_0)` et :math:`\vertice_{1} = (x_1, y_1)` les deux sommets de l'arête :math:`\Sigma` et notons
+  Prenons 2 triangles :math:`\tri_p` et :math:`\tri_q` de :math:`\Th` ayant une arête :math:`\Sigma` en commun. Quitte à renuméroter, notons :math:`\vertice_{0} = (x_0,y_0)` et :math:`\vertice_{1} = (x_1, y_1)` les deux sommets de l'arête :math:`\Sigma` et notons
   
   .. math:: \sigma(t) = \vertice_{0} + t(\vertice_{1}-\vertice_{0}) = \left( x_0 + t(x_1-x_0),  y_0 + t(y_1-y_0)\right)
   
@@ -184,11 +186,11 @@ Caractérisons maintenant les fonctions de cet espace. Le premier résultat mont
       &= a (x_0 + t(x_1-x_0)) + b (y_0 + t(y_1-y_0)) + c + t(c-c)\\
       &= [a x_0+by_0 +c] + t([a x_1+by_1 +c] +[ a x_0+by_0 +c])\\
       &=  p_{\tri_p}(\vertice_{0}) +t(p_{\tri_p}(\vertice_{1}) - p_{K_p}(\vertice_{0}))\\
-      &=  p_{\tri{q}}(\vertice_{0}) +t(p_{\tri{q}}(\vertice_{1}) - p_{\tri{q}}(\vertice_{0}))\\
-      &=  p_{\tri{q}}(\sigma(t)).
+      &=  p_{\tri_q}(\vertice_{0}) +t(p_{\tri_q}(\vertice_{1}) - p_{\tri_q}(\vertice_{0}))\\
+      &=  p_{\tri_q}(\sigma(t)).
     \end{aligned}
 
-  Autrement dit, les deux polynômes :math:`p_{\tri_p}` et :math:`p_{\tri{q}}` sont égaux sur l'arête :math:`\Sigma`. La fonction :math:`\vh` est donc continue sur toutes les arêtes de :math:`\Th` en plus de l'être sur tous les triangles et tous les sommets : :math:`\vh` est donc bien **continue** sur tout :math:`\overline{\Omega}`.
+  Autrement dit, les deux polynômes :math:`p_{\tri_p}` et :math:`p_{\tri_q}` sont égaux sur l'arête :math:`\Sigma`. La fonction :math:`\vh` est donc continue sur toutes les arêtes de :math:`\Th` en plus de l'être sur tous les triangles et tous les sommets : :math:`\vh` est donc bien **continue** sur tout :math:`\overline{\Omega}`.
 
 
 Base de :math:`\Vh` : les fonctions de forme

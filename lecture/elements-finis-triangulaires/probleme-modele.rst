@@ -54,7 +54,7 @@ où nous avons défini :
 - :math:`(-\Delta u)` : Terme de diffusion (notez le signe négatif)
 - :math:`c \geq 0` : Paramètre artificiel positif. Principalement, nous lui imposerons de valoir 1 ou 0, ce qui nous permettra de supprimer (ou non) le terme en :math:`u`, appelé terme de *Réaction*
 - :math:`u=\gD` : **Condition de Dirichlet**
-- :math:`u=\gN` : **Condition de Neumann**
+- :math:`\dn u=\gN` : **Condition de Neumann**
 - :math:`f` : une fonction donnée définie sur :math:`\Omega`. Elle joue le rôle de *terme source*, c'est à dire d'apport (positif ou négatif), par exemple de chaleur ou de force surfacique.
 
 .. TODO
@@ -110,7 +110,7 @@ Le point de départ de notre analyse est la réécriture sous forme faible du pr
 .. math::
 
   \begin{aligned}
-    \Delta u +cu=f \implies & -\int_{\Omega} \Delta u v + c\int_{\Omega}uv = \int_{\Omega}fv\\
+    -\Delta u +cu=f \implies & -\int_{\Omega} \Delta u v + c\int_{\Omega}uv = \int_{\Omega}fv\\
     \implies &\int_{\Omega}\nabla u \cdot\nabla v+ c\int_{\Omega}uv = \int_{\Omega}fv + \int_{\Gamma} (\dn u) v
   \end{aligned}
 
@@ -127,7 +127,7 @@ Nous obtenons alors :
 .. math::
   :label: eq-faible
 
-  \Delta u +cu=f \implies \int_{\Omega}\nabla u \cdot\nabla v+ c\int_{\Omega}uv = \int_{\Omega}fv +  \int_{\GammaN} \gN v, \quad\forall v \text{ tel que } v|_{\GammaD}=0.
+  -\Delta u +cu=f \implies \int_{\Omega}\nabla u \cdot\nabla v+ c\int_{\Omega}uv = \int_{\Omega}fv +  \int_{\GammaN} \gN v, \quad\forall v \text{ tel que } v|_{\GammaD}=0.
 
 
 Ainsi, et toujours sans regarder la régularité de :math:`u` (ni de :math:`v`), nous avons que : si :math:`u` est solution de l'EDP :eq:`eq-pbmodel` alors :math:`u` est aussi solution de la formulation faible :
@@ -217,6 +217,8 @@ Nous remarquons que dans cette formulation faible, :math:`v` et :math:`u` satisf
 
 L'espace :math:`L^2(\GammaN)` est l'espace des fonctions de carré intégrable sur :math:`\GammaN` (intégrale 1D). Le dernier espace est assez particulier. Il s'agit de l'espace des restrictions sur :math:`\GammaD` des fonctions de :math:`\Ho`. Autrement dit, si :math:`g_0\in H^{1/2}(\GammaD)`, alors il existe :math:`v_0\in\Ho` telle que :math:`v_0|_{\GammaD} = g_0`.
 
+
+.. TODO: c'est cassé !
 
 .. only:: html
 

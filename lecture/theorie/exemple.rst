@@ -47,7 +47,17 @@ Tentons d'appliquer le théorème de Lax-Milgram à cette formulation faible
 1. :math:`\Ho` est un espace de Hilbert
 2. :math:`\ell(\cdot)` est clairement linéaire (du fait de l'intégrale)
 3. :math:`a(\cdot,\cdot)`  est bilinéaire, pour la même raison
-4. Continuité de :math:`a(\cdot,\cdot)` : prenons deux fonctions :math:`u` et :math:`v` de :math:`\Ho` :  
+4. Continuité de :math:`\ell(\cdot)` : prenons une fonction :math:`v\in\Ho` :
+
+.. math:: 
+
+  \begin{aligned}
+    \abs{\ell(v)}  &= \underbrace{\abs{\int_{\Omega} fv}}_{\PSL{f}{v}}\\ 
+    & \leq  \normL{f}\normL{v} & \text{Cauchy-Schwarz}\\
+    & \leq   \underbrace{\normL{f}}_{\text{Constant}}\normH{v} & \text{inégalité des normes} \\
+  \end{aligned}
+
+5. Continuité de :math:`a(\cdot,\cdot)` : prenons deux fonctions :math:`u` et :math:`v` de :math:`\Ho` :  
 
 .. math:: 
 
@@ -59,16 +69,15 @@ Tentons d'appliquer le théorème de Lax-Milgram à cette formulation faible
     & \leq   (1+c)\normH{u}\normH{v}
   \end{aligned}
 
-5. Continuité de :math:`\ell(\cdot)` : prenons une fonction :math:`v\in\Ho` :
+6. Coercivité de :math:`a(\cdot, \cdot)` : prenons une fonction :math:`u\in\Ho` :
 
 .. math:: 
 
   \begin{aligned}
-    \abs{\ell(v)}  &= \underbrace{\abs{\int_{\Omega} fv}}_{\PSL{f}{v}}\\ 
-    & \leq  \normL{f}\normL{v} & \text{Cauchy-Schwarz}\\
-    & \leq   \underbrace{\normL{f}}_{\text{Constant}}\normH{v} & \text{inégalité des normes} \\
+    a(u,u)  &= \int_{\Omega} \nabla u \cdot \nabla u + c\int_{\Omega} u u = \int_{\Omega} \|\nabla u\|^2 + c\int_{\Omega} |u|^2\\ 
+     &\geq \min(1,c)\left(\int_{\Omega} \|\nabla u\|^2 + \int_{\Omega} |u|^2\right)\\ 
+     &\geq \min(1,c)\normH{u}^2 
   \end{aligned}
-
 
 Toutes les conditions sont réunies : le problème :eq:`eq-exemple-fv` admet une unique solution d'après le théorème de Lax-Milgram.
 
@@ -117,4 +126,4 @@ Schématiquement, nous avons :
 
 .. proof:remark::
 
-  Pourquoi travailler dans :math:`\Ho` et non dans :math:`\Cscr^1(\overline{\Omega})` ? La question est légitime, d'autant que :math:`\normH{\cdot}` est une norme de :math:`\Cscr^1(\overline{\Omega})` ! Mais... :math:`\Cscr^1(\overline{\Omega})` n'est pas complet pour cette norme et n'est donc pas un espace de Hilbert si on lui adjoint cette norme : le théorème de Lax-Milgram ne pourra alors pas s'y appliquer. Il existe des normes qui complètent :math:`\Cscr^1(\overline{\Omega})`, mais les hypothèses du théorème de Lax-Milgram deviennent sont elles toujours vraies en prenant ces normes ?
+  Pourquoi travailler dans :math:`\Ho` et non dans :math:`\Cscr^1(\overline{\Omega})` ? La question est légitime, d'autant que :math:`\normH{\cdot}` est une norme de :math:`\Cscr^1(\overline{\Omega})` ! Mais... :math:`\Cscr^1(\overline{\Omega})` n'est pas complet pour cette norme et n'est donc pas un espace de Hilbert si on lui adjoint cette norme : le théorème de Lax-Milgram ne pourra alors pas s'y appliquer. Il existe des normes qui complètent :math:`\Cscr^1(\overline{\Omega})`, mais les hypothèses du théorème de Lax-Milgram sont elles toujours validées avec ces normes ?
