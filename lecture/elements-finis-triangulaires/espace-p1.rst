@@ -53,20 +53,20 @@ Le diamètre d'un triangle est la distance maximale entre deux points du triangl
   - Sous-marin
 
     - `Script GMSH <https://github.com/Bertbk/geogmsh/blob/master/submarine.geo>`_
-    - `Plein écran <../../_static/mesh/submarine.html>`_
+    - `Plein écran <../../../_static/mesh/submarine.html>`_
 
   .. raw:: html
 
-    <object type="text/html" data="../../_static/mesh/submarine.html" width="100%" height="auto"></object>
+    <object type="text/html" data="../../../_static/mesh/submarine.html" width="100%" height="auto"></object>
 
   - Théière
 
     - `Script GMSH <https://github.com/Bertbk/geogmsh/blob/master/teapot.geo>`_
-    - `Plein écran <../../_static/mesh/teapot.html>`_
+    - `Plein écran <../../../_static/mesh/teapot.html>`_
 
   .. raw:: html
 
-    <object type="text/html" data="../../_static/mesh/teapot.html" width="100%" height="auto"></object>
+    <object type="text/html" data="../../../_static/mesh/teapot.html" width="100%" height="auto"></object>
 
 
 
@@ -214,7 +214,7 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
 
 .. only:: html
 
-  Une :ref:`application pour visualiser les fonctions de forme<app-basis-function>` est proposée plus bas.
+  Une `application pour visualiser les fonctions de forme <#app-basis-function>`_ est proposée plus bas.
 
 .. proof:proposition::
 
@@ -268,14 +268,11 @@ Une illustration du support des fonctions de forme est donnée sur la Figure :nu
   Support des fonctions de forme pour le maillage d’un carré.
 
 
-.. only:: html
+.. raw:: html
 
-  .. _app-basis-function:
-
-  .. container:: app-basis-function
-
-    Application : Cliquez sur un sommet pour faire apparaitre **la fonction de forme P1 associée**. Les triangles où la fonction n’est pas nulle forment **le support de la fonction de forme**. 
-
+  <div id="app-basis-function" class="app-basis-function" style="text-align:center;">
+    <p>Application : Cliquez sur un sommet pour faire apparaitre <strong>la fonction de forme P1 associée</strong>. Les triangles où la fonction n’est pas nulle forment <strong>le support de la fonction de forme</strong>. </p>
+  </div>
 
 Conclusion
 -----------
