@@ -14,7 +14,7 @@ l'espace :math:`\Lo` est un espace de Hilbert, de norme induite :
 
 .. math:: \normL{f} = \left(\int_{\Omega} \abs{f(\xx)}^2\diff \xx\right)^{\frac{1}{2}}.
 
-Il est important de remarquer qu'une fonction de :math:`\Lo` est définie **presque partout**. Autrement dit, deux fonctions :math:`f` et :math:`g` de :math:`\Lo` peuvent être *égales* tout en ayant des valeurs différentes sur un sous-ensemble :math:`\omega` de :math:`\Omega`, de mesure nulle. Une fonction mesurable est en réalité une *classe de fonctions*.
+Il est important de remarquer qu'une fonction de :math:`\Lo` est définie **presque partout**. Autrement dit, deux fonctions :math:`f` et :math:`g` de :math:`\Lo` peuvent être *égales* tout en ayant des valeurs différentes sur un sous-ensemble :math:`\omega` de :math:`\Omega`, de mesure nulle. Une fonction de :math:`\Lo` désigne en réalité une *classe de fonctions*.
 
 Introduisons l'espace :math:`\Cscr^{\infty}_c(\Omega)` des fonctions :math:`\Cscr^{\infty}` sur :math:`\Omega` à support compact dans :math:`\Omega` :
 

@@ -85,34 +85,35 @@ Toutes les conditions sont réunies : le problème :eq:`eq-exemple-fv` admet une
 
   Dans la démonstration de la continuité de :math:`\ell`, n'écrivez pas :math:`\normL{f}\leq \normH{f}` car, d'une part nous n'en avons pas besoin, d'autre part, nous ne savons pas si :math:`f\in\Ho` !
 
+.. TODO:
 
-Réciprocité
------------
+  Réciprocité
+  -----------
 
-Si :math:`u\in\Cscr^2(\overline{\Omega})\subset\Ho`, nous savons que si :math:`u` est solution de l'EDP :eq:`eq-exemple-pb` alors :math:`u` est aussi solution de la formulation faible :eq:`eq-exemple-fv`. Nous savons aussi que cette formulation faible :eq:`eq-exemple-fv` admet une unique solution dans :math:`\Ho`. Réciproquement, si :math:`u\in\Ho` et est solution de la formulation faible :eq:`eq-exemple-fv`, est-ce que :math:`u` est solution forte de l'EDP ? La réponse est "oui mais" : :math:`u` doit être plus régulière, par exemple :math:`\Hoo`, auquel cas l'EDP sera vérifiée au sens faible. C'est ce que nous montrons maintenant. Introduisons juste avance cela l'espace :math:`\Hoo` des fonctions de :math:`\Ho` qui possèdent une dérivée faible seconde dans chaque direction :
+  Si :math:`u\in\Cscr^2(\overline{\Omega})\subset\Ho`, nous savons que si :math:`u` est solution de l'EDP :eq:`eq-exemple-pb` alors :math:`u` est aussi solution de la formulation faible :eq:`eq-exemple-fv`. Nous savons aussi que cette formulation faible :eq:`eq-exemple-fv` admet une unique solution dans :math:`\Ho`. Réciproquement, si :math:`u\in\Ho` et est solution de la formulation faible :eq:`eq-exemple-fv`, est-ce que :math:`u` est solution forte de l'EDP ? La réponse est "oui mais" : :math:`u` doit être plus régulière, par exemple :math:`\Hoo`, auquel cas l'EDP sera vérifiée au sens faible. C'est ce que nous montrons maintenant. Introduisons juste avance cela l'espace :math:`\Hoo` des fonctions de :math:`\Ho` qui possèdent une dérivée faible seconde dans chaque direction :
 
-.. math:: \Hoo = \enstq{v \in \Ho}{\forall i,j, \quad \partial_i\partial_j v\in \Lo}.
+  .. math:: \Hoo = \enstq{v \in \Ho}{\forall i,j, \quad \partial_i\partial_j v\in \Lo}.
 
 
-.. proof:lemma::
+  .. proof:lemma::
 
-  Supposons que la formulation faible :eq:`eq-exemple-fv` admette une unique solution :math:`u\in\Ho` et que cette solution appartienne à :math:`\Hoo`. Alors :math:`u` vérifie l'EDP :eq:`eq-exemple-pb` au sens faible, c'est à dire "presque partout".
-  
-.. proof:proof::
+    Supposons que la formulation faible :eq:`eq-exemple-fv` admette une unique solution :math:`u\in\Ho` et que cette solution appartienne à :math:`\Hoo`. Alors :math:`u` vérifie l'EDP :eq:`eq-exemple-pb` au sens faible, c'est à dire "presque partout".
+    
+  .. proof:proof::
 
-  Nous pouvons dérouler le théorème de Green "à l'envers". Pour tout :math:`v\in\Ho`, nous avons
+    Nous pouvons dérouler le théorème de Green "à l'envers". Pour tout :math:`v\in\Ho`, nous avons
 
-  .. math::
+    .. math::
 
-    \begin{aligned}
-       &a(u,v) = \ell(v) \\
-      \implies     & \int_{\Omega}\nabla u\cdot\nabla v + c \int_{\Omega}uv= \int_{\Omega}fv\\
-      \implies      & \int_{\Omega}\nabla u\cdot\nabla v + \underbrace{\int_{\partial \Omega}(\dn u)v}_{0}+ c \int_{\Omega}uv= \int_{\Omega}fv &\text{Ajouter 0}\\
-      \implies      & -\int_{\Omega}(\Delta u) v  + c \int_{\Omega}uv= \int_{\Omega}fv &\text{Th. Green}\\
-      \implies      & \int_{\Omega}(-\Delta u + cu -f) v= 0\\
-    \end{aligned}
+      \begin{aligned}
+        &a(u,v) = \ell(v) \\
+        \implies     & \int_{\Omega}\nabla u\cdot\nabla v + c \int_{\Omega}uv= \int_{\Omega}fv\\
+        \implies      & \int_{\Omega}\nabla u\cdot\nabla v + \underbrace{\int_{\partial \Omega}(\dn u)v}_{0}+ c \int_{\Omega}uv= \int_{\Omega}fv &\text{Ajouter 0}\\
+        \implies      & -\int_{\Omega}(\Delta u) v  + c \int_{\Omega}uv= \int_{\Omega}fv &\text{Th. Green}\\
+        \implies      & \int_{\Omega}(-\Delta u + cu -f) v= 0\\
+      \end{aligned}
 
-  La relation est valable pour tout :math:`v\in\Ho`, elle est donc aussi valable pour tout :math:`v\in\Cscr^{\infty}_c(\Omega)`. Le corollaire :numref:`{number} <corollary-f-zero>` nous permet alors d'affirmer que :math:`-\Delta u + cu -f = 0` presque partout.
+    La relation est valable pour tout :math:`v\in\Ho`, elle est donc aussi valable pour tout :math:`v\in\Cscr^{\infty}_c(\Omega)`. Le corollaire :numref:`{number} <corollary-f-zero>` nous permet alors d'affirmer que :math:`-\Delta u + cu -f = 0` presque partout.
 
 Conclusion
 ----------
@@ -120,9 +121,10 @@ Conclusion
 Schématiquement, nous avons :
 
 - Si :math:`u` est solution de :eq:`eq-exemple-pb` alors :math:`u` est solution de :eq:`eq-exemple-fv`
-- Le problème :eq:`eq-exemple-pb` admet une unique solution qui appartient (au moins) à :math:`\Ho`
-- Si cette solution appartient en fait à :math:`\Hoo` alors elle est solution de l'EDP presque partout
-- Si cette solution appartient en fait à :math:`\Cscr^2(\overline{\Omega})` alors est la solution forte de l'EDP
+- Le problème :eq:`eq-exemple-fv` admet une unique solution qui appartient (au moins) à :math:`\Ho`
+..   
+  - Si cette solution appartient en fait à :math:`\Hoo` alors elle est solution de l'EDP presque partout
+  - Si cette solution appartient en fait à :math:`\Cscr^2(\overline{\Omega})` alors est la solution forte de l'EDP
 
 .. proof:remark::
 
