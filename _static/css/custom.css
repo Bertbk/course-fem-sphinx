@@ -4,4 +4,8 @@
   img[src$=".svg"]{
     filter: grayscale(1) invert(1);
   }
+  div.mermaid svg path.relation
+  {
+    stroke:ghostwhite !important;
+  }
 }
