@@ -195,11 +195,13 @@ ce qui implique que le déterminant est non nul puisque le triangle n'est pas d�
 
   Quand :math:`\psih_i = \mphih_i`, nous parlons d'éléments finis **isoparamétriques**. Il convient de retenir que ce choix n'est pas obligatoire et les fonctions :math:`\psih_i` et :math:`\mphih_i` sont **indépendantes**. En particulier, pour obtenir des éléments courbes, les fonctions :math:`\psih_i` pourraient être quadratiques par exemple.
 
-.. only:: html
+.. raw:: html
 
-  .. container:: app-jacobian
+  <div id="app-jacobian" class="iframe-container" style=" overflow: hidden;padding-top: 100%;position: relative;"><iframe src='../../../_static/app/jacobian/index.html' frameborder="0" scrolling="no" style="border: 0;height: 100%;left: 0;position: absolute;top: 0;width: 100%;"></iframe></div>
+  <div  style="text-align:center;">
+    <strong>Déplacez les sommets du triangle</strong> pour modifier la valeur du <strong>Jacobien</strong>. Quand il est négatif cela signifie que le triangle est <strong>"retourné"</strong> par rapport au triangle de référence
+  </div>
 
-    **Déplacez les sommets du triangle** pour modifier la valeur du **Jacobien**. Quand il est négatif cela signifie que le triangle est **"retourné"** par rapport au triangle de référence
 
 
 **Expression finale de la matrice élémentaire.**
