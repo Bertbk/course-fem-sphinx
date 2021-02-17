@@ -1,0 +1,110 @@
+div.app-jacobian{
+  dark_background_color : var(--dark_background_color);
+  light_background_color : var(--light_background_color);
+  dark_point_color : var(--dark_point_color);
+  light_point_color : var(--light_point_color);
+  dark_stroke_color : var(--dark_stroke_color);
+  light_stroke_color : var(--light_stroke_color);
+  dark_point_txt_color : var(--dark_point_txt_color);
+  light_point_txt_color : var(--light_point_txt_color);
+  dark_title_color : var(--dark_title_color);
+  light_title_color : var(--light_title_color);
+  dark_title_flat_color : var(--dark_title_flat_color);
+  light_title_flat_color : var(--light_title_flat_color);
+  dark_title_flip_color : var(--dark_title_flip_color);
+  light_title_flip_color : var(--light_title_flip_color);
+  dark_triangle_color : var(--dark_triangle_color);
+  light_triangle_color : var(--light_triangle_color);
+  dark_triangle_flat_color : var(--dark_triangle_flat_color);
+  light_triangle_flat_color : var(--light_triangle_flat_color);
+  dark_triangle_flip_color : var(--dark_triangle_flip_color);
+  light_triangle_flip_color : var(--light_triangle_flip_color);
+}
+
+div.app-jacobian div.title p{
+  font-size:1.5em;
+  font-weight:bold;
+}
+
+div.app-jacobian svg{
+  max-width:500px;
+  border:solid 1px;
+}
+
+@media (prefers-color-scheme: dark) {
+  div.app-jacobian{
+    background-color: var(--dark_background_color);
+  }
+  div.app-jacobian svg{
+    border-color: var(--dark_stroke_color);
+  }
+  div.app-jacobian div.title p[data-triangle="normal"]{
+    color: var(--dark_title_color);
+  }
+  div.app-jacobian div.title p[data-triangle="flat"]{
+    color: var(--dark_title_flat_color);
+  }
+  div.app-jacobian div.title p[data-triangle="flip"]{
+    color: var(--dark_title_flip_color);
+  }
+  div.app-jacobian svg polygon.d3_triangle{
+    stroke: var(--dark_stroke_color);
+  }
+  div.app-jacobian svg polygon.d3_triangle[data-triangle="normal"]{
+    fill: var(--dark_triangle_color);
+  }
+  div.app-jacobian svg polygon.d3_triangle[data-triangle="flat"]{
+    fill: var(--dark_triangle_flat_color);
+  }
+  div.app-jacobian svg polygon.d3_triangle[data-triangle="flip"]{
+    fill: var(--dark_triangle_flip_color);
+  }
+  div.app-jacobian g.vertices circle{
+    stroke: var(--dark_stroke_color);
+    fill: var(--dark_point_color);
+  }
+  div.app-jacobian g.vertices text{
+    fill: var(--dark_point_txt_color);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  div.app-jacobian p{
+    color: var(--light_foreground_color);
+  }
+  div.app-jacobian{
+    background-color: var(--light_background_color);
+  }
+  div.app-jacobian svg{
+    border-color: var(--light_stroke_color);
+  }
+  div.app-jacobian div.title p[data-triangle="normal"]{
+    color: var(--light_title_color);
+  }
+  div.app-jacobian div.title p[data-triangle="flat"]{
+    color: var(--light_title_flat_color);
+  }
+  div.app-jacobian div.title p[data-triangle="flip"]{
+    color: var(--light_title_flip_color);
+  }
+  div.app-jacobian svg polygon.d3_triangle{
+    stroke: var(--light_stroke_color);
+  }
+  div.app-jacobian svg polygon.d3_triangle[data-triangle="normal"]{
+    fill: var(--light_triangle_color);
+  }
+  div.app-jacobian svg polygon.d3_triangle[data-triangle="flat"]{
+    fill: var(--light_triangle_flat_color);
+  }
+  div.app-jacobian svg polygon.d3_triangle[data-triangle="flip"]{
+    fill: var(--light_triangle_flip_color);
+  }
+  div.app-jacobian g.vertices circle{
+    stroke: var(--light_stroke_color);
+    fill: var(--light_point_color);
+  }
+  div.app-jacobian g.vertices text{
+    fill: var(--light_point_txt_color);
+  }
+
+}

@@ -9,9 +9,6 @@ var fem_jacobian = new function() {
 
   mesh_triangles = [[0,1,2]];
 
-  var point_color = "darkblue";
-  var txt_color = "white";
-
   var r = 7.0; // radius of vert
   var max_x =150.0, max_y=120.0;
   var min_x =-50.0, min_y=-20.0;
@@ -20,12 +17,34 @@ var fem_jacobian = new function() {
 
   var jac =compute_jacobian(scale) ;
 
+  var dark_background_color = "#131416" ;
+  var light_background_color = "White" ;
+  var dark_stroke_color = "GhostWhite" ;
+  var light_stroke_color = "#131416";
+  var dark_point_color = "Brown" ;
+  var light_point_color = "DarkBlue";
+  var dark_point_txt_color = "GhostWhite" ;
+  var light_point_txt_color = "GhostWhite";
+  var dark_title_color = "GhostWhite";
+  var light_title_color = "DarkBlue" ;
+  var dark_title_flat_color = "Red";
+  var light_title_flat_color = "Red" ;
+  var dark_title_flip_color = "#ffbd33";
+  var light_title_flip_color = "#ffbd33" ;  
+  var dark_triangle_color = "DarkGray";
+  var light_triangle_color = "GhostWhite" ;
+  var dark_triangle_flat_color = "DarkRed";
+  var light_triangle_flat_color = "Red" ;
+  var dark_triangle_flip_color = "#ffbd33";
+  var light_triangle_flip_color = "#ffbd33" ;
+
   var div = d3.select('div.app-jacobian')
-              .attr('style', 'text-align:center')
-              ;
+            .attr('style', "text-align:center; --dark_background_color: "+dark_background_color+";"+"--light_background_color: "+light_background_color+";"+"--dark_stroke_color: "+dark_stroke_color+";"+"--light_stroke_color: "+light_stroke_color+";--dark_point_color:"+dark_point_color+";--light_point_color:"+light_point_color+";--dark_point_txt_color: "+dark_point_txt_color+";"+"--light_point_txt_color: "+light_point_txt_color+";"+"--dark_triangle_color: "+dark_triangle_color+";"+"--light_triangle_color: "+light_triangle_color+";"+"--dark_triangle_flat_color: "+dark_triangle_flat_color+";"+"--light_triangle_flat_color: "+light_triangle_flat_color+";"+"--dark_triangle_flip_color: "+dark_triangle_flip_color+";"+"--light_triangle_flip_color: "+light_triangle_flip_color+";"      +"--dark_point_txt_color:"+dark_point_txt_color+";"+"--light_point_txt_color:"+light_point_txt_color+";"+"--dark_title_color:"+dark_title_color+";"+"--light_title_color:"+light_title_color+";"+"--dark_title_flat_color:"+dark_title_flat_color+";"+"--light_title_flat_color:"+light_title_flat_color+";"+"--dark_title_flip_color:"+dark_title_flip_color+";"+"--light_title_flip_color:"+light_title_flip_color+";")
+            ;
 
   var divtitle = div.insert('div', ":first-child")
               .attr('style', 'text-align:center;')
+              .attr('class','title')
   ;
   var title=divtitle.insert('p', ":first-child")
   ;
@@ -39,7 +58,6 @@ var fem_jacobian = new function() {
   var svg = div.insert('svg', ":first-child")
                   .attr('viewBox', parseFloat(min_x - 1.5*r) + " " + parseFloat(min_y - 1.5*r)+ " " + parseFloat(size_x)  + " " +  parseFloat(size_y))
                   .attr('preserveAspectRatio', "xMidYMid meet")
-                  .attr('style', 'max-width:500px; border:solid 1px;')
                   ;
 
   //Build triangle and vertices (and title)
@@ -54,8 +72,6 @@ var fem_jacobian = new function() {
       .attr('cx', 0)
       .attr('cy', 0)
       .attr('r', r)
-      .attr('fill', point_color)
-      .attr('stroke', 'black')
       ;
   // Add the text value of points
   var vertices_txt = canva_vertices.selectAll('g')
@@ -66,7 +82,6 @@ var fem_jacobian = new function() {
       .attr('dy',  "0.3em")
       .text(function(d,i){return i;})
       .attr('font-size', '0.5em')
-      .attr('fill', txt_color)
       ;
 
   // FUNCTIONS
@@ -82,12 +97,11 @@ var fem_jacobian = new function() {
       // Create new elements as needed.
       triangle.enter().append("polygon")
               .attr('class', 'd3_triangle')
-              .attr('fill', 'GhostWhite')
-              .attr('stroke', 'black')
               // UPDATE
               // After merging the entered elements with the update selection,
               // apply operations to both.
               .merge(triangle)
+              .attr('data-triangle',(jac > tol?'normal':(jac < -tol?'flip':'flat')))
               .attr("points",function(d) { 
                   return d.map(function(d) {
                       return [d.x, d.y].join(",");
@@ -96,8 +110,6 @@ var fem_jacobian = new function() {
       // EXIT
       // Remove old elements as needed.
       triangle.exit().remove();
-
-      triangle.attr('fill', jac >= tol?'GhostWhite':(jac < -tol?'#ffbd33':'none'))
       ;
   };
 
@@ -127,13 +139,20 @@ var fem_jacobian = new function() {
   function update_title(jac){
       let subtitle = "";
       if(jac >= -tol && jac <= tol)
-          {subtitle = " (Triangle plat (dégénéré))";}
+          {
+            subtitle = " (Triangle plat (dégénéré))";
+            title.attr('data-triangle','flat');
+          }
       else if (jac < -tol)
-          {subtitle = " (Triangle retourné)";}
-
-      title.text('Jacobien = ' + jac + subtitle)
-          .attr('style', "font-size:1.5em;font-weight:bold;color:"+ (jac > tol?'darkblue;':(jac < -tol?'#ffbd33;':'red;')))
-  };
+          {
+            subtitle = " (Triangle retourné)";
+            title.attr('data-triangle','flip');
+          }
+      else{
+        title.attr('data-triangle','normal');
+      }
+      title.text('Jacobien = ' + jac + subtitle);
+  }
 
   var drag_handler = d3.drag()
       .on("end", function(d){
