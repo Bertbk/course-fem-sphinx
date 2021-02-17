@@ -89,16 +89,15 @@ html_static_path = ['_static']
 html_css_files = [
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css',
     'css/proof.css',
+    'css/custom.css',
 ]
 
 html_js_files = [
     'js/proof.js',
-    'https://d3js.org/d3.v5.min.js',
-    'https://d3js.org/d3-scale-chromatic.v1.min.js',
-    'js/basis-function/main.js',
-    'js/jacobian/main.js',
-    'js/loc2glob/main.js',
-    'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js',
+#    'js/basis-function/main.js',
+#    'js/jacobian/main.js',
+#    'js/loc2glob/main.js',
+#    'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js',
 ]
 
 # Additional stuff for the LaTeX preamble.

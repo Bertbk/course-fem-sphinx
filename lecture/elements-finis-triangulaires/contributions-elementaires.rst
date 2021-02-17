@@ -425,5 +425,7 @@ Nous présentons ici deux règles de quadrature pour l'intégrale :math:`\int_{\
 
 .. raw:: html 
 
-   <script src="https://d3js.org/d3.v5.min.js"></script>
-   <script src="../_static/jacobian/main.js"></script>
+    <script defer="defer" src="https://d3js.org/d3.v5.min.js"></script>
+    <script defer="defer" src="https://d3js.org/d3-scale-chromatic.v1.min.js</script>
+    <script defer="defer" src="../../../_static/js/jacobian/main.js"></script>
+

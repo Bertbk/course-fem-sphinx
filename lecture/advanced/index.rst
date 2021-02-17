@@ -1,5 +1,5 @@
 ****************************
-Mise en Oeuvre
+Avancée
 ****************************
 
 .. epigraph::
@@ -12,10 +12,9 @@ Mise en Oeuvre
 .. toctree::
   :maxdepth: 1
 
-  principe
-  assemblage
-  contributions-elementaires
   neumann-heterogene
   dirichlet
-  matrice-creuse
+  error
+  p2
+  
 

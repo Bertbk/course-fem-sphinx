@@ -41,75 +41,106 @@ div.proof-type-proof > div.proof-title.open:after {
 /* Specific Colors */
 /*=================*/
 
-div.proof.proof-type-definition div.proof-title {
-  background-color: darkblue;
-  border: 1px solid darkblue;
+  div.proof.proof-type-definition div.proof-title {
+    background-color: darkblue;
+    border: 1px solid darkblue;
+    }
+  div.proof.proof-type-definition div.proof-content {
+    border: 1px solid darkblue;
   }
-div.proof.proof-type-definition div.proof-content {
-  background-color: #f5f5ff;
-  border: 1px solid darkblue;
-}
 
-div.proof.proof-type-theorem div.proof-title {
-  background-color: #cd0930;
-  border: 1px solid #cd0930;
+  div.proof.proof-type-theorem div.proof-title {
+    background-color: #cd0930;
+    border: 1px solid #cd0930;
+    }
+  div.proof.proof-type-theorem div.proof-content {
+
+    border: 1px solid #cd0930;
   }
-div.proof.proof-type-theorem div.proof-content {
-  background-color: #fff0f3;
-  border: 1px solid #cd0930;
-}
+  div.proof.proof-type-proposition div.proof-title {
+    background-color: #C36900;
+    border: 1px solid #C36900;
+    }
+  div.proof.proof-type-proposition div.proof-content {
 
-div.proof.proof-type-proposition div.proof-title {
-  background-color: #C36900;
-  border: 1px solid #C36900;
+    border: 1px solid #C36900;
   }
-div.proof.proof-type-proposition div.proof-content {
-  background-color: #fcf4e8;
-  border: 1px solid #C36900;
-}
-
-div.proof.proof-type-corollary div.proof-title {
-  background-color: #366a36;
-  border: 1px solid #366a36;
+  div.proof.proof-type-corollary div.proof-title {
+    background-color: #366a36;
+    border: 1px solid #366a36;
+    }
+  div.proof.proof-type-corollary div.proof-content {
+    border: 1px solid #366a36;
   }
-div.proof.proof-type-corollary div.proof-content {
-  background-color: #f2f6f2;
-  border: 1px solid #366a36;
-}
-
-div.proof.proof-type-lemma div.proof-title {
-  background-color: #c2008a;
-  border: 1px solid #c2008a;
+  div.proof.proof-type-lemma div.proof-title {
+    background-color: #c2008a;
+    border: 1px solid #c2008a;
+    }
+  div.proof.proof-type-lemma div.proof-content {
+    border: 1px solid #c2008a;
   }
-div.proof.proof-type-lemma div.proof-content {
-  background-color: #f0e7ed;
-  border: 1px solid #c2008a;
-}
+  div.proof.proof-type-remark div.proof-title {
+    background-color: #209cee;
+    border: 1px solid  #209cee;
+    }
+  div.proof.proof-type-remark div.proof-content {
+    border: 1px solid  #209cee;
+  }
+  div.proof.proof-type-exercise div.proof-title {
+    background-color: #fc7b03;
+    border: 1px solid  #fc7b03;
+    }
+  div.proof.proof-type-exercise div.proof-content {
+    border: 1px solid  #fc7b03;
+  }
+  
+  .proof.proof-type-remark > .proof-title:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; 
+    content: "\00a0\f05a";
+  }
+  
+  .proof.proof-type-exercise > .proof-title:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; 
+    content: "\00a0\f19d";
+  }
+  
 
-div.proof.proof-type-remark div.proof-title {
-  background-color: #209cee;
-  border: 1px solid  #209cee;
+/* LIGHT */
+@media(prefers-color-scheme: light) {
+  div.proof div.proof-content {
+    background-color: var(--color-background-secondary);
+  }
+
+  div.proof.proof-type-definition div.proof-content {
+    background-color: #f5f5ff;
+
+  }
+  div.proof.proof-type-theorem div.proof-content {
+    background-color: #fff0f3;
+  }
+  div.proof.proof-type-proposition div.proof-content {
+    background-color: #fcf4e8;
+  }
+  div.proof.proof-type-corollary div.proof-content {
+    background-color: #f2f6f2;
+  }  
+  div.proof.proof-type-lemma div.proof-content {
+    background-color: #f0e7ed;
   }
 div.proof.proof-type-remark div.proof-content {
-  background-color: #f6fbfe;
-  border: 1px solid  #209cee;
-}
-.proof.proof-type-remark > .proof-title:before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900; 
-  content: "\00a0\f05a";
-}
-
-div.proof.proof-type-exercise div.proof-title {
-  background-color: #fc7b03;
-  border: 1px solid  #fc7b03;
+    background-color: #f6fbfe;
   }
 div.proof.proof-type-exercise div.proof-content {
-  background-color: #fff7f0;
-  border: 1px solid  #fc7b03;
+    background-color: #fff7f0;
 }
-.proof.proof-type-exercise > .proof-title:before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900; 
-  content: "\00a0\f19d";
 }
+
+@media (prefers-color-scheme: dark) {
+  div.proof div.proof-content {
+    background-color: var(--color-background-secondary);
+  }
+}
+
+/* Dark/Light */

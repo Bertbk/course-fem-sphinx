@@ -40,38 +40,7 @@ avec :math:`a(\cdot,\cdot) \colon\Ho\times\Ho \to \Rb` et :math:`\ell(\cdot) \co
     \ell(v) &:= &\displaystyle\int_{\GammaN} g(\xx)v(\xx) \diff s(\xx)  + \int_{\Omega} f(\xx)v(\xx) \diff\xx.
   \end{array}
 
-Pour pouvoir appliquer le Théorème de Lax-Milgram, nous savons par le cas de Neumann homogène que l'application :math:`a(\cdot,\cdot)` est continue et coercive.  Rien de neuf sous le soleil me direz-vous ? Oui mais non :
 
-- Nous ne savons pas si :math:`\ell(\cdot)` est continue
-- Pire encore,  est-ce que le terme :math:`\int_{\GammaN} g(\xx)v(\xx) \diff s(\xx)` a un sens quand :math:`v` est dans :math:`\Ho` ?
-
-
-Nous n'avons en effet pas (encore) donné de sens à la trace sur :math:`\GammaN` d'une fonction de :math:`\Ho`, c'est-à-dire à :math:`v|_{\GammaN}`. C'est l'objet du théorème ci-dessous (admis).
-
-.. proof:theorem:: Continuité de la Trace (admis)
-
-  Soit :math:`\Gamma\subset\partial\Omega` une partie du bord de mesure non nulle au sens de la mesure de surface. Alors il existe une unique application :math:`\gamma_{\Gamma}\colon\Ho\to L^2(\Gamma)` qui est continue au sens de :math:`\normH{\cdot}` :
-
-  .. math:: \exists C>0 \text{ tel que } \forall v \in\Ho, \; \norm{\gamma_{\Gamma}(v)}_{L^2(\partial\Omega)} \leq C\normH{v}.
-
-  Cette application est de plus caractérisée par
-
-  .. math:: \forall\varphi\in \Cscr^1(\overline{\Omega}),\qquad \gamma_{\Gamma}(\varphi) = \varphi|_{\Gamma}.
-
-
-Ce théorème nous permet de montrer que la forme :math:`\ell` a un sens (chaque quantité existe) et est bien continue puisque, pour tout :math:`v` de :math:`\Ho` :
-
-.. math:: 
-  
-  \begin{aligned}
-    \abs{\ell(v)}  &\leq \abs{\int_{\Omega} f(\xx) v(\xx)\diff\xx} + \abs{\int_{\partial\Omega} \gN(\xx)v(\xx)\diff\xx} & \text{Inégalité classique}\\
-    &\leq   \abs{\int_{\Omega} f(\xx) v(\xx)\diff\xx}+ \abs{\int_{\partial\Omega} \gN(\xx) \gamma_{\partial\Omega}(v(\xx))} &\text{Réécriture}\\
-    &\leq \normL{f}\normL{v} + \norm{g}_{L^2(\partial\Omega)}\norm{\gamma_{\partial\Omega}(v)}_{L^2(\partial\Omega)} &\text{Cauchy-Schwarz}\\
-    &\leq \left(\normL{f} + C\norm{g}_{L^2(\partial\Omega)}\right)\normH{v} & \text{Cont. Trace}.
-  \end{aligned}
-
-
-Nous pouvons en conclure que :eq:`fvH-dnNonH` admet une unique solution par le Théorème de Lax-Milgram.
 
 
 Dirichlet homogène

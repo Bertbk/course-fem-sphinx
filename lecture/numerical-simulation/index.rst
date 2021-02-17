@@ -1,6 +1,6 @@
-***********************
-Théorie : un avant-goût
-***********************
+********************
+Simulation Numérique
+********************
 
 .. epigraph::
 
@@ -13,5 +13,5 @@ Théorie : un avant-goût
 .. toctree::
   :maxdepth: 1
 
-  boundary-conditions
-
+  presentation
+  program

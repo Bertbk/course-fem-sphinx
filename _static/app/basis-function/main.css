@@ -1,0 +1,58 @@
+div.app-basis-function{
+  --dark_background_color: var(--dark_background_color);
+  --dark_foreground_color: var(--dark_foreground_color);
+  --light_background_color: var(--light_background_color);
+  --light_foreground_color: var(--light_foreground_color);
+}
+
+
+@media (prefers-color-scheme: dark) {
+  div.app-basis-function{
+    background-color: var(--dark_background_color);
+  }
+  div.app-basis-function p{
+    color: var(--dark_foreground_color);
+  }
+  div.app-basis-function svg text.colormap-text{
+    fill: var(--dark_foreground_color);
+  }
+  div.app-basis-function svg g.all_pts[data-active="0"] g.d3-vertex-BF circle{
+    fill: var(--dark_background_color);
+    stroke: var(--dark_foreground_color);
+  }
+  div.app-basis-function svg g.all_pts[data-active="1"] g.d3-vertex-BF circle[data-value="0"]{
+    fill: var(--dark_value_zero);
+    stroke: var(--dark_foreground_color);
+  }
+  div.app-basis-function svg g.all_pts[data-active="1"] g.d3-vertex-BF circle[data-value="1"]{
+    fill:var(--dark_value_one);
+    stroke: var(--dark_foreground_color);
+  }
+  div.app-basis-function svg polygon.d3-triangle{
+    stroke: var(--dark_foreground_color);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  div.app-basis-function p{
+    color: var(--light_foreground_color);
+  }
+  div.app-basis-function svg text.colormap-text{
+    fill: var(--light_foreground_color);
+  }
+  div.app-basis-function svg g.all_pts[data-active="0"] g.d3-vertex-BF circle{
+    fill: var(--light_background_color);
+    stroke: var(--light_foreground_color);
+  }
+  div.app-basis-function svg g.all_pts[data-active="1"] g.d3-vertex-BF circle[data-value="0"]{
+    fill: var(--light_value_zero);
+    stroke: var(--light_foreground_color);
+  }
+  div.app-basis-function svg g.all_pts[data-active="1"] g.d3-vertex-BF circle[data-value="1"]{
+    fill:var(--light_value_one);
+    stroke: var(--light_foreground_color);
+  }
+  div.app-basis-function svg polygon.d3-triangle{
+    stroke: var(--light_foreground_color);
+  }
+}

@@ -12,6 +12,8 @@ Notes de cours
    :caption: Table des matières :
    :numbered:
 
+   numerical-simulation/index
+   weak-solution/index
    elements-finis-triangulaires/index
-   mise-en-oeuvre/index   
-   theorie/index
+   advanced/index   
+   

@@ -16,6 +16,9 @@
 .. toctree::
   :maxdepth: 1
 
-  probleme-modele
+  galerkin
   espace-p1
+  assemblage
+  contributions-elementaires
+  matrice-creuse
 

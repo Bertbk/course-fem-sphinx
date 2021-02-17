@@ -106,3 +106,7 @@ Le maillage étant construit avec GMSH, il s'agit maintenant de convertir les do
       For every Entity
         For every Element
 
+
+.. raw:: html
+
+   <script defer="defer" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>

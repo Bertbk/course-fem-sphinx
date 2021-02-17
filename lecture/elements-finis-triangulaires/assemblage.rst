@@ -148,3 +148,10 @@ L'algorithme d'assemblage est alors complet ! Une version pseudo-code est prése
 .. proof:remark::
   
   Cet algorithme n'est pas encore utilisable, nous devons calculer la valeur de :math:`a_p(\mphi_j^p,\mphi_i^p)` et :math:`\ell_p(\mphi_i^p)`. De plus, il manque encore les conditions de Dirichlet.
+
+
+.. raw:: html
+
+    <script defer="defer" src="https://d3js.org/d3.v5.min.js"></script>
+    <script defer="defer" src="https://d3js.org/d3-scale-chromatic.v1.min.js</script>
+    <script defer="defer" src="../../../_static/js/loc2glob/main.js"></script>

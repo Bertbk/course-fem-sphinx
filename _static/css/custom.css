@@ -1,0 +1,7 @@
+
+/* Dark mode: invert color for svg*/
+@media (prefers-color-scheme: dark) {
+  img[src$=".svg"]{
+    filter: grayscale(1) invert(1);
+  }
+}

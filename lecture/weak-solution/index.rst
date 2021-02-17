@@ -1,6 +1,6 @@
-***********************
-Théorie : un avant-goût
-***********************
+********************
+Formulations Faibles
+********************
 
 .. epigraph::
 
@@ -13,5 +13,9 @@ Théorie : un avant-goût
 .. toctree::
   :maxdepth: 1
 
-  boundary-conditions
+  rappels
+  weak-formulation
+  lax-milgram
+  sobolev-spaces
+  exemple
 

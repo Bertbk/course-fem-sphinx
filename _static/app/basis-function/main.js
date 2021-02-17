@@ -4,7 +4,7 @@
 
 // Namespacing
 var fem_basis_function = new function() {
-
+    
     var colormap_step = 10;
     var viridis = d3.scaleSequential().domain([0,colormap_step])
     .interpolator(d3.interpolateViridis);
@@ -42,18 +42,18 @@ var fem_basis_function = new function() {
     var triangle_color = {
         "inactive": "none"
     };
-    var point_color = {
-        "one": viridis(colormap_step),
-        "zero": viridis(0),
-        "inactive" : "GhostWhite"
-    };
-    var txt_color = {
-        "inactive" : "black",
-        "one": "black",
-        "zero": "white"
-    };
 
-    var r = 4.0; // radius of vert
+    var dark_foreground_color = "GhostWhite" ;
+    var light_foreground_color = "#131416" ;
+    var dark_background_color = "#131416" ;
+    var light_background_color = "GhostWhite" ;
+
+    var dark_value_one =  viridis(colormap_step);
+    var dark_value_zero = viridis(0);
+    var light_value_one =  viridis(colormap_step);
+    var light_value_zero = viridis(0);
+
+    var r = 4.0; // radius of vertice
     var max_x =0.0, max_y=0.0;
     var min_x =10000.0, min_y=1000.0;
     for (let i = 0; i < data_pts.length; i++)
@@ -69,12 +69,13 @@ var fem_basis_function = new function() {
     var size_y = (max_y - min_y) + 3*r + 2*padding_colormap + colormap_y;
 
     var div = d3.select('div.app-basis-function')
-                .attr('style', 'text-align:center')
+                .attr('style', 'text-align:center; --dark_background_color:'+ dark_background_color+'; --light_background_color:'+ light_background_color+';--dark_foreground_color:'+ dark_foreground_color+'; --light_foreground_color:'+ light_foreground_color+';--dark_value_one:'+dark_value_one+';--dark_value_zero:'+dark_value_zero+';--light_value_one:'+light_value_one+';--light_value_zero:'+light_value_zero+';')
                 ;
 
     var title=div.insert('p', ":first-child")
                 .text('Maillage')
-                .attr('style', 'margin:auto; font-size:1.5em;font-weight:bold;color:darkblue;');
+                .attr('style', 'margin:auto; font-size:1.5em;font-weight:bold;')
+    ;
 
     var svg = div.insert('svg', ":first-child")
                     .attr('viewBox', parseFloat(min_x - 1.5*r) + " " + parseFloat(min_y - 1.5*r)+ " " + parseFloat(size_x)  + " " +  parseFloat(size_y))
@@ -133,6 +134,7 @@ var fem_basis_function = new function() {
                     .attr('height', colormap_y)
                     .text(parseFloat(i)/2)
                     .attr('font-size', '0.4em')
+                    .attr('class', 'colormap-text')
     ;
     }
 
@@ -146,9 +148,8 @@ var fem_basis_function = new function() {
         .attr('class', function(d,i){ return 'd3-triangle d3-triangle-' + i;})
         .attr('fill', 'none')
         .attr('pointer-events', 'fill')
-        .attr('stroke', 'black')
         .attr('stroke-width', '2px')
-        .attr('active', '0')
+        .attr('data-active', '0')
         .attr('points', '0 0, 1 0, 0 1')
         .attr('transform', function(d){
             let aa = parseFloat(data_pts[d[1]].x - data_pts[d[0]].x);
@@ -162,8 +163,11 @@ var fem_basis_function = new function() {
         ;
 
     // Build all vertices
-    var all_pts = svg.append('g')
-        .attr('class','all_pts')
+    var g_all_pts = svg.append('g')
+                    .attr('class','all_pts')
+                    .attr('data-active','0')
+    ;
+    var all_pts = g_all_pts
         .selectAll('g')
         .data(data_pts)
         .enter()
@@ -173,73 +177,48 @@ var fem_basis_function = new function() {
         .on('click', function(d,i){
             activate(this, d, i );
             })
-        .attr('active', '0')
         ;
     // Add the circle
     var all_pts_circle = all_pts.append('circle')
         .attr('cx', function(d){return d.x})
         .attr('cy', function(d){return d.y})
         .attr('r', r)
-        .attr('fill', point_color.inactive)
-        .attr('stroke', 'black')
-        ;
-    // Add the text value of points
-    /*var all_pts_txt = all_pts.append('text')
-        .attr('x', function(d){return d.x})
-        .attr('y', function(d){return d.y})
-        .attr('text-anchor', 'middle')
-        .attr('dy',  "0.3em")
-        .text(function(d,i){return i;})
-        .attr('font-size', '0.5em')
-        .attr('fill', txt_color.inactive)
-        ;
-    */
+        .attr('data-value', '0')
+    ;
 
 
     // FUNCTIONS
     //============
 
     function desactivate_vertices(){
+        g_all_pts.attr('data-active', '0');
         div.selectAll(".d3-vertex-BF")
                 .select('circle')
-                .attr('fill', point_color.inactive)
-                .attr('stroke', 'black')
+                .attr('data-value', "0")
         ;
-        div.selectAll(".d3-vertex-BF")
-                .select('text')
-                .attr('fill', txt_color.inactive)
-        ;
-        div.selectAll(".d3-vertex-BF").attr("active", "0");
     };
 
     function activate_vertex(t){
+        g_all_pts.attr('data-active', '1');
         div.selectAll(".d3-vertex-BF")
                 .select('circle')
-                .attr('fill', point_color.zero)
-                .attr('stroke', 'black')
+                .attr('data-value', '0')
         ;
-        div.selectAll(".d3-vertex-BF")
-                .select('text')
-                .attr('fill', txt_color.zero)
-        ;
-        d3.select(t).attr('active', '1');
         d3.select(t).select('circle')
-        .attr('fill', point_color.one)
-        .attr('stroke', 'black')
-        d3.select(t).select('text')
-        .attr('fill', txt_color.one)
+        .attr('data-value', '1')
         ;
     };
 
     function activate_triangles(t, d){
         svg.selectAll('.d3-triangle')
             .attr('fill', viridis(0))
+            .attr('data-active', "1")
         ;
         d.tri.forEach(function(i, index) {
             svg.select('.d3-triangle-'+i)
             .attr('fill', 'url(#gradtri-'+ d.local[index]+')')
             .attr('stroke-opacity', '1')
-            .attr('active', "1")
+            .attr('data-active', "1")
         });
     };
 
@@ -247,13 +226,24 @@ var fem_basis_function = new function() {
         svg.selectAll('.d3-triangle')
             .attr('fill', triangle_color.inactive)
             .attr('stroke-opacity', '1')
-            .attr('active', "0")
+            .attr('data-active', "0")
         ;
     };
 
 
     function activate(t, d, i){
-        let new_status = (1+parseInt(d3.select(t).attr('active')))%2;
+        let new_status = 0;
+        // If the view is in mesh mode then activate the vertice 
+        // otherwise if the vertexe is set to 1 then go back to mesh view
+        // otherwise this vertexe is now set to 1
+        if(parseInt(g_all_pts.attr('data-active')) == 0)
+            {new_status = 1;console.log("C'était 0 !");}
+        else {
+            if(parseInt(d3.select(t).select('circle').attr('data-value')) == 0)
+            {new_status = 1;}
+            else // go back to mesh view (desactive everything)
+            {new_status = 0;}
+        }
         desactivate_triangles();
         desactivate_vertices();
         if(new_status == 1)
