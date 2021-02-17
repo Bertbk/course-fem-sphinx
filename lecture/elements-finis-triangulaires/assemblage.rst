@@ -116,7 +116,8 @@ Ainsi, pour un triangle  :math:`\tri_p`, ses sommets sont numérotés :math:`[\v
 
 .. raw:: html
 
-  <div class="app-local-to-global" id="app-local-to-global" style="text-align:center;">
+  <div id="app-local-to-global" class="iframe-container" style=" overflow: hidden;padding-top: 100%;position: relative;"><iframe src='../../../_static/app/loc2glob/index.html' frameborder="0" scrolling="no" style="border: 0;height: 100%;left: 0;position: absolute;top: 0;width: 100%;"></iframe></div>
+  <div  style="text-align:center;">
     <p><strong>Application interactive : Cliquez sur un triangle</strong> pour faire apparaitre la <strong>numérotation locale</strong> des sommets du triangle. Recliquez dessus pour revenir en <strong>numérotation globale</strong></p> 
   </div>
 

@@ -3,6 +3,10 @@ div.app-basis-function{
   --dark_foreground_color: var(--dark_foreground_color);
   --light_background_color: var(--light_background_color);
   --light_foreground_color: var(--light_foreground_color);
+  --dark_value_zero: var(--dark_value_zero);
+  --dark_value_one: var(--dark_value_one);
+  --light_value_zero: var(--light_value_zero);
+  --light_value_one: var(--light_value_one);
 }
 
 
