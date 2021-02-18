@@ -47,7 +47,7 @@ avec
 
 .. math:: \begin{array}{ r c c l}
   a \colon & \Hoz \times \Hoz  &\longrightarrow & \Rb\\
-   & (u,v) & \longmapsto & \displaystyle \int_{\Omega}\nabla u\cdot\nabla v
+   & (u,v) & \longmapsto & \displaystyle \int_{\Omega}\nabla u\cdot\nabla v\\
   \ell \colon & \Hoz  &\longrightarrow & \Rb\\
    & v & \longmapsto & \displaystyle \int_{\Omega} f v
   \end{array}

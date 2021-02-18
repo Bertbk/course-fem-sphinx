@@ -103,7 +103,7 @@ Résolution numérique
 
 La résolution d'un tel problème dans un appartement deux pièces avec cuisine séparée (grand luxe Parisien) avec la méthode des éléments finis donne alors ce résultat :
 
-.. figure:: /img/wifi/wifi.png
+.. figure:: /img/wifi/wifi.*
   :figwidth: 100%
   :width: 100%
   :alt: Propagation d'une onde Wi-Fi dans un appartement
