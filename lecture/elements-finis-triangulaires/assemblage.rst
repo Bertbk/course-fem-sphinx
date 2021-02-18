@@ -19,8 +19,8 @@ Chaque intégrale sur :math:`\Omega` peut être décomposée comme une somme sur
 .. math::
 
   \begin{aligned}
-    A_{I,J} &= \sum_{p=0}^{\Nt-1} \int_{\tri_p}\nabla \mphi_J \cdot\nabla \mphi_I+ c\sum_{p=0}^{\Nt-1} \int_{\tri_p}\mphi_J\mphi_I\\
-    \Bh_{I} &= \sum_{p=0}^{\Nt-1}\int_{\tri_p}f(x)\mphi_I(x)\diff x.
+    A_{I,J} &= \sum_{p=1}^{\Nt} \int_{\tri_p}\nabla \mphi_J \cdot\nabla \mphi_I+ c\sum_{p=0}^{\Nt-1} \int_{\tri_p}\mphi_J\mphi_I\\
+    \Bh_{I} &= \sum_{p=1}^{\Nt}\int_{\tri_p}f(x)\mphi_I(x)\diff x.
   \end{aligned}
 
 Soit deux sommets :math:`\vertice_I` et :math:`\vertice_J` n'appartenant pas un même triangle, alors :math:`\supp(\mphi_I)\cap\supp(\mphi_J) =\emptyset`. Autrement dit, :math:`\mphi_I\mphi_J` est toujours nul et donc le coefficient :math:`A_{I,J}` est nul ! Vue autrement, si deux sommets :math:`\vertice_I` et :math:`\vertice_J` ne sont pas connectés par une arête, alors :math:`A_{I,J=0}`.
@@ -38,15 +38,15 @@ Il est à noter que la boucle sur les triangles pourraient être simplifiée en 
 .. code-block:: bash
   :caption: Algorithme brut-force
 
-  For I = 0:N_s-1
-    For J = 0:N_s-1
+  For I = 1:N_s
+    For J = 1:N_s
       A(I,J) = 0
-      For p = 0:N_t-1
+      For p = 1:N_t
         A(I,J) += ∫_{K_p} (∇ ϕ_J·∇ ϕ_I) +∫_{K_p}(ϕ_J ϕ_I)
       EndFor
     EndFor
     B(I) = 0
-    For p = 0:N_t-1
+    For p = 1:N_t
       B[I] += ∫_{K_p} (f ϕ_I)
     EndFor
   EndFor
@@ -59,9 +59,9 @@ Une autre manière de procéder, que l'on appelle **assemblage**, se base sur un
 
 .. math::
 
-  A_{I,J} = \sum_{p=0}^{\Nt-1} \underbrace{\int_{\tri_p}\nabla \mphi_J \cdot\nabla \mphi_I}_{\text{Contrib. élémentaire}}+ c\sum_{p=0}^{\Nt-1} \underbrace{\int_{\tri_p}\mphi_J\mphi_I}_{\text{Contrib. élémentaire}}
+  A_{I,J} = \sum_{p=1}^{\Nt} \underbrace{\int_{\tri_p}\nabla \mphi_J \cdot\nabla \mphi_I}_{\text{Contrib. élémentaire}}+ c\sum_{p=0}^{\Nt-1} \underbrace{\int_{\tri_p}\mphi_J\mphi_I}_{\text{Contrib. élémentaire}}
 
-Introduisons :math:`a_p(\cdot,\cdot)` la famille de forme bilinéaire suivante, pour :math:`p=0,\ldots,\Nt-1` : 
+Introduisons :math:`a_p(\cdot,\cdot)` la famille de forme bilinéaire suivante, pour :math:`p=1,\ldots,\Nt` : 
 
 .. math::
 
@@ -71,7 +71,7 @@ Ensuite, nous réécrivons la matrice :math:`A` sous la forme suivante
 
 .. math::
 
-  A = \sum_{I=0}^{\Ns-1}\sum_{j=0}^{\Ns-1}a(\mphi_J,\mphi_I) \ee_I^T\ee_J,
+  A = \sum_{I=1}^{\Ns}\sum_{j=0}^{\Ns-1}a(\mphi_J,\mphi_I) \ee_I^T\ee_J,
 
 où :math:`\ee_I` est le vecteur de la base canonique de :math:`\Rb^{\Ns}`.  Nous avons alors
 
@@ -79,18 +79,18 @@ où :math:`\ee_I` est le vecteur de la base canonique de :math:`\Rb^{\Ns}`.  Nou
   :label: eq-assemble_tmp
 
   \begin{aligned}
-    A &= \sum_{I=0}^{\Ns-1}\sum_{J=0}^{\Ns-1}a(\mphi_J,\mphi_I) \ee_I^T\ee_J\\
-     &=  \sum_{I=0}^{\Ns-1}\sum_{J=0}^{\Ns-1}\sum_{p=0}^{\Nt-1}a_{p}(\mphi_J,\mphi_I) \ee_I^T\ee_J\\
-     &=  \sum_{p=0}^{\Nt-1}\sum_{I=0}^{\Ns-1}\sum_{J=0}^{\Ns-1}a_{p}(\mphi_J,\mphi_I) \ee_I^T\ee_J\\
+    A &= \sum_{I=1}^{\Ns}\sum_{J=1}^{\Ns}a(\mphi_J,\mphi_I) \ee_I^T\ee_J\\
+     &=  \sum_{I=1}^{\Ns}\sum_{J=1}^{\Ns}\sum_{p=1}^{\Nt}a_{p}(\mphi_J,\mphi_I) \ee_I^T\ee_J\\
+     &=  \sum_{p=1}^{\Nt}\sum_{I=1}^{\Ns}\sum_{J=1}^{\Ns}a_{p}(\mphi_J,\mphi_I) \ee_I^T\ee_J\\
   \end{aligned}
 
 Nous remarquons maintenant que :math:`a_{p}(\mphi_J,\mphi_I)` est nul dès lors que :math:`\vertice_I` ou :math:`\vertice_J` ne sont pas des sommets de :math:`\tri_p` (car :math:`\mphi_I\mphi_J = 0` sur :math:`\tri_p`). Finalement, la somme sur tous les sommets du maillage se réduit à une somme sur les 3 sommets du triangle :math:`\tri_p` considéré. 
 
-Nous comprenons que nous devons maintenant travailler **localement** dans chaque triangle. Pour cela, nous avons besoin d'introduire une **numérotation locale** de chaque sommet une fonction :math:`\locToGlob` (*Local To Global*)permettant de basculer du local vers le global une fonction telle que, pour :math:`p=0,\ldots,\Nt-1` et :math:`i=0,1,2` : 
+Nous comprenons que nous devons maintenant travailler **localement** dans chaque triangle. Pour cela, nous avons besoin d'introduire une **numérotation locale** de chaque sommet une fonction :math:`\locToGlob` (*Local To Global*)permettant de basculer du local vers le global une fonction telle que, pour :math:`p=1,\ldots,\Nt` et :math:`i=1,2,3` : 
 
 .. math:: \locToGlob(p,i) = I \iff \vertice_i^p = \vertice_I
 
-Ainsi, pour un triangle  :math:`\tri_p`, ses sommets sont numérotés :math:`[\vertice_{0}^{p},\vertice_{1}^{p},\vertice_{2}^{p}]` en numérotation locale ou :math:`[\vertice_{\locToGlob(p,0)},\vertice_{\locToGlob(p,1)},\vertice_{\locToGlob(p,2)}]` en numérotation globale, comme le montre la figure :numref:`{number} <fig-loc2glob>`. Nous distinguerons la numérotation globale par des lettres capitales (:math:`I`, :math:`J`) et la numérotation locale par des minuscules (:math:`i`, :math:`j`). Nous introduisons aussi les fonctions de forme locales :
+Ainsi, pour un triangle  :math:`\tri_p`, ses sommets sont numérotés :math:`[\vertice_{1}^{p},\vertice_{2}^{p},\vertice_{3}^{p}]` en numérotation locale ou :math:`[\vertice_{\locToGlob(p,1)},\vertice_{\locToGlob(p,2)},\vertice_{\locToGlob(p,3)}]` en numérotation globale, comme le montre la figure :numref:`{number} <fig-loc2glob>`. Nous distinguerons la numérotation globale par des lettres capitales (:math:`I`, :math:`J`) et la numérotation locale par des minuscules (:math:`i`, :math:`j`). Nous introduisons aussi les fonctions de forme locales :
 
 .. math:: \mphi_i^p = \mphi_{\locToGlob(p,i)}|_{\tri_p}.
 
@@ -123,7 +123,7 @@ Ainsi, pour un triangle  :math:`\tri_p`, ses sommets sont numérotés :math:`[\v
 
 Utilisons ces nouvelles notations dans l'équation :eq:`eq-assemble_tmp`, en ramenant la somme sur les sommets à uniquement les sommets du triangle considéré :
 
-.. math:: A = \sum_{p=0}^{\Nt-1}\sum_{i=0}^{2}\sum_{j=0}^{2}a_{p}(\mphi_j^p,\mphi_i^p) \ee_{\locToGlob(p,i)}^T\ee_{\locToGlob(p,j)}
+.. math:: A = \sum_{p=1}^{\Nt}\sum_{i=1}^{3}\sum_{j=1}^{3}a_{p}(\mphi_j^p,\mphi_i^p) \ee_{\locToGlob(p,i)}^T\ee_{\locToGlob(p,j)}
 
 L'algorithme d'assemblage est alors complet ! Une version pseudo-code est présenté par :ref:`l'algorithme d'assemblage <algo-assemblage>`. Sa complexité est en :math:`\grandO{\Nt} \ll \grandO{\Ns^2}`. Comme :ref:`le premier algorithme <algo-brut-force>`, il possède en plus l'avantage d'être parallélisable.
 
@@ -135,10 +135,10 @@ L'algorithme d'assemblage est alors complet ! Une version pseudo-code est prése
 
   A = 0
   B = 0
-  For p = 0:N_t-1
-    For i = 0:2
+  For p = 1:N_t
+    For i = 1:3
       I = L2G(p,i)
-      For j = 0:2
+      For j = 1:3
         J = L2G(p,j)
         A(I,J) += a_p(ϕ_j^p,ϕ_i^p)
       EndFor
