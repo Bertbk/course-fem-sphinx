@@ -1,8 +1,0 @@
-Présentation
-============
-
-Académique
-----------
-
-Industrie
----------

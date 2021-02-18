@@ -13,5 +13,5 @@ Simulation Numérique
 .. toctree::
   :maxdepth: 1
 
-  presentation
-  program
+  EDP
+  industrie
