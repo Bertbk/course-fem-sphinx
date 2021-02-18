@@ -65,7 +65,7 @@ Ce théorème nous permet de montrer que la forme :math:`\ell` a un sens (chaque
 .. math:: 
   
   \begin{aligned}
-    \abs{\ell(v)}  &\leq \abs{\int_{\Omega} f(\xx) v(\xx)\diff\xx} + \abs{\int_{\partial\Omega} \gN(\xx)v(\xx)\diff\xx} & \text{Inégalité classique}\\
+    \abs{\ell(v)}  &\leq \abs{\int_{\Omega} f(\xx) v(\xx)\diff\xx} + \abs{\int_{\partial\Omega} \gN(\xx)v(\xx)\diff\xx} & \text{Inégalité Triangulaire}\\
     &\leq   \abs{\int_{\Omega} f(\xx) v(\xx)\diff\xx}+ \abs{\int_{\partial\Omega} \gN(\xx) \gamma_{\partial\Omega}(v(\xx))} &\text{Réécriture}\\
     &\leq \normL{f}\normL{v} + \norm{g}_{L^2(\partial\Omega)}\norm{\gamma_{\partial\Omega}(v)}_{L^2(\partial\Omega)} &\text{Cauchy-Schwarz}\\
     &\leq \left(\normL{f} + C\norm{g}_{L^2(\partial\Omega)}\right)\normH{v} & \text{Cont. Trace}.
@@ -96,13 +96,15 @@ Les coefficients de la matrice :math:`A` et du vecteur :math:`B` sont donnés pa
     A&=(A_{I,J})_{I,J}, &A_{I,J} &= a(\mphi_J,\mphi_J) = \int_{\Omega}\nabla \mphi_J\cdot\nabla\mphi_I + \int_{\Omega}\mphi_J\mphi_I\\
     B &=(B_I)_I, &B_I &= \ell(\mphi_I) = \int_{\Omega}f\mphi_I \underbrace{+ \int_{\Gamma}\gN\mphi_I}_{\text{Nouveau !}}
   \end{aligned}
+,
+Au final, seule le membre de droite est modifié par rapport au cas de la condition de Neumann homogène. Autrement dit, la matrice :math:`A` est identique et il nous suffit de savoir calculer :math:`\int_{\Gamma}\gN\mphi_I` pour obtenir le second membre : pour cela, nous utilisons une règle de quadrature sur des segments. La technique est la même que pour le calcul de :math:`\int_{\Omega}f\mphi_I`. 
 
-Au final, seule le membre de droite est modifié par rapport à la section précédente par l'ajout de la condition de Neumann sur :math:`\Gamma`. Autrement dit, la matrice :math:`A` est identique et il nous suffit de savoir calculer :math:`\int_{\Gamma}\gN\mphi_I` pour obtenir le second membre : pour cela, nous utilisons une règle de quadrature sur des segments. La technique est la même que pour le calcul de :math:`\int_{\Omega}f\mphi_I`. Décomposons :math:`\Gamma` en :math:`N_{\Gamma}` segments (qui sont aussi des arêtes de triangles !) :math:`\sigma^q`, :math:`q=0,\ldots,N_{\Gamma}-1`. Chaque segment a deux sommets indicés :math:`[{}^q\vertice_0, {}^q\vertice_1]`. Nous notons :math:`{}^q\mphi_i = \mphi_I|_{\sigma_q}` la restriction de la fonction de forme :math:`\mphi_I` au segment :math:`q`, tel que :math:`{}^q\vertice_i = \vertice_I`. Nous pouvons alors décomposer :math:`B` comme une somme de contributions élémentaires sur les triangles et les segments. 
+Décomposons :math:`\Gamma` en :math:`N_{\Gamma}` segments (qui sont aussi des arêtes de triangles !) :math:`\sigma_q`, :math:`q=1,\ldots,N_{\Gamma}`. Chaque segment a deux sommets indicés :math:`[\vertice_1^{\sigma_q}, \vertice_2^{\sigma_q}]`. Nous notons :math:`\mphi_i^{\sigma_q} = \mphi_I|_{\sigma_q}` la restriction de la fonction de forme :math:`\mphi_I` au segment :math:`q`, tel que :math:`\vertice_i^{\sigma_q} = \vertice_I`. Nous pouvons alors décomposer :math:`B` comme une somme de contributions élémentaires sur les triangles et les segments. 
 
-.. math::  B = \sum_{p=0}^{\Nt-1} \sum_{i=0}^2 \int_{\tri_p}f\mphi_i^p + \sum_{q=0}^{N_{\Gamma}}\sum_{i=0}^2 \int_{\sigma_q} \gN{}^q\mphi_i.
+.. math::  B = \sum_{p=1}^{\Nt} \sum_{i=1}^3 \int_{\tri_p}f\mphi_i^p + \sum_{q=1}^{N_{\Gamma}}\sum_{i=1}^2 \int_{\sigma_q} \gN{}\mphi_i^{\sigma_q}.
 
-Voici la formule de quadrature "1/3 Simpson" sur un segment :math:`[{}^q\vertice_0, {}^q\vertice_1]` exacte pour des polynômes de degré 2. Nous notons :math:`\abs{\sigma} = \norm{{}^q\vertice_0 - {}^q\vertice_1}` la taille du segment et :math:`{}^q\vertice_{01} = \frac{{}^q\vertice_0 + {}^q\vertice_1}{2}` le milieu du segment:
+Nous savons comment approcher la quantité de gauche avec une formule de quadrature adaptée. Le terme de droite s'approche lui aussi avec une formule de quadrature 1D, par exemple la formule "1/3 Simpson", qui est exacte pour des polynômes de degré 2. Nous notons :math:`\abs{\sigma} = \norm{{}\vertice_1^{\sigma_q} - \vertice_2^{\sigma_q}}` la taille du segment et :math:`\vertice_{12} = \frac{\vertice_1^{\sigma_q} + \vertice_2^{\sigma_q}}{2}` le milieu du segment, alors la formule est la suivante :
 
 
-.. math:: \int_{\sigma} g \approx \frac{\abs{\sigma}}{6}\left(g({}^q\vertice_{0}) + 4g({}^q\vertice_{01}) + g({}^q\vertice_{1})\right)
+.. math:: \int_{\sigma} g \approx \frac{\abs{\sigma}}{6}\left(g(\vertice_1^{\sigma_q}) + 4g(\vertice_{12}^{\sigma_q}) + g(\vertice_{2}^{\sigma_q})\right)
 
