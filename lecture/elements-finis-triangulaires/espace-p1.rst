@@ -268,16 +268,11 @@ Une illustration du support des fonctions de forme est donnée sur la Figure :nu
   Support des fonctions de forme pour le maillage d’un carré.
 
 
-.. raw::html
-
-  <div id="app-basis-function" class="app-basis-function" style="text-align:center;">
-    <p>Application : Cliquez sur un sommet pour faire apparaitre <strong>la fonction de forme P1 associée</strong>. Les triangles où la fonction n’est pas nulle forment <strong>le support de la fonction de forme</strong>. </p>
-  </div>
-
-
 .. raw:: html
 
-  <div class="iframe-container" style=" overflow: hidden;padding-top: 100%;position: relative;"><iframe src='../../../_static/app/basis-function/index.html' frameborder="0" scrolling="no" style="border: 0;height: 100%;left: 0;position: absolute;top: 0;width: 100%;"></iframe></div>
+  <div class="iframe-container" style=" overflow: hidden;padding-top: 100%;position: relative;"><iframe src='../../../_static/app/basis-function/index.html' frameborder="0" scrolling="no" style="border: 0;height: 100%;left: 0;position: absolute;top: 0;width: 100%;"></iframe>
+      <p>Application : Cliquez sur un sommet pour faire apparaitre <strong>la fonction de forme P1 associée</strong>. Les triangles où la fonction n’est pas nulle forment <strong>le support de la fonction de forme</strong>. </p>
+  </div>
 
 
 Conclusion
