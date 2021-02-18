@@ -40,7 +40,7 @@ On espère alors que cette solution approchée :math:`\uh` soit une bonne estima
 
 .. math:: \lim_{h\to 0}\normV{\uh-u} = 0.
 
-Remarquons tout d'abord que la formulation faible :eq:`eq3-pbmodelh` admet une unique solution
+Remarquons tout d'abord que la formulation faible :eq:`eq3-pbmodelh` admet une unique solution.
 
 .. proof:lemma::
 
@@ -63,39 +63,39 @@ Travailler dans un espace de dimension finie présente un très grand avantage :
 
 .. proof:proof::
 
-  Le problème  :eq:`eq3-pbmodelh` admet toujours une unique solution d'après le Théorème de Lax-Milgram. Comme :math:`\Vh` est de dimension finie, notée :math:`\Nh`, nous pouvons en extraire une base :math:`(\mphi{1}, \mphi{2}, \ldots, \mphi{\Nh})` et écrire
+  Le problème  :eq:`eq3-pbmodelh` admet toujours une unique solution d'après le Théorème de Lax-Milgram. Comme :math:`\Vh` est de dimension finie, notée :math:`\Nh`, nous pouvons en extraire une base :math:`(\mphi_{1}, \mphi_{2}, \ldots, \mphi_{\Nh})` et écrire
 
-  .. math:: \uh = \sum_{I=0}^{\Nh-1} u_I \mphi{I}.
+  .. math:: \uh = \sum_{I=1}^{\Nh} u_I \mphi_I.
 
   La formulation faible peut alors se réécrire sur les fonctions de cette base uniquement :
 
-  .. math::  \forall I, \qquad \sum_{J=0}^{\Nh-1}  a(\mphi{J},\mphi{I}) u_J = \ell(\mphi{I}),
+  .. math::  \forall I, \qquad \sum_{J=1}^{\Nh}  a(\mphi_J,\mphi_I) u_J = \ell(\mphi_I),
 
   ou encore
 
   .. math:: A_h U_h = B_h,
 
-  avec :math:`A_h = (a(\mphi{j}, \mphi{i}))_{ 1\leq i,j\leq \Nh}`, :math:`U_h=(u_I)_{1\leq j \leq \Nh}` et :math:`B_h=(\ell(\mphi{i}))_{1\leq i\leq \Nh}`. Montrons maintenant que la matrice :math:`A_h` est définie positive : 
+  avec :math:`A_h = (a(\mphi_J, \mphi_I))_{ 1\leq I,J\leq \Nh}`, :math:`U_h=(u_I)_{1\leq J \leq \Nh}` et :math:`B_h=(\ell(\mphi_I))_{1\leq I\leq \Nh}`. Montrons maintenant que la matrice :math:`A_h` est définie positive : 
 
   .. math::
   
     \begin{aligned}
-    \forall W_h\in\Rb^{\Nh}, W_h = (w_i)_{1\leq i \leq \Nh},\\
-    \PS{W_h}{A_hW_h} = \overline{W_h^T}A_h W_h 
-    &= \sum_{i=1}^{\Nh} \sum_{j=1}^{\Nh} \overline{w_j}a(\mphi{i},\mphi{j})w_i \\
-    &= \sum_{i=1}^{\Nh}\sum_{j=1}^{\Nh}a(w_i\mphi{i}, w_j\mphi{j})\\
-    &= a\left(\sum_{i=1}^{\Nh}w_i\mphi{i}, \sum_{j=1}^{\Nh}w_j\mphi{j}\right)
+    \forall W_h\in\Rb^{\Nh}, W_h = (w_I)_{1\leq I \leq \Nh},\\
+    \PS{W_h}{A_hW_h} = W_h^T A_h W_h 
+    &= \sum_{I=1}^{\Nh} \sum_{J=1}^{\Nh} w_j a(\mphi_I,\mphi_J)w_I \\
+    &= \sum_{I=1}^{\Nh}\sum_{J=1}^{\Nh}a(w_I\mphi_I, w_j\mphi_J)\\
+    &= a\left(\sum_{I=1}^{\Nh}w_I\mphi_I, \sum_{J=1}^{\Nh}w_j\mphi_J\right)
     \end{aligned}
 
-  L'indice :math:`j` étant muet, nous pouvons changer son intitulé : 
+  L'indice :math:`J` étant muet, nous pouvons changer son intitulé : 
 
-  .. math:: \PS{W_h}{A_hW_h} = a\left(\sum_{i=1}^{\Nh}w_i\mphi{i}, \sum_{i=1}^{\Nh}w_i\mphi{i}\right)
+  .. math:: \PS{W_h}{A_hW_h} = a\left(\sum_{I=1}^{\Nh}w_I\mphi_I, \sum_{I=1}^{\Nh}w_I\mphi_I\right)
 
   Nous utilisons maintenant la coercivité de :math:`a(\cdot,\cdot)` :
 
-  .. math:: \PS{W_h}{A_hW_h} \geq \alpha\normV{\sum_{i=1}^{\Nh}w_i\mphi{i}}^2.
+  .. math:: \PS{W_h}{A_hW_h} \geq \alpha\normV{\sum_{I=1}^{\Nh}w_I\mphi_I}^2.
 
-  Comme :math:`\alpha > 0`, alors le terme :math:`\PS{W_h}{A_hW_h}` est nul si et seulement si :math:`\normV{\sum_{i=1}^{\Nh}w_i\mphi{i}}` est nulle et donc si et seulement si :math:`\sum_{i=1}^{\Nh}w_i\mphi{i}` est la fonction nulle. Comme la famille :math:`(\mphi{i})_{1\leq i \leq \Nh}` forme une base de :math:`\Vh`, cela revient à dire que :math:`w_i = 0` pour tout :math:`i` et donc que :math:`W_h` est le vecteur nul. Nous avons donc montré que 
+  Comme :math:`\alpha > 0`, alors le terme :math:`\PS{W_h}{A_hW_h}` est nul si et seulement si :math:`\normV{\sum_{I=1}^{\Nh}w_I\mphi_I}` est nulle et donc si et seulement si :math:`\sum_{I=1}^{\Nh}w_I\mphi_I` est la fonction nulle. Comme la famille :math:`(\mphi_I)_{1\leq I \leq \Nh}` forme une base de :math:`\Vh`, cela revient à dire que :math:`w_I = 0` pour tout :math:`I` et donc que :math:`W_h` est le vecteur nul. Nous avons donc montré que 
 
   .. math:: \forall W_h\in\Rb^{\Nh}\setminus\{0\}, \qquad \PS{W_h}{A_h W_h} > 0.
 
@@ -108,3 +108,6 @@ Travailler dans un espace de dimension finie présente un très grand avantage :
   - La **coercivité** d'une forme :math:`a(\cdot,\cdot)` est, en quelque sorte, l'équivalent de la **définie positivité** de sa matrice. La coercivité s'applique au domaine "continu" (les *fonctions* ou *opérateurs*) tandis que la définie positivité est un terme appliqué au domaine "algébrique" (les *matrices* (infinies ou non)).  
   - L'hypothèse de Lax-Milgram sur la **coercivité** de :math:`a(\cdot,\cdot)` est une **hypothèse forte** puisque la matrice :math:`A_h` discrétisant :math:`a(\cdot,\cdot)` doit être **définie positive** !
 
+.. proof:remark::
+
+  La méthode des différences finies discrétise l'opérateur différentiel (:math:`\Delta`) tandis que les éléments finis (issue de la méthode de Galerkin) approche l'espace fonctionnel. C'est une différence majeure ! 
