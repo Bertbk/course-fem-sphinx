@@ -1,6 +1,6 @@
-****************************
-Avancée
-****************************
+********************
+Conditions aux bords
+********************
 
 .. epigraph::
 
@@ -12,7 +12,7 @@ Avancée
 .. toctree::
   :maxdepth: 1
 
-  error
-  p2
-  
+  neumann-heterogene
+  dirichlet
+  fourier
 

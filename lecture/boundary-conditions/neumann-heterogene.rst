@@ -1,3 +1,5 @@
+.. _sec-neumann-heterogene:
+
 Conditions de Neumann hétérogène
 ================================
 
@@ -22,7 +24,7 @@ Après multiplication par des fonctions test et intégration par partie, nous ob
 
 En utilisant la condition :math:`\dn u = \gN` sur :math:`\Gamma`, nous obtenons la formulation variationnelle suivante :
 
-.. math:: 
+.. math::
   :label: fv-dnNonH
 
   \left\{\begin{array}{l}
@@ -49,6 +51,8 @@ Pour pouvoir appliquer le Théorème de Lax-Milgram, nous savons par le cas de N
 
 Nous n'avons en effet pas (encore) donné de sens à la trace (= la "restriction") sur :math:`\Gamma` d'une fonction de :math:`\Ho`, c'est-à-dire à :math:`v|_{\Gamma}`. C'est l'objet du théorème ci-dessous (admis).
 
+.. _thm-trace:
+
 .. proof:theorem:: Continuité de la Trace (admis)
 
   Soit :math:`\Gamma\subset\partial\Omega` une partie du bord de mesure non nulle au sens de la mesure de surface. Alors il existe une unique application :math:`\gamma_{\Gamma}\colon\Ho\to L^2(\Gamma)` qui est continue au sens de :math:`\normH{\cdot}` :
@@ -70,6 +74,9 @@ Ce théorème nous permet de montrer que la forme :math:`\ell` a un sens (chaque
     &\leq \normL{f}\normL{v} + \norm{g}_{L^2(\partial\Omega)}\norm{\gamma_{\partial\Omega}(v)}_{L^2(\partial\Omega)} &\text{Cauchy-Schwarz}\\
     &\leq \left(\normL{f} + C\norm{g}_{L^2(\partial\Omega)}\right)\normH{v} & \text{Cont. Trace}.
   \end{aligned}
+
+
+.. _sec-quad-1D:
 
 Implémentation dans le cas :math:`\Pb^1`
 ----------------------------------------

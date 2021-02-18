@@ -16,5 +16,6 @@ Notes de cours
    numerical-simulation/index
    weak-solution/index
    elements-finis-triangulaires/index
+   boundary-conditions/index
    advanced/index   
    

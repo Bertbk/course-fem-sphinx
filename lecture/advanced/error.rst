@@ -5,7 +5,34 @@ Erreur comise et convergence
 Méthode de Galerkin : Erreur commise
 ------------------------------------
 
-Nous quantifions maintenant l'erreur commise en approchant :math:`u` par :math:`\uh` grâce au Lemme de Céa. Avant cela, notons une propriété très intéressante de la solution approchée :math:`\uh` : l'erreur commise est orthogonale à l'espace :math:`\Vh` :
+Nous considérons ici une formulation variationnelle abstraite :
+
+.. math::
+  :label: cv-pbmodel
+
+  \left\{
+    \begin{array}{l}
+      \text{Trouver } u\in V \text{ tel que}\\
+      \forall v\in V,\quad a(u,v) = \ell(v).
+    \end{array}
+  \right.
+
+
+Les formes continues :math:`a(\cdot,\cdot)` et :math:`\ell(\cdot)` sont respectivement bilinéaire et linéaire, et :math:`a(\cdot,\cdot)` est de plus coercive. De cette manière, le Théorème de Lax-Milgram s'applique et le problème :eq:`cv-pbmodel` admet une unique solution. Nous noterons :math:`\PSV{\cdot}{\cdot}` et :math:`\normV{\cdot}` respectivement le produit scalaire et la norme sur :math:`V`.
+
+Nous restons dans un cadre abstrait et introduisons :math:`\Vh`, un sous-espace fonctionnel de :math:`V`, de Hilbert et de dimension finie. Nous appliquons la méthode de Galerkin pour obtenir la formulation faible "approchée" :
+
+.. math::
+  :label: cv-pbmodelh
+
+  \left\{
+    \begin{array}{l}
+      \text{Trouver } u_h\in \Vh \text{ tel que}\\
+      \forall \vh\in \Vh,\quad a(\uh,\vh) = \ell(\vh).
+    \end{array}
+  \right.
+
+Nous quantifions maintenant l'erreur commise en approchant :math:`u` par :math:`\uh`, ou plus exactement, :math:`V` par :math:`\Vh`.  Notons une propriété très intéressante de la solution approchée :math:`\uh` :
 
 .. proof:lemma::
   
@@ -26,7 +53,6 @@ Nous quantifions maintenant l'erreur commise en approchant :math:`u` par :math:`
     \end{aligned}
 
 
-
 .. proof:remark::
 
   Si :math:`a(\cdot,\cdot)` est symmétrique, le lemme précédent implique que l'erreur est orthogonale à :math:`\Vh` par rapport au produit scalaire :math:`a(\cdot,\cdot)`.
@@ -36,7 +62,7 @@ Nous pouvons maintenant montrer que l'erreur d'approximation :math:`\uh` de :mat
 
 .. proof:lemma:: de Céa
 
-  Soit :math:`u` la solution exacte (*i.e.* solution de \eqref{eq3-pbmodel}) et :math:`\uh` la solution approchée (*i.e.* solution de :eq:`eq3-pbmodelh`). Nous avons
+  Soit :math:`u` la solution exacte (*i.e.* solution de \eqref{cv-pbmodel}) et :math:`\uh` la solution approchée (*i.e.* solution de :eq:`cv-pbmodelh`). Nous avons
 
   .. math:: \normV{u-\uh}\leq \frac{M}{\alpha}\inf_{\vh\in \Vh}\normV{u-\vh},
 
@@ -59,8 +85,7 @@ Nous pouvons maintenant montrer que l'erreur d'approximation :math:`\uh` de :mat
   .. math::
 
     \begin{aligned}
-    \forall \vh\in \Vh,\quad \alpha\normV{u-\uh}^2 &\leq \Re\left[a(u - \uh, u - \uh)\right]  \\
-    &\leq \Re\left[a(u - \uh, u - \vh)\right] \\
+    \forall \vh\in \Vh,\quad \alpha\normV{u-\uh}^2 &\leq \abs{a(u - \uh, u - \uh)} \\
     &\leq \abs{a(u - \uh, u - \vh)} \\
     &\leq M\normV{u-\uh}\normV{u-\vh}.
     \end{aligned}
@@ -75,6 +100,10 @@ Nous pouvons maintenant montrer que l'erreur d'approximation :math:`\uh` de :mat
   
   Le point important du Lemme de Céa est de remplacer le problème d'estimation de l'erreur par un problème d'approximation. En effet, il nous suffit de montrer que la solution est "bien approchée" par les fonctions de :math:`\Vh` pour savoir que l'erreur ne sera *qu'une constante fois plus grande* que cette erreur d'approximation. 
 
+
+Nous pouvons maintenant donner une condition pour que la méthode de Galerkin converge.
+
+.. _lemme-cv-galerkin:
 
 .. proof:lemma::
 
@@ -93,9 +122,13 @@ Nous pouvons maintenant montrer que l'erreur d'approximation :math:`\uh` de :mat
 
   .. math::  0 \leq \normV{u-\uh} \leq \frac{M}{\alpha}\normV{u - \Pi_hu} \to 0 \quad (h\to 0). 
 
-.. proof:remark:: 
 
-  Les résultats présentés dans cette section ne dépendent pas du choix de l'espace éléments finis : :math:`V_h` est "arbitraire".
+La propriété demandée à l'opérateur de projection :math:`\Phi_h \colon V \to \Vh` est assez naturel : plus :math:`h` est petit et plus le projeté d'une fonction :math:`v\in V` doit être proche de :math:`v`. Nous pouvons voir cela comme l'espace :math:`\Vh` est "proche" de :math:`V`.
+
 
 Converge des éléments finis :math:`\Pb^1`
 -----------------------------------------
+
+Afin de montrer que la méthode des éléments finis :math:`\Pb^1` converge, nous devons obtenir un opérateur d'interpolation et montrer qu'il vérifie l'hypothèse nécessaire :numref:`du lemme {number} <lemme-cv-galerkin>`.
+
+TODO: ! 
