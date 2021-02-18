@@ -12,6 +12,7 @@ Notes de cours
    :caption: Table des matières :
    :numbered:
 
+   prologue
    numerical-simulation/index
    weak-solution/index
    elements-finis-triangulaires/index
