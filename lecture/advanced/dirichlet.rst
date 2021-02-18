@@ -20,26 +20,21 @@ Soit le problème suivant (notez l'absence du terme en :math:`u`)
     \end{array}
     \right.
 
-La condition de Dirichlet est dite **essentielle** : elle doit être incluse dans l'espace fonctionnel directement. Pour cela, en rappelant que :math:`\gamma` est l'application trace de :math:`\Ho` sur :math:`L^2(\Gamma)`, nous introduisons un espace de Sobolev qui prend en compte cette condition de Dirichlet.
-
-.. math:: \Hoz = \enstq{u\in\Ho}{\gamma u = 0},
-
-.. proof:lemma::
-
-  L'espace :math:`\Ho` est de Hilbert
-
-.. proof :remark::
-
-  L'espace :math:`\Hoz` est le noyau de :math:`\gamma`, qui est continue, ce qui implique que :math:`\Hoz` est fermé. Comme de plus :math:`\Hoz\subset\Ho`, avec :math:`\Ho` un Hilbert, alors :math:`\Hoz` est également un Hilbert.
-
-Multiplions l'EDP :eqref:`diri-pb` par des fonctions tests :math:`v\in\Ho`, intégrons sur :math:`\Omega` et appliquons le Théorème de Green :
+Multiplions l'EDP :eq:`diri-pb` par des fonctions tests :math:`v`, intégrons sur :math:`\Omega` et appliquons le Théorème de Green :
 
 .. math:: \begin{aligned}
   -\Delta u  = f &\implies \forall v,\quad  (-\Delta u) v = fv \\   
   &\implies \forall v,\quad  -\int_{\Omega}(\Delta u) v = \int_{\Omega} fv \\
-  &\implies \forall v,\quad  \int_{\Omega}\nabla u \cdot\nabla v - \int_{\Gamma} (\dn u) \underbrace{v}_{=0}= \int_{\Omega} fv \\
-  &\implies \forall v,\quad  \int_{\Omega}\nabla u \cdot\nabla v = \int_{\Omega} fv \\
+  &\implies \forall v,\quad  \int_{\Omega}\nabla u \cdot\nabla v - \int_{\Gamma} (\dn u) v= \int_{\Omega} fv
   \end{aligned}
+
+Nous sommes théoriquement bloqué. Nous sommes tentés de dire que :math:`\dn u = 0` mais non seulement nous ne le savons pas, mais en plus c'est très probablement faux ! Utiliser les conditions aux bords est en revanche la bonne idée. Nous savons que :math:`u` est nul sur le bord :math:`\Gamma`. Autrement dit, nous ne cherchons pas la valeur de la solution sur ce bord, nous la connaissons déjà. Afin de conserver la symétrie entre :math:`u` et :math:`v`, imposons à :math:`v` d'être aussi nul sur le bord et regardons ce que l'on obtient :
+
+.. math:: -\Delta u  = f   &\implies \forall v, v|_\Gamma = 0 \quad  \int_{\Omega}\nabla u \cdot\nabla v = \int_{\Omega} fv
+
+En terme de dérivabilité, l'espace :math:`\Ho` est suffisant pour la solution :math:`u` et les fonctions tests :math:`v`. Il manque toutefois la condition de Dirichlet, dite **essentielle**, qui doit être incluse dans l'espace fonctionnel. Pour cela, en rappelant que :math:`\gamma` est l'application trace de :math:`\Ho` sur :math:`L^2(\Gamma)`, nous introduisons un espace de Sobolev qui prend en compte cette condition de Dirichlet.
+
+.. math:: \Hoz = \enstq{u\in\Ho}{\gamma u = 0},
 
 La formulation faible s'écrit alors
 
@@ -61,7 +56,19 @@ avec
 
   Attention, c'est parce que :math:`v` est nul sur :math:`\Gamma` que l'intégrale sur :math:`\Gamma` s'annule. Ce n'est pas parce que :math:`\dn u=0` ! D'ailleurs, sauf si :math:`u=0` partout, il y a fort à parier que :math:`\dn u\neq 0` !
 
-La continuité de :math:`\ell` a déjà été démontrée dans :math:`\Ho` et donc dans :math:`\Hoz`. Occupons nous de :math:`a(\cdot,\cdot)`.
+
+Démontrons maintenant que cette formulation faible admet une unique solution. Commençons tout d'abord par montrer que :math:`\Hoz` est un espace de Hilbert.
+
+.. proof:lemma::
+
+  L'espace :math:`\Ho` est de Hilbert
+
+.. proof :remark::
+
+  L'espace :math:`\Hoz` est le noyau de :math:`\gamma`, qui est continue, ce qui implique que :math:`\Hoz` est fermé. Comme de plus :math:`\Hoz\subset\Ho`, avec :math:`\Ho` un Hilbert, alors :math:`\Hoz` est également un Hilbert.
+
+
+Ensuite, la continuité de :math:`\ell` a déjà été démontrée dans :math:`\Ho` et donc dans :math:`\Hoz`. Occupons nous de :math:`a(\cdot,\cdot)`.
 
 - Continuité de :math:`a(\cdot,\cdot)`.
 
@@ -79,9 +86,9 @@ La continuité de :math:`\ell` a déjà été démontrée dans :math:`\Ho` et do
 
   .. math:: \normL{\nabla u}^2 \geq C \normH{u}^2 =  C\left(\normL{u}^2 + \normL{\nabla u}^2\right)
 
-L'inégalité de Poincaré nous débloque.
+L'inégalité de Poincaré vient alors à notre rescousse !
 
-.. proof:proposition:: Inégalité de Poincaré
+.. proof:proposition:: Inégalité de Poincaré (admise)
 
   Il existe une constante :math:`C` ne dépendant que de :math:`\Omega` telle que 
 
@@ -96,7 +103,7 @@ L'inégalité de Poincaré nous débloque.
 
   L'inégalité de Poincaré montre que la semi-norme :math:`v\mapsto \normL{\nabla v}` est une norme sur :math:`\Ho` et est équivalente à la norme usuelle :math:`\normH{\cdot}`, puisque l'on a :math:`\normL{\nabla v} \geq C \normH{v}\geq C\normL{\nabla v}`.
 
-  L'inégalité de Poincaré implique la coercivité de :math:`a(\cdot,\cdot)`. Toutes les hypothèses du théorème de Lax-Milgram sont vérifiées et la formulation faible admet bien une unique solution. 
+L'inégalité de Poincaré implique la coercivité de :math:`a(\cdot,\cdot)`. Toutes les hypothèses du théorème de Lax-Milgram sont vérifiées et la formulation faible du problème de Dirichlet homogène admet bien une unique solution. 
 
 Implémentation
 ++++++++++++++
@@ -256,7 +263,7 @@ Nous avons vu plus haut que ce problème admet une unique solution, ce qui impli
 
   .. math:: H^{1/2}(\Gamma) = \enstq{\gamma v}{v\in\Ho}
 
-  Il contient naturellement :math:`L^2(\Gamma)`.
+  Il contient naturellement :math:`L^2(\Gamma)` puisque :math:`\gamma v\in L^2(\Gamma)`.
 
 Relèvement en :math:`\Pb^1`
 +++++++++++++++++++++++++++
@@ -273,16 +280,9 @@ En éléments finis :math:`\Pb^1`, un relèvement naturel est la fonction :math:
     \end{array}
   \right.
 
-Cette fonction n'est pas un relèvement de :math:`g` puisqu'elle ne coïncide avec :math:`g` que sur les sommets, mais pas nécessairement entre ceux-ci. Toutefois, au niveau discret, elle remplit ce rôle : c'est **un relèvement de l'interpolée** :math:`g_h` de :math:`g`, où  :math:`g_h` est obtenu en échantillonant :math:`g` sur les sommets de :math:`\Gamma` :
+Cette fonction n'est pas un relèvement de :math:`g` puisqu'elle ne coïncide avec :math:`g` que sur les sommets, mais pas nécessairement entre ceux-ci. Toutefois, au niveau discret, elle remplit ce rôle : c'est **un relèvement de l'interpolée** de :math:`g` dans :math:`\Vh` (voir la section suivante). Nous notons :math:`g_h` le vecteur de même taille que :math:`B_D` et de coefficient :math:`g(\vertice_I)` avec :math:`\vertice_I\in\Gamma`. En pratique, appliquer la condition de Dirichlet hétérogène se traduit par la décomposition de la matrice ainsi :
 
-.. math:: \forall \vertice \in \Gamma, \qquad g_h v(\vertice) = g(\vertice)
-
-En pratique, cela se traduit par la décomposition de la matrice ainsi :
-
-.. math:: 
-
-  AU = B \iff 
-  \left(
+.. math::  \left(
     \begin{array}{c c}
       A_{I,I}  & A_{I, D}\\
       0 & I_{D,D}
@@ -302,10 +302,7 @@ En pratique, cela se traduit par la décomposition de la matrice ainsi :
 
 La quantité :math:`g_h` est ici à voir comme un vecteur de coefficient :math:`g(\vertice)`. La matrice obtenue est non symétrique, ce qui peut poser des problèmes (par ex. augmentation du coût de stockage mémoire). Une astuce simple consiste à réécrire sous la forme suivante :
 
-.. math:: 
-
-  AU = B \iff 
-  \left(
+.. math::   \left(
     \begin{array}{c c}
       A_{I,I}  & 0\\
       0 & I_{D,D}
@@ -322,6 +319,10 @@ La quantité :math:`g_h` est ici à voir comme un vecteur de coefficient :math:`
       g_h
     \end{array}
   \right).
+
+.. proof:remark::
+
+  Comme pour Dirichlet homogène, nous pouvons aussi nous contenter de résoudre un système plus petit : :math:`A_{I,I} u_I = B_I-A_{I,D}g_h`.
 
 .. proof:remark::
 
