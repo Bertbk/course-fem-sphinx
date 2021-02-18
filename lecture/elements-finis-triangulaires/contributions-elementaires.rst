@@ -56,7 +56,7 @@ Triangle de référence
 +++++++++++++++++++++
 
   
-Pour calculer la quantité élémentaire :eq:`eq-matelem`, plaçons nous tout d'abord dans un triangle "simple" :math:`\trih`, appelé **triangle de référence**. Celui-ci est souvent choisi comme étant le triangle rectangle de sommets :math:`\verticeh_{0}=(0,0)`, :math:`\verticeh_{1}=(1,0)` et :math:`\verticeh_{2}=(0,1)`, ordonnés dans le sens trigonométrique. Pour différencier ce triangle d'un triangle du maillage, nous lui adjoignons un repère :math:`(\xi,\eta)`   dit **repère paramétrique**.
+Pour calculer la quantité élémentaire :eq:`eq-matelem`, plaçons nous tout d'abord dans un triangle "simple" :math:`\trih`, appelé **triangle de référence**. Celui-ci est souvent choisi comme étant le triangle rectangle de sommets :math:`\verticeh_{1}=(0,0)`, :math:`\verticeh_{2}=(1,0)` et :math:`\verticeh_{3}=(0,1)`, ordonnés dans le sens trigonométrique. Pour différencier ce triangle d'un triangle du maillage, nous lui adjoignons un repère :math:`(\xi,\eta)`   dit **repère paramétrique**.
 
 .. _fig-triangle-reference
   
@@ -68,21 +68,21 @@ Pour calculer la quantité élémentaire :eq:`eq-matelem`, plaçons nous tout d'
 
   Triangle de référence :math:`\trih` et son repère paramétrique :math:`(\xi,\eta)`.
   
-Nous notons :math:`\mphih_i \in \Pb^1(\trih)` les trois fonctions de forme associées aux sommets :math:`\verticeh_i`, pour :math:`i=0,1,2`, définies par :math:`\mphih_i(\verticeh_j) = \delta_{ij}`. Ces fonctions :math:`\mphih_i` étant des polynômes de degré un, nous pouvons les calculer analytiquement :
+Nous notons :math:`\mphih_i \in \Pb^1(\trih)` les trois fonctions de forme associées aux sommets :math:`\verticeh_i`, pour :math:`i=1,1,3`, définies par :math:`\mphih_i(\verticeh_j) = \delta_{ij}`. Ces fonctions :math:`\mphih_i` étant des polynômes de degré un, nous pouvons les calculer analytiquement :
 
 .. math:: 
 
   \left\{
     \begin{array}{l}
-      \mphih_0(\xi,\eta) = 1-\xi-\eta\\
-      \mphih_1(\xi,\eta) = \xi\\
-      \mphih_2(\xi,\eta) = \eta\\
+      \mphih_1(\xi,\eta) = 1-\xi-\eta\\
+      \mphih_2(\xi,\eta) = \xi\\
+      \mphih_3(\xi,\eta) = \eta\\
     \end{array}
   \right.
 
 .. proof:lemma::
 
-  Dans le triangle :math:`\trih`, la matrice de masse élémentaire :math:`\Meh = (\Meh_{i,j})_{0\leq i,j\leq 2}` de coefficient 
+  Dans le triangle :math:`\trih`, la matrice de masse élémentaire :math:`\Meh = (\Meh_{i,j})_{1\leq i,j\leq 3}` de coefficient 
 
   .. math:: 
   
@@ -100,14 +100,14 @@ Nous notons :math:`\mphih_i \in \Pb^1(\trih)` les trois fonctions de forme assoc
   
 .. proof:proof::
 
-  Prenons tout d'abord le cas :math:`i=j=1`, soit :math:`\mphih_i(\xi,\eta) = \mphih_j(\xi,\eta) = \xi`. Dans ce cas :
+  Prenons tout d'abord le cas :math:`i=j=2`, soit :math:`\mphih_i(\xi,\eta) = \mphih_j(\xi,\eta) = \xi`. Dans ce cas :
 
   .. math:: 
   
     \int_{\trih} \xi^2 \diff (\xi,\eta) = \int_0^1\int_0^{1-\xi} \xi^2 \diff\eta\diff\xi = \int_0^1(1-\xi)\xi^2\diff\xi =
     \left[\frac{\xi^3}{3} - \frac{\xi^4}{4}\right]_0^1=\frac{1}{3}-\frac{1}{4} = \frac{1}{12}.
   
-  Les calculs sont similaires pour :math:`i=0` et :math:`i=2`. Prenons maintenant :math:`i\neq j`, par exemple :math:`i=2` et :math:`j=1` :
+  Les calculs sont similaires pour :math:`i=1` et :math:`i=3`. Prenons maintenant :math:`i\neq j`, par exemple :math:`i=3` et :math:`j=2` :
 
   .. math::  \int_{\trih} \xi\eta \diff (\xi,\eta) = \int_0^1\left(\int_0^{1-\xi} \eta \diff\eta\right)\xi\diff\xi =  \frac{1}{2}\int_0^1(1-\xi)^2\xi\diff\xi    =  \frac{1}{2}\left[ \frac{1}{2} - \frac{2}{3} +\frac{1}{4}\right] =\frac{1}{24}.
 
@@ -138,16 +138,16 @@ En notant :math:`\JK{p}` la matrice Jacobienne de :math:`\trihToTri{p}`, alors l
 
 Ainsi, pour calculer la matrice élémentaire d'un triangle :math:`\tri_p` quelconque, nous n'avons besoin que du déterminant de la Jacobienne : :math:`\det(\JK{p})`.
 
-**Expression et Jacobienne de la transformation.** La transformation que nous cherchons, :math:`\trihToTri{p}`, est linéaire et "conserve" les sommets et leur ordre. Pour obtenir son expression, nous construisons des fonctions **d'interpolation géométrique**, :math:`(\psih_i)_{0\leq i \leq 2}`, linéaires sur :math:`\trih` et telles que :
+**Expression et Jacobienne de la transformation.** La transformation que nous cherchons, :math:`\trihToTri{p}`, est linéaire et "conserve" les sommets et leur ordre. Pour obtenir son expression, nous construisons des fonctions **d'interpolation géométrique**, :math:`(\psih_i)_{1\leq i \leq 3}`, linéaires sur :math:`\trih` et telles que :
 
-.. math:: \forall i,j=0,1,2, \quad \psih_i(\verticeh_j) = \deltaij.
+.. math:: \forall i,j=1,2,3 \quad \psih_i(\verticeh_j) = \deltaij.
 
 La transformation aura alors pour expression :
 
 .. math:: 
   \begin{array}{r c c l}
       \trihToTri{p}\colon & \trih & \to & \tri_p\\
-    & (\xi,\eta) & \mapsto & \trihToTri{p}(\xi,\eta) = (x,y) = \psih_{0}(\xi,\eta) \vertice_{0}^{p} + \psih_{1}(\xi,\eta) \vertice_{1}^{p} + \psih_{2}(\xi,\eta) \vertice_{2}^{p}.
+    & (\xi,\eta) & \mapsto & \trihToTri{p}(\xi,\eta) = (x,y) = \psih_{1}(\xi,\eta) \vertice_{1}^{p} + \psih_{2}(\xi,\eta) \vertice_{2}^{p} + \psih_{3}(\xi,\eta) \vertice_{3}^{p}.
   \end{array}
 
 En d'autres termes, les fonctions d'interpolation géométrique :math:`\psih_i` sont ici identiques aux fonctions de forme :math:`\mphih_i` :
@@ -155,9 +155,9 @@ En d'autres termes, les fonctions d'interpolation géométrique :math:`\psih_i` 
 .. math:: 
   \left\{
     \begin{array}{l}
-    \psih_{0}(\xi,\eta) = 1 - \xi - \eta\\
-    \psih_{1}(\xi,\eta) = \xi\\
-    \psih_{2}(\xi,\eta) = \eta\\
+    \psih_{1}(\xi,\eta) = 1 - \xi - \eta\\
+    \psih_{2}(\xi,\eta) = \xi\\
+    \psih_{3}(\xi,\eta) = \eta\\
     \end{array}
   \right.
 
@@ -175,8 +175,8 @@ La matrice Jacobienne de la transformation est alors donnée par
   \right) =
   \left(
     \begin{array}{c c}
-      x_{1}^{p} - x_{0}^{p} & x_{2}^{p} - x_{0}^{p}\\
-      y_{1}^{p} - y_{0}^{p} & y_{2}^{p} - y_{0}^{p}
+      x_{2}^{p} - x_{1}^{p} & x_{3}^{p} - x_{1}^{p}\\
+      y_{2}^{p} - y_{1}^{p} & y_{3}^{p} - y_{1}^{p}
     \end{array}
   \right),
 
@@ -185,7 +185,7 @@ et son déterminant vaut
 .. math:: 
 
   \begin{aligned}
-  \abs{\det(\JK{p})} &= \abs{(x_{1}^{p}-x_{0}^{p})(y_{2}^{p}-y_{0}^{p}) - (x_{2}^{p}-x_{0}^{p})(y_{1}^{p}-y_{0}^{p})}\\
+  \abs{\det(\JK{p})} &= \abs{(x_{2}^{p}-x_{1}^{p})(y_{3}^{p}-y_{1}^{p}) - (x_{3}^{p}-x_{1}^{p})(y_{2}^{p}-y_{1}^{p})}\\
   &= 2|\tri_p| \neq 0,
   \end{aligned}
 
@@ -233,7 +233,7 @@ Triangle de référence
 
 .. proof:lemma::
 
-  Dans le triangle de référence :math:`\trih`, la matrice de rigidité élémentaire :math:`\widehat{D}= (\widehat{D}_{i,j})_{0\leq i,j\leq 2}` de coefficient
+  Dans le triangle de référence :math:`\trih`, la matrice de rigidité élémentaire :math:`\widehat{D}= (\widehat{D}_{i,j})_{1\leq i,j\leq 3}` de coefficient
 
   .. math:: \widehat{D}_{i,j} = \int_{\trih}\nabla \mphih_j(\xi,\eta)\cdot \nabla\mphih_i(\xi,\eta)\diff(\xi,\eta),
 
@@ -278,24 +278,24 @@ Triangle de référence
   .. math:: 
 
     \begin{aligned}
-    \widehat{D}_{0,0} &=
-      \int_{\trih}\nabla\mphih_0\cdot\nabla\mphih_0 \diff (\xi,\eta) =
-      \int_{\trih} (-1,-1)\begin{pmatrix}-1\\ -1\end{pmatrix}\diff (\xi,\eta) =
-      2 \int_{\trih} \diff(\xi,\eta) &&= 1\\
     \widehat{D}_{1,1} &=
       \int_{\trih}\nabla\mphih_1\cdot\nabla\mphih_1 \diff (\xi,\eta) =
+      \int_{\trih} (-1,-1)\begin{pmatrix}-1\\ -1\end{pmatrix}\diff (\xi,\eta) =
+      2 \int_{\trih} \diff(\xi,\eta) &&= 1\\
+    \widehat{D}_{2,2} &=
+      \int_{\trih}\nabla\mphih_2\cdot\nabla\mphih_2 \diff (\xi,\eta) =
       \int_{\trih} (1,0)\begin{pmatrix}1\\ 0\end{pmatrix} \diff (\xi,\eta) =
         \int_{\trih} \diff(\xi,\eta) &&= \frac{1}{2} =\widehat{D}_{3,3}\\
-    \widehat{D}_{0,1} &=
-      \int_{\trih}\nabla\mphih_0\cdot\nabla\mphih_1 \diff (\xi,\eta) =
-      \int_{\trih} (-1,-1)\begin{pmatrix}1\\ 0\end{pmatrix} \diff (\xi,\eta) =
-        -\int_{\trih} \diff(\xi,\eta) &&= -\frac{1}{2}\\
-    \widehat{D}_{0,2} &=
-      \int_{\trih}\nabla\mphih_0\cdot\nabla\mphih_2 \diff (\xi,\eta) =
-      \int_{\trih} (-1,-1)\begin{pmatrix}0\\ 1\end{pmatrix} \diff (\xi,\eta) =
-        -\int_{\trih} \diff(\xi,\eta)&& = -\frac{1}{2}\\
     \widehat{D}_{1,2} &=
       \int_{\trih}\nabla\mphih_1\cdot\nabla\mphih_2 \diff (\xi,\eta) =
+      \int_{\trih} (-1,-1)\begin{pmatrix}1\\ 0\end{pmatrix} \diff (\xi,\eta) =
+        -\int_{\trih} \diff(\xi,\eta) &&= -\frac{1}{2}\\
+    \widehat{D}_{1,3} &=
+      \int_{\trih}\nabla\mphih_1\cdot\nabla\mphih_3 \diff (\xi,\eta) =
+      \int_{\trih} (-1,-1)\begin{pmatrix}0\\ 1\end{pmatrix} \diff (\xi,\eta) =
+        -\int_{\trih} \diff(\xi,\eta)&& = -\frac{1}{2}\\
+    \widehat{D}_{2,3} &=
+      \int_{\trih}\nabla\mphih_2\cdot\nabla\mphih_3 \diff (\xi,\eta) =
       \int_{\trih} (1,0)\begin{pmatrix}0\\ 1\end{pmatrix} \diff (\xi,\eta) &&=
       0.
     \end{aligned}
@@ -351,8 +351,8 @@ Nous en déduisons que :math:`\BK{p} = (\JK{p}^T)^{-1}`, en particulier, dans le
   \frac{1}{\det(\JK{p})}
     \left(
     \begin{array}{c c}
-      y_{2}^{p}-y_{0}^{p} & y_{0}^{p}-y_{1}^{p}\\
-      x_{0}^{p}-x_{2}^{p} & x_{1}^{p}-x_{0}^{p}
+      y_{3}^{p}-y_{1}^{p} & y_{1}^{p}-y_{2}^{p}\\
+      x_{1}^{p}-x_{3}^{p} & x_{2}^{p}-x_{1}^{p}
     \end{array}
   \right).
 
@@ -366,7 +366,7 @@ En éléments finis :math:`\Pb^1`, les fonctions de forme sont linéaires et leu
 
 .. proof:lemma::
 
-  Les coefficients a matrice de rigidité élémentaire :math:`\De{p} = ((\De{p})_{i,j})_{0\leq i,j\leq 2}` sont obtenus pas la relation suivante
+  Les coefficients a matrice de rigidité élémentaire :math:`\De{p} = ((\De{p})_{i,j})_{1\leq i,j\leq 3}` sont obtenus pas la relation suivante
 
   .. math:: 
 
