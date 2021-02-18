@@ -1,6 +1,9 @@
 Espaces de Hilbert : rappels
 ============================
 
+Dans ce cours, un scalaire sera écrit normalement (:math:`x`) tandis qu'un vecteur sera noté en gras (:math:`\xx=(x,y)`).
+
+
 .. proof:definition::
 
   Soit :math:`V` un :math:`\Rb-` espace vectoriel, alors l'application :math:`\PS{\cdot}{\cdot}\colon V\times V \to \Rb` est un produit scalaire si et seulement si elle vérifie, pour tout :math:`\xx,\yy,\zz\in V` et tout scalaire :math:`\alpha\in\Rb`:

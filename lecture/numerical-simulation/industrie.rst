@@ -1,39 +1,42 @@
 Industrie
 =========
 
-Mécanique
-+++++++++
+À venir...
 
-.. proof:remark::
+.. 
+  Mécanique
+  +++++++++
 
-  **Computed by NUMEA, Courtesy of Hutchinson-SA**
+  .. proof:remark::
 
-  The poor quality of the video if my fault and only my fault...
+    **Computed by NUMEA, Courtesy of Hutchinson-SA**
+
+    The poor quality of the video if my fault and only my fault...
 
 
-- Soufflet
+  - Soufflet
 
-{{< video library="1" src="course/fem/mecanique/soufflet.ogg" controls="yes" title="Soufflet">}}
+  {{< video library="1" src="course/fem/mecanique/soufflet.ogg" controls="yes" title="Soufflet">}}
 
-- Calcul de contraintes
+  - Calcul de contraintes
 
-{{< video library="1" src="course/fem/mecanique/bush_thermal_strain.ogg" controls="yes">}}
+  {{< video library="1" src="course/fem/mecanique/bush_thermal_strain.ogg" controls="yes">}}
 
-- Jonction entre deux tuyaux
+  - Jonction entre deux tuyaux
 
-{{< video library="1" src="course/fem/mecanique/connexion_tuyaux.ogg" controls="yes" title="Connexion entre deux tuyaux">}}
+  {{< video library="1" src="course/fem/mecanique/connexion_tuyaux.ogg" controls="yes" title="Connexion entre deux tuyaux">}}
 
-- Contact entre solides
+  - Contact entre solides
 
-{{< video library="1" src="course/fem/mecanique/contact_pressure_andvonmises.ogg" controls="yes">}}
+  {{< video library="1" src="course/fem/mecanique/contact_pressure_andvonmises.ogg" controls="yes">}}
 
-- Support d'un Moteur
+  - Support d'un Moteur
 
-{{< video library="1" src="course/fem/mecanique/support_moteur_vonmises_down.ogg" controls="yes">}}
+  {{< video library="1" src="course/fem/mecanique/support_moteur_vonmises_down.ogg" controls="yes">}}
 
-- O-ring (contact)
+  - O-ring (contact)
 
-{{< video library="1" src="course/fem/mecanique/O-ring.ogg" controls="yes">}}
+  {{< video library="1" src="course/fem/mecanique/O-ring.ogg" controls="yes">}}
 
 Combustion 
 ++++++++++
