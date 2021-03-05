@@ -97,8 +97,7 @@ Ainsi, pour un triangle  :math:`\tri_p`, ses sommets sont numérotés :math:`[\v
 
 .. proof:remark::
 
-  Pour mieux comprendre la différence entre numérotation locale et globale, une application est disponible en ligne :
-  https://bthierry.pages.math.cnrs.fr/course-fem/lecture/mise-en-oeuvre/assemblage/#app-local-to-global. 
+  Pour mieux comprendre la différence entre numérotation locale et globale, une `application est disponible en ligne <#app-local-to-global>`_. 
   
   Une autre `application web <../_static/pecheux/matrix-assembly/index.html>`_, développée cette fois-ci par `Mina Pêcheux <http://minapecheux.com>`_,  présente l'assemblage pas à pas d'une matrice. En cliquant sur un triangle, les contributions de ce dernier seront ajoutées dans la grande matrice de masse. La matrice de masse élémentaire associée au triangle est également affichée.
 
@@ -114,12 +113,18 @@ Ainsi, pour un triangle  :math:`\tri_p`, ses sommets sont numérotés :math:`[\v
 
   Numérotation locale et globale
 
+
+
 .. raw:: html
 
-  <div id="app-local-to-global" class="iframe-container" style=" overflow: hidden;padding-top: 100%;position: relative;"><iframe src='../../../_static/app/loc2glob/index.html' frameborder="0" scrolling="no" style="border: 0;height: 100%;left: 0;position: absolute;top: 0;width: 100%;"></iframe></div>
-  <div  style="text-align:center;">
-    <p><strong>Application interactive : Cliquez sur un triangle</strong> pour faire apparaitre la <strong>numérotation locale</strong> des sommets du triangle. Recliquez dessus pour revenir en <strong>numérotation globale</strong></p> 
+  <div id="app-local-to-global" class="app-container">
+    <iframe id="iframe-local-to-global" class="app-content" src='../../../_static/app/loc2glob/index.html'></iframe>
+    <p><strong>Cliquez sur un triangle</strong> pour faire apparaitre la <strong>numérotation locale</strong> des sommets du triangle. Recliquez dessus pour revenir en <strong>numérotation globale</strong></p> 
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.min.js" integrity="sha512-ngVIPTfUxNHrVs52hA0CaOVwC3/do2W4jUEJIufgZQicmY27iAJAind8BPtK2LoyIGiAFcOkjO18r5dTUNLFAw==" crossorigin="anonymous"></script>
+  <script>
+    iFrameResize({}, '#iframe-local-to-global')
+  </script>
 
 Utilisons ces nouvelles notations dans l'équation :eq:`eq-assemble_tmp`, en ramenant la somme sur les sommets à uniquement les sommets du triangle considéré :
 

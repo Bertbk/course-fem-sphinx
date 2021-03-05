@@ -122,9 +122,6 @@ Schématiquement, nous avons :
 
 - Si :math:`u` est solution de :eq:`eq-exemple-pb` alors :math:`u` est solution de :eq:`eq-exemple-fv`
 - Le problème :eq:`eq-exemple-fv` admet une unique solution qui appartient (au moins) à :math:`\Ho`
-..   
-  - Si cette solution appartient en fait à :math:`\Hoo` alors elle est solution de l'EDP presque partout
-  - Si cette solution appartient en fait à :math:`\Cscr^2(\overline{\Omega})` alors est la solution forte de l'EDP
 
 .. proof:remark::
 

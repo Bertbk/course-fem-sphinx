@@ -94,6 +94,7 @@ html_css_files = [
 
 html_js_files = [
     'js/proof.js',
+#    'js/custom.js',
 #    'js/basis-function/main.js',
 #    'js/jacobian/main.js',
 #    'js/loc2glob/main.js',

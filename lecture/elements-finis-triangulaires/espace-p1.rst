@@ -52,8 +52,8 @@ Le diamètre d'un triangle est la distance maximale entre deux points du triangl
 
   - Sous-marin
 
-    - `Script GMSH <https://github.com/Bertbk/geogmsh/blob/master/submarine.geo>`_
-    - `Plein écran <../../../_static/mesh/submarine.html>`_
+    - `Script GMSH <https://github.com/Bertbk/geogmsh/blob/master/submarine.geo>`__
+    - `Plein écran <../../../_static/mesh/submarine.html>`__
 
   .. raw:: html
 
@@ -61,8 +61,8 @@ Le diamètre d'un triangle est la distance maximale entre deux points du triangl
 
   - Théière
 
-    - `Script GMSH <https://github.com/Bertbk/geogmsh/blob/master/teapot.geo>`_
-    - `Plein écran <../../../_static/mesh/teapot.html>`_
+    - `Script GMSH <https://github.com/Bertbk/geogmsh/blob/master/teapot.geo>`__
+    - `Plein écran <../../../_static/mesh/teapot.html>`__
 
   .. raw:: html
 
@@ -269,9 +269,15 @@ Une illustration du support des fonctions de forme est donnée sur la Figure :nu
 
 .. raw:: html
 
-  <div id="app-basis-function" class="iframe-container" style=" overflow: hidden;padding-top: 100%;position: relative;"><iframe src='../../../_static/app/basis-function/index.html' frameborder="0" scrolling="no" style="border: 0;height: 100%;left: 0;position: absolute;top: 0;width: 100%;"></iframe>
-  <p style="text-align:center;"><strong>Application</strong> : <strong>Cliquez sur un sommet</strong> pour faire apparaitre <strong>la fonction de forme P1 associée</strong>. Les triangles où la fonction n’est pas nulle forment <strong>le support de la fonction de forme</strong>. </p>
+  <div id="app-basis-function" class="app-container">
+    <iframe id="iframe-basis-function" class="app-content" src='../../../_static/app/basis-function/index.html' scrolling="no"></iframe>
+    <p><strong>Application</strong> : <strong>Cliquez sur un sommet</strong> pour faire apparaitre <strong>la fonction de forme P1 associée</strong>. Les triangles où la fonction n’est pas nulle forment <strong>le support de la fonction de forme</strong>. 
+    </p>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.min.js" integrity="sha512-ngVIPTfUxNHrVs52hA0CaOVwC3/do2W4jUEJIufgZQicmY27iAJAind8BPtK2LoyIGiAFcOkjO18r5dTUNLFAw==" crossorigin="anonymous"></script>
+  <script>
+    iFrameResize({}, '#iframe-basis-function')
+  </script>
 
 
 Conclusion

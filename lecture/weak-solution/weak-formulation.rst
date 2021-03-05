@@ -50,9 +50,6 @@ où nous avons défini :
 
 - le terme :math:`\dn u` désigne la *dérivée normale* de :math:`u` sur le bord, c'est à dire la dérivée de :math:`u` dans la direction :math:`\nn` : :math:`\dn u = (\nabla u)\cdot\nn`, avec :math:`\nabla u = [\partial_{x_1}u, \partial_{x_2}u]^T` son vecteur gradient. Vous aurez sans doute remarqué que, entre deux arêtes, le vecteur normal :math:`\nn` n'est pas défini et donc la dérivée normale non plus. Ce "problème" n'en est pas vraiment un et pour l'instant mettez cela de côté, nous y reviendrons !
 - :math:`(-\Delta u)` : Terme de diffusion (notez le signe négatif)
-.. - :math:`c \geq 0` : Paramètre artificiel positif. Principalement, nous lui imposerons de valoir 1 ou 0, ce qui nous permettra de supprimer (ou non) le terme en :math:`u`, appelé terme de *Réaction*
-- :math:`u=\gD` : **Condition de Dirichlet**
-
 - :math:`\dn u=0` : **Condition de Neumann homogène**
 - :math:`f` : une fonction donnée définie sur :math:`\Omega`. Elle joue le rôle de *terme source*, c'est à dire d'apport (positif ou négatif), par exemple de chaleur ou de force surfacique.
 

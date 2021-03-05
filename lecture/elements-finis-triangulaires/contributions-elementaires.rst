@@ -58,7 +58,7 @@ Triangle de référence
   
 Pour calculer la quantité élémentaire :eq:`eq-matelem`, plaçons nous tout d'abord dans un triangle "simple" :math:`\trih`, appelé **triangle de référence**. Celui-ci est souvent choisi comme étant le triangle rectangle de sommets :math:`\verticeh_{1}=(0,0)`, :math:`\verticeh_{2}=(1,0)` et :math:`\verticeh_{3}=(0,1)`, ordonnés dans le sens trigonométrique. Pour différencier ce triangle d'un triangle du maillage, nous lui adjoignons un repère :math:`(\xi,\eta)`   dit **repère paramétrique**.
 
-.. _fig-triangle-reference
+.. _fig-triangle-reference:
   
 .. figure:: /img/reference-triangle/reference-triangle.* 
   :figwidth: 100%
@@ -119,7 +119,7 @@ Triangle quelconque
 
 **Changement de coordonnées.** Soit un triangle :math:`\tri_p` du maillage et supposons que nous disposions d'une transformation bijective et linéaire :math:`\trihToTri{p}` permetteant de transformer le triangle de référence :math:`\trih` en :math:`\tri_p` avec en plus :math:`\trihToTri{p}(\verticeh_i) = \vertice_i^p` (conservation de l'ordre des sommets). Cette fonction :math:`\trihToTri{p}` transforme les  **coordonnées paramétriques** :math:`(\xi,\eta)` en **coordonnées physiques** :math:`(x,y)` avec :math:`(x,y)=\trihToTri{p}(\xi,\eta)\in\tri_p`, et conserve "l'ordre des sommets".
 
-.. _fig-transformation
+.. _fig-transformation:
   
 .. figure:: /img/transformation/transformation.* 
   :figwidth: 100%
@@ -196,11 +196,15 @@ ce qui implique que le déterminant est non nul puisque le triangle n'est pas d�
   Quand :math:`\psih_i = \mphih_i`, nous parlons d'éléments finis **isoparamétriques**. Il convient de retenir que ce choix n'est pas obligatoire et les fonctions :math:`\psih_i` et :math:`\mphih_i` sont **indépendantes**. En particulier, pour obtenir des éléments courbes, les fonctions :math:`\psih_i` pourraient être quadratiques par exemple.
 
 .. raw:: html
-
-  <div id="app-jacobian" class="iframe-container" style=" overflow: hidden;padding-top: 100%;position: relative;"><iframe src='../../../_static/app/jacobian/index.html' frameborder="0" scrolling="no" style="border: 0;height: 100%;left: 0;position: absolute;top: 0;width: 100%;"></iframe></div>
-  <div  style="text-align:center;">
-    <strong>Déplacez les sommets du triangle</strong> pour modifier la valeur du <strong>Jacobien</strong>. Quand il est négatif cela signifie que le triangle est <strong>"retourné"</strong> par rapport au triangle de référence
+  
+  <div id="app-jacobian" class="app-container">
+    <iframe id="iframe-jacobian" class="app-content" src='../../../_static/app/jacobian/index.html'></iframe>
+    <p><strong>Déplacez les sommets du triangle</strong> pour modifier la valeur du <strong>Jacobien</strong>. Quand il est négatif cela signifie que le triangle est <strong>"retourné"</strong> par rapport au triangle de référence</p>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.min.js" integrity="sha512-ngVIPTfUxNHrVs52hA0CaOVwC3/do2W4jUEJIufgZQicmY27iAJAind8BPtK2LoyIGiAFcOkjO18r5dTUNLFAw==" crossorigin="anonymous"></script>
+  <script>
+    iFrameResize({}, '#iframe-jacobian')
+  </script>
 
 
 

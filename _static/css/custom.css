@@ -9,3 +9,14 @@
     stroke:ghostwhite !important;
   }
 }
+
+div.app-container{
+  text-align:center;
+  width:100%;
+}
+
+iframe.app-content{
+  width: 1px;
+  min-width: 100%;
+  border: 1px solid;
+}

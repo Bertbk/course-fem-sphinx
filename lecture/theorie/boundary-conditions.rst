@@ -7,7 +7,7 @@ Neumann hétérogène
 Étudions le problème suivant, similaire à :eq:`eq-exemple-pb` mais pour une condition de Neumann non homogène, avec :math:`\gN\in L^2(\GammaN)`. Dans ce problème, nous avons :math:`\GammaN = \partial\Omega`.
 
 .. math::
-  :label: eq-dnNonH
+  :label: edp-dnNonH
   
   \left\{ 
    \begin{array}{r c l l}
