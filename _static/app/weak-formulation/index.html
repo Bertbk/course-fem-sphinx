@@ -23,6 +23,8 @@
       <text x="50" y="50" text-anchor="middle" font-size="5px">Ω</text>
     </svg>
 
+    
+    <h2>Partial Differential Equations</h2>
     <table class="pde">
       <tr>
         <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row rigidity" data-component="RigidityMatrix" style="cursor:pointer;"></td>
@@ -58,11 +60,16 @@
       </tr>
     </table> 
 
-    <p>Find <span id="wf-unknown"></span> in <span id="wf-space"></span> such that<br/>
-      ∀ v in <span id="wf-space"></span>,  <span id="wf-equation"></span>
-    </p>
-
-    <p>(<span id="ls-rigidity" class="ls-operator"></span> <span id="ls-mass" class="ls-operator"></span><span id="ls-fourier-lhs" class="ls-bc"></span>)U = <span id="ls-rhs" class="ls-operator"></span><span id="ls-neumann-rhs" class="ls-bc"></span><span id="ls-fourier-rhs" class="ls-bc"></span> </p>
+    <div id="result">
+      <h2>Weak Formulation</h2>
+      <p id="weak-formulation">Find <span id="wf-unknown"></span> in <span id="wf-space-u"></span> such that, ∀ v in <span id="wf-space-v"></span>,  <br/>
+        <span id="wf-equation"></span>
+      </p>
+      <p id="dirichlet-extension"></p>
+      <h2>Linear System</h2>
+      <p id="linear-system">(<span id="ls-rigidity" class="ls-operator"></span> <span id="ls-mass" class="ls-operator"></span><span id="ls-fourier-lhs" class="ls-bc"></span>)U = <span id="ls-rhs" class="ls-operator"></span><span id="ls-neumann-rhs" class="ls-bc"></span><span id="ls-fourier-rhs" class="ls-bc"></span> </p>
+    
+    </div>
 
   </div>
 

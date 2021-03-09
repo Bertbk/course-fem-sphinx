@@ -1,6 +1,12 @@
+div.app-weak-formulation{
+  margin:auto;
+  width: max-content;
+}
+
 div.app-weak-formulation svg{
-  max-width:500px;
-  border:solid 1px;
+  max-width:300px;
+  margin:auto;
+  display:block;
 }
 
 div.app-weak-formulation table.pde{
@@ -27,3 +33,24 @@ div.app-weak-formulation table.pde tr td.first_row.rhs{
 div.app-weak-formulation table.pde tr.bc td:first-child{
   text-align:right;
 }
+
+
+div.app-weak-formulation  div#result{
+  margin:auto;
+  width: max-content;
+}
+
+div.app-weak-formulation p#weak-formulation{
+  margin:auto;
+  width: max-content;
+  border-left: solid blue 5px;
+  padding:5px;
+}
+
+div.app-weak-formulation p#linear-system{
+  margin:auto;
+  width: max-content;
+  padding:10px;
+  border:solid 1px black;
+}
+  

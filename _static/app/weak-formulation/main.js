@@ -104,9 +104,12 @@ var fem_wf = new function() {
         // What is the functionnal space ?
         var spaceFun = "H<sup>1</sup>(Ω)";
         var unknown = "u";
+        document.getElementById("dirichlet-extension").innerHTML="";
         if(DirichletBorder.isSet()){
             spaceFun = "H<sup>1</sup><sub>D</sub>(Ω)"; 
-            unknown = "u<sub>t</sub>"; 
+            if(DirichletBorder.pde_rhs[DirichletBorder.current] != 0){
+            document.getElementById("dirichlet-extension").innerHTML="In addition: u := u + u<sub>g</sub> with u<sub>D</sub> an adequate extension of g<sub>D</sub>";
+            }
         }
         // wf-equation
         var equation = "";
@@ -142,7 +145,8 @@ var fem_wf = new function() {
         }
         equation = wf_LHS + " = " + wf_RHS;
         // Now fill
-        document.getElementById("wf-space").innerHTML = spaceFun;
+        document.getElementById("wf-space-u").innerHTML = spaceFun;
+        document.getElementById("wf-space-v").innerHTML = spaceFun;
         document.getElementById("wf-unknown").innerHTML = unknown;
         document.getElementById("wf-equation").innerHTML = equation;
     };
