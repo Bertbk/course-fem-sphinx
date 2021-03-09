@@ -25,32 +25,41 @@
 
     <table class="pde">
       <tr>
-        <td onclick="fem_wf.nextStep(this)" class="pde_quantity first_row rigidity" data-component="RigidityMatrix" style="cursor:pointer;"></td>
-        <td onclick="fem_wf.nextStep(this)" class="pde_quantity first_row mass" data-component="MassMatrix" style="cursor:pointer;"></td>
+        <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row rigidity" data-component="RigidityMatrix" style="cursor:pointer;"></td>
+        <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row mass" data-component="MassMatrix" style="cursor:pointer;"></td>
         <td >=</td>
-        <td onclick="fem_wf.nextStep(this)" class="pde_quantity first_row rhs" data-component="RHS" style="cursor:pointer;"></td>
+        <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row rhs" data-component="RHS" style="cursor:pointer;"></td>
         <td>(Ω)</td>
       </tr>
-      <tr>
-        <td colspan="3">∂<sub>n</sub>u = 0</td>
+      <tr class="bc">
+        <td colspan="2">∂<sub>n</sub>u</td>
+        <td>=</td>
+        <td>0</td>
         <td>(Γ)</td>
       </tr>
-      <tr>
-        <td colspan="3" onclick="fem_wf.nextStep(this)" class="pde_quantity neumann" data-component="NeumannBorder" style="cursor:pointer;"></td>
+      <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC neumann" data-component="NeumannBorder" style="cursor:pointer;">
+        <td colspan="2"></td>
+        <td>=</td>
+        <td></td>
         <td>(Γ<sub>N</sub>)</td>
       </tr>
-      <tr>
-        <td colspan="3" onclick="fem_wf.nextStep(this)" class="pde_quantity dirichlet" data-component="DirichletBorder" style="cursor:pointer;"></td>
+      <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC dirichlet" data-component="DirichletBorder" style="cursor:pointer;">
+        <td colspan="2"></td>
+        <td>=</td>
+        <td></td>
         <td>(Γ<sub>D</sub>)</td>
       </tr>
-      <tr>
-        <td colspan="3" onclick="fem_wf.nextStep(this)" class="pde_quantity fourier" data-component="FourierBorder" style="cursor:pointer;"></td>
+      </tr>
+      <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC fourier" data-component="FourierBorder" style="cursor:pointer;">
+        <td colspan="2"></td>
+        <td>=</td>
+        <td></td>
         <td>(Γ<sub>F</sub>)</td>
       </tr>
     </table> 
 
-    <p>Find <span id="wf-unknown">u</span> in <span id="wf-space">H<sup>1</sup>(Ω)</span> such that<br/>
-      ∀ v in <span id="wf-space">H<sup>1</sup>(Ω)</span>,  <span id="wf-equation"></span>
+    <p>Find <span id="wf-unknown"></span> in <span id="wf-space"></span> such that<br/>
+      ∀ v in <span id="wf-space"></span>,  <span id="wf-equation"></span>
     </p>
   </div>
 
