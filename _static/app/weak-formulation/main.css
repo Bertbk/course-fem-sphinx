@@ -1,0 +1,26 @@
+div.app-weak-formulation svg{
+  max-width:500px;
+  border:solid 1px;
+}
+
+div.app-weak-formulation table.pde{
+  margin:auto;
+  border-left: solid red 5px;
+}
+
+div.app-weak-formulation table.pde tr td{
+  text-align:center;
+}
+div.app-weak-formulation table.pde tr td.first_row{
+  display: inline-block;
+  width:70px;
+}
+div.app-weak-formulation table.pde tr td.first_row.mass{
+  background-color : lightblue;
+}
+div.app-weak-formulation table.pde tr td.first_row.rigidity{
+  background-color : lightcoral;
+}
+div.app-weak-formulation table.pde tr td.first_row.rhs{
+  background-color : lightsteelblue;
+}

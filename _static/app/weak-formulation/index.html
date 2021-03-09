@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <link rel="stylesheet" href="main.css">
+  <script defer="defer" src="https://d3js.org/d3.v5.min.js"></script>
+  <script defer="defer" src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.contentWindow.js" integrity="sha512-5+HBQlT1izP2UxL213/uqaO9tIpPso52TedvIsOevDs6w/HNt0/KNlkYLgi8Ona7lPCBjMEWybiR/qqs2MgyEg==" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div class="app-weak-formulation">
+
+    <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+      <line x1="10" y1="10" x2="90" y2="10" style="stroke:rgb(200, 50, 0); stroke-width:1;" stroke-linecap="square"/>
+      <line x1="90" y1="10" x2="90" y2="90" style="stroke:rgb(200, 50, 0); stroke-width:1;" stroke-linecap="square"/>
+      <line x1="90" y1="90" x2="10" y2="90" style="stroke:rgb(200, 50, 0); stroke-width:1;" stroke-linecap="square"/>
+      <line x1="10" y1="90" x2="10" y2="10" style="stroke:rgb(200, 50, 0); stroke-width:1;" stroke-linecap="square"/>
+      <text x="50" y="8" text-anchor="middle" font-size="5px">Γ</text>
+      <text x="95" y="50" text-anchor="middle" font-size="5px">Γ<tspan dy="2" font-size=".7em">N</tspan></text>
+      <text x="5" y="50" text-anchor="middle" font-size="5px" >Γ<tspan dy="2" font-size=".7em">F</tspan></text>
+      <text x="50" y="95" text-anchor="middle" font-size="5px">Γ<tspan dy="2" font-size=".7em">D</tspan></text>
+      <text x="50" y="50" text-anchor="middle" font-size="5px">Ω</text>
+    </svg>
+
+    <table class="pde">
+      <tr>
+        <td onclick="fem_wf.nextStep(this)" class="pde_quantity first_row rigidity" data-component="RigidityMatrix" style="cursor:pointer;"></td>
+        <td onclick="fem_wf.nextStep(this)" class="pde_quantity first_row mass" data-component="MassMatrix" style="cursor:pointer;"></td>
+        <td >=</td>
+        <td onclick="fem_wf.nextStep(this)" class="pde_quantity first_row rhs" data-component="RHS" style="cursor:pointer;"></td>
+        <td>(Ω)</td>
+      </tr>
+      <tr>
+        <td colspan="3">∂<sub>n</sub>u = 0</td>
+        <td>(Γ)</td>
+      </tr>
+      <tr>
+        <td colspan="3" onclick="fem_wf.nextStep(this)" class="pde_quantity neumann" data-component="NeumannBorder" style="cursor:pointer;"></td>
+        <td>(Γ<sub>N</sub>)</td>
+      </tr>
+      <tr>
+        <td colspan="3" onclick="fem_wf.nextStep(this)" class="pde_quantity dirichlet" data-component="DirichletBorder" style="cursor:pointer;"></td>
+        <td>(Γ<sub>D</sub>)</td>
+      </tr>
+      <tr>
+        <td colspan="3" onclick="fem_wf.nextStep(this)" class="pde_quantity fourier" data-component="FourierBorder" style="cursor:pointer;"></td>
+        <td>(Γ<sub>F</sub>)</td>
+      </tr>
+    </table> 
+
+    <p>Find <span id="wf-unknown">u</span> in <span id="wf-space">H<sup>1</sup>(Ω)</span> such that<br/>
+      ∀ v in <span id="wf-space">H<sup>1</sup>(Ω)</span>,  <span id="wf-equation"></span>
+    </p>
+  </div>
+
+</body>
+</html>
