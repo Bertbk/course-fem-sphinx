@@ -24,6 +24,14 @@ var fem_wf = new function() {
             this.rhs_coef = rhs_coef;
         }
     };
+    class MassOperator extends PDEQuantity{
+        constructor(pde_txt, wf_txt, coef, nchoices, current = 0) {
+            super(nchoices, current);
+            this.pde_txt = pde_txt;
+            this.wf_txt = wf_txt;
+            this.coef = coef;
+        }
+    };
     class PDEOperator extends PDEQuantity{
         constructor(pde_txt, wf_txt, nchoices, current = 0) {
             super(nchoices, current);
@@ -43,10 +51,10 @@ var fem_wf = new function() {
     };
     // 5 small blocks EDP vs. 7 small blocks in WF
     var RigidityMatrix = new RigidityOperator(["+0", "-Δu", "-aΔu", "+Δu", "+aΔ"], ["", "∫<sub>Ω</sub> ∇u·∇v", "a∫<sub>Ω</sub> ∇u·∇v", "-∫<sub>Ω</sub> ∇u·∇v", "-a∫<sub>Ω</sub> ∇u·∇v"], ["", "-", "-a", "+","+a"], ["", "+", "+a", "-","-a"], 5, 1);
-    var MassMatrix = new PDEOperator(["+0", "+u", "+bu", "-u", "-bu"], ["", "+∫<sub>Ω</sub> u v", "+b∫<sub>Ω</sub> u v","-∫<sub>Ω</sub> u v","-b∫<sub>Ω</sub> u v"], 5, 1);
+    var MassMatrix = new MassOperator(["+0", "+u", "+bu", "-u", "-bu"], ["", "∫<sub>Ω</sub> u v", "∫<sub>Ω</sub> u v","∫<sub>Ω</sub> u v","∫<sub>Ω</sub> u v"], ["", "+", "+b", "-","-b"], 5, 1);
     var RHS = new PDEOperator(["0", "f"], ["0","+∫<sub>Ω</sub> f v"], 2, 1);
 
-    var NeumannBorder = new PDEBC(["∂<sub>n</sub> u", "∂<sub>n</sub> u", "∂<sub>n</sub> u"], ["0", "g<sub>N</sub>"], ["",""], ["", "∫<sub>Γ<sub>N</sub></sub> g<sub>N</sub> v"], 2,1);
+    var NeumannBorder = new PDEBC(["∂<sub>n</sub> u", "∂<sub>n</sub> u", "∂<sub>n</sub> u"], ["0", "g<sub>N</sub>"], ["",""], ["", "∫<sub>Γ<sub>N</sub></sub> g<sub>N</sub> v"], 2,0);
     var DirichletBorder = new PDEBC(["∂<sub>n</sub> u", "u", "u"], ["0", "0",  "g<sub>D</sub>"], ["","",""], ["","",""], 3, 1);
     var FourierBorder = new PDEBC(["∂<sub>n</sub>u", "∂<sub>n</sub>u + αu" , "∂<sub>n</sub>u + αu"], ["0", "0", "g<sub>F</sub>"],["","α∫<sub>Γ<sub>F</sub></sub> u v","α∫<sub>Γ<sub>F</sub></sub> u v"],["","","∫<sub>Γ<sub>F</sub></sub> g<sub>F</sub> v"], 3, 1);
     
@@ -84,6 +92,15 @@ var fem_wf = new function() {
 
     // Compute the Weak Formulation according to the PDE
     var computeWF = function(){
+        // Reset the linear system
+        var elems = document.getElementsByClassName("ls-operator");
+        for (i = 0; i < elems.length; i++) {
+            elems[i].innerHTML = "+0";
+        }
+        elems = document.getElementsByClassName("ls-bc");
+        for (i = 0; i < elems.length; i++) {
+            elems[i].innerHTML = "";
+        }
         // What is the functionnal space ?
         var spaceFun = "H<sup>1</sup>(Ω)";
         var unknown = "u";
@@ -95,22 +112,33 @@ var fem_wf = new function() {
         var equation = "";
         var wf_LHS = "";
         var wf_RHS = "";
-        if(RigidityMatrix.isSet()){
-            wf_LHS += RigidityMatrix.wf_txt[RigidityMatrix.current];
-            // Neumann / Fourier condition can be visible
-            if(NeumannBorder.wf_rhs[NeumannBorder.current])
-            {wf_RHS += RigidityMatrix.rhs_coef[RigidityMatrix.current]+ NeumannBorder.wf_rhs[NeumannBorder.current];}
-            if(FourierBorder.wf_lhs[FourierBorder.current])
-            { wf_LHS += RigidityMatrix.lhs_coef[RigidityMatrix.current]+ FourierBorder.wf_lhs[FourierBorder.current];}
-            if(FourierBorder.wf_rhs[FourierBorder.current])
-            {wf_RHS += RigidityMatrix.rhs_coef[RigidityMatrix.current]+ FourierBorder.wf_rhs[FourierBorder.current];}
-        }
-        if(MassMatrix.isSet()){
-            wf_LHS += MassMatrix.wf_txt[MassMatrix.current];
-        }
-        equation += " = ";
         if(RHS.isSet()){
             wf_RHS += RHS.wf_txt[RHS.current];
+            document.getElementById("ls-rhs").innerHTML = "B";
+        }
+        if(RigidityMatrix.isSet()){
+            wf_LHS += RigidityMatrix.wf_txt[RigidityMatrix.current];
+            document.getElementById("ls-rigidity").innerHTML = RigidityMatrix.rhs_coef[RigidityMatrix.current]+"D";
+            // Neumann / Fourier condition can be visible
+            if(NeumannBorder.wf_rhs[NeumannBorder.current])
+            {
+                wf_RHS += RigidityMatrix.rhs_coef[RigidityMatrix.current]+ NeumannBorder.wf_rhs[NeumannBorder.current];
+                document.getElementById("ls-neumann-rhs").innerHTML = RigidityMatrix.rhs_coef[RigidityMatrix.current]+"M<sub>Γ<sub>N</sub></sub>g<sub>N</sub>";
+            }
+            if(FourierBorder.wf_lhs[FourierBorder.current])
+            { 
+                wf_LHS += RigidityMatrix.lhs_coef[RigidityMatrix.current]+ FourierBorder.wf_lhs[FourierBorder.current];
+                document.getElementById("ls-fourier-lhs").innerHTML = RigidityMatrix.lhs_coef[RigidityMatrix.current]+"αM<sub>Γ<sub>F</sub></sub>";
+            }
+            if(FourierBorder.wf_rhs[FourierBorder.current])
+            {
+                wf_RHS += RigidityMatrix.rhs_coef[RigidityMatrix.current]+ FourierBorder.wf_rhs[FourierBorder.current];
+                document.getElementById("ls-fourier-rhs").innerHTML = RigidityMatrix.rhs_coef[RigidityMatrix.current]+"M<sub>Γ<sub>F</sub></sub>g<sub>F</sub>";
+            }
+        }
+        if(MassMatrix.isSet()){
+            wf_LHS += MassMatrix.coef[MassMatrix.current]+ MassMatrix.wf_txt[MassMatrix.current];
+            document.getElementById("ls-mass").innerHTML = MassMatrix.coef[MassMatrix.current]+"M";
         }
         equation = wf_LHS + " = " + wf_RHS;
         // Now fill
