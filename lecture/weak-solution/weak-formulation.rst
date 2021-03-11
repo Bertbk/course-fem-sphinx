@@ -208,12 +208,18 @@ Nous pouvons maintenant définir plus proprement la quantité :math:`v`. Appelé
 
   L'espace :math:`L^2(\GammaN)` est l'espace des fonctions de carré intégrable sur :math:`\GammaN` (intégrale 1D). Le dernier espace est assez particulier. Il s'agit de l'espace des restrictions sur :math:`\GammaD` des fonctions de :math:`\Ho`. Autrement dit, si :math:`g_0\in H^{1/2}(\GammaD)`, alors il existe :math:`v_0\in\Ho` telle que :math:`v_0|_{\GammaD} = g_0`.
 
-
 .. raw:: html
 
-  <p>Même si nous n'avons pas encore parcouru toutes les conditions aux limites possibles, l'application web ci-dessous, développée par <a href="http://minapecheux.com/wp/">Mina Pêcheux</a>, permet de comprendre l’influence des conditions aux limites et des autres paramètres sur la "forme" de la formulation faible :
-  
-  <div class="iframe-container" style=" overflow: hidden;padding-top: 100%;position: relative;"><iframe src='../../../_static/pecheux/weak-formulation/v2/index.html' frameborder="0" scrolling="no" style="border: 0;height: 100%;left: 0;position: absolute;top: 0;width: 100%;"></iframe></div>
+  <div id="app-weak-formulation" class="app-container">
+  <p>Même si nous n'avons pas encore parcouru toutes les conditions aux limites possibles, l'application ci-dessous (hautement inspiré des apps développées par <a href="http://minapecheux.com/wp/">Mina Pêcheux</a>), permet de comprendre l’influence des conditions aux limites et des autres paramètres sur la "forme" de la formulation faible :</p>
+  <iframe id="iframe-weak-formulation" class="app-content" src='../../../_static/app/weak-formulation/index.html' scrolling="no"></iframe>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.min.js" integrity="sha512-ngVIPTfUxNHrVs52hA0CaOVwC3/do2W4jUEJIufgZQicmY27iAJAind8BPtK2LoyIGiAFcOkjO18r5dTUNLFAw==" crossorigin="anonymous"></script>
+  <script>
+  iFrameResize({}, '#iframe-weak-formulation')
+  </script>
+
+
 
 .. [#] Pierre-Simon Laplace (1749 -- 1827).
 .. [#] George Green (1793 -- 1841). Mathématicien britannique (quasi) auto-didacte.
