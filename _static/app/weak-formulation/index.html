@@ -3,19 +3,41 @@
 <head>
 
   <link rel="stylesheet" href="main.css">
-  <script defer="defer" src="https://d3js.org/d3.v5.min.js"></script>
-  <script defer="defer" src="main.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.contentWindow.js" integrity="sha512-5+HBQlT1izP2UxL213/uqaO9tIpPso52TedvIsOevDs6w/HNt0/KNlkYLgi8Ona7lPCBjMEWybiR/qqs2MgyEg==" crossorigin="anonymous"></script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      packages: {'[+]': ['html']},
+    },
+    svg: {
+      fontCache: 'global'
+    },
+    loader: {
+      load: ['[tex]/html'],
+    },
+    startup:{
+      typeset: true,
+    }
+  };
+ 
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script defer src="main.js"></script>
+  <script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
   <div class="app-weak-formulation">
 
     <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-      <line x1="10" y1="10" x2="90" y2="10" style="stroke:rgb(200, 50, 0); stroke-width:1;" stroke-linecap="square"/>
-      <line x1="90" y1="10" x2="90" y2="90" style="stroke:rgb(200, 50, 0); stroke-width:1;" stroke-linecap="square"/>
-      <line x1="90" y1="90" x2="10" y2="90" style="stroke:rgb(200, 50, 0); stroke-width:1;" stroke-linecap="square"/>
-      <line x1="10" y1="90" x2="10" y2="10" style="stroke:rgb(200, 50, 0); stroke-width:1;" stroke-linecap="square"/>
+      <line x1="90" y1="10" x2="90" y2="90" class="neumann" stroke-linecap="square"/>
+      <line x1="90" y1="90" x2="10" y2="90" class="dirichlet" stroke-linecap="square"/>
+      <line x1="10" y1="90" x2="10" y2="10" class="fourier" stroke-linecap="square"/>
+      <line x1="10" y1="10" x2="90" y2="10" style="stroke:black;" stroke-linecap="square"/>
       <text x="50" y="8" text-anchor="middle" font-size="5px">Γ</text>
       <text x="95" y="50" text-anchor="middle" font-size="5px">Γ<tspan dy="2" font-size=".7em">N</tspan></text>
       <text x="5" y="50" text-anchor="middle" font-size="5px" >Γ<tspan dy="2" font-size=".7em">F</tspan></text>
@@ -23,55 +45,60 @@
       <text x="50" y="50" text-anchor="middle" font-size="5px">Ω</text>
     </svg>
 
-    
-    <h2>Partial Differential Equations</h2>
-    <table class="pde">
-      <tr>
-        <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row rigidity" data-component="RigidityMatrix" style="cursor:pointer;"></td>
-        <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row mass" data-component="MassMatrix" style="cursor:pointer;"></td>
-        <td >=</td>
-        <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row rhs" data-component="RHS" style="cursor:pointer;"></td>
-        <td>(Ω)</td>
-      </tr>
-      <tr class="bc">
-        <td colspan="2">∂<sub>n</sub>u</td>
-        <td>=</td>
-        <td>0</td>
-        <td>(Γ)</td>
-      </tr>
-      <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC neumann" data-component="NeumannBorder" style="cursor:pointer;">
-        <td colspan="2"></td>
-        <td>=</td>
-        <td></td>
-        <td>(Γ<sub>N</sub>)</td>
-      </tr>
-      <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC dirichlet" data-component="DirichletBorder" style="cursor:pointer;">
-        <td colspan="2"></td>
-        <td>=</td>
-        <td></td>
-        <td>(Γ<sub>D</sub>)</td>
-      </tr>
-      </tr>
-      <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC fourier" data-component="FourierBorder" style="cursor:pointer;">
-        <td colspan="2"></td>
-        <td>=</td>
-        <td></td>
-        <td>(Γ<sub>F</sub>)</td>
-      </tr>
-    </table> 
-
-    <div id="result">
-      <h2>Weak Formulation</h2>
-      <p id="weak-formulation">Find <span id="wf-unknown"></span> in <span id="wf-space-u"></span> such that, ∀ v in <span id="wf-space-v"></span>,  <br/>
-        <span id="wf-equation"></span>
-      </p>
+    <div class="item pde">
+      <h2>Équation aux Dérivées Partielles</h2>
+      <p>Cliquez pour modifier les conditions aux limites et les coefficients de l'EDP.</p>
+      <!--  <span>\(\left\{\begin{array}{r c l l}
+        \cssId{pde-rigidity}{-\Delta u} + \cssId{pde-mass}{u} & =& \cssId{pde-rhs}{f} & (\Omega)\\
+        \partial_{\mathbf{n}} u & = & 0 & (\Gamma)
+        \end{array}\right.\)</span>
+      -->
+      <table class="pde">
+        <tr>
+          <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row rigidity" data-component="RigidityMatrix" style="cursor:pointer;"></td>
+          <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row mass" data-component="MassMatrix" style="cursor:pointer;"></td>
+          <td>\(=\)</td>
+          <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row rhs" data-component="RHS" style="cursor:pointer;"></td>
+          <td><span>\((\Omega)\)</span></td>
+        </tr>
+        <tr class="bc">
+          <td colspan="2">\(\partial_{\mathbf{n}}u\)</td>
+          <td>\(=\)</td>
+          <td>\(0\)</td>
+          <td>\((\Gamma)\)</td>
+        </tr>
+        <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC neumann" data-component="NeumannBorder" style="cursor:pointer;">
+          <td colspan="2"></td>
+          <td>\(=\)</td>
+          <td></td>
+          <td>\((\Gamma_{N})\)</td>
+        </tr>
+        <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC dirichlet" data-component="DirichletBorder" style="cursor:pointer;">
+          <td colspan="2"></td>
+          <td>\(=\)</td>
+          <td></td>
+          <td>\((\Gamma_{D})\)</td>
+        </tr>
+        </tr>
+        <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC fourier" data-component="FourierBorder" style="cursor:pointer;">
+          <td colspan="2"></td>
+          <td>\(=\)</td>
+          <td></td>
+          <td>\((\Gamma_{F})\)</td>
+        </tr>
+      </table> 
+  
+    </div>
+    <div class="item" id="wf">
+      <h2>Formulation Faible</h2>
+      <div id="math-weak-formulation"></div>
       <p id="dirichlet-extension"></p>
-      <h2>Linear System</h2>
-      <p id="linear-system">(<span id="ls-rigidity" class="ls-operator"></span> <span id="ls-mass" class="ls-operator"></span><span id="ls-fourier-lhs" class="ls-bc"></span>)U = <span id="ls-rhs" class="ls-operator"></span><span id="ls-neumann-rhs" class="ls-bc"></span><span id="ls-fourier-rhs" class="ls-bc"></span> </p>
-    
+    </div>
+    <div class="item" id="ls">
+      <h2>Système Linéaire</h2>
+      <div id="math-linear-system"></div>
     </div>
 
   </div>
-
 </body>
 </html>

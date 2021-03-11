@@ -1,12 +1,31 @@
+body{
+  max-width:810px;
+  margin:auto;
+  border:solid 1px;
+}
+
 div.app-weak-formulation{
   margin:auto;
-  width: max-content;
+  width:100%;
+/*  width: max-content;*/
+/*  max-width:500px;*/
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 div.app-weak-formulation svg{
-  max-width:300px;
+  max-width: 250px;
   margin:auto;
   display:block;
+}
+
+div.app-weak-formulation div.item{
+  margin-top:20px;
+}
+
+div.app-weak-formulation div.item.pde{
+  max-width:480px;
 }
 
 div.app-weak-formulation table.pde{
@@ -17,40 +36,55 @@ div.app-weak-formulation table.pde{
 div.app-weak-formulation table.pde tr td{
   text-align:center;
 }
+
+div.app-weak-formulation svg line{
+  stroke-width:2px;
+}
+
+
 div.app-weak-formulation table.pde tr td.first_row{
-  display: inline-block;
   width:70px;
 }
-div.app-weak-formulation table.pde tr td.first_row.mass{
+div.app-weak-formulation .mass{
   background-color : lightblue;
 }
-div.app-weak-formulation table.pde tr td.first_row.rigidity{
+div.app-weak-formulation .rigidity{
   background-color : lightcoral;
 }
-div.app-weak-formulation table.pde tr td.first_row.rhs{
+div.app-weak-formulation .rhs{
   background-color : lightsteelblue;
 }
-div.app-weak-formulation table.pde tr.bc td:first-child{
-  text-align:right;
+div.app-weak-formulation .neumann{
+  background-color : lightgoldenrodyellow;
+}
+div.app-weak-formulation svg .neumann{
+  stroke: lightgoldenrodyellow;
+}
+div.app-weak-formulation .fourier{
+  background-color : lightgrey;
+}
+div.app-weak-formulation svg .fourier{
+  stroke : lightgrey;
+}
+div.app-weak-formulation .dirichlet{
+  background-color : lightseagreen;
+}
+div.app-weak-formulation svg .dirichlet{
+  stroke : lightseagreen;
 }
 
-
-div.app-weak-formulation  div#result{
-  margin:auto;
+p#dirichlet-extension{
+  margin-left:10px;
+  border-bottom:lightseagreen 4px solid;
   width: max-content;
 }
 
-div.app-weak-formulation p#weak-formulation{
-  margin:auto;
-  width: max-content;
-  border-left: solid blue 5px;
+div.app-weak-formulation  div#wf,
+div.app-weak-formulation  div#ls{
+  width: 100%;
+}
+
+div.app-weak-formulation .ls-compo,
+div.app-weak-formulation .wf-compo{
   padding:5px;
 }
-
-div.app-weak-formulation p#linear-system{
-  margin:auto;
-  width: max-content;
-  padding:10px;
-  border:solid 1px black;
-}
-  
