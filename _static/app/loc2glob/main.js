@@ -2,19 +2,6 @@ var fem_loc2glob = new function() {
   var mesh_pts = [[0,0], [140,10], [100,80], [-10,120],[45,50], [150,130]];
   var mesh_triangles= [[0,1,4], [4,1,2], [3, 4, 2], [3,0,4], [2,3,5], [1,2,5]];
 
-  var triangle_color = {
-      "inactive": "none", 
-      "active": "GhostWhite"
-  };
-  var point_color = {
-      "global": "GhostWhite",
-      "local" : "darkblue"
-  };
-  var txt_color = {
-      "global": "black",
-      "local" : "white"
-  };
-
   var r = 10.0; // radius of vert
   var max_x =0.0, max_y=0.0;
   var min_x =10000.0, min_y=1000.0;
@@ -29,23 +16,7 @@ var fem_loc2glob = new function() {
   var size_y = (max_y - min_y) + 3*r;
 
 
-  var dark_stroke_color = "DarkGray" ;
-  var light_stroke_color = "#131416";
-  var dark_foreground_color = "GhostWhite" ;
-  var light_foreground_color = "#131416";
-  var dark_background_color = "#131416" ;
-  var light_background_color = "GhostWhite" ;
-  var dark_point_local_color = "Brown";
-  var light_point_local_color = "DarkBlue" ;
-  var dark_point_local_txt_color = "GhostWhite";
-  var light_point_local_txt_color = "White" ;
-  var dark_point_global_txt_color = "GhostWhite";
-  var light_point_global_txt_color = "Black" ;
-
-
-  var div = d3.select('div.app-local-to-global')
-            .attr('style', 'text-align:center; --dark_stroke_color:'+ dark_stroke_color+'; --light_stroke_color:'+ light_stroke_color+';--dark_background_color:'+ dark_background_color+'; --light_background_color:'+ light_background_color+';--dark_foreground_color:'+ dark_foreground_color+'; --light_foreground_color:'+ light_foreground_color+';--dark_point_local_color:'+ dark_point_local_color+'; --light_point_local_color:'+ light_point_local_color+';--dark_point_local_txt_color:'+ dark_point_local_txt_color+'; --light_point_local_txt_color:'+ light_point_local_txt_color+';--dark_point_global_txt_color:'+ dark_point_global_txt_color+'; --light_point_global_txt_color:'+ light_point_global_txt_color+';')
-    ;
+  var div = d3.select('div.app-local-to-global');
 
   var tooltipstyle = "position: absolute; text-align: center; width: auto;height: auto; overflow:hidden;padding: 4px;font: 0.5rem;background: lightsteelblue;border: 0px;border-radius: 8px;pointer-events: none;";
   var tooltip = d3.select('body').append('div')
@@ -74,16 +45,11 @@ var fem_loc2glob = new function() {
       .append('polygon')
       .attr('points', function(d){return mesh_pts[d[0]][0] + " " + mesh_pts[d[0]][1] + ", " + mesh_pts[d[1]][0] + " " + mesh_pts[d[1]][1] + ", " + mesh_pts[d[2]][0] + " " + mesh_pts[d[2]][1];})
       .attr('class', 'd3_triangle')
-      .attr('active', '0')
+      .attr('data-active', '0')
       .attr('element-number', function(d,i){return i})
-      .attr('fill', 'none')
-      .attr('pointer-events', 'fill')
-      .attr('style', 'cursor:pointer;')
       .on('click', function(d,i){
           activate(this, d);
           })
-      .on("mouseover", handleMouseOver)
-      .on("mouseout", handleMouseOut)
       ;
 
   // Build all vertices
@@ -103,7 +69,6 @@ var fem_loc2glob = new function() {
       .attr('cx', function(d){return d[0]})
       .attr('cy', function(d){return d[1]})
       .attr('r', r)
-      .attr('fill', point_color.global)
       ;
   // Add the text value of points
   var all_pts_txt = all_pts.append('text')
@@ -111,9 +76,8 @@ var fem_loc2glob = new function() {
       .attr('y', function(d){return d[1]})
       .attr('text-anchor', 'middle')
       .attr('dy',  "0.3em")
-      .text(function(d,i){return i;})
+      .text(function(d,i){return i+1;})
       .attr('font-size', '0.5em')
-      .attr('fill', txt_color.global)
       .attr('cursor', 'unset')
       ;
 
@@ -128,12 +92,13 @@ var fem_loc2glob = new function() {
 
   // Recompute the GLOBAL vertices indices of the current triangle (d = data attached to polygon)
   function global_numbering(){
-      all_pts.attr('data-indexing', 'global');
+      // Set point to global numbering
+      svg.selectAll('.d3_point').attr('data-indexing', 'global');
       all_pts_txt.attr('style', 'display:true;')
-                  .text(function(d,i){return i;})
-                  .attr('fill', txt_color.global)
+                  .text(function(d,i){return i+1;})
                   ;
-      all_pts_circle.attr('stroke-opacity', '1').attr('fill', point_color.global);
+      all_pts_circle.attr('stroke-opacity', '1');
+      // Change title
       title.text('Numérotation Globale');
   };
 
@@ -144,63 +109,37 @@ var fem_loc2glob = new function() {
           d3.selectAll('.vertex-'+ d[i])
                   .selectAll('text')
                   .attr('style', 'display:true;')
-                  .text(i)
-                  .attr('fill', txt_color.local)
+                  .text(i+1)
               ;
           d3.selectAll('.vertex-'+ d[i]).selectAll('circle')
                                       .attr('style', 'display:true;')
-                                      .attr('stroke-opacity', '1')
-                                      .attr('fill', point_color.local)
-          ;
-      }
+                                      .attr('stroke-opacity', '1');
+     }
       title.text('Numérotation Locale');
   };
 
 
   function activate(t, d){
-      let new_status = (1+parseInt(d3.select(t).attr('active')))%2;
+      let new_status = (1+parseInt(d3.select(t).attr('data-active')))%2;
       if(new_status == 0) {
           // Triangle t becomes inactive and every triangle is visible
-          svg.selectAll('.d3_triangle')
-              .attr('active', '0')
-              .attr('fill', triangle_color.inactive)
-              .attr('stroke-opacity', '1')
-          ;
-          global_numbering();
+        svg.selectAll('.d3_triangle').attr('data-active', '0')
+                                    .attr('data-indexing', 'global');
+        // change displayed numbering 
+        global_numbering();
       }
       else{
           //Disable the (eventually) other triangle
-          svg.selectAll('.d3_triangle[active="1"]').attr('active', "0");
-          svg.selectAll('.d3_triangle[active="0"]')
-                      .attr('fill', triangle_color.inactive)
-                      .attr('stroke-opacity', '0.1')                    
-          ;
+          svg.selectAll('.d3_triangle').attr('data-indexing', 'local');
+          svg.selectAll('.d3_triangle[data-active="1"]').attr('data-active', "0");          
           global_numbering();
           //Activate this triangle t
-          d3.select(t).attr('active', '1')
-                      .attr('fill', triangle_color.active)
-                      .attr('stroke-opacity', '1')
-          ;
+          d3.select(t).attr('data-active', '1')
           disable_vertices();
           local_numbering(d);
       }
   };
 
-  function handleMouseOver(d,i){
-      let active = parseInt(d3.select(this).attr('active'));
-      if( active == 0)
-      {
-          d3.select(this).attr('fill', triangle_color.active);
-      }
-  };
-
-  function handleMouseOut(d,i){
-      let active = parseInt(d3.select(this).attr('active'));
-      if( active == 0)
-      {
-          d3.select(this).attr('fill', triangle_color.inactive);
-      }
-  };
 
   function pointHover(d,i){
       let indexing = d3.select(this).attr('data-indexing');
