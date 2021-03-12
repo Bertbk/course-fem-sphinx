@@ -36,10 +36,14 @@
     <h2>Équation aux Dérivées Partielles</h2>
     <div class="flex-container">
       <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-        <line x1="90" y1="10" x2="90" y2="90" class="neumann" stroke-linecap="square"/>
+        <polyline points="25,15 75,15      " fill="none" class="gamma" stroke-linecap="square"/>
+        <polyline points="75,15 90,50 75,85" fill="none" class="neumann" stroke-linecap="square"/>
+        <polyline points="75,85 25,85      " fill="none" class="dirichlet" stroke-linecap="square"/>
+        <polyline points="25,85 10,50 25,15" fill="none" class="fourier" stroke-linecap="square"/>
+<!--        <line x1="90" y1="10" x2="90" y2="90" class="neumann" stroke-linecap="square"/>
         <line x1="90" y1="90" x2="10" y2="90" class="dirichlet" stroke-linecap="square"/>
         <line x1="10" y1="90" x2="10" y2="10" class="fourier" stroke-linecap="square"/>
-        <line x1="10" y1="10" x2="90" y2="10" class="gamma" stroke-linecap="square"/>
+        <line x1="10" y1="10" x2="90" y2="10" class="gamma" stroke-linecap="square"/>-->
         <text x="50" y="8" text-anchor="middle" font-size="5px">Γ</text>
         <text x="95" y="50" text-anchor="middle" font-size="5px">Γ<tspan dy="2" font-size=".7em">N</tspan></text>
         <text x="5" y="50" text-anchor="middle" font-size="5px" >Γ<tspan dy="2" font-size=".7em">F</tspan></text>

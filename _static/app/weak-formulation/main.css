@@ -7,13 +7,13 @@
   div.app-weak-formulation svg text{
     fill:white;
   }
-  div.app-weak-formulation svg line.gamma{
+  div.app-weak-formulation svg .gamma{
     stroke: ghostwhite;
   }
 }
 
 @media (prefers-color-scheme: light) {
-  div.app-weak-formulation svg line.gamma{
+  div.app-weak-formulation svg .gamma{
     stroke: black;
   }
   body{
