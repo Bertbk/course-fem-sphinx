@@ -33,68 +33,69 @@
 
   <div class="app-weak-formulation">
 
-    <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-      <line x1="90" y1="10" x2="90" y2="90" class="neumann" stroke-linecap="square"/>
-      <line x1="90" y1="90" x2="10" y2="90" class="dirichlet" stroke-linecap="square"/>
-      <line x1="10" y1="90" x2="10" y2="10" class="fourier" stroke-linecap="square"/>
-      <line x1="10" y1="10" x2="90" y2="10" style="stroke:black;" stroke-linecap="square"/>
-      <text x="50" y="8" text-anchor="middle" font-size="5px">Γ</text>
-      <text x="95" y="50" text-anchor="middle" font-size="5px">Γ<tspan dy="2" font-size=".7em">N</tspan></text>
-      <text x="5" y="50" text-anchor="middle" font-size="5px" >Γ<tspan dy="2" font-size=".7em">F</tspan></text>
-      <text x="50" y="95" text-anchor="middle" font-size="5px">Γ<tspan dy="2" font-size=".7em">D</tspan></text>
-      <text x="50" y="50" text-anchor="middle" font-size="5px">Ω</text>
-    </svg>
+    <h2>Équation aux Dérivées Partielles</h2>
+    <div class="flex-container">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+        <line x1="90" y1="10" x2="90" y2="90" class="neumann" stroke-linecap="square"/>
+        <line x1="90" y1="90" x2="10" y2="90" class="dirichlet" stroke-linecap="square"/>
+        <line x1="10" y1="90" x2="10" y2="10" class="fourier" stroke-linecap="square"/>
+        <line x1="10" y1="10" x2="90" y2="10" style="stroke:black;" stroke-linecap="square"/>
+        <text x="50" y="8" text-anchor="middle" font-size="5px">Γ</text>
+        <text x="95" y="50" text-anchor="middle" font-size="5px">Γ<tspan dy="2" font-size=".7em">N</tspan></text>
+        <text x="5" y="50" text-anchor="middle" font-size="5px" >Γ<tspan dy="2" font-size=".7em">F</tspan></text>
+        <text x="50" y="95" text-anchor="middle" font-size="5px">Γ<tspan dy="2" font-size=".7em">D</tspan></text>
+        <text x="50" y="50" text-anchor="middle" font-size="5px">Ω</text>
+      </svg>
 
-    <div class="item pde">
-      <h2>Équation aux Dérivées Partielles</h2>
-      <p>Cliquez pour modifier les conditions aux limites et les coefficients de l'EDP.</p>
-      <!--  <span>\(\left\{\begin{array}{r c l l}
-        \cssId{pde-rigidity}{-\Delta u} + \cssId{pde-mass}{u} & =& \cssId{pde-rhs}{f} & (\Omega)\\
-        \partial_{\mathbf{n}} u & = & 0 & (\Gamma)
-        \end{array}\right.\)</span>
-      -->
-      <table class="pde">
-        <tr>
-          <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row rigidity" data-component="RigidityMatrix" style="cursor:pointer;"></td>
-          <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row mass" data-component="MassMatrix" style="cursor:pointer;"></td>
-          <td>\(=\)</td>
-          <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row rhs" data-component="RHS" style="cursor:pointer;"></td>
-          <td><span>\((\Omega)\)</span></td>
-        </tr>
-        <tr class="bc">
-          <td colspan="2">\(\partial_{\mathbf{n}}u\)</td>
-          <td>\(=\)</td>
-          <td>\(0\)</td>
-          <td>\((\Gamma)\)</td>
-        </tr>
-        <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC neumann" data-component="NeumannBorder" style="cursor:pointer;">
-          <td colspan="2"></td>
-          <td>\(=\)</td>
-          <td></td>
-          <td>\((\Gamma_{N})\)</td>
-        </tr>
-        <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC dirichlet" data-component="DirichletBorder" style="cursor:pointer;">
-          <td colspan="2"></td>
-          <td>\(=\)</td>
-          <td></td>
-          <td>\((\Gamma_{D})\)</td>
-        </tr>
-        </tr>
-        <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC fourier" data-component="FourierBorder" style="cursor:pointer;">
-          <td colspan="2"></td>
-          <td>\(=\)</td>
-          <td></td>
-          <td>\((\Gamma_{F})\)</td>
-        </tr>
-      </table> 
-  
+      <div class="item pde">
+        <p>Cliquez pour modifier les conditions aux limites et les coefficients de l'EDP.</p>
+        <!--  <span>\(\left\{\begin{array}{r c l l}
+          \cssId{pde-rigidity}{-\Delta u} + \cssId{pde-mass}{u} & =& \cssId{pde-rhs}{f} & (\Omega)\\
+          \partial_{\mathbf{n}} u & = & 0 & (\Gamma)
+          \end{array}\right.\)</span>
+        -->
+        <table class="pde">
+          <tr>
+            <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row rigidity" data-component="RigidityMatrix" style="cursor:pointer;"></td>
+            <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row mass" data-component="MassMatrix" style="cursor:pointer;"></td>
+            <td>\(=\)</td>
+            <td onclick="fem_wf.nextStep(this)" class="PDEOperator first_row rhs" data-component="RHS" style="cursor:pointer;"></td>
+            <td><span>\((\Omega)\)</span></td>
+          </tr>
+          <tr class="bc">
+            <td colspan="2">\(\partial_{\mathbf{n}}u\)</td>
+            <td>\(=\)</td>
+            <td>\(0\)</td>
+            <td>\((\Gamma)\)</td>
+          </tr>
+          <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC neumann" data-component="NeumannBorder" style="cursor:pointer;">
+            <td colspan="2"></td>
+            <td>\(=\)</td>
+            <td></td>
+            <td>\((\Gamma_{N})\)</td>
+          </tr>
+          <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC dirichlet" data-component="DirichletBorder" style="cursor:pointer;">
+            <td colspan="2"></td>
+            <td>\(=\)</td>
+            <td></td>
+            <td>\((\Gamma_{D})\)</td>
+          </tr>
+          </tr>
+          <tr onclick="fem_wf.nextStep(this)" class="bc PDEBC fourier" data-component="FourierBorder" style="cursor:pointer;">
+            <td colspan="2"></td>
+            <td>\(=\)</td>
+            <td></td>
+            <td>\((\Gamma_{F})\)</td>
+          </tr>
+        </table>   
+      </div>
     </div>
-    <div class="item" id="wf">
+    <div id="wf">
       <h2>Formulation Faible</h2>
       <div id="math-weak-formulation"></div>
       <p id="dirichlet-extension"></p>
     </div>
-    <div class="item" id="ls">
+    <div id="ls">
       <h2>Système Linéaire</h2>
       <div id="math-linear-system"></div>
     </div>

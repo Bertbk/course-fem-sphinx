@@ -9,6 +9,14 @@ div.app-weak-formulation{
   width:100%;
 /*  width: max-content;*/
 /*  max-width:500px;*/
+}
+
+div.app-weak-formulation{
+ text-align:center;
+}
+
+
+div.flex-container{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -18,10 +26,6 @@ div.app-weak-formulation svg{
   max-width: 250px;
   margin:auto;
   display:block;
-}
-
-div.app-weak-formulation div.item{
-  margin-top:20px;
 }
 
 div.app-weak-formulation div.item.pde{
@@ -46,13 +50,13 @@ div.app-weak-formulation table.pde tr td.first_row{
   width:70px;
 }
 div.app-weak-formulation .mass{
-  background-color : lightblue;
+  background-color : #e3edf6;
 }
 div.app-weak-formulation .rigidity{
-  background-color : lightcoral;
+  background-color : #F6ECE3;
 }
 div.app-weak-formulation .rhs{
-  background-color : lightsteelblue;
+  background-color : #F6E3F6;
 }
 div.app-weak-formulation .neumann{
   background-color : lightgoldenrodyellow;
@@ -61,21 +65,21 @@ div.app-weak-formulation svg .neumann{
   stroke: lightgoldenrodyellow;
 }
 div.app-weak-formulation .fourier{
-  background-color : lightgrey;
+  background-color : #e8e3f6;
 }
 div.app-weak-formulation svg .fourier{
-  stroke : lightgrey;
+  stroke : #e8e3f6;
 }
 div.app-weak-formulation .dirichlet{
-  background-color : lightseagreen;
+  background-color : #E3F6E3;
 }
 div.app-weak-formulation svg .dirichlet{
-  stroke : lightseagreen;
+  stroke : #E3F6E3;
 }
 
 p#dirichlet-extension{
   margin-left:10px;
-  border-bottom:lightseagreen 4px solid;
+  border-bottom:#E3F6E3 4px solid;
   width: max-content;
 }
 
