@@ -1,7 +1,30 @@
+
+@media (prefers-color-scheme: dark) {
+  body{
+    color:hsla(0,0%,100%,0.8509803921568627);
+    background-color: #131416;
+  }
+  div.app-weak-formulation svg text{
+    fill:white;
+  }
+  div.app-weak-formulation svg line.gamma{
+    stroke: ghostwhite;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  div.app-weak-formulation svg line.gamma{
+    stroke: black;
+  }
+  body{
+    color:black;
+  }
+}
 body{
   max-width:810px;
   margin:auto;
   border:solid 1px;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
 }
 
 div.app-weak-formulation{
@@ -51,27 +74,34 @@ div.app-weak-formulation table.pde tr td.first_row{
 }
 div.app-weak-formulation .mass{
   background-color : #e3edf6;
+  color:black;
 }
 div.app-weak-formulation .rigidity{
   background-color : #F6ECE3;
+  color:black;
 }
 div.app-weak-formulation .rhs{
   background-color : #F6E3F6;
+  color:black;
 }
 div.app-weak-formulation .neumann{
   background-color : lightgoldenrodyellow;
+  color:black;
 }
 div.app-weak-formulation svg .neumann{
   stroke: lightgoldenrodyellow;
 }
 div.app-weak-formulation .fourier{
   background-color : #e8e3f6;
+  color:black;
 }
 div.app-weak-formulation svg .fourier{
   stroke : #e8e3f6;
+  color:black;
 }
 div.app-weak-formulation .dirichlet{
   background-color : #E3F6E3;
+  color:black;
 }
 div.app-weak-formulation svg .dirichlet{
   stroke : #E3F6E3;
@@ -91,4 +121,8 @@ div.app-weak-formulation  div#ls{
 div.app-weak-formulation .ls-compo,
 div.app-weak-formulation .wf-compo{
   padding:5px;
+}
+
+div.app-weak-formulation div#ls ul{
+  text-align:left;
 }

@@ -135,8 +135,8 @@ var fem_wf = new function() {
             }
             if(FourierBorder.wf_lhs[FourierBorder.current])
             { 
-                wf_LHS += "\\class{wf-compo fourier}{" + RigidityMatrix.lhs_coef[RigidityMatrix.current]+ FourierBorder.wf_lhs[FourierBorder.current] + "}";
-                ls_LHS += "\\class{ls-compo fourier}{" + RigidityMatrix.lhs_coef[RigidityMatrix.current]+"\\alpha M_{\\Gamma_F}" + "}";
+                wf_LHS += "\\class{wf-compo fourier}{" + RigidityMatrix.rhs_coef[RigidityMatrix.current]+ FourierBorder.wf_lhs[FourierBorder.current] + "}";
+                ls_LHS += "\\class{ls-compo fourier}{" + RigidityMatrix.rhs_coef[RigidityMatrix.current]+"\\alpha M_{\\Gamma_F}" + "}";
             }
             if(FourierBorder.wf_rhs[FourierBorder.current])
             {
