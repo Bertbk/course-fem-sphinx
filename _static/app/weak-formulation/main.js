@@ -107,8 +107,9 @@ var fem_wf = new function() {
         document.getElementById("dirichlet-extension").innerHTML="";
         if(DirichletBorder.isSet()){
             spaceFun = "\\class{dirichlet ls-compo}{H^1_D(\\Omega)}"; 
+            document.getElementById("dirichlet-extension").innerHTML="\\(H^1_D(\\Omega)=\\left\\{u\\in H^1(\\Omega) ; u|_{\\Gamma_D}=0\\right\\}\\)";
             if(DirichletBorder.pde_rhs[DirichletBorder.current] != 0){
-            document.getElementById("dirichlet-extension").innerHTML="Avec, de plus,  \\(u := u + u_D\\) avec \\(u_D\\) un relèvement de \\(g_D\\)";
+            document.getElementById("dirichlet-extension").innerHTML +="<br/>Avec, de plus,  \\(u := u + u_D\\) avec \\(u_D\\) un relèvement de \\(g_D\\)";
             }
         }
         // wf-equation

@@ -110,7 +110,10 @@ div.app-weak-formulation svg .dirichlet{
 p#dirichlet-extension{
   margin-left:10px;
   border-bottom:#E3F6E3 4px solid;
+  border-left:#E3F6E3 4px solid;
   width: max-content;
+  margin:auto;
+  margin-top:10px;
 }
 
 div.app-weak-formulation  div#wf,
