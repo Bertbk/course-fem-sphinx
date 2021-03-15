@@ -1,0 +1,147 @@
+:root{
+  --dark_stroke_color :  DarkGray ;
+  --light_stroke_color :  #131416;
+  --dark_foreground_color : GhostWhite ;
+  --light_foreground_color : #131416;
+  --dark_background_color : #131416 ;
+  --light_background_color : GhostWhite ;
+  --dark_point_local_color : Brown;
+  --light_point_local_color : var(--dark_foreground_color) ;
+  --dark_point_local_txt_color : GhostWhite;
+  --light_point_local_txt_color : White ;
+  --dark_point_global_txt_color : GhostWhite;
+  --light_point_global_txt_color : Black ;
+  --dark_triangle_active_color : GhostWhite;
+  --light_triangle_active_color : GhostWhite ;
+  --dark_triangle_inactive_color : none;
+  --light_triangle_inactive_color : none ;  
+}
+
+body{
+  max-width:810px;
+  margin:auto;
+  border:solid 1px;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  padding-bottom: 20px;
+}
+
+
+div.app-matrix-computation{
+text-align:center;
+}
+div.app-matrix-computation svg polygon{
+pointer-events: visible;
+cursor:pointer;
+}
+
+div.app-matrix-computation svg g.all_triangles polygon[data-active="0"][data-algorithm="start"]{
+  stroke-opacity:0.1;
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+  div.app-matrix-computation{
+    background-color: var(--dark_background_color);
+  }
+  div.app-matrix-computation {
+    color: var(--dark_foreground_color);
+  }
+  div.app-matrix-computation svg g.all_triangles polygon.d3_triangle{
+    stroke: var(--dark_stroke_color);
+  }
+  div.app-matrix-computation svg g.all_pts circle{
+    fill: var(--dark_background_color);
+    stroke: var(--dark_stroke_color);
+  }
+  div.app-matrix-computation svg g.all_pts text{
+    fill: var(--dark_foreground_color);
+  }
+  div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="stop"] circle{
+    fill: var(--dark_background_color);
+  }
+  div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="start"] circle{
+    fill: var(--dark_point_local_color);
+  }
+  div.app-matrix-computation svg g.all_triangles polygon[data-active="1"],
+  div.app-matrix-computation svg g.all_triangles polygon[data-active="0"]:hover{
+      fill: var(--dark_triangle_active_color);
+  }
+  div.app-matrix-computation svg g.all_triangles polygon[data-active="0"]{
+    fill: var(--dark_triangle_inactive_color);
+  }
+  div.app-matrix-computation table#fem-matrix tbody tr td[data-highlight="1"]{
+    background: var(--dark_triangle_active_color);
+    color:var(--dark_background_color);
+  }
+  div.app-matrix-computation table#fem-matrix{
+    background-image: linear-gradient(var(--dark_foreground_color), var(--dark_foreground_color)),
+    linear-gradient(var(--dark_foreground_color),var(--dark_foreground_color)),
+    linear-gradient(var(--dark_foreground_color),var(--dark_foreground_color)),
+    linear-gradient(var(--dark_foreground_color),var(--dark_foreground_color));
+    border: solid var(--dark_foreground_color);
+  }
+
+}
+
+@media (prefers-color-scheme: light) {
+  div.app-matrix-computation p{
+    color: var(--light_foreground_color);
+  }
+  div.app-matrix-computation{
+    color: var(--light_foreground_color);
+  }
+  div.app-matrix-computation svg g.all_triangles polygon.d3_triangle{
+    stroke: var(--light_stroke_color);
+  }
+  div.app-matrix-computation svg g.all_pts circle{
+    fill: var(--light_background_color);
+    stroke: var(--light_stroke_color);
+  }
+  div.app-matrix-computation svg g.all_pts text{
+    fill: var(--light_foreground_color);
+  }
+  div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="stop"] circle{
+    fill: var(--light_background_color);
+  }
+  div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="stop"] text{
+    fill: var(--light_point_txt_color);
+  }
+  div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="start"] circle{
+    fill: var(--light_point_local_color);
+  }
+  div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="start"] text{
+    fill: var(--light_point_local_txt_color);
+  }
+  div.app-matrix-computation svg g.all_triangles polygon[data-active="1"],
+  div.app-matrix-computation svg g.all_triangles polygon[data-active="0"]:hover{
+      fill: var(--light_triangle_active_color);
+  }
+  div.app-matrix-computation svg g.all_triangles polygon[data-active="0"]{
+    fill: var(--light_triangle_inactive_color);
+  }
+
+  div.app-matrix-computation table#fem-matrix tbody tr td[data-highlight="1"]{
+    background: var(--light_triangle_active_color);
+  }
+  div.app-matrix-computation table#fem-matrix{
+    background-image: linear-gradient(var(--light_foreground_color), var(--light_foreground_color)),
+    linear-gradient(var(--light_foreground_color),var(--light_foreground_color)),
+    linear-gradient(var(--light_foreground_color),var(--light_foreground_color)),
+    linear-gradient(var(--light_foreground_color),var(--light_foreground_color));
+    border: solid var(--light_foreground_color);
+  }
+
+}
+
+
+/* must be placed in the end*/
+div.app-matrix-computation table#fem-matrix{
+  margin:auto;
+  font-size:1.5em;
+  padding-left:0.5em;
+  background-repeat: no-repeat;
+  background-size: 8px 3px;
+  background-position: top left, top right, bottom left, bottom right;
+  border-width: 0 3px;
+}

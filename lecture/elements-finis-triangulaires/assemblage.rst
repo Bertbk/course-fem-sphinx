@@ -98,9 +98,6 @@ Ainsi, pour un triangle  :math:`\tri_p`, ses sommets sont numérotés :math:`[\v
 .. proof:remark::
 
   Pour mieux comprendre la différence entre numérotation locale et globale, une `application est disponible en ligne <#app-local-to-global>`_. 
-  
-  Une autre `application web <../_static/pecheux/matrix-assembly/index.html>`_, développée cette fois-ci par `Mina Pêcheux <http://minapecheux.com>`_,  présente l'assemblage pas à pas d'une matrice. En cliquant sur un triangle, les contributions de ce dernier seront ajoutées dans la grande matrice de masse. La matrice de masse élémentaire associée au triangle est également affichée.
-
 
 
 .. _fig-loc2glob:
@@ -155,6 +152,17 @@ L'algorithme d'assemblage est alors complet ! Une version pseudo-code est prése
   
   Cet algorithme n'est pas encore utilisable, nous devons calculer la valeur de :math:`a_p(\mphi_j^p,\mphi_i^p)` et :math:`\ell_p(\mphi_i^p)`. De plus, il manque encore les conditions de Dirichlet.
 
+
+
+.. raw:: html
+
+  <div id="app-matrix-computation" class="app-container">
+    <iframe id="iframe-matrix-computation" class="app-content" src='../../../_static/app/matrix-computation/index.html'></iframe>
+    <p><strong>Cliquez sur un triangle</strong> pour ajouter ses <strong>contributions élémentaires</strong> dans la <strong>matrice de masse</strong>. Recliquez dessus pour les soustraire.</p> 
+  </div>
+  <script>
+    iFrameResize({}, '#iframe-matrix-computation')
+  </script>
 
 .. raw:: html
 
