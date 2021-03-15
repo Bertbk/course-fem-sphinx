@@ -1,6 +1,6 @@
 var fem_loc2glob = new function() {
   var mesh_pts = [[0,0], [140,10], [100,80], [-10,120],[45,50], [150,130]];
-  var mesh_triangles= [[0,1,4], [4,1,2], [3, 4, 2], [3,0,4], [2,3,5], [1,2,5]];
+  var mesh_triangles= [[0,1,4], [4,1,2], [3, 4, 2], [3,0,4], [3,2,5], [2,1,5]];
 
   var r = 10.0; // radius of vert
   var max_x =0.0, max_y=0.0;
@@ -129,9 +129,9 @@ var fem_loc2glob = new function() {
         global_numbering();
       }
       else{
-          //Disable the (eventually) other triangle
+          //Disable every triangles
           svg.selectAll('.d3_triangle').attr('data-indexing', 'local');
-          svg.selectAll('.d3_triangle[data-active="1"]').attr('data-active', "0");          
+          svg.selectAll('.d3_triangle').attr('data-active', "0");
           global_numbering();
           //Activate this triangle t
           d3.select(t).attr('data-active', '1')
