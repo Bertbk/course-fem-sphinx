@@ -31,9 +31,6 @@ div.flex-container{
   flex-wrap: wrap;
 }
 
-div.flex-item{
-
-}
 
 div.app-matrix-computation{
 text-align:center;
@@ -153,4 +150,5 @@ div.app-matrix-computation table{
   background-size: 8px 3px;
   background-position: top left, top right, bottom left, bottom right;
   border-width: 0 3px;
+  padding-right: 6px;
 }
