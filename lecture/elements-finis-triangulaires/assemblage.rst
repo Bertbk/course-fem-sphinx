@@ -154,15 +154,6 @@ L'algorithme d'assemblage est alors complet ! Une version pseudo-code est prése
 
 
 
-.. raw:: html
-
-  <div id="app-matrix-computation" class="app-container">
-    <iframe id="iframe-matrix-computation" class="app-content" src='../../../_static/app/matrix-computation/index.html'></iframe>
-    <p><strong>Cliquez sur un triangle</strong> pour ajouter ses <strong>contributions élémentaires</strong> dans la <strong>matrice de masse</strong>. Recliquez dessus pour les soustraire.</p> 
-  </div>
-  <script>
-    iFrameResize({}, '#iframe-matrix-computation')
-  </script>
 
 .. raw:: html
 
