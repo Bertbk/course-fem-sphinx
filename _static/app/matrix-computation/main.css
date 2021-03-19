@@ -25,6 +25,15 @@ body{
   padding-bottom: 20px;
 }
 
+div.flex-container{
+  display:flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+div.flex-item{
+
+}
 
 div.app-matrix-computation{
 text-align:center;
@@ -70,11 +79,11 @@ div.app-matrix-computation svg g.all_triangles polygon[data-active="0"][data-alg
   div.app-matrix-computation svg g.all_triangles polygon[data-active="0"]{
     fill: var(--dark_triangle_inactive_color);
   }
-  div.app-matrix-computation table#fem-matrix tbody tr td[data-highlight="1"]{
+  div.app-matrix-computation table tbody tr td[data-highlight="1"]{
     background: var(--dark_triangle_active_color);
     color:var(--dark_background_color);
   }
-  div.app-matrix-computation table#fem-matrix{
+  div.app-matrix-computation table{
     background-image: linear-gradient(var(--dark_foreground_color), var(--dark_foreground_color)),
     linear-gradient(var(--dark_foreground_color),var(--dark_foreground_color)),
     linear-gradient(var(--dark_foreground_color),var(--dark_foreground_color)),
@@ -121,10 +130,10 @@ div.app-matrix-computation svg g.all_triangles polygon[data-active="0"][data-alg
     fill: var(--light_triangle_inactive_color);
   }
 
-  div.app-matrix-computation table#fem-matrix tbody tr td[data-highlight="1"]{
+  div.app-matrix-computation table tbody tr td[data-highlight="1"]{
     background: var(--light_triangle_active_color);
   }
-  div.app-matrix-computation table#fem-matrix{
+  div.app-matrix-computation table{
     background-image: linear-gradient(var(--light_foreground_color), var(--light_foreground_color)),
     linear-gradient(var(--light_foreground_color),var(--light_foreground_color)),
     linear-gradient(var(--light_foreground_color),var(--light_foreground_color)),
@@ -136,7 +145,7 @@ div.app-matrix-computation svg g.all_triangles polygon[data-active="0"][data-alg
 
 
 /* must be placed in the end*/
-div.app-matrix-computation table#fem-matrix{
+div.app-matrix-computation table{
   margin:auto;
   font-size:1.5em;
   padding-left:0.5em;

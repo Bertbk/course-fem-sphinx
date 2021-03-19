@@ -81,8 +81,7 @@ var fem_matrix_computation = new function() {
         .attr('cursor', 'unset')
     ;
   
-    //Built the matrix
-
+    //Built the matrices
     var matrix = d3.select("table#fem-matrix")
                 .append('tbody')
                 .selectAll('tr')
@@ -97,6 +96,11 @@ var fem_matrix_computation = new function() {
                 .attr('data-col', function(d,i){return i;})
                 .text(parseFloat(0).toFixed(2))
                 .attr('data-highlight', '0')
+    ;
+    var matrix_elem =   d3.select("table#fem-matrix-elem")
+                        .selectAll('tr')
+                        .selectAll('td')
+                        .text(parseFloat(0).toFixed(2))
     ;
 
     // FUNCTIONS
@@ -152,7 +156,21 @@ var fem_matrix_computation = new function() {
                 { new_coef = (matij + parseFloat(coef)).toFixed(2);}
                 else // Substract
                 {new_coef = (matij - parseFloat(coef)).toFixed(2);}
-                d3.selectAll("tr[data-row='"+I+"']").selectAll("td[data-col='"+J+"']").text(new_coef);
+                d3.select('table#fem-matrix').selectAll("tr[data-row='"+I+"']").selectAll("td[data-col='"+J+"']").text(new_coef);
+            }
+        }
+
+    }
+
+    function mass_elem(d){
+        var jac = 0;
+        if(d.length != 0){
+            jac=  compute_jacobian(d,scale);
+        }
+        for (let i = 0; i < 3; i++){
+            for (let j = 0; j < 3; j++){
+                var coef = (jac*mass_ref(i,j)).toFixed(2);
+                d3.select("table#fem-matrix-elem").selectAll("tr[data-row='"+i+"']").selectAll("td[data-col='"+j+"']").text(coef);
             }
         }
     }
@@ -177,6 +195,7 @@ var fem_matrix_computation = new function() {
                 d3.selectAll("tr[data-row='"+I+"']").selectAll("td[data-col='"+J+"']").attr('data-highlight', '1');
             }
         }
+        mass_elem(d);
     }
 
     function triangleHoverOut(d,i){
@@ -187,6 +206,7 @@ var fem_matrix_computation = new function() {
                 d3.selectAll("tr[data-row='"+I+"']").selectAll("td[data-col='"+J+"']").attr('data-highlight', '0');
             }
         }
+        mass_elem([]);
     }
 
     function pointHover(d,i){

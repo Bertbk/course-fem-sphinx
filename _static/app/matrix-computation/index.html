@@ -10,8 +10,35 @@
 <body>
 
   <div class="app-matrix-computation">
-    <h2>Matrice de Masse</h2>
-  <table id="fem-matrix"></table>
-</div>
+    <p>Cliquez sur les triangles pour ajouter leur contribution dans la matrice de masse.</p>
+    <div class="flex-container">
+      <div class="flex-item">
+        <h2>Matrice de Masse</h2>
+        <table id="fem-matrix"></table>
+      </div>
+      <div class="flex-item">
+        <h2>Matrice de Masse Élémentaire</h2>
+        <table id="fem-matrix-elem">
+          <tbody>
+            <tr data-row="0">
+              <td data-col="0"></td>
+              <td data-col="1"></td>
+              <td data-col="2"></td>
+            </tr>
+            <tr data-row="1">
+              <td data-col="0"></td>
+              <td data-col="1"></td>
+              <td data-col="2"></td>
+            </tr>
+            <tr data-row="2">
+              <td data-col="0"></td>
+              <td data-col="1"></td>
+              <td data-col="2"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
