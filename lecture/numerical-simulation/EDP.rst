@@ -42,6 +42,8 @@ Nous verrons dans ce cours que ce problème admet une solution (ouf) et qui est,
 Diffusion d'une onde Wifi dans un appartement (Projet 2017-2018)
 ----------------------------------------------------------------
 
+Cet exemple est tiré du :ref:`projet proposé en 2017 - 2018 <projet-wifi>`.
+
 Modèle 
 ++++++
 
@@ -67,7 +69,7 @@ La source :math:`f` est ici spatiale, dans le cas d'une source ponctuelle de cen
 
 .. math:: \Delta E + k^2E = -\delta_{\mathbf{s}}.
 
-Les ondes Wi-Fi  qui suivent la [norme IEEE 802.11g](https://fr.wikipedia.org/wiki/IEEE_802.11) sont émises à une fréquence variant de 2.4GHz à 2.5GHz. 
+Les ondes Wi-Fi  qui suivent la `norme IEEE 802.11g <https://fr.wikipedia.org/wiki/IEEE_802.11>`_ sont émises à une fréquence variant de 2.4GHz à 2.5GHz. 
 L'appartement tout entier dans lequel est situé notre routeur est noté :math:`\Omega`. Les murs sont supposés être du même matériau : du placo-plâtre. Le domaine :math:`\Omega = \Omega_a\cup\Omega_{\text{mur}}` est décomposé en deux domaines, :math:`\Omega_a` pour l'air et :math:`\Omega_{\text{mur}}` pour les murs.
 
 Une modélisation possible de ce problème est le système d'équations suivant :
@@ -94,7 +96,7 @@ où nous avons :
     \end{array}
   \right.
 
-Notez que ces valeurs sont des valeurs physiques et ne sont pas une lubie mathématique.
+  Notez que ces valeurs sont des valeurs physiques et ne sont pas une lubie mathématique.
 
 - La dernière équation, :math:`\dn E - \imath k n E = 0` est une **condition de Fourier-Robin** (ou *de Fourier* ou *de Robin* ou même *d'impédance*). Elle a pour but *d'absorber* (avec un succès mitigé) les ondes sortantes, mimant un mur "transparent" (sans réflexion d'ondes). 
 
@@ -103,7 +105,7 @@ Résolution numérique
 
 La résolution d'un tel problème dans un appartement deux pièces avec cuisine séparée (grand luxe Parisien) avec la méthode des éléments finis donne alors ce résultat :
 
-.. figure:: /img/wifi/wifi.*
+.. figure:: /img/projet-wifi/wifi/wifi.*
   :figwidth: 100%
   :width: 100%
   :alt: Propagation d'une onde Wi-Fi dans un appartement
