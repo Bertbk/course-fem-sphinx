@@ -80,7 +80,7 @@ var fem_jacobian = new function() {
       .attr('y', '0')
       .attr('text-anchor', 'middle')
       .attr('dy',  "0.3em")
-      .text(function(d,i){return i;})
+      .text(function(d,i){return i+1;})
       .attr('font-size', '0.5em')
       ;
 
