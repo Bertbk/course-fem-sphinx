@@ -1,25 +1,53 @@
-
+/*Dark mode*/
 @media (prefers-color-scheme: dark) {
-  body{
+  body:not([data-theme="light"]){
     color:hsla(0,0%,100%,0.8509803921568627);
     background-color: #131416;
   }
+  body:not([data-theme="light"])
   div.app-weak-formulation svg text{
     fill:white;
   }
+  body:not([data-theme="light"])
   div.app-weak-formulation svg .gamma{
     stroke: ghostwhite;
   }
 }
 
+body[data-theme="dark"]{
+  color:hsla(0,0%,100%,0.8509803921568627);
+  background-color: #131416;
+}
+body[data-theme="dark"]
+div.app-weak-formulation svg text{
+  fill:white;
+}
+body[data-theme="dark"]
+div.app-weak-formulation svg .gamma{
+  stroke: ghostwhite;
+}
+
+/*light mode*/
 @media (prefers-color-scheme: light) {
+  body:not([data-theme="dark"])
   div.app-weak-formulation svg .gamma{
     stroke: black;
   }
-  body{
+  body:not([data-theme="dark"]){
     color:black;
   }
 }
+body[data-theme="light"]
+div.app-weak-formulation svg .gamma{
+  stroke: black;
+}
+body[data-theme="light"]{
+  color:black;
+}
+
+/* Common */
+
+
 body{
   max-width:810px;
   margin:auto;
