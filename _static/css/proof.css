@@ -107,40 +107,85 @@ div.proof-type-proof > div.proof-title.open:after {
   }
   
 
-/* LIGHT */
+/* Light mode (either through system choice or browser)*/
 @media(prefers-color-scheme: light) {
+  body:not([data-theme="dark"])
   div.proof div.proof-content {
     background-color: var(--color-background-secondary);
   }
-
+  body:not([data-theme="dark"])
   div.proof.proof-type-definition div.proof-content {
     background-color: #f5f5ff;
-
   }
+  body:not([data-theme="dark"])
   div.proof.proof-type-theorem div.proof-content {
     background-color: #fff0f3;
   }
+  body:not([data-theme="dark"])
   div.proof.proof-type-proposition div.proof-content {
     background-color: #fcf4e8;
   }
+  body:not([data-theme="dark"])
   div.proof.proof-type-corollary div.proof-content {
     background-color: #f2f6f2;
   }  
+  body:not([data-theme="dark"])
   div.proof.proof-type-lemma div.proof-content {
     background-color: #f0e7ed;
   }
-div.proof.proof-type-remark div.proof-content {
+  body:not([data-theme="dark"])
+  div.proof.proof-type-remark div.proof-content {
     background-color: #f6fbfe;
   }
-div.proof.proof-type-exercise div.proof-content {
+  body:not([data-theme="dark"])
+  div.proof.proof-type-exercise div.proof-content {
     background-color: #fff7f0;
+  }
 }
+
+body[data-theme="light"]
+div.proof div.proof-content {
+  background-color: var(--color-background-secondary);
+}
+body[data-theme="light"]
+div.proof.proof-type-definition div.proof-content {
+  background-color: #f5f5ff;
+}
+body[data-theme="light"]
+div.proof.proof-type-theorem div.proof-content {
+  background-color: #fff0f3;
+}
+body[data-theme="light"]
+div.proof.proof-type-proposition div.proof-content {
+  background-color: #fcf4e8;
+}
+body[data-theme="light"]
+div.proof.proof-type-corollary div.proof-content {
+  background-color: #f2f6f2;
+}  
+body[data-theme="light"]
+div.proof.proof-type-lemma div.proof-content {
+  background-color: #f0e7ed;
+}
+body[data-theme="light"]
+div.proof.proof-type-remark div.proof-content {
+  background-color: #f6fbfe;
+}
+body[data-theme="light"]
+div.proof.proof-type-exercise div.proof-content {
+  background-color: #fff7f0;
+}
+
+
+/* Dark mode */
+
+body[data-theme="dark"] div.proof div.proof-content {
+  background-color: var(--color-background-secondary);
 }
 
 @media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"])
   div.proof div.proof-content {
     background-color: var(--color-background-secondary);
   }
 }
-
-/* Dark/Light */
