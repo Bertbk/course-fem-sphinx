@@ -4,7 +4,11 @@
 
 // Namespacing
 var fem_basis_function = new function() {
-    
+        //Dark/Light mode : propage from parent html
+        document.body.dataset.theme= localStorage.getItem("theme");
+        window.addEventListener('storage', () => {
+            document.body.dataset.theme= localStorage.getItem("theme");
+        });
     var colormap_step = 10;
     var viridis = d3.scaleSequential().domain([0,colormap_step])
     .interpolator(d3.interpolateViridis);

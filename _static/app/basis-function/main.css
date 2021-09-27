@@ -9,54 +9,125 @@ div.app-basis-function{
   --light_value_one: var(--light_value_one);
 }
 
-
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"])
   div.app-basis-function{
     background-color: var(--dark_background_color);
   }
+  body:not([data-theme="light"])
   div.app-basis-function p{
     color: var(--dark_foreground_color);
   }
+  body:not([data-theme="light"])
   div.app-basis-function svg text.colormap-text{
     fill: var(--dark_foreground_color);
   }
+  body:not([data-theme="light"])
   div.app-basis-function svg g.all_pts[data-active="0"] g.d3-vertex-BF circle{
     fill: var(--dark_background_color);
     stroke: var(--dark_foreground_color);
   }
+  body:not([data-theme="light"])
   div.app-basis-function svg g.all_pts[data-active="1"] g.d3-vertex-BF circle[data-value="0"]{
     fill: var(--dark_value_zero);
     stroke: var(--dark_foreground_color);
   }
+  body:not([data-theme="light"])
   div.app-basis-function svg g.all_pts[data-active="1"] g.d3-vertex-BF circle[data-value="1"]{
     fill:var(--dark_value_one);
     stroke: var(--dark_foreground_color);
   }
+  body:not([data-theme="light"])
   div.app-basis-function svg polygon.d3-triangle{
     stroke: var(--dark_foreground_color);
   }
 }
-
+body[data-theme="dark"]
+div.app-basis-function{
+  background-color: var(--dark_background_color);
+}
+body[data-theme="dark"]
+div.app-basis-function p{
+  color: var(--dark_foreground_color);
+}
+body[data-theme="dark"]
+div.app-basis-function svg text.colormap-text{
+  fill: var(--dark_foreground_color);
+}
+body[data-theme="dark"]
+div.app-basis-function svg g.all_pts[data-active="0"] g.d3-vertex-BF circle{
+  fill: var(--dark_background_color);
+  stroke: var(--dark_foreground_color);
+}
+body[data-theme="dark"]
+div.app-basis-function svg g.all_pts[data-active="1"] g.d3-vertex-BF circle[data-value="0"]{
+  fill: var(--dark_value_zero);
+  stroke: var(--dark_foreground_color);
+}
+body[data-theme="dark"]
+div.app-basis-function svg g.all_pts[data-active="1"] g.d3-vertex-BF circle[data-value="1"]{
+  fill:var(--dark_value_one);
+  stroke: var(--dark_foreground_color);
+}
+body[data-theme="dark"]
+div.app-basis-function svg polygon.d3-triangle{
+  stroke: var(--dark_foreground_color);
+}
+/* Light mode */
 @media (prefers-color-scheme: light) {
+  body:not([data-theme="dark"])
   div.app-basis-function p{
     color: var(--light_foreground_color);
   }
+  body:not([data-theme="dark"])
   div.app-basis-function svg text.colormap-text{
     fill: var(--light_foreground_color);
   }
+  body:not([data-theme="dark"])
   div.app-basis-function svg g.all_pts[data-active="0"] g.d3-vertex-BF circle{
     fill: var(--light_background_color);
     stroke: var(--light_foreground_color);
   }
+  body:not([data-theme="dark"])
   div.app-basis-function svg g.all_pts[data-active="1"] g.d3-vertex-BF circle[data-value="0"]{
     fill: var(--light_value_zero);
     stroke: var(--light_foreground_color);
   }
+  body:not([data-theme="dark"])
   div.app-basis-function svg g.all_pts[data-active="1"] g.d3-vertex-BF circle[data-value="1"]{
     fill:var(--light_value_one);
     stroke: var(--light_foreground_color);
   }
+  body:not([data-theme="dark"])
   div.app-basis-function svg polygon.d3-triangle{
     stroke: var(--light_foreground_color);
   }
+}
+body[data-theme="light"]
+div.app-basis-function p{
+  color: var(--light_foreground_color);
+}
+body[data-theme="light"]
+div.app-basis-function svg text.colormap-text{
+  fill: var(--light_foreground_color);
+}
+body[data-theme="light"]
+div.app-basis-function svg g.all_pts[data-active="0"] g.d3-vertex-BF circle{
+  fill: var(--light_background_color);
+  stroke: var(--light_foreground_color);
+}
+body[data-theme="light"]
+div.app-basis-function svg g.all_pts[data-active="1"] g.d3-vertex-BF circle[data-value="0"]{
+  fill: var(--light_value_zero);
+  stroke: var(--light_foreground_color);
+}
+body[data-theme="light"]
+div.app-basis-function svg g.all_pts[data-active="1"] g.d3-vertex-BF circle[data-value="1"]{
+  fill:var(--light_value_one);
+  stroke: var(--light_foreground_color);
+}
+body[data-theme="light"]
+div.app-basis-function svg polygon.d3-triangle{
+  stroke: var(--light_foreground_color);
 }
