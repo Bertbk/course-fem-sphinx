@@ -88,13 +88,13 @@ où nous avons :
 - :math:`\delta_{\text{routeur}}` : position du routeur. Nous l'avons placé dans le salon.
 - :math:`n` : *fonction de contraste* qui prend en compte les caractéristiques électromagnétiques du mur et de l'air :
 
-.. math:: n(\xx) =
-  \left\{
-    \begin{array}{l l l}
-      1 & \text{ si } \xx\in\Omega_a & (\textit{i.e. } \xx \text{ est dans l'air}),\\
-      2.4 & \text{ si } \xx\in\Omega_{\text{mur}} & (\textit{i.e. } \xx \text{ est dans le mur}).
-    \end{array}
-  \right.
+  .. math:: n(\xx) =
+    \left\{
+      \begin{array}{l l l}
+        1 & \text{ si } \xx\in\Omega_a & (\textit{i.e. } \xx \text{ est dans l'air}),\\
+        2.4 & \text{ si } \xx\in\Omega_{\text{mur}} & (\textit{i.e. } \xx \text{ est dans le mur}).
+      \end{array}
+    \right.
 
   Notez que ces valeurs sont des valeurs physiques et ne sont pas une lubie mathématique.
 
