@@ -49,41 +49,53 @@ div.app-matrix-computation svg g.all_triangles polygon[data-active="0"][data-alg
 }
 
 
-
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"])
   div.app-matrix-computation{
     background-color: var(--dark_background_color);
   }
+  body:not([data-theme="light"])
   div.app-matrix-computation {
     color: var(--dark_foreground_color);
   }
+  body:not([data-theme="light"])
   div.app-matrix-computation svg g.all_triangles polygon.d3_triangle{
     stroke: var(--dark_stroke_color);
   }
+  body:not([data-theme="light"])
   div.app-matrix-computation svg g.all_pts circle{
     fill: var(--dark_background_color);
     stroke: var(--dark_stroke_color);
   }
+  body:not([data-theme="light"])
   div.app-matrix-computation svg g.all_pts text{
     fill: var(--dark_foreground_color);
   }
+  body:not([data-theme="light"])
   div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="stop"] circle{
     fill: var(--dark_background_color);
   }
+  body:not([data-theme="light"])
   div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="start"] circle{
     fill: var(--dark_point_local_color);
   }
+  body:not([data-theme="light"])
   div.app-matrix-computation svg g.all_triangles polygon[data-active="1"],
+  body:not([data-theme="light"])
   div.app-matrix-computation svg g.all_triangles polygon[data-active="0"]:hover{
       fill: var(--dark_triangle_active_color);
   }
+  body:not([data-theme="light"])
   div.app-matrix-computation svg g.all_triangles polygon[data-active="0"]{
     fill: var(--dark_triangle_inactive_color);
   }
+  body:not([data-theme="light"])
   div.app-matrix-computation table#fem-matrix tbody tr td[data-highlight="1"]{
     background: var(--dark_table_highlight_color);
     color: var(--dark_table_highlight_txt_color);
   }
+  body:not([data-theme="light"])
   div.app-matrix-computation table{
     background-image: linear-gradient(var(--dark_foreground_color), var(--dark_foreground_color)),
     linear-gradient(var(--dark_foreground_color),var(--dark_foreground_color)),
@@ -91,50 +103,116 @@ div.app-matrix-computation svg g.all_triangles polygon[data-active="0"][data-alg
     linear-gradient(var(--dark_foreground_color),var(--dark_foreground_color));
     border: solid var(--dark_foreground_color);
   }
-
+}
+body[data-theme="dark"]
+div.app-matrix-computation{
+  background-color: var(--dark_background_color);
+}
+body[data-theme="dark"]
+div.app-matrix-computation {
+  color: var(--dark_foreground_color);
+}
+body[data-theme="dark"]
+div.app-matrix-computation svg g.all_triangles polygon.d3_triangle{
+  stroke: var(--dark_stroke_color);
+}
+body[data-theme="dark"]
+div.app-matrix-computation svg g.all_pts circle{
+  fill: var(--dark_background_color);
+  stroke: var(--dark_stroke_color);
+}
+body[data-theme="dark"]
+div.app-matrix-computation svg g.all_pts text{
+  fill: var(--dark_foreground_color);
+}
+body[data-theme="dark"]
+div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="stop"] circle{
+  fill: var(--dark_background_color);
+}
+body[data-theme="dark"]
+div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="start"] circle{
+  fill: var(--dark_point_local_color);
+}
+body[data-theme="dark"]
+div.app-matrix-computation svg g.all_triangles polygon[data-active="1"],
+body[data-theme="dark"]
+div.app-matrix-computation svg g.all_triangles polygon[data-active="0"]:hover{
+    fill: var(--dark_triangle_active_color);
+}
+body[data-theme="dark"]
+div.app-matrix-computation svg g.all_triangles polygon[data-active="0"]{
+  fill: var(--dark_triangle_inactive_color);
+}
+body[data-theme="dark"]
+div.app-matrix-computation table#fem-matrix tbody tr td[data-highlight="1"]{
+  background: var(--dark_table_highlight_color);
+  color: var(--dark_table_highlight_txt_color);
+}
+body[data-theme="dark"]
+div.app-matrix-computation table{
+  background-image: linear-gradient(var(--dark_foreground_color), var(--dark_foreground_color)),
+  linear-gradient(var(--dark_foreground_color),var(--dark_foreground_color)),
+  linear-gradient(var(--dark_foreground_color),var(--dark_foreground_color)),
+  linear-gradient(var(--dark_foreground_color),var(--dark_foreground_color));
+  border: solid var(--dark_foreground_color);
 }
 
+
+/* Light mode */
 @media (prefers-color-scheme: light) {
+  body:not([data-theme="dark"])
   div.app-matrix-computation p{
     color: var(--light_foreground_color);
   }
+  body:not([data-theme="dark"])
   div.app-matrix-computation{
     color: var(--light_foreground_color);
   }
+  body:not([data-theme="dark"])
   div.app-matrix-computation svg g.all_triangles polygon.d3_triangle{
     stroke: var(--light_stroke_color);
   }
+  body:not([data-theme="dark"])
   div.app-matrix-computation svg g.all_pts circle{
     fill: var(--light_background_color);
     stroke: var(--light_stroke_color);
   }
+  body:not([data-theme="dark"])
   div.app-matrix-computation svg g.all_pts text{
     fill: var(--light_foreground_color);
   }
+  body:not([data-theme="dark"])
   div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="stop"] circle{
     fill: var(--light_background_color);
   }
+  body:not([data-theme="dark"])
   div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="stop"] text{
     fill: var(--light_point_txt_color);
   }
+  body:not([data-theme="dark"])
   div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="start"] circle{
     fill: var(--light_point_local_color);
   }
+  body:not([data-theme="dark"])
   div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="start"] text{
     fill: var(--light_point_local_txt_color);
   }
+  body:not([data-theme="dark"])
   div.app-matrix-computation svg g.all_triangles polygon[data-active="1"],
+  body:not([data-theme="dark"])
   div.app-matrix-computation svg g.all_triangles polygon[data-active="0"]:hover{
       fill: var(--light_triangle_active_color);
   }
+  body:not([data-theme="dark"])
   div.app-matrix-computation svg g.all_triangles polygon[data-active="0"]{
     fill: var(--light_triangle_inactive_color);
   }
-
+  body:not([data-theme="dark"])
   div.app-matrix-computation table#fem-matrix tbody tr td[data-highlight="1"]{
     background: var(--light_table_highlight_color);
     color: var(--light_table_highlight_txt_color);
   }
+  body:not([data-theme="dark"])
   div.app-matrix-computation table{
     background-image: linear-gradient(var(--light_foreground_color), var(--light_foreground_color)),
     linear-gradient(var(--light_foreground_color),var(--light_foreground_color)),
@@ -142,9 +220,67 @@ div.app-matrix-computation svg g.all_triangles polygon[data-active="0"][data-alg
     linear-gradient(var(--light_foreground_color),var(--light_foreground_color));
     border: solid var(--light_foreground_color);
   }
-
 }
-
+body[data-theme="light"]
+div.app-matrix-computation p{
+  color: var(--light_foreground_color);
+}
+body[data-theme="light"]
+div.app-matrix-computation{
+  color: var(--light_foreground_color);
+}
+body[data-theme="light"]
+div.app-matrix-computation svg g.all_triangles polygon.d3_triangle{
+  stroke: var(--light_stroke_color);
+}
+body[data-theme="light"]
+div.app-matrix-computation svg g.all_pts circle{
+  fill: var(--light_background_color);
+  stroke: var(--light_stroke_color);
+}
+body[data-theme="light"]
+div.app-matrix-computation svg g.all_pts text{
+  fill: var(--light_foreground_color);
+}
+body[data-theme="light"]
+div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="stop"] circle{
+  fill: var(--light_background_color);
+}
+body[data-theme="light"]
+div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="stop"] text{
+  fill: var(--light_point_txt_color);
+}
+body[data-theme="light"]
+div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="start"] circle{
+  fill: var(--light_point_local_color);
+}
+body[data-theme="light"]
+div.app-matrix-computation svg g.all_pts g.d3_point[data-algorithm="start"] text{
+  fill: var(--light_point_local_txt_color);
+}
+body[data-theme="light"]
+div.app-matrix-computation svg g.all_triangles polygon[data-active="1"],
+body[data-theme="light"]
+div.app-matrix-computation svg g.all_triangles polygon[data-active="0"]:hover{
+    fill: var(--light_triangle_active_color);
+}
+body[data-theme="light"]
+div.app-matrix-computation svg g.all_triangles polygon[data-active="0"]{
+  fill: var(--light_triangle_inactive_color);
+}
+body[data-theme="light"]
+div.app-matrix-computation table#fem-matrix tbody tr td[data-highlight="1"]{
+  background: var(--light_table_highlight_color);
+  color: var(--light_table_highlight_txt_color);
+}
+body[data-theme="light"]
+div.app-matrix-computation table{
+  background-image: linear-gradient(var(--light_foreground_color), var(--light_foreground_color)),
+  linear-gradient(var(--light_foreground_color),var(--light_foreground_color)),
+  linear-gradient(var(--light_foreground_color),var(--light_foreground_color)),
+  linear-gradient(var(--light_foreground_color),var(--light_foreground_color));
+  border: solid var(--light_foreground_color);
+}
 
 /* must be placed in the end*/
 div.app-matrix-computation table{
