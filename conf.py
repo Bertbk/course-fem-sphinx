@@ -104,17 +104,17 @@ html_js_files = [
 # Additional stuff for the LaTeX preamble.
 latex_engine = 'lualatex'
 latex_elements = {}
-latex_elements['preamble'] = '\usepackage{amsmath}\n\usepackage{amssymb}\n\usepackage{amsthm}\n'
+latex_elements['preamble'] = '\\usepackage{amsmath}\n\\usepackage{amssymb}\n\\usepackage{amsthm}\n'
 latex_elements['babel'] = '\\usepackage{babel}'
 latex_additional_files = ['mystyle.sty', 'img/normal/normal.tex']
-latex_elements['extrapackages'] = '\usepackage{tikz}\n\usetikzlibrary{arrows, calc, fit}\n\usepackage{standalone}\n\usepackage{mathrsfs}\n\usepackage{mystyle}'
+latex_elements['extrapackages'] = '\\usepackage{tikz}\n\\usetikzlibrary{arrows, calc, fit}\n\\usepackage{standalone}\n\\usepackage{mathrsfs}\n\\usepackage{mystyle}'
 latex_toplevel_sectioning = "part"
 
 
 # copy to mathjax
-mathjax_config = {                  
-    "TeX": {                        
-        "Macros": {
+mathjax3_config = {                  
+    "tex": {                        
+        "macros": {
             'dsp' : '{\\displaystyle}',
             'gD': '{g_D}',
             'gN': '{g_N}',
