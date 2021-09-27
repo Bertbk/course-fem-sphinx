@@ -1,4 +1,10 @@
 var fem_loc2glob = new function() {
+    //Dark/Light mode : propage from parent html
+    document.body.dataset.theme= localStorage.getItem("theme");
+    window.addEventListener('storage', () => {
+        document.body.dataset.theme= localStorage.getItem("theme");
+    });
+
   var mesh_pts = [[0,0], [140,10], [100,80], [-10,120],[45,50], [150,130]];
   var mesh_triangles= [[0,1,4], [4,1,2], [3, 4, 2], [3,0,4], [3,2,5], [2,1,5]];
 

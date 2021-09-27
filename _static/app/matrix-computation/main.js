@@ -2,8 +2,6 @@ var fem_matrix_computation = new function() {
     //Dark/Light mode : propage from parent html
     document.body.dataset.theme= localStorage.getItem("theme");
     window.addEventListener('storage', () => {
-        // Lorsque le stockage local change, vider la liste sur
-        // la console.
         document.body.dataset.theme= localStorage.getItem("theme");
     });
     
