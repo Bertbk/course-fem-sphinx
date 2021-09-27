@@ -1,4 +1,9 @@
 var fem_jacobian = new function() {
+    //Dark/Light mode : propage from parent html
+    document.body.dataset.theme= localStorage.getItem("theme");
+    window.addEventListener('storage', () => {
+        document.body.dataset.theme= localStorage.getItem("theme");
+    });
   var scale = 10000;
   var tol = 0.005;
   var mesh_pts = [
