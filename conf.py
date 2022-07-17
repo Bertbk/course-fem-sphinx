@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Maillage et Éléments Finis'
-copyright = '2020, Bertrand Thierry'
+copyright = '2022, Bertrand Thierry'
 author = 'Bertrand Thierry'
 
 
