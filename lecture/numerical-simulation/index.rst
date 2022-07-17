@@ -4,10 +4,9 @@ Simulation Numérique
 
 .. epigraph::
 
-  This is the problem of all great revelations: their significance so often exceeds the frame of our comprehension. We understand only after, always after. Not simply when it is too late, but precisely because it is too late.
+  La dictature s'épanouit sur le terreau de l'ignorance.
 
-  -- R. Scott Bakker - *The Darkness That Comes Before: Book 1 of the Prince of Nothing* (Titre français : *Autrefois, les Ténèbres*), 
-
+  -- G. Orwell - *1984*
 
 
 .. toctree::

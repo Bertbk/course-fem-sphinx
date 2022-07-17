@@ -4,9 +4,11 @@ Conditions aux bords
 
 .. epigraph::
 
-  La dictature s'épanouit sur le terreau de l'ignorance
+  Thug: Where is the money Lebowski?
+  
+  The Dude: It's uh... uh... it's down there somewhere, let me take another look.
 
-  -- G. Orwell - *1984*
+  -- The Big Lebowski (movie)
 
 
 .. toctree::
