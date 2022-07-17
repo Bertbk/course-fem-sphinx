@@ -7,16 +7,12 @@
 Notes de cours
 ##############
 
-Remarques préliminaires
-=======================
+Remarques préliminaires : 
 
-Si la théorie mathématique ne vous branche pas, vous pouvez passer directement à la section pratique et revenir plus tard sur la théorie, pour comprendre pourquoi tout cela fonctionne.
+* Si la théorie mathématique ne vous branche pas, vous pouvez passer directement à la section pratique et revenir plus tard sur la théorie, pour comprendre pourquoi tout cela fonctionne.
 
-Dans ce cours, un scalaire sera écrit normalement (:math:`x`) tandis qu'un vecteur sera noté en gras (:math:`\xx=(x,y)`). Nous commençons la numérotation par 1 et non par 0. 
+* Dans ce cours, un scalaire sera écrit normalement (:math:`x`) tandis qu'un vecteur sera noté en gras (:math:`\xx=(x,y)`). Nous commençons la numérotation par 1 et non par 0. 
 
-
-Table des matières
-==================
 
 .. toctree::
    :numbered:
