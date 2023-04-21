@@ -30,7 +30,7 @@ author = 'Bertrand Thierry'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 
-extensions = ["sphinx_proof", "sphinx_exercise", "sphinx_togglebutton"]
+extensions = ["sphinx_proof", "sphinx_exercise", "sphinx_togglebutton", "sphinx_copybutton"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
