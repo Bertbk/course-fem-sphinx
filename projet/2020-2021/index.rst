@@ -62,6 +62,6 @@ En outre, **votre dépôt doit contenir** :
 2. Un court fichier **README.md** facilitant sa compréhension, répondant notamment aux questions : "comment lance-t-on vos programmes ?" et "que doit-on obtenir ?" (exemple : "*Exécutez 'main.py' et vous devez obtenir la même image que 'solution.png' qui résout le problème méga compliqué*")
 3. Ajoutez à votre dépôt une **image** de la solution que vous avez obtenue (en PNG (pas très grosse svp !) et surtout pas en JPG). Vous pouvez même afficher l'image dans le fichier :code:`README.md`.
 
-.. proof:remark::
+.. prf:remark::
 
   Pour faire simple, je dois pouvoir télécharger votre dépôt, lancer un fichier, et voir la solution, le tout sans avoir à réfléchir de mon côté :-)

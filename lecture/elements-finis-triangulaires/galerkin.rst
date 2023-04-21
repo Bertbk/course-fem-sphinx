@@ -42,11 +42,11 @@ On espère alors que cette solution approchée :math:`\uh` soit une bonne estima
 
 Remarquons tout d'abord que la formulation faible :eq:`eq3-pbmodelh` admet une unique solution.
 
-.. proof:lemma::
+.. prf:lemma::
 
   Le problème "approché" :eq:`eq3-pbmodelh` admet une unique solution.
 
-.. proof:proof::
+.. prf:proof::
 
     L'espace :math:`\Vh\subset V` est un sous-espace de Hilbert de :math:`V`, nous pouvons donc appliquer le Théorème de Lax-Milgram, dont les hypothèses sur :math:`a(\cdot,\cdot)` et :math:`\ell(\cdot)` sont toujours vérifiées sur :math:`\Vh`.
 
@@ -57,11 +57,11 @@ Travailler dans un espace de dimension finie présente un très grand avantage :
 - `Pardiso <https://software.intel.com/en-us/mkl-developer-reference-fortran-intel-mkl-pardiso-parallel-direct-sparse-solver-interface>`_ : solveur direct parallèle privatif d'Intel
 - `PETSc <https://www.mcs.anl.gov/petsc/>`_ : Bibliothèque contenant entres autres de nombreux solveurs directs (dont MUMPS) ou itératifs (GMRES, ...)
 
-.. proof:lemma::
+.. prf:lemma::
 
   Soit :math:`V` un espace de Hilbert et :math:`\Vh` un sous espace de dimension finie. Soit :math:`a(\cdot,\cdot)` une forme bilinéaire continue et coercive sur :math:`V`, :math:`\ell(\cdot)` une forme linéaire continue sur :math:`V`. Le problème approché :eq:`eq3-pbmodelh` admet une unique solution. De plus, cette solution s'obtient par la résolution d'un système linéaire de matrice définie positive.
 
-.. proof:proof::
+.. prf:proof::
 
   Le problème  :eq:`eq3-pbmodelh` admet toujours une unique solution d'après le Théorème de Lax-Milgram. Comme :math:`\Vh` est de dimension finie, notée :math:`\Nh`, nous pouvons en extraire une base :math:`(\mphi_{1}, \mphi_{2}, \ldots, \mphi_{\Nh})` et écrire
 
@@ -100,7 +100,7 @@ Travailler dans un espace de dimension finie présente un très grand avantage :
   .. math:: \forall W_h\in\Rb^{\Nh}\setminus\{0\}, \qquad \PS{W_h}{A_h W_h} > 0.
 
 
-.. proof:remark::
+.. prf:remark::
 
   Quelques remarques :
 
@@ -108,6 +108,6 @@ Travailler dans un espace de dimension finie présente un très grand avantage :
   - La **coercivité** d'une forme :math:`a(\cdot,\cdot)` est, en quelque sorte, l'équivalent de la **définie positivité** de sa matrice. La coercivité s'applique au domaine "continu" (les *fonctions* ou *opérateurs*) tandis que la définie positivité est un terme appliqué au domaine "algébrique" (les *matrices* (infinies ou non)).  
   - L'hypothèse de Lax-Milgram sur la **coercivité** de :math:`a(\cdot,\cdot)` est une **hypothèse forte** puisque la matrice :math:`A_h` discrétisant :math:`a(\cdot,\cdot)` doit être **définie positive** !
 
-.. proof:remark::
+.. prf:remark::
 
   La méthode des différences finies discrétise l'opérateur différentiel (:math:`\Delta`) tandis que les éléments finis (issue de la méthode de Galerkin) approche l'espace fonctionnel. C'est une différence majeure ! 

@@ -37,7 +37,7 @@ Construisez une fonction :code:`mass_elem` prenant en argument un :code:`Segment
 
 Cette fonction calcule [les coefficients de la matrice élémentaire](http://bthierry.pages.math.cnrs.fr/course/fem/implementation_matrices_elementaires/) de l'élément (selon son type) et les ajoute à :code:`triplets`.
 
-.. proof:remark::
+.. prf:remark::
 
   Pour un élément donné, son type (:code:`Segment` ou :code:`Triangle`) est donné par son paramètre :code:`name`. 
 
@@ -54,7 +54,7 @@ Nous proposons de construire une fonction qui calcule toutes les contributions �
       #...
 
 
-.. proof:exercise::
+.. exercise::
   
   Au boulot ! Assurez vous que la matrice de masse globale :math:`M` associée au domaine :math:`\Omega` vérifie la relation suivante
 
@@ -71,7 +71,7 @@ Pour les matrices de rigidité, il faut calculer des quantités supplémentaires
   def gradPhi(element, i:int):
       # ...
 
-.. proof:exercise::
+.. exercise::
 
   Ajoutez les fonctionnalités dans votre code permettant de calculer les contributions élémentaires des matrices de rigidité puis la matrice globale. 
 

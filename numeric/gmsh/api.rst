@@ -11,7 +11,7 @@ Le but est d'afficher une fonction de forme :math:`\mathbb{P}^1-` Lagrange, c'es
 .. math:: \forall I,J = 0,\ldots, N_s-1,\qquad \varphi_I(\mathbf{s}_J) = \delta_{IJ}
 
 
-.. proof:exercise::
+.. exercise::
 
   À l'aide de l'API Python de GMSH :
 
@@ -41,7 +41,7 @@ Pour obtenir les coordonnées des points d'un groupe :code:`Physical` donné, vo
     """
 
 
-.. proof:remark::
+.. prf:remark::
 
   - GMSH commence la numérotation des sommets à 1
   - La liste retournée par :code:`getNodesForPhysicalGroup` n'est pas triée
@@ -52,7 +52,7 @@ Interpolation :math:`\Pb^1`
 
 Prenons une fonction f définie sur :math:`\Omega`. Une interpolation possible de f sur l'espace :math:`\mathbb{P}^1` est la fonction :math:`\Pi_hf` telle que :math:`\Pi_hf(\mathbf{s}) = f(\mathbf{s})` pour chaque sommet :math:`\mathbf{s}` du maillage.
 
-.. proof:exercise::
+.. exercise::
 
   Construisez l'interpollée :math:`\Pi_hf` de la fonction :math:`f(x,y) = \sin(\pi x)\sin(\pi y)`
 

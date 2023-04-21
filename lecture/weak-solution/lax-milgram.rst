@@ -4,7 +4,7 @@ Théorème de Lax-Milgram
 
 Nous pouvons maintenant énoncer le théorème de Lax-Milgram (**à connaître par cœur**).
 
-.. proof:theorem:: de Lax-Milgram
+.. prf:theorem:: de Lax-Milgram
 
   Soit :math:`V` un espace de Hilbert de produit scalaire :math:`\PS{\cdot}{\cdot}` et de norme :math:`\norm{\cdot}`, et soit la formulation faible suivante
 
@@ -22,23 +22,23 @@ Nous pouvons maintenant énoncer le théorème de Lax-Milgram (**à connaître p
 
   1. :math:`\ell` est une forme linéaire continue sur :math:`V` :
   
-    .. math::  \exists C>0 / \forall v \in V, \quad |\ell(v)| \leq C\norm{v}.
+  .. math::  \exists C>0 / \forall v \in V, \quad |\ell(v)| \leq C\norm{v}.
 
   2. :math:`a(\cdot,\cdot)` est une forme biquilinéaire  sur :math:`V\times V`. 
   3. :math:`a(\cdot,\cdot)` est continue : 
 
-    .. math::   \exists M>0 / \forall (u,v) \in V\times V, \quad \abs{a(u,v)} \leq M\norm{u}\norm{v}.
+  .. math::   \exists M>0 / \forall (u,v) \in V\times V, \quad \abs{a(u,v)} \leq M\norm{u}\norm{v}.
 
   4. :math:`a(\cdot,\cdot)` est coercive (ou elliptique) :
 
-    .. math::  \exists \alpha > 0 / \forall u \in V, \quad a(u,u) \geq \alpha\norm{u}^2.
+  .. math::  \exists \alpha > 0 / \forall u \in V, \quad a(u,u) \geq \alpha\norm{u}^2.
 
   Alors la formulation faible :eq:`eq-fvlax` admet une unique solution. De plus cette solution dépend continûment de la forme linéaire :math:`\ell` :
 
   .. math::  \norm{u} \leq \frac{M}{\alpha}C
 
 
-.. proof:proof::
+.. prf:proof::
   
   Comme il est question de forme linéaire, nous allons utiliser le Théorème de représentation de Riesz. En effet, pour tout :math:`w` de :math:`V`, l'application :math:`v\to a(w,v)` est anti-linéaire et continue de :math:`V` dans :math:`\Rb`. Il existe donc un unique élément de :math:`V`, noté :math:`A(w)` (Théorème de Riesz), tel que
   
@@ -98,7 +98,7 @@ Nous pouvons maintenant énoncer le théorème de Lax-Milgram (**à connaître p
   Ceci prouve que :math:`u` dépend continûment du membre de droite :math:`f` (qui dépend de :math:`\ell`). 
 
 
-.. proof:remark::
+.. prf:remark::
 
   À quoi sert ce théorème ? Sous réserve de 4 hypothèses, nous aurons la garantie que la formulation faible obtenue précédemment admet une solution (ce qui est bien) et que cette solution est unique (encore mieux !). Il est donc d'une importance capitale.
 

@@ -17,11 +17,11 @@ La matrice :math:`A` peut être décomposée en deux matrices : la masse et la r
 
   .. math:: D_{I,J}=  \int_{\omega}\nabla\mphi_J\nabla\mphi_I.
 
-.. proof:remark::
+.. prf:remark::
 
   Dans la littérature, cette matrice est souvent notée :math:`K`, mais nous l'appelons :math:`D` pour éviter toute confusion avec les triangles, nommés :math:`K` également.
 
-.. proof:remark::
+.. prf:remark::
 
   La matrice de masse :math:`M` représente l'opérateur Identité dans la base des fonctions de forme (qui n'est pas orthogonale ni normée !). Pour s'en convaincre, il faut regarder "l'équation" :math:`u=f` (ou :math:`Id. u = f`) et appliquer la méthode des éléments finis pour obenir la "formulation faible"
 
@@ -80,7 +80,7 @@ Nous notons :math:`\mphih_i \in \Pb^1(\trih)` les trois fonctions de forme assoc
     \end{array}
   \right.
 
-.. proof:lemma::
+.. prf:lemma::
 
   Dans le triangle :math:`\trih`, la matrice de masse élémentaire :math:`\Meh = (\Meh_{i,j})_{1\leq i,j\leq 3}` de coefficient 
 
@@ -98,7 +98,7 @@ Nous notons :math:`\mphih_i \in \Pb^1(\trih)` les trois fonctions de forme assoc
       \end{array}
     \right).
   
-.. proof:proof::
+.. prf:proof::
 
   Prenons tout d'abord le cas :math:`i=j=2`, soit :math:`\mphih_i(\xi,\eta) = \mphih_j(\xi,\eta) = \xi`. Dans ce cas :
 
@@ -191,7 +191,7 @@ et son déterminant vaut
 
 ce qui implique que le déterminant est non nul puisque le triangle n'est pas dégénéré : la transformation :math:`\trihToTri{p}` est bien inversible.
 
-.. proof:remark::
+.. prf:remark::
 
   Quand :math:`\psih_i = \mphih_i`, nous parlons d'éléments finis **isoparamétriques**. Il convient de retenir que ce choix n'est pas obligatoire et les fonctions :math:`\psih_i` et :math:`\mphih_i` sont **indépendantes**. En particulier, pour obtenir des éléments courbes, les fonctions :math:`\psih_i` pourraient être quadratiques par exemple.
 
@@ -210,7 +210,7 @@ ce qui implique que le déterminant est non nul puisque le triangle n'est pas d�
 
 **Expression finale de la matrice élémentaire.**
 
-.. proof:lemma::
+.. prf:lemma::
 
   La matrice de masse élémentaire :math:`\Me{p} = ((\Me{p})_{i,j})_{0\leq i,j\leq 2}` du triangle :math:`\tri_p` a pour expression
 
@@ -245,7 +245,7 @@ Nous appliquons la même procédure pour la matrice de rigidité :math:`D`, autr
 Triangle de référence
 +++++++++++++++++++++
 
-.. proof:lemma::
+.. prf:lemma::
 
   Dans le triangle de référence :math:`\trih`, la matrice de rigidité élémentaire :math:`\widehat{D}= (\widehat{D}_{i,j})_{1\leq i,j\leq 3}` de coefficient
 
@@ -262,7 +262,7 @@ Triangle de référence
       \end{array}
     \right)
 
-.. proof:proof::
+.. prf:proof::
 
   Les gradients des fonctions de forme :math:`\mphih_j` sont donnés par :
 
@@ -378,7 +378,7 @@ Au final, comme :math:`X\cdot Y = X^TY`, nous obtenons
 
 En éléments finis :math:`\Pb^1`, les fonctions de forme sont linéaires et leur gradient est donc constant. Nous pouvons alors sortir les termes :math:`\nabla\mphih_i` et :math:`\nabla\mphih_j` de l'intégral pour obtenir le lemme suivant.
 
-.. proof:lemma::
+.. prf:lemma::
 
   Les coefficients a matrice de rigidité élémentaire :math:`\De{p} = ((\De{p})_{i,j})_{1\leq i,j\leq 3}` sont obtenus pas la relation suivante
 
@@ -389,7 +389,7 @@ En éléments finis :math:`\Pb^1`, les fonctions de forme sont linéaires et leu
       &= \abs{\tri_p}(\nabla\mphih_j)^T  (\BK{p}^T \BK{p})\nabla\mphih_i.
     \end{aligned}
 
-.. proof:proof::
+.. prf:proof::
 
   Pour les éléments finis :math:`\Pb^1`, les gradients :math:`\nabla\mphih_j` sont constants et peuvent être sortis de l'intégrale. De plus, comme :math:`\abs{\det(\JK{p})} = 2\abs{\tri_p}` et :math:`\abs{\trih}= \frac{1}{2}`, nous avons
 
@@ -433,7 +433,7 @@ Nous présentons ici deux règles de quadrature pour l'intégrale :math:`\int_{\
 +-----------------+------------------+------------------+--------------------+
 
 
-.. proof:remark::
+.. prf:remark::
 
   Les formules de quadrature ont évidemment un impact sur la qualité de l'approximation, toutefois, elles jouent un rôle relativement mineur par rapport aux autres approximations (et l'on peut choisir plus de points d'intégration !).
 

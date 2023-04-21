@@ -1,7 +1,7 @@
 Espaces de Hilbert : rappels
 ============================
 
-.. proof:definition::
+.. prf:definition::
 
   Soit :math:`V` un :math:`\Rb-` espace vectoriel, alors l'application :math:`\PS{\cdot}{\cdot}\colon V\times V \to \Rb` est un produit scalaire si et seulement si elle vérifie, pour tout :math:`\xx,\yy,\zz\in V` et tout scalaire :math:`\alpha\in\Rb`:
 
@@ -13,13 +13,13 @@ Espaces de Hilbert : rappels
 
 
 
-.. proof:definition:: 
+.. prf:definition:: 
 
   Un :math:`\Rb-` espace vectoriel :math:`V` est dit pré-Hilbertien si il est muni d'un produit scalaire.
 
 
 
-.. proof:definition:: 
+.. prf:definition:: 
 
   Soit :math:`V` un :math:`\Rb-` espace vectoriel, alors l'application :math:`\norm{\cdot}\colon V \to \Rb` est une norme si et seulement si elle vérifie, pour tout :math:`\xx,\yy\in V` et tout scalaire :math:`\alpha\in\Rb`:
 
@@ -27,7 +27,7 @@ Espaces de Hilbert : rappels
   2. Absolue homogénéité  : :math:`\norm{\alpha \xx} = \abs{\alpha}\norm{\xx}`
   3. Inégalité triangulaire : :math:`\norm{\xx + \yy} \leq \norm{\xx} + \norm{\yy}`
 
-.. proof:remark:: 
+.. prf:remark:: 
   
   Un produit scalaire induit une norme sur un espace de Hilbert :
 
@@ -36,7 +36,7 @@ Espaces de Hilbert : rappels
 
 Nous rappelons l'inégalité de Cauchy Schwarz:
 
-.. proof:proposition:: Inégalité de Cauchy Schwarz
+.. prf:proposition:: Inégalité de Cauchy Schwarz
 
   Pour tout :math:`\xx` et :math:`\yy` appartenant à un espace pré-Hilbertien :math:`V` :
 
@@ -44,11 +44,11 @@ Nous rappelons l'inégalité de Cauchy Schwarz:
 
 
 
-.. proof:definition:: 
+.. prf:definition:: 
 
   Un espace pré-Hilbertien :math:`V` est un espace de Hilbert si et seulement si il est complet pour la norme :math:`\norm{\cdot}` induite par son produit scalaire.
 
-.. proof:definition:: 
+.. prf:definition:: 
 
   Soit :math:`V` un espace de Hilbert. L'application :math:`f:V\times V \to \Rb` est une forme bilinéaire sur :math:`V` si et seulement si, pour tout :math:`\xx,\yy, \zz` de :math:`V` et :math:`\alpha` de :math:`\Rb`:
 
@@ -57,7 +57,7 @@ Nous rappelons l'inégalité de Cauchy Schwarz:
 
 
 
-.. proof:theorem:: Représentation de Riesz
+.. prf:theorem:: Représentation de Riesz
 
   Soit :math:`V` un espace de Hilbert de produit scalaire :math:`\PS{\cdot}{\cdot}` et de norme induite :math:`\norm{\cdot}`. Pour toute forme anti-linéaire continue :math:`\ell`, il existe un unique :math:`w\in V` tel que
   
@@ -69,7 +69,7 @@ Nous rappelons l'inégalité de Cauchy Schwarz:
 
 
 
-.. proof:remark::
+.. prf:remark::
 
   Ce théorème montre que la forme :math:`\ell` peut être **représentée** par un vecteur :math:`w` qui est unique. Autrement dit, peu importe :math:`v`, la quantité :math:`\ell(v)` peut se calculer par la seule connaissance du vecteur :math:`w` et d'un "simple" produit scalaire.
 

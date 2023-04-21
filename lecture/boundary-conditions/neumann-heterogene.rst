@@ -53,7 +53,7 @@ Nous n'avons en effet pas (encore) donné de sens à la trace (= la "restriction
 
 .. _thm-trace:
 
-.. proof:theorem:: Continuité de la Trace (admis)
+.. prf:theorem:: Continuité de la Trace (admis)
 
   Soit :math:`\Gamma\subset\partial\Omega` une partie du bord de mesure non nulle au sens de la mesure de surface. Alors il existe une unique application :math:`\gamma_{\Gamma}\colon\Ho\to L^2(\Gamma)` qui est continue au sens de :math:`\normH{\cdot}` :
 

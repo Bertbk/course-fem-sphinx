@@ -20,12 +20,12 @@ Dans ce cours, nous considérons un ouvert polygonal :math:`\Omega` de :math:`\R
 * Sur :math:`\GammaD` : *condition de Dirichlet*, c'est à dire que la valeur de la solution y est imposée (\eg :math:`u = 0`). En mécanique on dirait que le déplacement est imposée.
 * Sur :math:`\GammaN` : *condition de Neumann*, c'est à dire que le flux de la solution y est imposée (\eg :math:`\dn u = 0`).  En mécanique, on dirait que la force normale est imposée.
 
-.. proof:remark::
+.. prf:remark::
 
   En général, on préfère travailler avec des ouverts *réguliers*, de classe au moins :math:`\Ccal^1`. Un tel ouvert présente l'avantage de pouvoir clairement définir le vecteur unitaire normale :math:`\nn` sortante à :math:`\Omega`. Cependant, après maillage, on se retrouve avec... un polygone ! Alors plutôt que de travailler dans un domaine régulier pour après le casser en (petits) morceaux, nous préférons ici commencer directement avec un polygone et mettre l'accent sur les algorithmes et la mise en oeuvre de la méthode que les spécificités mathématiques.
 
 
-.. proof:remark::
+.. prf:remark::
 
   Un point :math:`\xx \in \Rb^2` est parfois noté  :math:`\xx = (x,y)` ou :math:`\xx = (x_1,x_2)` selon les besoins. Nous commencerons les indiçages par 1 bien qu'en informatique cela commence souvent par 0.
 
@@ -71,7 +71,7 @@ où nous avons défini :
 
 Pour le moment, nous ne nous intéressons pas à la régularité de la solution ni même à l'existence et l'unicité de celle-ci : nous supposons que le problème :eq:`eq-pbmodel` est bien posé. Une fois la méthode des éléments finis apréhendée, nous nous intéresserons à ces questions. Cela va à l'encontre de l'habitude en mathématiques où l'on démontre le caractère bien posé avant de s'y attaquer. Faites moi confiance et tout s'éclairera !
 
-.. proof:remark::
+.. prf:remark::
 
   Pour l'instant, nous imposons une condition aux bords que nous imposons, de type Neumann homogène. Plus tard nous verrons d'autres types de conditions : Dirichlet, où la valeur de solution est imposée, et Fourier, un mélange entre Dirichlet et Neumann.
 
@@ -91,7 +91,7 @@ Ce résultat est également valable en dimension 3 pour des domaines polygonaux 
 .. math:: \forall u,v,\qquad  \int_{\Omega} (\Delta u) v  = - \int_{\Omega} \nabla u \cdot\nabla v + \int_{\Gamma} (\dn u) v.
 
 
-.. proof:remark::
+.. prf:remark::
 
   Ce résultat est en quelque sorte une extension multi-dimensionnel de l'intégration par partie sur un segment  :math:`\Omega = [a,b]`. En effet, en dimension 1, l'opérateur :math:`\Delta` devient la dérivée seconde. La normale sortante au segment devient un scalaire valant -1 "à gauche" (en :math:`a`) et 1 "à droite" (en :math:`b`) et la dérivée normale devient :math:`\dn u = \pm u'` :
   
@@ -136,7 +136,7 @@ Ainsi, et toujours sans regarder la régularité de :math:`u` (ni de :math:`v`),
 
 À gauche du signe égal se trouve l'inconnue (:math:`u`) et à droite la donnée (:math:`f`), c'est une convention et plus tard cette équation s'écrira sous la forme d'un système linéaire :math:`AU = B` où le vecteur :math:`B` correspondra au membre de droite de :eq:`eq-faible` et la matrice :math:`A` à la partie de gauche.
 
-.. proof:remark::
+.. prf:remark::
 
   Attention, sur le bord :math:`\Gamma`, :math:`\dn u= 0` n'implique pas :math:`u = 0` !
 
@@ -170,12 +170,12 @@ Nous pouvons maintenant définir plus proprement la quantité :math:`v`. Appelé
 
 
 
-  .. proof:remark::
+  .. prf:remark::
     
     Les espaces de Sobolev sont aussi appelés espace d'énergie : les quantités qui le composent sont *d'énergie finie* et ont plus de liberté que les fonctions continues, elles peuvent par exemple (et sous conditions) être singulière en certains points, comme l'énergie.
 
 
-  .. proof:remark::
+  .. prf:remark::
 
     Si vous n'avez encore jamais rencontré ces espace de Sobolev, comme :math:`\Ho`, il doivent vous sembler contradictoires avec tout ce que vous avez appris jusque là, notamment par la présence de la dérivée :math:`\partial_{x_i}f \in\Lo`. Une fonction de :math:`\Lo` n'est déjà pas forcément continue ni même définie en tout point, alors comment peut-elle être dérivable ?  Prendre la restriction d'une fonction :math:`\Ho` sur :math:`\GammaD`, une partie du bord, n'a pas non plus de sens *à ce niveau de lecture du cours*. En effet, nous savons qu'un élément de :math:`\Lo` est en fait une classe de fonction et en prendre sa valeur sur un point une une ligne n'a pas de sens a priori.
 

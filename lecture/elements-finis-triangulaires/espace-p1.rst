@@ -29,7 +29,7 @@ Une telle triangulation sera noté :math:`\Th = \{K_p, p=1, \ldots, \Nt\}`, l'in
 
 Le diamètre d'un triangle est la distance maximale entre deux points du triangle. Nous notons de plus :math:`\Sh` et :math:`\Ah` les ensembles respectivement des sommets et des arêtes de :math:`\Th`. Pour un triangle arbitraire :math:`\tri`, nous noterons :math:`[\vertice_{0},\vertice_{1},\vertice_{2}]` ses sommets ordonnés. De même, pour un triangle :math:`\tri_p` du maillage, ses sommets ordonnées seront notés :math:`[\vertice_{0}^{p},\vertice_{1}^{p},\vertice_{2}^{p}]`.
 
-.. proof:remark::
+.. prf:remark::
 
   Il existe aujourd'hui des mailleurs automatiques open-source, un des plus connu et que nous utiliserons est `GMSH <https://gmsh.info>`_ (`un tutoriel <https://bthierry.pages.math.cnrs.fr/tutorial/gmsh>`_ est fourni par moi même). Le maillage automatique reste un métier à part entière tant la complexité est importante notamment en 3D et avec des géométries complexes, non forcément polygonales. D'autres parts, de nombreuses questions sont encore ouvertes aujourd'hui dans ce domaine comme la construction automatique d'un maillage composé de quadrangles. Nous n'entrerons pas dans les détails dans ce sujet, nous serons de simple "utilisateurs et utilisatrices". 
 
@@ -87,11 +87,11 @@ Une fonction :math:`p` de :math:`\Pb^1(\tri)` est définie de manière unique pa
 
 .. _prop-unisolvance:
 
-.. proof:proposition::
+.. prf:proposition::
 
   Soit :math:`\tri` un triangle non dégénéré de :math:`\Rb^2` de sommets :math:`\vertice_{1},\vertice_{2},\vertice_{3}`. Alors, pour tout jeu de données :math:`\alpha_1,\alpha_2,\alpha_3 \in \Rb`, il existe un unique polynôme de :math:`p\in\Pb^1(\tri)` tels que :math:`p(\vertice_i)=\alpha_i` pour :math:`i=1,2,3`.
 
-.. proof:proof:: 
+.. prf:proof:: 
 
   En notant :math:`\vertice_i= (x_i,y_i)` et :math:`p(x,y) = ax + by + c`  avec :math:`a,b,c\in\Rb`, alors le problème revient à résoudre le système linéaire
 
@@ -138,7 +138,7 @@ Une fonction :math:`p` de :math:`\Pb^1(\tri)` est définie de manière unique pa
   
   Le système est donc bien inversible et admet une unique solution :math:`(a,b,c)`.
 
-.. proof:remark::
+.. prf:remark::
 
   Soit une fonction :math:`v \in \Pb^1(\tri)`, linéaire sur le triangle :math:`\tri`. Sa restriction :math:`v|_{\sigma}` à une arête :math:`\sigma` de :math:`\tri` est elle même une fonction linéaire sur :math:`\sigma`. Elle est donc complètement caractérisée par sa valeur aux sommets de l'arête, qui sont aussi des sommets de :math:`\tri`.
 
@@ -154,19 +154,19 @@ Caractérisons maintenant les fonctions de cet espace. Le premier résultat mont
 
 .. _lemma-unicitetriangle: 
 
-.. proof:lemma:: 
+.. prf:lemma:: 
 
   Si :math:`\uh,\vh \in \Vh` vérifient :math:`\uh(\vertice) = \vh(\vertice)` pour tout sommet :math:`\vertice` de :math:`\Th`, alors :math:`\uh=\vh` sur :math:`\Omega`.
 
-.. proof:proof::
+.. prf:proof::
 
   En se plaçant sur le triangle :math:`\tri = (\vertice_{1},\vertice_{2},\vertice_{3})` de :math:`\Th`, nous avons :math:`\uh(\vertice_i) = \vh(\vertice_i)` pour :math:`i=1,2,3`. :numref:`La proposition {number} <prop-unisolvance>` implique que :math:`\uh|_{\tri}=\vh|_{\tri}`. Le triangle :math:`\tri` étant arbitraire, cette relation vaut sur tous les éléments de la triangulation. Le même raisonnement peut être effectué sur chaque arête pour obtenir que :math:`\uh-\vh` est nulle sur :math:`\Omega` tout entier.
 
-.. proof:proposition::
+.. prf:proposition::
 
   Pour tout jeu de données réelles :math:`(\alpha_i)_{i=1,\ldots,\Ns}`, il existe une unique fonction :math:`\vh\in\Vh` vérifiant :math:`\vh(\vertice_I)=\alpha_i` pour tout :math:`i=1,\ldots,\Ns`.
 
-.. proof:proof::
+.. prf:proof::
 
   L'unicité est démontrée par le :numref:`lemme {number} <lemma-unicitetriangle>`, il manque donc l'existence. Prenons un triangle :math:`\tri_p=(\vertice_{1}^p,\vertice_{2}^p,\vertice_{3}^p)` de :math:`\Th` et le jeu de valeurs associé :math:`(\alpha_1^p,\alpha_2^p,\alpha_3^p) \in \Rb`. :numref:`La proposition {number} <prop-unisolvance>` montre qu'il existe un unique polynôme :math:`p_{\tri_p}` de :math:`\Pb^1(\tri_p)` tel que :math:`p_{\tri_p}(\vertice_i^p)=\alpha_i^p` pour :math:`i=1,2,3`. Nous pouvons répéter cette opération pour tous les triangles :math:`\tri_p` et nous introduisons :math:`\uh` tel que
 
@@ -215,11 +215,11 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
 
   Une `application pour visualiser les fonctions de forme <#app-basis-function>`_ est proposée plus bas.
 
-.. proof:proposition::
+.. prf:proposition::
 
   La famille :math:`(\mphi_I)_{1\leq I \leq \Ns}` est une base de :math:`\Vh`, qui est alors de dimension :math:`\Ns`, le nombre de sommets de la triangulation :math:`\Th`.
 
-.. proof:proof::
+.. prf:proof::
 
   Montrons que la famille des fonctions de forme est une base de :math:`\Vh`. Commençon par le caractère libre de cette famille en prenant :math:`\Ns` données :math:`(\alpha_i)_{1\leq i\leq \Ns}`,
   
@@ -237,12 +237,12 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
 
   Cette relation étant valable sur un triangle arbitraire, elle est vraie sur :math:`\Omega`. La famille de fonctions :math:`(\mphi_I)_I` est donc une base de :math:`\Vh`.
 
-.. proof:proposition:: Admis pour le moment
+.. prf:proposition:: Admis pour le moment
 
   L'espace :math:`\Vh` est inclus dans :math:`\Ho`.
 
 
-.. proof:lemma::
+.. prf:lemma::
 
   Le support d'une fonction de forme :math:`\mphi_I` est l'union des triangles ayant pour sommet :math:`\vertice_I` :
   
@@ -250,7 +250,7 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
 
   Autrement dit, en dehors de ces triangles, la fonction :math:`\mphi_I` est nulle.
 
-.. proof:proof::
+.. prf:proof::
 
   Prenons une fonction de forme :math:`\mphi_I` associée au sommet :math:`\vertice_I`, et un triangle :math:`\tri` tel que :math:`\vertice_I` n'est pas un sommet de :math:`\tri`. Dans ce cas, :math:`\mphi_I` est nulle sur les trois sommets de :math:`\tri`, et est donc nulle sur le triangle tout entier.
 

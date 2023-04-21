@@ -7,7 +7,7 @@ Industrie
   Mécanique
   +++++++++
 
-  .. proof:remark::
+  .. prf:remark::
 
     **Computed by NUMEA, Courtesy of Hutchinson-SA**
 

@@ -30,7 +30,9 @@ Multiplions l'EDP :eq:`diri-pb` par des fonctions tests :math:`v`, intégrons su
 
 Nous sommes théoriquement bloqué. Nous sommes tentés de dire que :math:`\dn u = 0` mais non seulement nous ne le savons pas, mais en plus c'est très probablement faux ! Utiliser les conditions aux bords est en revanche la bonne idée. Nous savons que :math:`u` est nul sur le bord :math:`\Gamma`. Autrement dit, nous ne cherchons pas la valeur de la solution sur ce bord, nous la connaissons déjà. Afin de conserver la symétrie entre :math:`u` et :math:`v`, imposons à :math:`v` d'être aussi nul sur le bord et regardons ce que l'on obtient :
 
-.. math:: -\Delta u  = f   &\implies \forall v, v|_\Gamma = 0 \quad  \int_{\Omega}\nabla u \cdot\nabla v = \int_{\Omega} fv
+.. math:: 
+  
+  -\Delta u  = f   \implies \forall v, v|_\Gamma = 0 \quad  \int_{\Omega}\nabla u \cdot\nabla v = \int_{\Omega} fv
 
 En terme de dérivabilité, l'espace :math:`\Ho` est suffisant pour la solution :math:`u` et les fonctions tests :math:`v`. Il manque toutefois la condition de Dirichlet, dite **essentielle**, qui doit être incluse dans l'espace fonctionnel. Pour cela, en rappelant que :math:`\gamma` est l'application trace de :math:`\Ho` sur :math:`L^2(\Gamma)`, nous introduisons un espace de Sobolev qui prend en compte cette condition de Dirichlet.
 
@@ -52,18 +54,18 @@ avec
    & v & \longmapsto & \displaystyle \int_{\Omega} f v
   \end{array}
 
-.. proof:remark::
+.. prf:remark::
 
   Attention, c'est parce que :math:`v` est nul sur :math:`\Gamma` que l'intégrale sur :math:`\Gamma` s'annule. Ce n'est pas parce que :math:`\dn u=0` ! D'ailleurs, sauf si :math:`u=0` partout, il y a fort à parier que :math:`\dn u\neq 0` !
 
 
 Démontrons maintenant que cette formulation faible admet une unique solution. Commençons tout d'abord par montrer que :math:`\Hoz` est un espace de Hilbert.
 
-.. proof:lemma::
+.. prf:lemma::
 
   L'espace :math:`\Ho` est de Hilbert
 
-.. proof :remark::
+.. prf :remark::
 
   L'espace :math:`\Hoz` est le noyau de :math:`\gamma`, qui est continue, ce qui implique que :math:`\Hoz` est fermé. Comme de plus :math:`\Hoz\subset\Ho`, avec :math:`\Ho` un Hilbert, alors :math:`\Hoz` est également un Hilbert.
 
@@ -88,18 +90,18 @@ Ensuite, la continuité de :math:`\ell` a déjà été démontrée dans :math:`\
 
 L'inégalité de Poincaré vient alors à notre rescousse !
 
-.. proof:proposition:: Inégalité de Poincaré (admise)
+.. prf:proposition:: Inégalité de Poincaré (admise)
 
   Il existe une constante :math:`C` ne dépendant que de :math:`\Omega` telle que 
 
   .. math:: \forall u\in\Hoz, \qquad \normL{\nabla u} \geq C \normH{u}
 
-.. proof:remark::
+.. prf:remark::
 
   L'inégalité de Poincaré est également valable si la condition de Dirichlet n'est posée que sur une partie :math:`\GammaD` du bord :math:`\Gamma`. Dans ce cas, l'espace considéré est :math:`\HoD := \enstq{v\in\Ho}{\gamma_{\GammaD}v = 0}` où :math:`\gamma_{\GammaD} \colon \Ho\to L^2(\GammaD)` est l'application trace sur :math:`\GammaD`. À noter que :math:`\HoD` est un Hilbert pour les mêmes raisons :math:`\Hoz` l'est.
 
 
-.. proof:remark::
+.. prf:remark::
 
   L'inégalité de Poincaré montre que la semi-norme :math:`v\mapsto \normL{\nabla v}` est une norme sur :math:`\Ho` et est équivalente à la norme usuelle :math:`\normH{\cdot}`, puisque l'on a :math:`\normL{\nabla v} \geq C \normH{v}\geq C\normL{\nabla v}`.
 
@@ -183,12 +185,12 @@ Informatiquement, nous devons donc rendre les lignes et colonnes associées aux 
 
 
 
-.. proof:remark::
+.. prf:remark::
 
   La valeur de 1 sur la diagonale est finalement arbitraire : nous pouvons choisir n'importe quelle valeur. Pour des raisons de précision numérique, il peut être plus pertinent de choisir comme valeur la moyenne de la somme de la diagonale de :math:`A_{I,I}` (sa trace). Cette technique peu coûteuse permet d'éviter de polluer le conditionnement de la matrice par des valeurs potentiellement trop grande ou trop petite par rapport à la "moyenne".
 
 
-.. proof:remark::
+.. prf:remark::
 
   Dans le cas de condition de Dirichlet homogène, ce système ce simplifie :
 
@@ -253,11 +255,11 @@ mais ce **n'est pas un espace vectoriel** ! Pour remédier à ce problème, nous
 
 Nous avons vu plus haut que ce problème admet une unique solution, ce qui implique que :eq:`eq-diri-nonH` admet également une unique solution.
 
-.. proof:remark::
+.. prf:remark::
 
   Le relèvement n'est pas unique, puisque si :math:`u_0\in\Hoz` alors :math:`u_g + u_0` est aussi un relèvement acceptable.
 
-.. proof:remark::
+.. prf:remark::
 
   Pour que le relèvement existe, il suffit que :math:`g\in H^{1/2}(\Gamma)`. Cet espace est composé des traces sur :math:`\Gamma` des fonctions de :math:`\Ho` :
 
@@ -320,10 +322,10 @@ La quantité :math:`g_h` est ici à voir comme un vecteur de coefficient :math:`
     \end{array}
   \right).
 
-.. proof:remark::
+.. prf:remark::
 
   Comme pour Dirichlet homogène, nous pouvons aussi nous contenter de résoudre un système plus petit : :math:`A_{I,I} u_I = B_I-A_{I,D}g_h`.
 
-.. proof:remark::
+.. prf:remark::
 
   Le terme :math:`A_{I,D} g_h` est la version discrète du terme :math:`\Delta u_g` qui apparait dans :eq:`eq-diri-relev`. En effet, la matrice :math:`A` discrétise l'opérateur :math:`a(\cdot,\cdot)` qui, ici, représente le laplacien sous sa forme faible :math:`\int_{\Omega}\nabla u \cdot\nabla v`. Gardez à l'esprit que :math:`A_{I,D}` n'est pas carré et prend en argument un vecteur de la taille le nombre de sommets de :math:`\Gamma` pour retourner un vecteur de taille le nombre de sommets du maillage.

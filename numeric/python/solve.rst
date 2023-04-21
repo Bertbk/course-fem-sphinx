@@ -93,7 +93,7 @@ Convergence
 -----------
 
 
-.. proof:exercise::
+.. exercise::
 
   1. **Pour différents pas de maillage**, calculez l'erreur en norme :math:`L^2` entre la solution exacte et la solution approchée pour le problème :eq:`eq-problErr`. 
   2. **Affichez** la courbe de l'erreur en fonction de :math:`h` en échelle log-log. 

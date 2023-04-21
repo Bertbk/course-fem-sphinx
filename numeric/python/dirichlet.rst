@@ -12,6 +12,6 @@ Cette fonction prend comme argument le :code:`Triplets triplets` et le vecteur :
 Pour cela, nous parcourons les noeuds :code:`I` du domaine de Dirichlet. Puis, dans la liste des indices ligne de :code:`triplets`, dès qu'un occurence à :code:`I` est obtenu, la valeur de ce triplet est mise à :math:`0`.
 Il ne faut pas oublier, à la fin, d'ajouter un triplet :code:`(I,I,1)` correspondant au terme diagonal et de modifier le coefficient :code:`B[I] = g(x,y)`.
 
-.. proof:remark::
+.. prf:remark::
 
   Cette technique n'est peut être pas la plus optimale ! Mais elle a le mérite de fonctionner...

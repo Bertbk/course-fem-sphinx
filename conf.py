@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Maillage et Éléments Finis'
-copyright = '2022, Bertrand Thierry'
+copyright = '2023, Bertrand Thierry'
 author = 'Bertrand Thierry'
 
 
@@ -30,9 +30,7 @@ author = 'Bertrand Thierry'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 
-extensions = [
-    "sphinxcontrib.proof",
-]
+extensions = ["sphinx_proof", "sphinx_exercise", "sphinx_togglebutton"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -57,26 +55,29 @@ numfig = True
 # a list of builtin themes.
 #
 
-html_theme = "furo"
+# html_theme = "furo"
+#html_theme = "pydata_sphinx_theme"
+html_theme = "sphinx_book_theme"
 
 html_title = "Maillage et Éléments Finis"
 
-proof_theorem_types = {
-   "algorithm": "Algorithm",
-   "conjecture": "Conjecture",
-   "corollary": "Corollary",
-   "definition": "Definition",
-   "example": "Example",
-   "lemma": "Lemma",
-   "observation": "Observation",
-   "proof": "Proof",
-   "property": "Property",
-   "theorem": "Theorem",
-   "remark":"Remarque",
-   "proposition":"Proposition",
-   "exercise":"Exercice",
-}
-proof_latex_notheorem = ["proof"]
+#proof_theorem_types = {
+#   "algorithm": "Algorithm",
+#   "conjecture": "Conjecture",
+#   "corollary": "Corollary",
+#   "definition": "Definition",
+#   "example": "Example",
+#   "lemma": "Lemma",
+#   "observation": "Observation",
+#   "proof": "Proof",
+#   "property": "Property",
+#   "theorem": "Theorem",
+#   "remark":"Remarque",
+#   "proposition":"Proposition",
+#   "exercise":"Exercice",
+#}
+#proof_latex_notheorem = ["proof"]
+
 #proof_html_nonumbers = ["exercise"]
 
 
@@ -88,12 +89,12 @@ html_static_path = ['_static']
 
 html_css_files = [
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css',
-    'css/proof.css',
+#    'css/proof.css',
     'css/custom.css',
 ]
 
 html_js_files = [
-    'js/proof.js',
+#    'js/proof.js',
 #    'js/custom.js',
 #    'js/basis-function/main.js',
 #    'js/jacobian/main.js',

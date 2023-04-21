@@ -95,7 +95,7 @@ Ainsi, pour un triangle  :math:`\tri_p`, ses sommets sont numérotés :math:`[\v
 .. math:: \mphi_i^p = \mphi_{\locToGlob(p,i)}|_{\tri_p}.
 
 
-.. proof:remark::
+.. prf:remark::
 
   Pour mieux comprendre la différence entre numérotation locale et globale, une `application est disponible en ligne <#app-local-to-global>`_. 
 
@@ -148,7 +148,7 @@ L'algorithme d'assemblage est alors complet ! Une version pseudo-code est prése
     EndFor
   EndFor
 
-.. proof:remark::
+.. prf:remark::
   
   Cet algorithme n'est pas encore utilisable, nous devons calculer la valeur de :math:`a_p(\mphi_j^p,\mphi_i^p)` et :math:`\ell_p(\mphi_i^p)`. De plus, il manque encore les conditions de Dirichlet.
 

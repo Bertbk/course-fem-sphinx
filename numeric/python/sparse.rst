@@ -75,7 +75,7 @@ Une matrice COO se construit alors ainsi
   A = coo_matrix(data)              # si data dans le format ci-dessus
   A = coo_matrix((val, (row, col))) # si row, col et val sont séparées
 
-.. proof:remark::
+.. prf:remark::
 
   Une matrice COO peut être visualisée en se transformant en :code:`array` `avec la méthode toarray() <https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.html>`_ :
 
@@ -120,12 +120,12 @@ La classe ressemble alors à cela:
       # ...
 
 
-.. proof:exercise::
+.. exercise::
 
   Construisez la classe :code:`Triplet` et implémentez la méthode :code:`append`. N'oubliez pas de tester votre classe.
 
 
-.. proof:exercise::
+.. exercise::
 
   Testez votre classe :code:`Triplet` en construisant la matrice suivante (au format COO évidemment) :
 

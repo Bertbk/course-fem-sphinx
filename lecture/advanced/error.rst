@@ -34,13 +34,13 @@ Nous restons dans un cadre abstrait et introduisons :math:`\Vh`, un sous-espace 
 
 Nous quantifions maintenant l'erreur commise en approchant :math:`u` par :math:`\uh`, ou plus exactement, :math:`V` par :math:`\Vh`.  Notons une propriété très intéressante de la solution approchée :math:`\uh` :
 
-.. proof:lemma::
+.. prf:lemma::
   
   Soit :math:`u` la solution exacte (*i.e.* solution de \eqref{eq3-pbmodel}) et :math:`\uh` la solution approchée (*i.e.* solution de :eq:`eq3-pbmodelh`). Soit :math:`e_h = u-\uh` est l'erreur d'approximation, alors nous avons l'égalité suivante
 
   .. math:: \forall \vh\in \Vh,\qquad a(e_h, \vh) = 0.
 
-.. proof:proof::
+.. prf:proof::
 
   Comme :math:`\Vh\subset V`, nous pouvons choisir :math:`v=\vh` dans la formulation variationnelle \eqref{eq3-pbmodel}:
 
@@ -53,14 +53,14 @@ Nous quantifions maintenant l'erreur commise en approchant :math:`u` par :math:`
     \end{aligned}
 
 
-.. proof:remark::
+.. prf:remark::
 
   Si :math:`a(\cdot,\cdot)` est symmétrique, le lemme précédent implique que l'erreur est orthogonale à :math:`\Vh` par rapport au produit scalaire :math:`a(\cdot,\cdot)`.
 
 
 Nous pouvons maintenant montrer que l'erreur d'approximation :math:`\uh` de :math:`u` est uniformément bornée par la distance entre :math:`u` et l'espace :math:`\Vh`. Ce résultat est connu comme étant `le Lemme de Céa <https://fr.wikipedia.org/wiki/Lemme_de_C%C3%A9a>`_, démontré par `Jean Céa <https://fr.wikipedia.org/wiki/Jean_C%C3%A9a>`_ durant `sa thèse <http://archive.numdam.org/article/AIF_1964__14_2_345_0.pdf/>`_, en 1964.
 
-.. proof:lemma:: de Céa
+.. prf:lemma:: de Céa
 
   Soit :math:`u` la solution exacte (*i.e.* solution de \eqref{cv-pbmodel}) et :math:`\uh` la solution approchée (*i.e.* solution de :eq:`cv-pbmodelh`). Nous avons
 
@@ -68,7 +68,7 @@ Nous pouvons maintenant montrer que l'erreur d'approximation :math:`\uh` de :mat
 
   où :math:`M` et :math:`\alpha` sont respectivement les constantes de continuité et de coercivité de :math:`a(\cdot,\cdot)` qui apparaissent dans le Théorème de Lax-Milgram.
 
-.. proof:proof::
+.. prf:proof::
 
   Pour :math:`\vh\in \Vh`, la quantité :math:`\vh-\uh` est aussi un élément de :math:`\Vh`, ce qui implique d'après le lemme précédent que
 
@@ -96,7 +96,7 @@ Nous pouvons maintenant montrer que l'erreur d'approximation :math:`\uh` de :mat
 
 
 
-.. proof:remark::
+.. prf:remark::
   
   Le point important du Lemme de Céa est de remplacer le problème d'estimation de l'erreur par un problème d'approximation. En effet, il nous suffit de montrer que la solution est "bien approchée" par les fonctions de :math:`\Vh` pour savoir que l'erreur ne sera *qu'une constante fois plus grande* que cette erreur d'approximation. 
 
@@ -105,7 +105,7 @@ Nous pouvons maintenant donner une condition pour que la méthode de Galerkin co
 
 .. _lemme-cv-galerkin:
 
-.. proof:lemma::
+.. prf:lemma::
 
   Soit :math:`\Pi_h : V \to \Vh` un **opérateur d'interpolation** tel que 
 
@@ -116,7 +116,7 @@ Nous pouvons maintenant donner une condition pour que la méthode de Galerkin co
   .. math:: \lim_{h\to 0}\normV{u-\uh} = 0. 
 
 
-.. proof:proof::
+.. prf:proof::
 
   C'est une conséquence directe du lemme de Céa, puisque : 
 

@@ -20,7 +20,7 @@ Introduisons l'espace :math:`\Cscr^{\infty}_c(\Omega)` des fonctions :math:`\Csc
 
 .. math:: \Cscr^{\infty}_c(\Omega) := \enstq{f\in \Cscr^{\infty}(\Omega)}{\supp(f) \text{ est compact dans } \Omega}.
 
-.. proof:remark::
+.. prf:remark::
 
   - Ces fonctions (et toutes leurs dérivées) s'annulent nécesairement sur le bord de :math:`\Omega` (qui est ouvert)
   - Dans notre cas, :math:`\Omega\in\Rb^2` (ou même :math:`\Rb^3`), ce qui impliqué qu'un compact de :math:`\Omega` est donc un fermé borné
@@ -30,7 +30,7 @@ Nous rappelons/admettons le théorème de densité suivant.
 
 .. _thm-densite:
 
-.. proof:theorem:: Densité dans :math:`\Lo`
+.. prf:theorem:: Densité dans :math:`\Lo`
 
   L'ensemble :math:`\Cscr^{\infty}_c(\Omega)` est dense dans :math:`\Lo`.
 
@@ -38,7 +38,7 @@ Autrement dit, pour tout élément :math:`f` de :math:`\Lo`, il existe une suite
 
 .. _corollary-f-zero:
 
-.. proof:corollary::
+.. prf:corollary::
 
   Soit :math:`f` une fonction de :math:`\Lo` telle que
   
@@ -46,7 +46,7 @@ Autrement dit, pour tout élément :math:`f` de :math:`\Lo`, il existe une suite
 
   alors :math:`f(\xx)=0` presque partout dans :math:`\Omega`.
 
-.. proof:proof::
+.. prf:proof::
 
   D'après le théorème :numref:`{number} <thm-densite>`, il existe une suite :math:`(f_n)_n` de :math:`\Cscr^{\infty}_c(\Omega)` qui converge vers :math:`f`. Nous avons alors
   
@@ -60,7 +60,7 @@ L'espace :math:`\Lo` est un "petit" espace de Hilbert qui contient :math:`\Cscr^
 Dérivée faible
 --------------
 
-.. proof:definition:: 
+.. prf:definition:: 
 
   Une fonction de :math:`\Lo` est dérivable au sens faible par rapport à la direction :math:`x_i` si et seulement si il existe un élément :math:`g_i` de :math:`\Lo` tel que
   
@@ -71,17 +71,17 @@ Dérivée faible
 
 Nous noterons maintenant :math:`\partial_{x_i} f \in \Lo` ou :math:`\partial_{i} f \in \Lo` pour signifier que :math:`f` est dérivable au sens faible par rapport à :math:`x_i`. De la même manière, nous pouvons définir le gradient faible :
 
-.. proof:definition::
+.. prf:definition::
 
   Une fonction :math:`f\in \Lo` admet un gradient faible, noté :math:`\nabla f`, si et seulement si :math:`f` est dérivable au sens faible par rapport à toutes ses variables, et nous avons alors
   
   .. math:: \nabla f = \left(\partial_{x_1}f, \partial_{x_2}f, \ldots, \partial_{x_d}f\right)^T.
   
-.. proof:proposition:: Unicité de la dérivée faible
+.. prf:proposition:: Unicité de la dérivée faible
 
   Si la dérivée faible dans la direction :math:`x_i` d'une fonction :math:`u\in\Lo` existe alors elle est unique.
 
-.. proof:proof::
+.. prf:proof::
 
   Soit :math:`u\in\Lo` et supposons que :math:`u` admette deux dérivées faibles dans la direction :math:`x_i` : :math:`f_i` et :math:`g_i`, toutes deux dans :math:`\Lo`. Nous avons alors, par définition, les deux relations suivantes :
 
@@ -95,12 +95,12 @@ Nous noterons maintenant :math:`\partial_{x_i} f \in \Lo` ou :math:`\partial_{i}
 
 Le lien entre *dérivée faible* et *dérivée forte* (ou *classique*) est maintenant présenté :
 
-.. proof:proposition::
+.. prf:proposition::
 
   Soit :math:`u\in\Cscr^1(\overline{\Omega})` tel que son gradient, au sens classique, :math:`\nabla u` soit dans :math:`\Cscr^0(\overline{\Omega})`, alors :math:`u` admet un gradient au sens faible :math:`\widetilde{\nabla} u` et l'on a :math:`\nabla u = \widetilde{\nabla} u`.
 
 
-.. proof:proof::
+.. prf:proof::
 
   Il suffit de montrer ce résultat pour une direction uniquement, c'est-à-dire montrer que :math:`\widetilde{\partial_{i}}u = \partial_{i} u`, si :math:`\widetilde{\partial_{i}}` est la dérivée partielle au sens faible. Par intégration par partie, nous avons :
 
@@ -114,7 +114,7 @@ Le lien entre *dérivée faible* et *dérivée forte* (ou *classique*) est maint
   
 
 
-.. proof:remark::
+.. prf:remark::
   
   Dans la suite, puisque nous ne travaillerons qu'avec des dérivées partielles faibles, nous **omettrons le tilde**.
 
@@ -135,11 +135,11 @@ et de la norme induite, pour :math:`u\in\Ho` :
 .. math:: \normH{u} =  \left(  \int_{\Omega} |u(\xx)|^2 \;\diff\xx +  \int_{\Omega} |\nabla u(\xx)|^2\;\diff\xx   \right)^{\frac{1}{2}}.
 
 
-.. proof:remark::
+.. prf:remark::
 
   Nous pouvons montrer que c'est effectivement un produit scalaire avec les arguments similaires à ceux utilisés pour montrer que la "même" application est un produit scalaire sur :math:`\Cscr^1(\Omega)`.
 
-.. proof:remark::
+.. prf:remark::
   
   Pour :math:`u` de :math:`\Ho`, nous avons clairement
 
@@ -161,11 +161,11 @@ et de la norme induite, pour :math:`u\in\Ho` :
 
 Nous montrons maintenant que :math:`\Ho` muni de cette norme est complet.
 
-.. proof:theorem:: Complétude de :math:`\Ho`
+.. prf:theorem:: Complétude de :math:`\Ho`
 
   L'espace :math:`H^1(\Omega)` est complet pour la norme :math:`\normH{\cdot}`.
 
-.. proof:proof::
+.. prf:proof::
   
   Prenons une suite de Cauchy :math:`(u_n)_n` de :math:`H^1(\Omega)` et montrons qu'elle converge dans :math:`H^1(\Omega)`. Par définition de la suite de Cauchy, nous avons
 
@@ -200,13 +200,13 @@ Nous montrons maintenant que :math:`\Ho` muni de cette norme est complet.
 
 Nous en déduisons le corollaire suivant:
 
-.. proof:corollary::
+.. prf:corollary::
   
   :math:`H^1(\Omega)` est un espace de Hilbert pour le produit scalaire :math:`\PSH{\cdot}{\cdot}`.
 
 Nous avons également le résultat de densité suivant
 
-.. proof:proposition:: Admis
+.. prf:proposition:: Admis
   
   L'espace :math:`\Cscr^{\infty}_c(\Omega)` est dense dans :math:`H^1(\Omega)` pour la norme :math:`\normH{\cdot}`.
 

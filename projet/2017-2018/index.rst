@@ -29,7 +29,7 @@ Cette équation s'obtient en remplaçant :math:`\mathscr{E}(\xx,t)` par :math:`E
 
 Les ondes Wi-Fi  qui suivent `la norme IEEE 802.11g <https://fr.wikipedia.org/wiki/IEEE_802.11>`_ sont émises à une fréquence variant de :math:`2.4\mathrm{GHz}` à :math:`2.5\mathrm{GHz}`. Dans notre projet, nous nous limiterons à des ondes de fréquence :math:`2.4\mathrm{GHz}` \textbf{si votre machine vous le permet !} En effet, les simulations de propagation d'ondes sont parmis les plus coûteuses en terme de CPU. Si votre machine n'est pas assez puissante, nous prendrons une onde de fréquence plus faible, comme :math:`1\mathrm{GHz}` voire moins.
 
-.. proof:exercise::
+.. exercise::
 
   Sachant que :math:`\omega=2\pi F` où :math:`F` est la fréquence, en Hertz (:math:`\mathrm{Hz}`), calculez le nombre d'onde :math:`k` et la longueur d'onde :math:`\lambda` dans le vide, pour une onde électromagnétique et pour :math:`F=2.4\mathrm{GHz}` et :math:`F=1\mathrm{GHz}`.
 
@@ -81,7 +81,7 @@ Cependant nous ne pouvons pas utiliser de distribution de Dirac avec la méthode
 
 La fonction :math:`f_s` est d'intégrale totale égale à :math:`1` et quand :math:`\varepsilon_s` tend vers :math:`0`, la suite de fonction :math:`(f_s)_{\varepsilon_s}` tend vers la distribution de Dirac :math:`\delta_{\mathbf{x}_s}`.
 
-.. proof:exercise::
+.. exercise::
 
   Montrez que :
 
@@ -119,7 +119,7 @@ Formulation variationnelle
 ++++++++++++++++++++++++++
 
 
-.. proof:exercise::
+.. exercise::
 
   Montrez que la formulation variationnelle du problème (\ref{eq:helmholtz}) s'écrit
 
@@ -143,13 +143,13 @@ Formulation variationnelle
     \end{aligned}
 
     
-.. proof:exercise::
+.. exercise::
 
   Montrez que les applications :math:`a(\cdot,\cdot)` et :math:`\ell(\cdot)` sont continues sur respectivement :math:`\Ho\times\Ho` et :math:`\Ho`.
 
 Malheureusement pour nous, :math:`a(\cdot,\cdot)`  n'est pas coercive : nous ne pouvons pas appliquer le Théorème de Lax-Milgram et de ses corollaires. Nous admettrons le Théorème suivant
 
-.. proof:theorem::
+.. prf:theorem::
 
   Les problèmes :eq:`eq-helmholtz` et :eq:`eq-fv` admettent une unique solution.
 
@@ -169,7 +169,7 @@ En pratique, nous prenons un nombre de points :math:`10 \leq n_{\lambda} \leq 20
 Il faudra veiller, lors de nos simulations, à ce que :math:`n_{\lambda} = 10` \textbf{au minimum}. Pour les simulations finales à haute fréquence, il vaut mieux privilégier :math:`n_{\lambda} = 15` ou :math:`n_{\lambda}=20`, si la machine le permet.
 
 
-.. proof:remark::
+.. prf:remark::
 
   Avant de lancer un calcul et/ou un maillage pour tester (*i.e* mon code plante-il ?) : choisissez un nombre d'onde faible ! Par exemple :math:`k= 10` ou :math:`k=5` (mais pas :math:`k=0` !).
 
@@ -201,7 +201,7 @@ L'appartement : GMSH
 
 Le plan de l'appartement que nous considérons est donné par :numref:`la Figure {number} <fig-plan>` où chaque dimension est exprimée en mètre. Nous proposons les contraintes suivantes sur l'appartement : sa longueur :math:`L` est fixée à 7, sa largeur :math:`\ell` à 5 et l'épaisseur :math:`d` des murs est égale à 0.2.
 
-.. proof:exercise::
+.. exercise::
 
   Implémentez un code GMSH qui reproduit le plan de :numref:`la figure {number} <fig-plan>`, en respectant las consignes suivantes :
   
@@ -215,21 +215,21 @@ Le plan de l'appartement que nous considérons est donné par :numref:`la Figure
 
   
 
-.. proof:remark::
+.. prf:remark::
   
   À vous de définir les entités :code:`Physical` qui vous semblent d'importance ainsi que les dimensions des pièces.
 
 La formulation variationnelle : FreeFem++
 +++++++++++++++++++++++++++++++++++++++++
 
-.. proof:exercise::
+.. exercise::
 
   Rédigez le code \freefem permettant de résoudre le problème :eq:`eq-fv` dans le maillage réalisé par \gmsh. Les quantités en sorties qui nous intéressent sont :
 
   - Le champ :math:`u` : partie réelle et partie imaginaire, dans tout l'appartement.
   - La valeur absolue du champ : :math:`\abs{u}`, dans tout l'appartement.
 
-.. proof:remark::
+.. prf:remark::
   
   Plusieurs remarques :
 

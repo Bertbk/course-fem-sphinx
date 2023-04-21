@@ -34,7 +34,7 @@ Pour chaque type d'élément, :code:`Triangle` ou :code:`Segment`, nous avons be
 
 Remarquez que les points 1, 2 ne dépendent que du type de l'élément considéré.
 
-.. proof:exercise::
+.. exercise::
 
   Afin de bien compartimenter chaque fonctionnalité, nous proposons :
 

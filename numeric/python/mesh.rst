@@ -84,7 +84,7 @@ Le maillage étant construit avec GMSH, il s'agit maintenant de convertir les do
         Triangle <.. Mesh
   </div>
 
-.. proof:remark::
+.. prf:remark::
 
   La méthode la plus délicate à construire est :code:`GmshToMesh`. Pour vous aider un petit peu, n'hésitez pas à fouiller dans `l'API de GMSH <https://gitlab.onelab.info/gmsh/gmsh/blob/master/api/gmsh.py>`_) :
 

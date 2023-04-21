@@ -81,7 +81,7 @@ Tentons d'appliquer le théorème de Lax-Milgram à cette formulation faible
 
 Toutes les conditions sont réunies : le problème :eq:`eq-exemple-fv` admet une unique solution d'après le théorème de Lax-Milgram.
 
-.. proof:remark::
+.. prf:remark::
 
   Dans la démonstration de la continuité de :math:`\ell`, n'écrivez pas :math:`\normL{f}\leq \normH{f}` car, d'une part nous n'en avons pas besoin, d'autre part, nous ne savons pas si :math:`f\in\Ho` !
 
@@ -95,11 +95,11 @@ Toutes les conditions sont réunies : le problème :eq:`eq-exemple-fv` admet une
   .. math:: \Hoo = \enstq{v \in \Ho}{\forall i,j, \quad \partial_i\partial_j v\in \Lo}.
 
 
-  .. proof:lemma::
+  .. prf:lemma::
 
     Supposons que la formulation faible :eq:`eq-exemple-fv` admette une unique solution :math:`u\in\Ho` et que cette solution appartienne à :math:`\Hoo`. Alors :math:`u` vérifie l'EDP :eq:`eq-exemple-pb` au sens faible, c'est à dire "presque partout".
     
-  .. proof:proof::
+  .. prf:proof::
 
     Nous pouvons dérouler le théorème de Green "à l'envers". Pour tout :math:`v\in\Ho`, nous avons
 
@@ -123,6 +123,6 @@ Schématiquement, nous avons :
 - Si :math:`u` est solution de :eq:`eq-exemple-pb` alors :math:`u` est solution de :eq:`eq-exemple-fv`
 - Le problème :eq:`eq-exemple-fv` admet une unique solution qui appartient (au moins) à :math:`\Ho`
 
-.. proof:remark::
+.. prf:remark::
 
   Pourquoi travailler dans :math:`\Ho` et non dans :math:`\Cscr^1(\overline{\Omega})` ? La question est légitime, d'autant que :math:`\normH{\cdot}` est une norme de :math:`\Cscr^1(\overline{\Omega})` ! Mais... :math:`\Cscr^1(\overline{\Omega})` n'est pas complet pour cette norme et n'est donc pas un espace de Hilbert si on lui adjoint cette norme : le théorème de Lax-Milgram ne pourra alors pas s'y appliquer. Il existe des normes qui complètent :math:`\Cscr^1(\overline{\Omega})`, mais les hypothèses du théorème de Lax-Milgram sont elles toujours validées avec ces normes ?
