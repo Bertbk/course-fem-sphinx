@@ -61,26 +61,6 @@ html_theme = "sphinx_book_theme"
 
 html_title = "Maillage et Éléments Finis"
 
-#proof_theorem_types = {
-#   "algorithm": "Algorithm",
-#   "conjecture": "Conjecture",
-#   "corollary": "Corollary",
-#   "definition": "Definition",
-#   "example": "Example",
-#   "lemma": "Lemma",
-#   "observation": "Observation",
-#   "proof": "Proof",
-#   "property": "Property",
-#   "theorem": "Theorem",
-#   "remark":"Remarque",
-#   "proposition":"Proposition",
-#   "exercise":"Exercice",
-#}
-#proof_latex_notheorem = ["proof"]
-
-#proof_html_nonumbers = ["exercise"]
-
-
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
@@ -88,14 +68,11 @@ html_static_path = ['_static']
 
 
 html_css_files = [
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css',
-#    'css/proof.css',
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
     'css/custom.css',
 ]
 
 html_js_files = [
-#    'js/proof.js',
-#    'js/custom.js',
 #    'js/basis-function/main.js',
 #    'js/jacobian/main.js',
 #    'js/loc2glob/main.js',

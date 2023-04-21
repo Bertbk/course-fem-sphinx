@@ -1,5 +1,5 @@
 
-/* Dark mode: invert color for svg*/
+/* Dark mode: invert color for svg. This was usefull with FURO Theme*/
 @media (prefers-color-scheme: dark) {
   body:not([data-theme="light"])
   img[src$=".svg"]{
@@ -20,6 +20,8 @@ div.mermaid svg path.relation
 {
   stroke:ghostwhite !important;
 }
+
+/* App container*/
 
 div.app-container{
   text-align:center;
