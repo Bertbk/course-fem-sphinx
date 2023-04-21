@@ -8,7 +8,7 @@ build_sphinx:
   script:
   - pip install -U sphinx
   - pip install sphinx-book-theme
-  - pip install sphinx-exercise sphinx-proof sphinx-toggle-button
+  - pip install sphinx-exercise sphinx-proof sphinx-togglebutton
   - sphinx-build -b html . public
   - sphinx-build -b latex . _latex
   artifacts:
