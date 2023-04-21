@@ -7,8 +7,8 @@ build_sphinx:
   stage: build_sphinx
   script:
   - pip install -U sphinx
-  - pip install -U furo
-  - pip install -U sphinxcontrib-proof
+  - pip install sphinx-book-theme
+  - pip install sphinx-exercise sphinx-proof sphinx-toggle-button
   - sphinx-build -b html . public
   - sphinx-build -b latex . _latex
   artifacts:
