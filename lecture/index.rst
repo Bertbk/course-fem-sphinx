@@ -21,5 +21,6 @@ Remarques préliminaires :
    weak-solution/index
    elements-finis-triangulaires/index
    boundary-conditions/index
-   advanced/index   
+   advanced/index
+   spectral-element-method/index
    
