@@ -49,7 +49,7 @@ Le stockage COO de cette matrice prendra alors la forme suivante :
 | :code:`val`  | 3   | 2   | 1   | 5   | 8   | 1   | 2   | 9   | 10  | 4   |
 +--------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
 
-.. proof:remark::
+.. prf:remark::
 
   Même si cela n'est pas nécessaire a priori, les trois tableaux sont souvent classés de sorte que :code:`row` est croissant et :code:`col` est "croissant par morceaux" (ou "croissant par ligne"). Autrement dit, les trois tableaux sont ordonnés selon les lignes.
 
@@ -85,7 +85,7 @@ Pour reconstuire la matrice sous format dense, le pseudo-code ci-dessous fonctio
   end
 
 
-.. proof:remark::
+.. prf:remark::
 
   En cas de doublon de coefficient, il suffirait d'utiliser :code:`+=` plutôt que le signe :code:`=`. Cependant, nous n'autoriserons pas les doublons pour faciliter le convertisseur vers le format CSR.
 
@@ -167,12 +167,12 @@ Le pseudo code pour reconstruire la matrice dense associé ressemblerait à ceci
   end
 
 
-.. proof:remark::
+.. prf:remark::
 
   La relation :eq:`eq-coo` **n'est pas** valable pour le format CSR!
 
 
-.. proof:remark:: 
+.. prf:remark:: 
   
   Quelques remarques :
 
@@ -235,6 +235,6 @@ En supposant les fonctions existantes, le pseudo-code suivant permet de passer d
   B = A.to_csr();
 
 
-.. proof:remark::
+.. prf:remark::
   
   En Python, la `bibliothèque Scipy <https://www.scipy.org/>`_ fournit une implémentation très efficace des matrices creuses COO et CSR.
