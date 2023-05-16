@@ -90,8 +90,16 @@ latex_toplevel_sectioning = "part"
 
 
 # copy to mathjax
+
+
 mathjax3_config = {                  
-    "tex": {                        
+    "loader": {
+        "load": ['[tex]/mathtools']
+        },
+    "tex": {
+        "packages": {
+            '[+]': ['mathtools']
+        },                    
         "macros": {
             'dsp' : '{\\displaystyle}',
             'gD': '{g_D}',
