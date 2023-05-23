@@ -256,6 +256,7 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
 
 Une illustration du support des fonctions de forme est donnée sur la Figure :numref:`{number} <fig-support>`.
 
+
 .. _fig-support:
 
 .. figure:: /img/support/support.*
@@ -264,10 +265,12 @@ Une illustration du support des fonctions de forme est donnée sur la Figure :nu
   :alt: Exemple de support de fonction de forme
   :align: center
   
-  Support des fonctions de forme pour le maillage d’un carré.
+  Support des fonctions de forme pour le maillage d'un carré.
 
 
 .. raw:: html
+
+  <a href="#app-basis-function">L'application ci-dessous</a> propose de visualiser les fonctions de forme sur un petit maillage.
 
   <div id="app-basis-function" class="app-container">
     <iframe id="iframe-basis-function" class="app-content" src='../../../_static/app/basis-function/index.html' scrolling="no"></iframe>
