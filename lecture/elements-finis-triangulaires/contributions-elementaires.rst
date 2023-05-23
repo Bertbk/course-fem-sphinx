@@ -17,17 +17,55 @@ La matrice :math:`A` peut être décomposée en deux matrices : la masse et la r
 
   .. math:: D_{I,J}=  \int_{\Omega}\nabla\mphi_J\nabla\mphi_I.
 
+
+La matrice de masse :math:`M` représente l'opérateur Identité dans la base des fonctions de forme (qui n'est ni orthogonale ni normée !). Pour s'en convaincre, il faut regarder "l'équation" :math:`u=f` et appliquer la méthode des éléments finis pour obtenir la "formulation faible" suivante
+
+.. math::  
+  
+  \begin{cases}
+  \text{Trouver }\uh\in\Vh, \text{ tel que }\\
+  \forall \vh, \quad \int_{\Omega} \uh\vh = \int_{\Omega}f\vh,
+  \end{cases}
+  \iff MU = B
+
+L'opérateur Identité, appliqué à :math:`\uh`, est bien discrétisé en :math:`M`. À noter que la masse n'apparait pas directement dans le second membre car on la calcul par des règles de quadratures, cependant si :math:`f \in \Vh` alors le système linéaire serait tout simplement :math:`MU = MF \iff U=F`.
+
+La matrice de rigidité porte ce nom en raison de l'analogie avec des problèmes de mécanique du solide (ressort).
+
+Les deux propriétés suivantes des matrices de masse et de rigidité ont une utilité pratique pour l'implémentation à des fins de validations.
+
+.. prf:lemma::
+
+  Soit :math:`X=[1,1,\ldots,1]^T` le vecteur rempli de 1, alors
+
+  .. math::
+
+    X^TMX = |\Omega| \qquad\text{ et } \qquad DX = 0.
+
+.. prf:proof::
+
+  Nous utilisons le :numref:`lemme {number} <_lemma-sum-form-function>`  pour obtenir la première relation
+
+  .. math::
+  
+    X^TMX = \sum_{I=1}^{\Ns}\sum_{J=1}^{\Ns} M_{I,J}= \sum_{I=1}^{\Ns}\sum_{J=1}^{\Ns} \int_{\Omega}\mphi_J\mphi_I =  \int_{\Omega}\sum_{I=1}^{\Ns}\mphi_I \sum_{J=1}^{\Ns}\mphi_J = \int_{\Omega} 1 = |\Omega|,
+
+  et aussi la seconde, pour :math:`I=1,\ldots,\Ns`,
+
+  .. math::
+  
+    (DX)_I = \sum_{J=1}^{\Ns} D_{I,J}= \sum_{J=1}^{\Ns} \int_{\Omega}\nabla\mphi_J\cdot\nabla\mphi_I = \int_{\Omega} \nabla\left(\sum_{J=1}^{\Ns}\mphi_J\right)\cdot\nabla\mphi_I = \int_{\Omega} \nabla(1)\cdot\nabla\mphi_I = 0.
+
 .. prf:remark::
 
   Dans la littérature, cette matrice est souvent notée :math:`K`, mais nous l'appelons :math:`D` pour éviter toute confusion avec les triangles, nommés :math:`K` également.
 
 .. prf:remark::
 
-  La matrice de masse :math:`M` représente l'opérateur Identité dans la base des fonctions de forme (qui n'est pas orthogonale ni normée !). Pour s'en convaincre, il faut regarder "l'équation" :math:`u=f` (ou :math:`Id. u = f`) et appliquer la méthode des éléments finis pour obenir la "formulation faible"
+  La matrice de masse devrait plutôt s'appeler *matrice de volume* car elle mesure le volume et non la masse...
 
-  .. math::  \forall \vh, \quad \int_{\Omega} U\vh = \int_{\Omega}f\vh,
-
-  qui aboutit au système linéaire suivant : :math:`MU = B`. L'opérateur Identité, appliqué à :math:`u`, est bien discrétisé en :math:`M`.
+Contribution élémentaire
+------------------------
 
 Les **contributions élémentaires**, c'est à dire les quantités :math:`a_p(\mphi_j^p,\mphi_i^p)` et :math:`\ell_{p}(\mphi_i^p)`, peuvent elles aussi être décomposées en deux parties. Pour rappel, les sommets d'un triangle :math:`\tri_p` seront notés :math:`[\vertice_{0}^{p}, \vertice_{1}^{p},\vertice_{2}^{p}]` et ordonnés dans le sens trigonométrique. Nous noterons :math:`\vertice_i^p=(x_i^p, y_i^p)` un sommet de :math:`\tri_p` et :math:`\mphi_i^p` la fonction de forme locale associée. Nous notons :math:`\Me{p}` et :math:`\De{p}` les matrices de masse et de rigidité élémentaire du triangle :math:`\tri_p`, de coefficient respectif :math:`(\Me{p})_{i,j}` et :math:`(\De{p})_{i,j}` donnés par
 

@@ -254,6 +254,7 @@ Ces fonctions sont la généralisation en 2D des *fonctions chapeau* unidimensio
 
   Prenons une fonction de forme :math:`\mphi_I` associée au sommet :math:`\vertice_I`, et un triangle :math:`\tri` tel que :math:`\vertice_I` n'est pas un sommet de :math:`\tri`. Dans ce cas, :math:`\mphi_I` est nulle sur les trois sommets de :math:`\tri`, et est donc nulle sur le triangle tout entier.
 
+
 Une illustration du support des fonctions de forme est donnée sur la Figure :numref:`{number} <fig-support>`.
 
 
@@ -274,7 +275,7 @@ Une illustration du support des fonctions de forme est donnée sur la Figure :nu
 
   <div id="app-basis-function" class="app-container">
     <iframe id="iframe-basis-function" class="app-content" src='../../../_static/app/basis-function/index.html' scrolling="no"></iframe>
-    <p><strong>Application</strong> : <strong>Cliquez sur un sommet</strong> pour faire apparaitre <strong>la fonction de forme P1 associée</strong>. Les triangles où la fonction n’est pas nulle forment <strong>le support de la fonction de forme</strong>. 
+    <p><strong>Application</strong> : <strong>Cliquez sur un sommet</strong> pour faire apparaitre <strong>la fonction de forme P1 associée</strong>. Les triangles où la fonction n'est pas nulle forment <strong>le support de la fonction de forme</strong>. 
     </p>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.min.js" integrity="sha512-ngVIPTfUxNHrVs52hA0CaOVwC3/do2W4jUEJIufgZQicmY27iAJAind8BPtK2LoyIGiAFcOkjO18r5dTUNLFAw==" crossorigin="anonymous"></script>
@@ -282,6 +283,21 @@ Une illustration du support des fonctions de forme est donnée sur la Figure :nu
     iFrameResize({}, '#iframe-basis-function')
   </script>
 
+Avant de conclure cette section, soulignons ce résultat intéressant.
+
+.. _lemma-sum-form-function:
+
+.. prf:lemma::
+
+  La somme des fonctions de forme est égale à la fonction constante égale à 1 :
+
+  .. math:: 
+    
+    \sum_{I}^{\Ns} \mphi_I=1.
+
+.. prf:proof::
+
+  La fonction :math:`\sum_{I} \mphi_I` est linéaire sur chaque triangle et vaut 1 sur chaque sommet, comme la fonction constante égale 1. L'unicité nous permet de conclure.
 
 Conclusion
 -----------
