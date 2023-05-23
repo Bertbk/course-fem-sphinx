@@ -15,7 +15,7 @@ La matrice :math:`A` peut être décomposée en deux matrices : la masse et la r
 
 - :math:`D` : la matrice de rigidité, de coefficient
 
-  .. math:: D_{I,J}=  \int_{\omega}\nabla\mphi_J\nabla\mphi_I.
+  .. math:: D_{I,J}=  \int_{\Omega}\nabla\mphi_J\nabla\mphi_I.
 
 .. prf:remark::
 
